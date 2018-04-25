@@ -1,4 +1,4 @@
-module Stellar.Http.Error exposing (Error, errorDecoder)
+module Stellar.Error exposing (Error, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
@@ -13,8 +13,8 @@ type alias Error =
     }
 
 
-errorDecoder : Decoder Error
-errorDecoder =
+decoder : Decoder Error
+decoder =
     Decode.decode Error
         |> Decode.required "type" Decode.string
         |> Decode.required "title" Decode.string

@@ -2,15 +2,22 @@ module Model exposing (Model, initialModel)
 
 import Http
 
-import Stellar.Http.Accounts exposing (RequestSingleAccountResponse)
+import Routes exposing (Route (Home))
+
+import Stellar.Http.Accounts as StellarAccounts
+import Stellar.Http.Assets as StellarAssets
 
 
 type alias Model =
-    { accountResponse : Maybe (Result Http.Error RequestSingleAccountResponse)
+    { route : Maybe Route
+    , accountResponse : Maybe (Result Http.Error StellarAccounts.Response)
+    , assetsResponse : Maybe (Result Http.Error StellarAssets.Response)
     }
 
 
 initialModel : Model
 initialModel =
-    { accountResponse = Nothing
+    { route = Just Home
+    , accountResponse = Nothing
+    , assetsResponse = Nothing
     }

@@ -1,4 +1,4 @@
-module Stellar.Http.Accounts exposing (request, Response (..))
+module Stellar.Http.Assets exposing (request, Response (..))
 
 import Http
 import HttpBuilder exposing (..)
