@@ -11,7 +11,7 @@ import Stellar.Http.Assets as StellarAssets
 type alias Model =
     { route : Maybe Route
     , accountResponse : Maybe (Result Http.Error StellarAccounts.Response)
-    , assetsResponse : Maybe (Result Http.Error StellarAssets.Response)
+    , allAssetsResponse : Maybe (Result Http.Error StellarAssets.Response)
     }
 
 
@@ -19,5 +19,5 @@ initialModel : Model
 initialModel =
     { route = Just Home
     , accountResponse = Nothing
-    , assetsResponse = Nothing
+    , allAssetsResponse = Nothing
     }

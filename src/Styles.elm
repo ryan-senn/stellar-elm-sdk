@@ -153,3 +153,10 @@ officialLink =
         [ marginLeft <| px 10
         , lineHeight <| em 1.7
         ]
+
+
+response : Attribute Msg
+response =
+    css
+        [ maxWidth <| calc (vw 100) minus (px 300)
+        ]

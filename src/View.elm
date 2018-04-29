@@ -1,22 +1,23 @@
 module View exposing (view)
 
+import Http
+
 import Stellar.Endpoint as Endpoint
 import Stellar.PublicKey as PublicKey
-
-import Msg exposing (Msg (AccountRequest))
-import Model exposing (Model)
-
-import Routes exposing (Route)
 
 import Html
 import Html.Styled exposing (..)
 import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
-
 import Styles as S
 
-import String
 import SyntaxHighlight
+import RecordFormatter
+
+import Msg exposing (Msg (AccountRequest, AllAssetsRequest))
+import Model exposing (Model)
+
+import Routes exposing (Route)
 
 
 view : Model -> Html Msg
@@ -113,9 +114,7 @@ page model route =
             account model
 
         Routes.Endpoints Routes.AllAssets ->
-            div
-                []
-                [ text "All Assets" ]
+            assets model
 
 
 pageTitle : String -> String -> Html Msg
@@ -148,96 +147,56 @@ account model =
             , h4
                 []
                 [ text "response" ]
-            , div
-                []
-                [ SyntaxHighlight.useTheme SyntaxHighlight.monokai
-                    |> Html.Styled.fromUnstyled
-                , SyntaxHighlight.elm (viewModel model.accountResponse)
-                    |> Result.map (SyntaxHighlight.toBlockHtml (Just 1))
-                    |> Result.map Html.Styled.fromUnstyled
-                    |> Result.withDefault
-                        (div [] [ text "Displaying response failed" ])
-                ]
+            , response model.accountResponse
             ]
         ]
 
 
-quote = "\""
-indentChars = "[{("
-outdentChars = "]})"
-newLineChars = ","
-uniqueHead = "__HEAD__"
-spaces = 4
+assets : Model -> Html Msg
+assets model =
+
+    div
+        []
+        [ pageTitle "All Assets" "https://www.stellar.org/developers/horizon/reference/endpoints/assets-all.html"
+        , div
+            [ S.page ]
+            [ button
+                [ onClick <| AllAssetsRequest Endpoint.dummy ]
+                [ text "Request" ]
+            , h4
+                []
+                [ text "response" ]
+            , response model.allAssetsResponse
+            ]
+        ]
 
 
-viewModel : a -> String
-viewModel record =
+response : Maybe (Result Http.Error record) -> Html Msg
+response response =
 
-    record
-        |> toString
-        |> formatString False 0
-        |> String.split uniqueHead
-        |> List.map viewLine
-        |> List.intersperse "\n"
-        |> String.concat
+    case response of
 
+        Nothing ->
+            text ""
 
-viewLine : String -> String
-viewLine lineStr =
-    let
-        (indent, lineTxt) =
-            splitLine lineStr
+        Just (Err error) ->
+            div
+                []
+                [ div
+                    []
+                    [ text "Something went wrong D:" ]
+                , div
+                    []
+                    [ text <| toString error ]
+                ]
 
-    in
-        String.repeat indent " " ++ lineTxt
-
-
-formatString : Bool -> Int -> String -> String
-formatString isInQuotes indent string =
-
-    case String.left 1 string of
-
-        "" ->
-            ""
-
-        firstChar ->
-            if isInQuotes then
-                if firstChar == quote then
-                    firstChar ++ formatString (not isInQuotes) indent (String.dropLeft 1 string)
-                else
-                    firstChar ++ formatString isInQuotes indent (String.dropLeft 1 string)
-            else
-                if String.contains firstChar newLineChars then
-                    uniqueHead ++ pad indent ++ firstChar ++ formatString isInQuotes indent (String.dropLeft 1 string)
-                else if String.contains firstChar indentChars then
-                    uniqueHead ++ pad (indent + spaces) ++ firstChar ++ formatString isInQuotes (indent + spaces) (String.dropLeft 1 string)
-                else if String.contains firstChar outdentChars then
-                    uniqueHead ++ pad indent ++ firstChar ++ formatString isInQuotes (indent - spaces) (String.dropLeft 1 string)
-                else if String.contains firstChar outdentChars then
-                    firstChar ++ uniqueHead ++ pad (indent - spaces) ++ formatString isInQuotes (indent - spaces) (String.dropLeft 1 string)
-                else if firstChar == quote then
-                    firstChar ++ formatString (not isInQuotes) indent (String.dropLeft 1 string)
-                else
-                    firstChar ++ formatString isInQuotes indent (String.dropLeft 1 string)
-
-
-pad : Int -> String
-pad =
-    toString >> String.padLeft 5 '0'
-
-
-splitLine : String -> (Int, String)
-splitLine line =
-
-    let
-        indent =
-            line
-                |> String.left 5
-                |> String.toInt
-                |> Result.withDefault 0
-
-        newLine =
-            String.dropLeft 5 line
-
-    in
-        (indent, newLine)
+        Just (Ok record) ->
+            div
+                [ S.response ]
+                [ SyntaxHighlight.useTheme SyntaxHighlight.monokai
+                    |> Html.Styled.fromUnstyled
+                , SyntaxHighlight.elm (RecordFormatter.toString record)
+                    |> Result.map (SyntaxHighlight.toBlockHtml (Just 1) >> Html.Styled.fromUnstyled)
+                    |> Result.withDefault
+                        (div [] [ text "Displaying response failed" ])
+                ]

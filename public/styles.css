@@ -17,3 +17,8 @@ body {
     -webkit-font-smoothing: antialiased;
     margin: 0px;
 }
+
+.elmsh {
+    overflow-x: scroll;
+    padding: 20px;
+}
