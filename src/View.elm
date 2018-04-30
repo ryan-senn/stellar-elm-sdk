@@ -81,127 +81,127 @@ sidebar mRoute =
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.DataForAccount) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.DataForAccount ]
-                    [ text "DataForAccount" ]
+                    [ text "Data For Account" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllEffects) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllEffects ]
-                    [ text "AllEffects" ]
+                    [ text "All Effects" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForAccount) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForAccount ]
-                    [ text "EffectsForAccount" ]
+                    [ text "Effects For Account" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForLedger) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForLedger ]
-                    [ text "EffectsForLedger" ]
+                    [ text "Effects For Ledger" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForOperation) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForOperation ]
-                    [ text "EffectsForOperation" ]
+                    [ text "Effects For Operation" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForTransaction) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForTransaction ]
-                    [ text "EffectsForTransaction" ]
+                    [ text "Effects For Transaction" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllLedgers) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllLedgers ]
-                    [ text "AllLedgers" ]
+                    [ text "All Ledgers" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.LedgerDetails) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.LedgerDetails ]
-                    [ text "LedgerDetails" ]
+                    [ text "Ledger Details" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OffersForAccount) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OffersForAccount ]
-                    [ text "OffersForAccount" ]
+                    [ text "Offers For Account" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllOperations) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllOperations ]
-                    [ text "AllOperations" ]
+                    [ text "All Operations" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationsForAccount) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationsForAccount ]
-                    [ text "OperationsForAccount" ]
+                    [ text "Operations For Account" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationsForLedger) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationsForLedger ]
-                    [ text "OperationsForLedger" ]
+                    [ text "Operations For Ledger" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationsForTransaction) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationsForTransaction ]
-                    [ text "OperationsForTransaction" ]
+                    [ text "Operations For Transaction" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationDetails) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationDetails ]
-                    [ text "OperationDetails" ]
+                    [ text "Operation Details" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OrderbookDetails) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OrderbookDetails ]
-                    [ text "OrderbookDetails" ]
+                    [ text "Orderbook Details" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.FindPaymentPaths) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.FindPaymentPaths ]
-                    [ text "FindPaymentPaths" ]
+                    [ text "Find Payment Paths" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllPayments) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllPayments ]
-                    [ text "AllPayments" ]
+                    [ text "All Payments" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PaymentsForAccount) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PaymentsForAccount ]
-                    [ text "PaymentsForAccount" ]
+                    [ text "Payments For Account" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PaymentsForLedger) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PaymentsForLedger ]
-                    [ text "PaymentsForLedger" ]
+                    [ text "Payments For Ledger" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PaymentsForTransaction) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PaymentsForTransaction ]
-                    [ text "PaymentsForTransaction" ]
+                    [ text "Payments For Transaction" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TradeAggregations) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TradeAggregations ]
-                    [ text "TradeAggregations" ]
+                    [ text "Trade Aggregations" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.Trades) ]
@@ -213,31 +213,31 @@ sidebar mRoute =
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllTransactions) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllTransactions ]
-                    [ text "AllTransactions" ]
+                    [ text "All Transactions" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PostTransaction) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PostTransaction ]
-                    [ text "PostTransaction" ]
+                    [ text "Post Transaction" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TransactionsForAccount) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TransactionsForAccount ]
-                    [ text "TransactionsForAccount" ]
+                    [ text "Transactions For Account" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TransactionsForLedger) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TransactionsForLedger ]
-                    [ text "TransactionsForLedger" ]
+                    [ text "Transactions For Ledger" ]
                 ]
             , li
                 [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TransactionDetails) ]
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TransactionDetails ]
-                    [ text "TransactionDetails" ]
+                    [ text "Transaction Details" ]
                 ]
             ]
         ]
