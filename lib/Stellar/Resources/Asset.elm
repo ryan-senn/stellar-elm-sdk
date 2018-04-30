@@ -4,7 +4,7 @@ import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
 import Stellar.Flags as Flags exposing (Flags)
-import Stellar.Href as Href exposing (Href)
+import Stellar.Link as Link exposing (Link)
 
 
 type alias Asset =
@@ -59,11 +59,11 @@ stringToAssetType string =
 
 
 type alias Links =
-    { toml : Href
+    { toml : Link
     }
 
 
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links
-        |> Decode.required "toml" Href.decoder
+        |> Decode.required "toml" Link.decoder

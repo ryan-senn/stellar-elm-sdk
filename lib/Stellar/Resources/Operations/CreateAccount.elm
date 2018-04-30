@@ -3,7 +3,7 @@ module Stellar.Resources.Operations.CreateAccount exposing (CreateAccount, decod
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Href as Href exposing (Href)
+import Stellar.Link as Link exposing (Link)
 
 
 type alias CreateAccount =
@@ -32,19 +32,19 @@ decoder =
 
 
 type alias Links =
-    { self : Href
-    , succeeds : Href
-    , precedes : Href
-    , effects : Href
-    , transaction : Href
+    { self : Link
+    , succeeds : Link
+    , precedes : Link
+    , effects : Link
+    , transaction : Link
     }
 
 
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links
-        |> Decode.required "self" Href.decoder
-        |> Decode.required "succeeds" Href.decoder
-        |> Decode.required "precedes" Href.decoder
-        |> Decode.required "effects" Href.decoder
-        |> Decode.required "transaction" Href.decoder
+        |> Decode.required "self" Link.decoder
+        |> Decode.required "succeeds" Link.decoder
+        |> Decode.required "precedes" Link.decoder
+        |> Decode.required "effects" Link.decoder
+        |> Decode.required "transaction" Link.decoder

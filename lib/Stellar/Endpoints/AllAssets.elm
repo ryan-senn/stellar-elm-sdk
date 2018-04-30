@@ -1,4 +1,4 @@
-module Stellar.Http.Assets exposing (request, Response (..))
+module Stellar.Endpoints.AllAssets exposing (request, Response (..))
 
 import Http
 import HttpBuilder exposing (..)
@@ -6,10 +6,10 @@ import HttpBuilder exposing (..)
 import Json.Decode as Decode exposing (Decoder)
 
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
-import Stellar.Page as Page exposing (Page)
-import Stellar.Asset as Asset exposing (Asset)
+import Stellar.Resources.Page as Page exposing (Page)
+import Stellar.Resources.Asset as Asset exposing (Asset)
 
-import Stellar.Error as Error exposing (Error)
+import Stellar.Errors.Error as Error exposing (Error)
 
 
 request : Endpoint -> (Result Http.Error Response -> msg) -> Cmd msg

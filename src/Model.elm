@@ -4,8 +4,8 @@ import Http
 
 import Routes exposing (Route (Home))
 
-import Stellar.Http.Accounts as StellarAccounts
-import Stellar.Http.Assets as StellarAssets
+import Stellar.Endpoints.AccountDetails as StellarAccounts
+import Stellar.Endpoints.AllAssets as StellarAssets
 
 
 type alias Model =

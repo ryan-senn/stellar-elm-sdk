@@ -9,7 +9,7 @@ import Stellar.Thresholds as Thresholds exposing (Thresholds)
 import Stellar.Flags as Flags exposing (Flags)
 import Stellar.Balance as Balance exposing (Balance)
 import Stellar.Signer as Signer exposing (Signer)
-import Stellar.Href as Href exposing (Href)
+import Stellar.Link as Link exposing (Link)
 
 import Stellar.Resources.Data as Data exposing (Data)
 
@@ -46,11 +46,11 @@ decoder =
 
 
 type alias Links =
-    { toml : Href
+    { toml : Link
     }
 
 
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links
-        |> Decode.required "toml" Href.decoder
+        |> Decode.required "toml" Link.decoder

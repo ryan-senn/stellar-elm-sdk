@@ -1,7 +1,7 @@
 module Update exposing (update, setRoute)
 
-import Stellar.Http.Accounts as StellarAccounts
-import Stellar.Http.Assets as StellarAssets
+import Stellar.Endpoints.AccountDetails as AccountDetails
+import Stellar.Endpoints.AllAssets as AllAssets
 
 import Msg exposing (Msg (..))
 import Model exposing (Model)
@@ -18,7 +18,7 @@ update msg model =
             setRoute route model
 
         AccountRequest endpoint publicKey ->
-            model ! [ StellarAccounts.request endpoint publicKey AccountResponse ]
+            model ! [ AccountDetails.request endpoint publicKey AccountResponse ]
 
         AccountResponse (Err error) ->
             { model | accountResponse = Just (Err error) } ! []
@@ -27,7 +27,7 @@ update msg model =
             { model | accountResponse = Just (Ok requestSingleAccountResponse) } ! []
 
         AllAssetsRequest endpoint ->
-            model ! [ StellarAssets.request endpoint AllAssetsResponse ]
+            model ! [ AllAssets.request endpoint AllAssetsResponse ]
 
         AllAssetsResponse (Err error) ->
             { model | allAssetsResponse = Just (Err error) } ! []

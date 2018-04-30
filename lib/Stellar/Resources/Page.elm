@@ -3,7 +3,7 @@ module Stellar.Resources.Page exposing (Page, decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Href as Href exposing (Href)
+import Stellar.Link as Link exposing (Link)
 
 
 type alias Page a =
@@ -31,15 +31,15 @@ embeddedDecoder recordDecoder =
 
 
 type alias Links =
-    { self : Href
-    , prev : Href
-    , next : Href
+    { self : Link
+    , prev : Link
+    , next : Link
     }
 
 
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links
-        |> Decode.required "self" Href.decoder
-        |> Decode.required "prev" Href.decoder
-        |> Decode.required "next" Href.decoder
+        |> Decode.required "self" Link.decoder
+        |> Decode.required "prev" Link.decoder
+        |> Decode.required "next" Link.decoder

@@ -1,17 +1,17 @@
-module Stellar.Href exposing (Href, decoder)
+module Stellar.Link exposing (Link, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
 
-type alias Href =
+type alias Link =
     { href : String
     , templated : Bool
     }
 
 
-decoder : Decoder Href
+decoder : Decoder Link
 decoder =
-    Decode.decode Href
+    Decode.decode Link
         |> Decode.required "href" Decode.string
-        |> Decode.optional "templated" Decode.string False
+        |> Decode.optional "templated" Decode.bool False
