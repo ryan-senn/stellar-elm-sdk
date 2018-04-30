@@ -22,7 +22,6 @@ import Routes exposing (Route)
 
 view : Model -> Html Msg
 view model =
-
     div
         [ S.layout ]
         [ header
@@ -32,7 +31,6 @@ view model =
 
 header : Html Msg
 header =
-
     div
         [ S.header ]
         [ h1
@@ -50,7 +48,6 @@ header =
 
 body : Model -> Html Msg
 body model =
-
     div
         [ S.body ]
         [ sidebar model.route
@@ -79,6 +76,168 @@ sidebar mRoute =
                 [ a
                     [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllAssets ]
                     [ text "All Assets" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.DataForAccount) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.DataForAccount ]
+                    [ text "DataForAccount" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllEffects) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllEffects ]
+                    [ text "AllEffects" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForAccount) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForAccount ]
+                    [ text "EffectsForAccount" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForLedger) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForLedger ]
+                    [ text "EffectsForLedger" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForOperation) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForOperation ]
+                    [ text "EffectsForOperation" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.EffectsForTransaction) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.EffectsForTransaction ]
+                    [ text "EffectsForTransaction" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllLedgers) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllLedgers ]
+                    [ text "AllLedgers" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.LedgerDetails) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.LedgerDetails ]
+                    [ text "LedgerDetails" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OffersForAccount) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OffersForAccount ]
+                    [ text "OffersForAccount" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllOperations) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllOperations ]
+                    [ text "AllOperations" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationsForAccount) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationsForAccount ]
+                    [ text "OperationsForAccount" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationsForLedger) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationsForLedger ]
+                    [ text "OperationsForLedger" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationsForTransaction) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationsForTransaction ]
+                    [ text "OperationsForTransaction" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OperationDetails) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OperationDetails ]
+                    [ text "OperationDetails" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.OrderbookDetails) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.OrderbookDetails ]
+                    [ text "OrderbookDetails" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.FindPaymentPaths) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.FindPaymentPaths ]
+                    [ text "FindPaymentPaths" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllPayments) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllPayments ]
+                    [ text "AllPayments" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PaymentsForAccount) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PaymentsForAccount ]
+                    [ text "PaymentsForAccount" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PaymentsForLedger) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PaymentsForLedger ]
+                    [ text "PaymentsForLedger" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PaymentsForTransaction) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PaymentsForTransaction ]
+                    [ text "PaymentsForTransaction" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TradeAggregations) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TradeAggregations ]
+                    [ text "TradeAggregations" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.Trades) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.Trades ]
+                    [ text "Trades" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.AllTransactions) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.AllTransactions ]
+                    [ text "AllTransactions" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.PostTransaction) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.PostTransaction ]
+                    [ text "PostTransaction" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TransactionsForAccount) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TransactionsForAccount ]
+                    [ text "TransactionsForAccount" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TransactionsForLedger) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TransactionsForLedger ]
+                    [ text "TransactionsForLedger" ]
+                ]
+            , li
+                [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints Routes.TransactionDetails) ]
+                [ a
+                    [ S.sidebarItemLink, Routes.href <| Routes.Endpoints Routes.TransactionDetails ]
+                    [ text "TransactionDetails" ]
                 ]
             ]
         ]
@@ -111,10 +270,91 @@ page model route =
                 [ text "Home" ]
 
         Routes.Endpoints Routes.AccountDetails ->
-            account model
+            accountDetails model
 
         Routes.Endpoints Routes.AllAssets ->
-            assets model
+            allAssets model
+
+        Routes.Endpoints Routes.DataForAccount ->
+            dataForAccount model
+
+        Routes.Endpoints Routes.AllEffects ->
+            allEffects model
+
+        Routes.Endpoints Routes.EffectsForAccount ->
+            effectsForAccount model
+
+        Routes.Endpoints Routes.EffectsForLedger ->
+            effectsForLedger model
+
+        Routes.Endpoints Routes.EffectsForOperation ->
+            effectsForOperation model
+
+        Routes.Endpoints Routes.EffectsForTransaction ->
+            effectsForTransaction model
+
+        Routes.Endpoints Routes.AllLedgers ->
+            allLedgers model
+
+        Routes.Endpoints Routes.LedgerDetails ->
+            ledgerDetails model
+
+        Routes.Endpoints Routes.OffersForAccount ->
+            offersForAccount model
+
+        Routes.Endpoints Routes.AllOperations ->
+            allOperations model
+
+        Routes.Endpoints Routes.OperationsForAccount ->
+            operationsForAccount model
+
+        Routes.Endpoints Routes.OperationsForLedger ->
+            operationsForLedger model
+
+        Routes.Endpoints Routes.OperationsForTransaction ->
+            operationsForTransaction model
+
+        Routes.Endpoints Routes.OperationDetails ->
+            operationDetails model
+
+        Routes.Endpoints Routes.OrderbookDetails ->
+            orderbookDetails model
+
+        Routes.Endpoints Routes.FindPaymentPaths ->
+            findPaymentPaths model
+
+        Routes.Endpoints Routes.AllPayments ->
+            allPayments model
+
+        Routes.Endpoints Routes.PaymentsForAccount ->
+            paymentsForAccount model
+
+        Routes.Endpoints Routes.PaymentsForLedger ->
+            paymentsForLedger model
+
+        Routes.Endpoints Routes.PaymentsForTransaction ->
+            paymentsForTransaction model
+
+        Routes.Endpoints Routes.TradeAggregations ->
+            tradeAggregations model
+
+        Routes.Endpoints Routes.Trades ->
+            trades model
+
+        Routes.Endpoints Routes.AllTransactions ->
+            allTransactions model
+
+        Routes.Endpoints Routes.PostTransaction ->
+            postTransaction model
+
+        Routes.Endpoints Routes.TransactionsForAccount ->
+            transactionsForAccount model
+
+        Routes.Endpoints Routes.TransactionsForLedger ->
+            transactionsForLedger model
+
+        Routes.Endpoints Routes.TransactionDetails ->
+            transactionDetails model
 
 
 pageTitle : String -> String -> Html Msg
@@ -133,9 +373,8 @@ pageTitle title link =
         ]
 
 
-account : Model -> Html Msg
-account model =
-
+accountDetails : Model -> Html Msg
+accountDetails model =
     div
         []
         [ pageTitle "Account Details" "https://www.stellar.org/developers/horizon/reference/endpoints/accounts-single.html"
@@ -152,9 +391,8 @@ account model =
         ]
 
 
-assets : Model -> Html Msg
-assets model =
-
+allAssets : Model -> Html Msg
+allAssets model =
     div
         []
         [ pageTitle "All Assets" "https://www.stellar.org/developers/horizon/reference/endpoints/assets-all.html"
@@ -169,6 +407,195 @@ assets model =
             , response model.allAssetsResponse
             ]
         ]
+
+
+dataForAccount : Model -> Html Msg
+dataForAccount model =
+    div
+        []
+        [ text "todo" ]
+
+
+allEffects : Model -> Html Msg
+allEffects model =
+    div
+        []
+        [ text "todo" ]
+
+
+effectsForAccount : Model -> Html Msg
+effectsForAccount model =
+    div
+        []
+        [ text "todo" ]
+
+
+effectsForLedger : Model -> Html Msg
+effectsForLedger model =
+    div
+        []
+        [ text "todo" ]
+
+
+effectsForOperation : Model -> Html Msg
+effectsForOperation model =
+    div
+        []
+        [ text "todo" ]
+
+
+effectsForTransaction : Model -> Html Msg
+effectsForTransaction model =
+    div
+        []
+        [ text "todo" ]
+
+
+allLedgers : Model -> Html Msg
+allLedgers model =
+    div
+        []
+        [ text "todo" ]
+
+
+ledgerDetails : Model -> Html Msg
+ledgerDetails model =
+    div
+        []
+        [ text "todo" ]
+
+
+offersForAccount : Model -> Html Msg
+offersForAccount model =
+    div
+        []
+        [ text "todo" ]
+
+
+allOperations : Model -> Html Msg
+allOperations model =
+    div
+        []
+        [ text "todo" ]
+
+
+operationsForAccount : Model -> Html Msg
+operationsForAccount model =
+    div
+        []
+        [ text "todo" ]
+
+
+operationsForLedger : Model -> Html Msg
+operationsForLedger model =
+    div
+        []
+        [ text "todo" ]
+
+
+operationsForTransaction : Model -> Html Msg
+operationsForTransaction model =
+    div
+        []
+        [ text "todo" ]
+
+
+operationDetails : Model -> Html Msg
+operationDetails model =
+    div
+        []
+        [ text "todo" ]
+
+
+orderbookDetails : Model -> Html Msg
+orderbookDetails model =
+    div
+        []
+        [ text "todo" ]
+
+
+findPaymentPaths : Model -> Html Msg
+findPaymentPaths model =
+    div
+        []
+        [ text "todo" ]
+
+
+allPayments : Model -> Html Msg
+allPayments model =
+    div
+        []
+        [ text "todo" ]
+
+
+paymentsForAccount : Model -> Html Msg
+paymentsForAccount model =
+    div
+        []
+        [ text "todo" ]
+
+
+paymentsForLedger : Model -> Html Msg
+paymentsForLedger model =
+    div
+        []
+        [ text "todo" ]
+
+
+paymentsForTransaction : Model -> Html Msg
+paymentsForTransaction model =
+    div
+        []
+        [ text "todo" ]
+
+
+tradeAggregations : Model -> Html Msg
+tradeAggregations model =
+    div
+        []
+        [ text "todo" ]
+
+
+trades : Model -> Html Msg
+trades model =
+    div
+        []
+        [ text "todo" ]
+
+
+allTransactions : Model -> Html Msg
+allTransactions model =
+    div
+        []
+        [ text "todo" ]
+
+
+postTransaction : Model -> Html Msg
+postTransaction model =
+    div
+        []
+        [ text "todo" ]
+
+
+transactionsForAccount : Model -> Html Msg
+transactionsForAccount model =
+    div
+        []
+        [ text "todo" ]
+
+
+transactionsForLedger : Model -> Html Msg
+transactionsForLedger model =
+    div
+        []
+        [ text "todo" ]
+
+
+transactionDetails : Model -> Html Msg
+transactionDetails model =
+    div
+        []
+        [ text "todo" ]
 
 
 response : Maybe (Result Http.Error record) -> Html Msg
