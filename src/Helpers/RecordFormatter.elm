@@ -1,4 +1,4 @@
-module RecordFormatter exposing (toString)
+module Helpers.RecordFormatter exposing (toString)
 
 import String
 
