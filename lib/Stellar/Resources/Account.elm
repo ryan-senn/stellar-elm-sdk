@@ -46,11 +46,27 @@ decoder =
 
 
 type alias Links =
-    { toml : Link
+    { toml : Maybe Link
+    , data : Maybe Link
+    , effects : Maybe Link
+    , offers : Maybe Link
+    , operations : Maybe Link
+    , payments : Maybe Link
+    , self : Maybe Link
+    , trades : Maybe Link
+    , transactions : Maybe Link
     }
 
 
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links
-        |> Decode.required "toml" Link.decoder
+        |> Decode.optional "toml" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "data" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "effects" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "offers" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "operations" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "payments" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "self" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "trades" (Decode.maybe Link.decoder) Nothing
+        |> Decode.optional "transactions" (Decode.maybe Link.decoder) Nothing

@@ -1,4 +1,4 @@
-module Styles exposing (..)
+module Endpoints.Styles exposing (..)
 
 import Msg exposing (Msg)
 

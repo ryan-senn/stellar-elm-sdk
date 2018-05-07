@@ -5,11 +5,11 @@ import Json.Decode.Pipeline as Decode
 
 
 type alias Data =
-    { value : String
+    { value : Maybe String
     }
 
 
 decoder : Decoder Data
 decoder =
     Decode.decode Data
-        |> Decode.required "value" Decode.string
+        |> Decode.optional "value" (Decode.maybe Decode.string) Nothing

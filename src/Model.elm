@@ -4,20 +4,24 @@ import Http
 
 import Routes exposing (Route (Home))
 
-import Stellar.Endpoints.AccountDetails as StellarAccounts
-import Stellar.Endpoints.AllAssets as StellarAssets
+import Endpoints.Model as Endpoints
+
+import Stellar.Endpoints.AllAssets as AllAssets
+import Stellar.Endpoints.DataForAccount as DataForAccount
 
 
 type alias Model =
     { route : Maybe Route
-    , accountResponse : Maybe (Result Http.Error StellarAccounts.Response)
-    , allAssetsResponse : Maybe (Result Http.Error StellarAssets.Response)
+    , endpoints : Endpoints.Model
+    , allAssetsResponse : Maybe (Result Http.Error AllAssets.Response)
+    , dataForAccountResponse : Maybe (Result Http.Error DataForAccount.Response)
     }
 
 
 initialModel : Model
 initialModel =
     { route = Just Home
-    , accountResponse = Nothing
+    , endpoints = Endpoints.initialModel
     , allAssetsResponse = Nothing
+    , dataForAccountResponse = Nothing
     }

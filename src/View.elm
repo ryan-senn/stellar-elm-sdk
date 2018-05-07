@@ -1,25 +1,21 @@
 module View exposing (view)
 
-import Http
-
-import Stellar.Endpoint as Endpoint
-import Stellar.PublicKey as PublicKey
-
-import Html
 import Html.Styled exposing (..)
 import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Styles as S
 
-import SyntaxHighlight
-import Helpers.RecordFormatter as RecordFormatter
+import Routes exposing (Route)
+import Endpoints exposing (Endpoint)
 
-import Msg exposing (Msg (AccountRequest, AllAssetsRequest))
+import Msg exposing (Msg (EndpointMsg))
 import Model exposing (Model)
 
-import Routes exposing (Route)
-
 import Helpers.String as String
+
+import Endpoints.Model as Endpoints
+
+import Endpoints.AccountDetails.View as AccountDetails
 
 
 view : Model -> Html Msg
@@ -67,11 +63,11 @@ sidebar mRoute =
         , ul
             [ S.sidebarList
             ]
-            ( List.map (menuItem mRoute) Routes.endpointList )
+            ( List.map (menuItem mRoute) Endpoints.asList )
         ]
 
 
-menuItem : Maybe Route -> Routes.Endpoint -> Html Msg
+menuItem : Maybe Route -> Endpoint -> Html Msg
 menuItem mRoute endpoint =
     li
         [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints endpoint) ]
@@ -94,11 +90,11 @@ content model =
         Just route ->
             div
                 [ S.content ]
-                [ page model route ]
+                [ page model.endpoints route ]
 
 
-page : Model -> Route -> Html Msg
-page model route =
+page : Endpoints.Model -> Route -> Html Msg
+page endpoints route =
 
     case route of
 
@@ -107,361 +103,285 @@ page model route =
                 []
                 [ text "Home" ]
 
-        Routes.Endpoints Routes.AccountDetails ->
-            accountDetails model
+        Routes.Endpoints Endpoints.AccountDetails ->
+            AccountDetails.view endpoints.accountDetails
 
-        Routes.Endpoints Routes.AllAssets ->
-            allAssets model
+        Routes.Endpoints Endpoints.AllAssets ->
+            allAssets endpoints
 
-        Routes.Endpoints Routes.DataForAccount ->
-            dataForAccount model
+        Routes.Endpoints Endpoints.DataForAccount ->
+            dataForAccount endpoints
 
-        Routes.Endpoints Routes.AllEffects ->
-            allEffects model
+        Routes.Endpoints Endpoints.AllEffects ->
+            allEffects endpoints
 
-        Routes.Endpoints Routes.EffectsForAccount ->
-            effectsForAccount model
+        Routes.Endpoints Endpoints.EffectsForAccount ->
+            effectsForAccount endpoints
 
-        Routes.Endpoints Routes.EffectsForLedger ->
-            effectsForLedger model
+        Routes.Endpoints Endpoints.EffectsForLedger ->
+            effectsForLedger endpoints
 
-        Routes.Endpoints Routes.EffectsForOperation ->
-            effectsForOperation model
+        Routes.Endpoints Endpoints.EffectsForOperation ->
+            effectsForOperation endpoints
 
-        Routes.Endpoints Routes.EffectsForTransaction ->
-            effectsForTransaction model
+        Routes.Endpoints Endpoints.EffectsForTransaction ->
+            effectsForTransaction endpoints
 
-        Routes.Endpoints Routes.AllLedgers ->
-            allLedgers model
+        Routes.Endpoints Endpoints.AllLedgers ->
+            allLedgers endpoints
 
-        Routes.Endpoints Routes.LedgerDetails ->
-            ledgerDetails model
+        Routes.Endpoints Endpoints.LedgerDetails ->
+            ledgerDetails endpoints
 
-        Routes.Endpoints Routes.OffersForAccount ->
-            offersForAccount model
+        Routes.Endpoints Endpoints.OffersForAccount ->
+            offersForAccount endpoints
 
-        Routes.Endpoints Routes.AllOperations ->
-            allOperations model
+        Routes.Endpoints Endpoints.AllOperations ->
+            allOperations endpoints
 
-        Routes.Endpoints Routes.OperationsForAccount ->
-            operationsForAccount model
+        Routes.Endpoints Endpoints.OperationsForAccount ->
+            operationsForAccount endpoints
 
-        Routes.Endpoints Routes.OperationsForLedger ->
-            operationsForLedger model
+        Routes.Endpoints Endpoints.OperationsForLedger ->
+            operationsForLedger endpoints
 
-        Routes.Endpoints Routes.OperationsForTransaction ->
-            operationsForTransaction model
+        Routes.Endpoints Endpoints.OperationsForTransaction ->
+            operationsForTransaction endpoints
 
-        Routes.Endpoints Routes.OperationDetails ->
-            operationDetails model
+        Routes.Endpoints Endpoints.OperationDetails ->
+            operationDetails endpoints
 
-        Routes.Endpoints Routes.OrderbookDetails ->
-            orderbookDetails model
+        Routes.Endpoints Endpoints.OrderbookDetails ->
+            orderbookDetails endpoints
 
-        Routes.Endpoints Routes.FindPaymentPaths ->
-            findPaymentPaths model
+        Routes.Endpoints Endpoints.FindPaymentPaths ->
+            findPaymentPaths endpoints
 
-        Routes.Endpoints Routes.AllPayments ->
-            allPayments model
+        Routes.Endpoints Endpoints.AllPayments ->
+            allPayments endpoints
 
-        Routes.Endpoints Routes.PaymentsForAccount ->
-            paymentsForAccount model
+        Routes.Endpoints Endpoints.PaymentsForAccount ->
+            paymentsForAccount endpoints
 
-        Routes.Endpoints Routes.PaymentsForLedger ->
-            paymentsForLedger model
+        Routes.Endpoints Endpoints.PaymentsForLedger ->
+            paymentsForLedger endpoints
 
-        Routes.Endpoints Routes.PaymentsForTransaction ->
-            paymentsForTransaction model
+        Routes.Endpoints Endpoints.PaymentsForTransaction ->
+            paymentsForTransaction endpoints
 
-        Routes.Endpoints Routes.TradeAggregations ->
-            tradeAggregations model
+        Routes.Endpoints Endpoints.TradeAggregations ->
+            tradeAggregations endpoints
 
-        Routes.Endpoints Routes.Trades ->
-            trades model
+        Routes.Endpoints Endpoints.Trades ->
+            trades endpoints
 
-        Routes.Endpoints Routes.AllTransactions ->
-            allTransactions model
+        Routes.Endpoints Endpoints.AllTransactions ->
+            allTransactions endpoints
 
-        Routes.Endpoints Routes.PostTransaction ->
-            postTransaction model
+        Routes.Endpoints Endpoints.PostTransaction ->
+            postTransaction endpoints
 
-        Routes.Endpoints Routes.TransactionsForAccount ->
-            transactionsForAccount model
+        Routes.Endpoints Endpoints.TransactionsForAccount ->
+            transactionsForAccount endpoints
 
-        Routes.Endpoints Routes.TransactionsForLedger ->
-            transactionsForLedger model
+        Routes.Endpoints Endpoints.TransactionsForLedger ->
+            transactionsForLedger endpoints
 
-        Routes.Endpoints Routes.TransactionDetails ->
-            transactionDetails model
-
-
-pageTitle : String -> String -> Html Msg
-pageTitle title link =
-    div
-        [ S.pageTitleContainer ]
-        [ h2
-            [ S.pageTitle ]
-            [ text title ]
-        , span
-            [ S.officialLink ]
-            [ text "Link to the offial docs: " ]
-        , a
-            [ S.officialLink, href link, target "_blank" ]
-            [ text title ]
-        ]
+        Routes.Endpoints Endpoints.TransactionDetails ->
+            transactionDetails endpoints
 
 
-accountDetails : Model -> Html Msg
-accountDetails model =
-    div
-        []
-        [ pageTitle "Account Details" "https://www.stellar.org/developers/horizon/reference/endpoints/accounts-single.html"
-        , div
-            [ S.page ]
-            [ button
-                [ onClick <| AccountRequest Endpoint.dummy PublicKey.dummy ]
-                [ text "Request" ]
-            , h4
-                []
-                [ text "response" ]
-            , response model.accountResponse
-            ]
-        ]
-
-
-allAssets : Model -> Html Msg
-allAssets model =
-    div
-        []
-        [ pageTitle "All Assets" "https://www.stellar.org/developers/horizon/reference/endpoints/assets-all.html"
-        , div
-            [ S.page ]
-            [ button
-                [ onClick <| AllAssetsRequest Endpoint.dummy ]
-                [ text "Request" ]
-            , h4
-                []
-                [ text "response" ]
-            , response model.allAssetsResponse
-            ]
-        ]
-
-
-dataForAccount : Model -> Html Msg
-dataForAccount model =
+allAssets : Endpoints.Model -> Html Msg
+allAssets endpoints =
     div
         []
         [ text "todo" ]
 
 
-allEffects : Model -> Html Msg
-allEffects model =
+dataForAccount : Endpoints.Model -> Html Msg
+dataForAccount endpoints =
     div
         []
         [ text "todo" ]
 
 
-effectsForAccount : Model -> Html Msg
-effectsForAccount model =
+allEffects : Endpoints.Model -> Html Msg
+allEffects endpoints =
     div
         []
         [ text "todo" ]
 
 
-effectsForLedger : Model -> Html Msg
-effectsForLedger model =
+effectsForAccount : Endpoints.Model -> Html Msg
+effectsForAccount endpoints =
     div
         []
         [ text "todo" ]
 
 
-effectsForOperation : Model -> Html Msg
-effectsForOperation model =
+effectsForLedger : Endpoints.Model -> Html Msg
+effectsForLedger endpoints =
     div
         []
         [ text "todo" ]
 
 
-effectsForTransaction : Model -> Html Msg
-effectsForTransaction model =
+effectsForOperation : Endpoints.Model -> Html Msg
+effectsForOperation endpoints =
     div
         []
         [ text "todo" ]
 
 
-allLedgers : Model -> Html Msg
-allLedgers model =
+effectsForTransaction : Endpoints.Model -> Html Msg
+effectsForTransaction endpoints =
     div
         []
         [ text "todo" ]
 
 
-ledgerDetails : Model -> Html Msg
-ledgerDetails model =
+allLedgers : Endpoints.Model -> Html Msg
+allLedgers endpoints =
     div
         []
         [ text "todo" ]
 
 
-offersForAccount : Model -> Html Msg
-offersForAccount model =
+ledgerDetails : Endpoints.Model -> Html Msg
+ledgerDetails endpoints =
     div
         []
         [ text "todo" ]
 
 
-allOperations : Model -> Html Msg
-allOperations model =
+offersForAccount : Endpoints.Model -> Html Msg
+offersForAccount endpoints =
     div
         []
         [ text "todo" ]
 
 
-operationsForAccount : Model -> Html Msg
-operationsForAccount model =
+allOperations : Endpoints.Model -> Html Msg
+allOperations endpoints =
     div
         []
         [ text "todo" ]
 
 
-operationsForLedger : Model -> Html Msg
-operationsForLedger model =
+operationsForAccount : Endpoints.Model -> Html Msg
+operationsForAccount endpoints =
     div
         []
         [ text "todo" ]
 
 
-operationsForTransaction : Model -> Html Msg
-operationsForTransaction model =
+operationsForLedger : Endpoints.Model -> Html Msg
+operationsForLedger endpoints =
     div
         []
         [ text "todo" ]
 
 
-operationDetails : Model -> Html Msg
-operationDetails model =
+operationsForTransaction : Endpoints.Model -> Html Msg
+operationsForTransaction endpoints =
     div
         []
         [ text "todo" ]
 
 
-orderbookDetails : Model -> Html Msg
-orderbookDetails model =
+operationDetails : Endpoints.Model -> Html Msg
+operationDetails endpoints =
     div
         []
         [ text "todo" ]
 
 
-findPaymentPaths : Model -> Html Msg
-findPaymentPaths model =
+orderbookDetails : Endpoints.Model -> Html Msg
+orderbookDetails endpoints =
     div
         []
         [ text "todo" ]
 
 
-allPayments : Model -> Html Msg
-allPayments model =
+findPaymentPaths : Endpoints.Model -> Html Msg
+findPaymentPaths endpoints =
     div
         []
         [ text "todo" ]
 
 
-paymentsForAccount : Model -> Html Msg
-paymentsForAccount model =
+allPayments : Endpoints.Model -> Html Msg
+allPayments endpoints =
     div
         []
         [ text "todo" ]
 
 
-paymentsForLedger : Model -> Html Msg
-paymentsForLedger model =
+paymentsForAccount : Endpoints.Model -> Html Msg
+paymentsForAccount endpoints =
     div
         []
         [ text "todo" ]
 
 
-paymentsForTransaction : Model -> Html Msg
-paymentsForTransaction model =
+paymentsForLedger : Endpoints.Model -> Html Msg
+paymentsForLedger endpoints =
     div
         []
         [ text "todo" ]
 
 
-tradeAggregations : Model -> Html Msg
-tradeAggregations model =
+paymentsForTransaction : Endpoints.Model -> Html Msg
+paymentsForTransaction endpoints =
     div
         []
         [ text "todo" ]
 
 
-trades : Model -> Html Msg
-trades model =
+tradeAggregations : Endpoints.Model -> Html Msg
+tradeAggregations endpoints =
     div
         []
         [ text "todo" ]
 
 
-allTransactions : Model -> Html Msg
-allTransactions model =
+trades : Endpoints.Model -> Html Msg
+trades endpoints =
     div
         []
         [ text "todo" ]
 
 
-postTransaction : Model -> Html Msg
-postTransaction model =
+allTransactions : Endpoints.Model -> Html Msg
+allTransactions endpoints =
     div
         []
         [ text "todo" ]
 
 
-transactionsForAccount : Model -> Html Msg
-transactionsForAccount model =
+postTransaction : Endpoints.Model -> Html Msg
+postTransaction endpoints =
     div
         []
         [ text "todo" ]
 
 
-transactionsForLedger : Model -> Html Msg
-transactionsForLedger model =
+transactionsForAccount : Endpoints.Model -> Html Msg
+transactionsForAccount endpoints =
     div
         []
         [ text "todo" ]
 
 
-transactionDetails : Model -> Html Msg
-transactionDetails model =
+transactionsForLedger : Endpoints.Model -> Html Msg
+transactionsForLedger endpoints =
     div
         []
         [ text "todo" ]
 
 
-response : Maybe (Result Http.Error record) -> Html Msg
-response response =
-
-    case response of
-
-        Nothing ->
-            text ""
-
-        Just (Err error) ->
-            div
-                []
-                [ div
-                    []
-                    [ text "Something went wrong D:" ]
-                , div
-                    []
-                    [ text <| toString error ]
-                ]
-
-        Just (Ok record) ->
-            div
-                [ S.response ]
-                [ SyntaxHighlight.useTheme SyntaxHighlight.monokai
-                    |> Html.Styled.fromUnstyled
-                , SyntaxHighlight.elm (RecordFormatter.toString record)
-                    |> Result.map (SyntaxHighlight.toBlockHtml (Just 1) >> Html.Styled.fromUnstyled)
-                    |> Result.withDefault
-                        (div [] [ text "Displaying response failed" ])
-                ]
+transactionDetails : Endpoints.Model -> Html Msg
+transactionDetails endpoints =
+    div
+        []
+        [ text "todo" ]
