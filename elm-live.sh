@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-elm-live --output=./docs/build/app.js ./src/Main.elm
+elm-live --output=./docs/app.js ./src/Main.elm

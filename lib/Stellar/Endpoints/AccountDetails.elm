@@ -1,4 +1,4 @@
-module Stellar.Endpoints.AccountDetails exposing (request, Response (..))
+module Stellar.Endpoints.AccountDetails exposing (request, requestBuilder, Response (..))
 
 import Http
 import HttpBuilder exposing (..)
@@ -16,9 +16,15 @@ import Stellar.Errors.Error as Error exposing (Error)
 request : Endpoint -> PublicKey -> (Result Http.Error Response -> msg) -> Cmd msg
 request endpoint publicKey msg =
 
+    requestBuilder endpoint publicKey
+        |> send msg
+
+
+requestBuilder : Endpoint -> PublicKey -> RequestBuilder Response
+requestBuilder endpoint publicKey =
+
     HttpBuilder.get (url endpoint publicKey)
         |> withExpect (Http.expectJson decoder)
-        |> send msg
 
 
 url : Endpoint -> PublicKey -> String

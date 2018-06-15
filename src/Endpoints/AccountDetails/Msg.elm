@@ -7,7 +7,10 @@ import Stellar.PublicKey exposing (PublicKey)
 
 import Stellar.Endpoints.AccountDetails as AccountDetails
 
+import Form.Input as Input
+
 
 type Msg
-    = Request Endpoint PublicKey
+    = UpdatePublicKey Input.Msg
+    | Request Endpoint PublicKey
     | Response (Result Http.Error AccountDetails.Response)

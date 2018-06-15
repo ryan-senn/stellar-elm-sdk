@@ -4,11 +4,11 @@ import Http
 
 import Stellar.Endpoints.AccountDetails as AccountDetails
 
-import Form.TextInput as TextInput
+import Form.Input as Input
 
 
 type alias Model =
-    { publicKey : TextInput.Model
+    { publicKey : Input.Model
     , isLoading : Bool
     , response : Maybe (Result Http.Error AccountDetails.Response)
     }
@@ -16,7 +16,7 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-    { publicKey = TextInput.init
+    { publicKey = Input.init
     , isLoading = False
     , response = Nothing
     }

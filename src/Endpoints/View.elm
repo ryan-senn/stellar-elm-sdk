@@ -11,21 +11,21 @@ import Http
 
 import Msg exposing (Msg)
 
-import Endpoints.Styles as S
+import Styles as Css
 
 
 pageTitle : String -> String -> Html Msg
 pageTitle title link =
     div
-        [ S.pageTitleContainer ]
+        [ Css.pageTitleContainer ]
         [ h2
-            [ S.pageTitle ]
+            [ Css.pageTitle ]
             [ text title ]
         , span
-            [ S.officialLink ]
+            [ Css.officialLink ]
             [ text "Link to the offial docs: " ]
         , a
-            [ S.officialLink, href link, target "_blank" ]
+            [ Css.officialLink, href link, target "_blank" ]
             [ text title ]
         ]
 
@@ -40,11 +40,17 @@ response response =
 
         Just data ->
             div
-                [ S.response ]
-                [ SyntaxHighlight.useTheme SyntaxHighlight.monokai
-                    |> Html.Styled.fromUnstyled
-                , SyntaxHighlight.elm (RecordFormatter.toString data)
-                    |> Result.map (SyntaxHighlight.toBlockHtml (Just 1) >> Html.Styled.fromUnstyled)
-                    |> Result.withDefault
-                        (div [] [ text "Displaying response failed" ])
+                []
+                [ h4
+                    []
+                    [ text "Response" ]
+                , div
+                    [ Css.response ]
+                    [ SyntaxHighlight.useTheme SyntaxHighlight.monokai
+                        |> Html.Styled.fromUnstyled
+                    , SyntaxHighlight.elm (RecordFormatter.toString data)
+                        |> Result.map (SyntaxHighlight.toBlockHtml (Just 1) >> Html.Styled.fromUnstyled)
+                        |> Result.withDefault
+                            (div [] [ text "Displaying response failed" ])
+                    ]
                 ]

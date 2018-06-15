@@ -1,4 +1,4 @@
-module Stellar.PublicKey exposing (PublicKey, toString, decoder, dummy)
+module Stellar.PublicKey exposing (PublicKey, toString, decoder, dummy, fromString)
 
 import Json.Decode as Decode exposing (Decoder)
 
@@ -25,3 +25,8 @@ dummy =
 secretKey : String
 secretKey =
     "SC67TMWWJJ6WMVXEOKVX4NLBYDSMXEZZXC7ATQFMUO6IGGZZ6ZBFKXD2"
+
+
+fromString : String -> PublicKey
+fromString =
+    String.toUpper >> PublicKey

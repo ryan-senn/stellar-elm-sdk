@@ -4,12 +4,15 @@
     <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>elm-test</title>
-    <link href="/stellar-elm/styles.css" rel="stylesheet">
-    <script src="/stellar-elm/build/app.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <script src="app.js"></script>
+    <script src="clipboard.min.js"></script>
 </head>
 <body>
 <div id="main"></div>
 <script>
+    new ClipboardJS('.clipboard');
+
     Elm.Main.embed(document.getElementById('main'));
 </script>
 </body>

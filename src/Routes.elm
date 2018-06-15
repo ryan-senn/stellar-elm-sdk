@@ -7,7 +7,7 @@ import Navigation exposing (Location)
 
 import UrlParser as Url exposing ((</>), Parser)
 
-import Helpers.String as String
+import String.Extra as String
 
 import Endpoints exposing (Endpoint)
 
@@ -19,7 +19,7 @@ type Route
 
 endpointParser : Endpoint -> Parser (Route -> a) a
 endpointParser endpoint =
-    Url.map (Endpoints endpoint) (Url.s "endpoints" </> Url.s (toString endpoint |> String.toHyphen))
+    Url.map (Endpoints endpoint) (Url.s "endpoints" </> Url.s (toString endpoint |> String.decapitalize |> String.dasherize))
 
 
 routeToString : Route -> String
@@ -28,7 +28,7 @@ routeToString page =
     case page of
 
         Endpoints endpoint ->
-            "#/endpoints/" ++ (toString endpoint |> String.toHyphen)
+            "#/endpoints/" ++ (toString endpoint |> String.decapitalize |> String.dasherize)
 
         _ ->
             "#/"

@@ -160,3 +160,41 @@ response =
     css
         [ maxWidth <| calc (vw 100) minus (px 350)
         ]
+
+
+request : Attribute Msg
+request =
+    css
+        [ displayFlex
+        , marginTop (px 15)
+        ]
+
+
+requestType : Attribute Msg
+requestType =
+    css
+        [ padding2 (px 8) (px 12)
+        , backgroundColor (hex "dfdfdfdf")
+        ]
+
+
+requestUrl : Attribute Msg
+requestUrl =
+    css
+        [ cursor pointer
+        , flexGrow (int 1)
+        , padding2 (px 8) (px 12)
+        , border3 (px 1) solid (hex "dfdfdfdf")
+        , property "word-break" "break-word"
+        ]
+
+
+requestButton : Bool -> Attribute Msg
+requestButton isLoading =
+    css
+        [ backgroundColor (hex "ffffff")
+        , padding2 (px 8) (px 12)
+        , border3 (px 1) solid (hex "dfdfdfdf")
+        , marginTop (px 15)
+        , cursor pointer ? not isLoading
+        ]

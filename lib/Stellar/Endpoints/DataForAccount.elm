@@ -5,14 +5,14 @@ import HttpBuilder exposing (..)
 
 import Json.Decode as Decode exposing (Decoder)
 
+import String.Extra as String
+
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
 import Stellar.Resources.Data as Data exposing (Data)
 
 import Stellar.Errors.Error as Error exposing (Error)
-
-import Helpers.String
 
 
 request : Endpoint -> PublicKey -> Key -> (Result Http.Error Response -> msg) -> Cmd msg
@@ -38,7 +38,7 @@ type Key
 
 keyToString : Key -> String
 keyToString =
-    toString >> Helpers.String.toHyphen
+    toString >> String.decapitalize >> String.dasherize
 
 
 type Response

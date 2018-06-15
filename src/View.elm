@@ -5,13 +5,13 @@ import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Styles as S
 
+import String.Extra as String
+
 import Routes exposing (Route)
 import Endpoints exposing (Endpoint)
 
 import Msg exposing (Msg (EndpointMsg))
 import Model exposing (Model)
-
-import Helpers.String as String
 
 import Endpoints.Model as Endpoints
 
@@ -73,7 +73,7 @@ menuItem mRoute endpoint =
         [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints endpoint) ]
         [ a
             [ S.sidebarItemLink, Routes.href <| Routes.Endpoints endpoint ]
-            [ text <| String.toWords <| toString endpoint ]
+            [ toString endpoint |> String.toTitleCase |> text  ]
         ]
 
 

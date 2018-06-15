@@ -16,12 +16,6 @@ type alias Accumulator =
     }
 
 
-type Indentation
-    = Indent
-    | Outdent
-    | Keep
-
-
 format : Char -> Accumulator -> Accumulator
 format char acc =
     case (char, acc.isString, acc.isEscaped) of
