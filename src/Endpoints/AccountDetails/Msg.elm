@@ -1,4 +1,4 @@
-module Endpoints.AccountDetails.Msg exposing (Msg (..))
+module Endpoints.AccountDetails.Msg exposing (Msg (..), SettingsMsg (..))
 
 import Http
 
@@ -11,6 +11,10 @@ import Form.Input as Input
 
 
 type Msg
-    = UpdatePublicKey Input.Msg
+    = SettingsMsg SettingsMsg
     | Request Endpoint PublicKey
     | Response (Result Http.Error AccountDetails.Response)
+
+
+type SettingsMsg
+    = UpdatePublicKey Input.Msg

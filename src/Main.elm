@@ -1,21 +1,20 @@
 import Navigation exposing (program)
 
-import Init exposing (init)
+import Html.Styled as Html
+
 import Update exposing (update)
-import Subscriptions exposing (subscriptions)
 import View exposing (view)
 import Msg exposing (Msg (SetRoute))
-import Model exposing (Model)
-import Routes
+import Model exposing (Model, initialModel)
 
-import Html.Styled as Html
+import Routes
 
 
 main : Program Never Model Msg
 main =
     program (Routes.fromLocation >> SetRoute)
-        { init = init
+        { init = (\location -> Update.setRoute (Routes.fromLocation location) initialModel)
         , update = update
-        , subscriptions = subscriptions
+        , subscriptions = always Sub.none
         , view = view >> Html.toUnstyled
         }

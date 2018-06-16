@@ -1,4 +1,4 @@
-module Stellar.Endpoint exposing (Endpoint, toString, dummy)
+module Stellar.Endpoint exposing (Endpoint, toString, fromString)
 
 
 type Endpoint
@@ -10,6 +10,6 @@ toString (Endpoint string) =
     string
 
 
-dummy : Endpoint
-dummy =
-    Endpoint "https://horizon-testnet.stellar.org"
+fromString : String -> Endpoint
+fromString =
+    Endpoint

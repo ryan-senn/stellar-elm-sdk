@@ -1,16 +1,17 @@
-module Endpoints.AccountDetails.Model exposing (Model, initialModel)
+module Endpoints.DataForAccount.Model exposing (Model, initialModel)
 
 import Http
 
-import Stellar.Endpoints.AccountDetails as AccountDetails
+import Stellar.Endpoints.DataForAccount as DataForAccount
 
 import Form.Input as Input
+import Form.Select as Select
 
 
 type alias Model =
     { settings : Settings
     , isLoading : Bool
-    , response : Maybe (Result Http.Error AccountDetails.Response)
+    , response : Maybe (Result Http.Error DataForAccount.Response)
     }
 
 
@@ -24,10 +25,12 @@ initialModel =
 
 type alias Settings =
     { publicKey : Input.Model
+    , dataKey : Select.Model DataForAccount.DataKey
     }
 
 
 initialSettings : Settings
 initialSettings =
     { publicKey = Input.init
+    , dataKey = Select.init DataForAccount.dataKeyList
     }

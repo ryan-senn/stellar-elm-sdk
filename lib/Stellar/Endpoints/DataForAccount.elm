@@ -1,4 +1,8 @@
-module Stellar.Endpoints.DataForAccount exposing (request, Response (..), Key (..))
+module Stellar.Endpoints.DataForAccount exposing
+    ( requestBuilder, send
+    , Response (..)
+    , DataKey (..), dataKeyList
+    )
 
 import Http
 import HttpBuilder exposing (..)
@@ -15,29 +19,39 @@ import Stellar.Resources.Data as Data exposing (Data)
 import Stellar.Errors.Error as Error exposing (Error)
 
 
-request : Endpoint -> PublicKey -> Key -> (Result Http.Error Response -> msg) -> Cmd msg
-request endpoint publicKey key msg =
+requestBuilder : Endpoint -> PublicKey -> DataKey -> RequestBuilder Response
+requestBuilder endpoint publicKey dataKey =
 
-    HttpBuilder.get (url endpoint publicKey key)
+    HttpBuilder.get (url endpoint publicKey dataKey)
         |> withExpect (Http.expectJson decoder)
-        |> send msg
 
 
-url : Endpoint -> PublicKey -> Key -> String
+send : (Result Http.Error Response -> msg) -> RequestBuilder Response -> Cmd msg
+send =
+    HttpBuilder.send
+
+
+url : Endpoint -> PublicKey -> DataKey -> String
 url endpoint publicKey key =
     Endpoint.toString endpoint
     ++ "/accounts/"
     ++ PublicKey.toString publicKey
     ++ "/data/"
-    ++ keyToString key
+    ++ dataKeyToString key
 
 
-type Key
+type DataKey
     = UserId
 
 
-keyToString : Key -> String
-keyToString =
+dataKeyList : List DataKey
+dataKeyList =
+    [ UserId
+    ]
+
+
+dataKeyToString : DataKey -> String
+dataKeyToString =
     toString >> String.decapitalize >> String.dasherize
 
 

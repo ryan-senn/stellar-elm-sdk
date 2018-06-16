@@ -1,4 +1,4 @@
-module RequestBuilderPresenter exposing (view)
+module Endpoints.Views.Request exposing (view)
 
 import Html.Styled exposing (..)
 import Html.Styled.Attributes exposing (..)
@@ -10,7 +10,7 @@ import Json.Encode as Encode
 
 import Msg exposing (Msg)
 
-import Styles as Css
+import Endpoints.Styles as Css
 
 
 view : RequestBuilder a -> Html Msg

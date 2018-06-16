@@ -1,4 +1,6 @@
-module Stellar.Errors.Error exposing (Error, decoder, StandardError, standardErrorDecoder)
+module Stellar.Errors.Error exposing (Error, decoder, StandardError, standardErrorDecoder, flattenError)
+
+import Http
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
@@ -9,7 +11,7 @@ type alias Error =
     , title : String
     , status : Int
     , detail : String
-    , instance : String
+    , instance : Maybe String
     }
 
 
@@ -20,7 +22,7 @@ decoder =
         |> Decode.required "title" Decode.string
         |> Decode.required "status" Decode.int
         |> Decode.required "detail" Decode.string
-        |> Decode.required "instance" Decode.string
+        |> Decode.optional "instance" (Decode.maybe Decode.string) Nothing
 
 
 type StandardError
@@ -43,3 +45,19 @@ standardErrorFromStatus error =
         429 -> Decode.succeed <| RateLimitExceeded error
         500 -> Decode.succeed <| ServerError error
         _ -> Decode.fail "Could not decode standard error"
+
+
+flattenError : Http.Error -> (Error -> response) -> Result Http.Error response
+flattenError httpError ok =
+
+    case httpError of
+        Http.BadStatus response ->
+            case Decode.decodeString decoder response.body of
+                Ok error ->
+                    Ok (ok error)
+
+                Err _ ->
+                    Err httpError
+
+        _ ->
+            Err httpError

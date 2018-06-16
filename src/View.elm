@@ -16,6 +16,8 @@ import Model exposing (Model)
 import Endpoints.Model as Endpoints
 
 import Endpoints.AccountDetails.View as AccountDetails
+import Endpoints.AllAssets.View as AllAssets
+import Endpoints.DataForAccount.View as DataForAccount
 
 
 view : Model -> Html Msg
@@ -73,7 +75,7 @@ menuItem mRoute endpoint =
         [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints endpoint) ]
         [ a
             [ S.sidebarItemLink, Routes.href <| Routes.Endpoints endpoint ]
-            [ toString endpoint |> String.toTitleCase |> text  ]
+            [ toString endpoint |> String.humanize |> String.toTitleCase |> text  ]
         ]
 
 
@@ -104,13 +106,13 @@ page endpoints route =
                 [ text "Home" ]
 
         Routes.Endpoints Endpoints.AccountDetails ->
-            AccountDetails.view endpoints.accountDetails
+            AccountDetails.view endpoints.endpoint endpoints.accountDetails
 
         Routes.Endpoints Endpoints.AllAssets ->
-            allAssets endpoints
+            AllAssets.view endpoints.endpoint endpoints.allAssets
 
         Routes.Endpoints Endpoints.DataForAccount ->
-            dataForAccount endpoints
+            DataForAccount.view endpoints.endpoint endpoints.dataForAccount
 
         Routes.Endpoints Endpoints.AllEffects ->
             allEffects endpoints
@@ -189,13 +191,6 @@ page endpoints route =
 
         Routes.Endpoints Endpoints.TransactionDetails ->
             transactionDetails endpoints
-
-
-allAssets : Endpoints.Model -> Html Msg
-allAssets endpoints =
-    div
-        []
-        [ text "todo" ]
 
 
 dataForAccount : Endpoints.Model -> Html Msg
