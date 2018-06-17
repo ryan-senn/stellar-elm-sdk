@@ -11,7 +11,7 @@ type alias PathPayment =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , from : String
     , to : String
     , assetCode : String

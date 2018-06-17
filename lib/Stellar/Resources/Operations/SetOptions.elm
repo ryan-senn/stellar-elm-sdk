@@ -11,7 +11,7 @@ type alias SetOptions =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , signerKey : PublicKey
     , signerWeight : Int
     , masterKeyWeight : Int
@@ -34,17 +34,17 @@ decoder =
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
-        |> Decode.required "signer_key" Decode.int
+        |> Decode.required "signer_key" PublicKey.decoder
         |> Decode.required "signer_weight" Decode.int
         |> Decode.required "master_key_weight" Decode.int
         |> Decode.required "low_threshold" Decode.int
         |> Decode.required "med_threshold" Decode.int
         |> Decode.required "high_threshold" Decode.int
         |> Decode.required "home_domain" Decode.string
-        |> Decode.required "set_flags" Decode.list Int
-        |> Decode.required "set_flags_s" Decode.list String
-        |> Decode.required "clear_flags" Decode.list Int
-        |> Decode.required "clear_flags_s" Decode.list String
+        |> Decode.required "set_flags" (Decode.list Decode.int)
+        |> Decode.required "set_flags_s" (Decode.list Decode.string)
+        |> Decode.required "clear_flags" (Decode.list Decode.int)
+        |> Decode.required "clear_flags_s" (Decode.list Decode.string)
         |> Decode.required "_links" linksDecoder
 
 

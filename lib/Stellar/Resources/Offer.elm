@@ -21,11 +21,11 @@ type alias Offer =
 decoder : Decoder Offer
 decoder =
     Decode.decode Offer
-        |> Decode.required "id" Decode.string
+        |> Decode.required "id" Decode.int
         |> Decode.required "paging_token" Decode.string
-        |> Decode.required "sellter" Decode.string
+        |> Decode.required "seller" Decode.string
         |> Decode.required "selling" Asset.decoder
         |> Decode.required "buying" Asset.decoder
         |> Decode.required "amount" Decode.string
-        |> Decode.required "price_R" Decode.string
+        |> Decode.required "price_r" Decode.string
         |> Decode.required "price" Decode.string

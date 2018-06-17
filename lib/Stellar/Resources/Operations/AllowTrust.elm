@@ -12,7 +12,7 @@ type alias AllowTrust =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , assetCode : String
     , assetIssuer : String
     , assetType : AssetType

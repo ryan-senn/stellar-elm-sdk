@@ -4,6 +4,8 @@ import Html.Styled as Html exposing (..)
 import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
 
+import String.Extra as String
+
 import Form.Input as Input
 import Form.Select as Select
 
@@ -67,6 +69,7 @@ view endpoint model =
                     ]
                 , model.settings.dataKey
                     |> Select.view
+                    |> Select.setToLabel (toString >> String.decapitalize >> String.dasherize)
                     |> Select.render
                     |> Html.fromUnstyled
                     |> Html.map (DataForAccount.UpdateDataKey >> DataForAccount.SettingsMsg >> DataForAccount.composeMsg)

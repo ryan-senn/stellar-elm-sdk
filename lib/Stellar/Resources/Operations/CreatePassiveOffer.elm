@@ -11,7 +11,7 @@ type alias CreatePassiveOffer =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , offerId : Int
     , amount : String
     , buyingAssetCode : String

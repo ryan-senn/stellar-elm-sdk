@@ -11,7 +11,7 @@ type alias ManageData =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , sourceAccount : PublicKey
     , name : String
     , value : String

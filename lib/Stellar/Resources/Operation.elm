@@ -1,4 +1,4 @@
-module Stellar.Resources.Operation exposing (Operation)
+module Stellar.Resources.Operation exposing (Operation, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 
@@ -32,15 +32,15 @@ type Operation
 decoder : Decoder Operation
 decoder =
     Decode.oneOf
-        [ CreateAccount.decoder
-        , Payment.decoder
-        , PathPayment.decoder
-        , ManageOffer.decoder
-        , CreatePassiveOffer.decoder
-        , SetOptions.decoder
-        , ChangeTrust.decoder
-        , AllowTrust.decoder
-        , AccountMerge.decoder
-        , Inflation.decoder
-        , ManageData.decoder
+        [ Decode.map CreateAccount CreateAccount.decoder
+        , Decode.map Payment Payment.decoder
+        , Decode.map PathPayment PathPayment.decoder
+        , Decode.map ManageOffer ManageOffer.decoder
+        , Decode.map CreatePassiveOffer CreatePassiveOffer.decoder
+        , Decode.map SetOptions SetOptions.decoder
+        , Decode.map ChangeTrust ChangeTrust.decoder
+        , Decode.map AllowTrust AllowTrust.decoder
+        , Decode.map AccountMerge AccountMerge.decoder
+        , Decode.map Inflation Inflation.decoder
+        , Decode.map ManageData ManageData.decoder
         ]

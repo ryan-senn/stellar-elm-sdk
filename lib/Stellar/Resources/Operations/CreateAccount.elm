@@ -10,7 +10,7 @@ type alias CreateAccount =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , account : String
     , funder : String
     , startingBalance : String

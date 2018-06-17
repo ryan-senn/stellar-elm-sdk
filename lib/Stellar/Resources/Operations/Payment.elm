@@ -11,7 +11,7 @@ type alias Payment =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , from : String
     , to : String
     , assetType : AssetType

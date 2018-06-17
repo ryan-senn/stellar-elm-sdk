@@ -11,7 +11,7 @@ type alias Inflation =
     { id : String
     , pagingToken : String
     , type_ : String
-    , typeI : String
+    , typeI : Int
     , links : Links
     }
 

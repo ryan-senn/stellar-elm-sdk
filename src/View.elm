@@ -18,6 +18,13 @@ import Endpoints.Model as Endpoints
 import Endpoints.AccountDetails.View as AccountDetails
 import Endpoints.AllAssets.View as AllAssets
 import Endpoints.DataForAccount.View as DataForAccount
+import Endpoints.AllLedgers.View as AllLedgers
+import Endpoints.LedgerDetails.View as LedgerDetails
+import Endpoints.OffersForAccount.View as OffersForAccount
+import Endpoints.AllOperations.View as AllOperations
+import Endpoints.OperationsForAccount.View as OperationsForAccount
+import Endpoints.OperationsForLedger.View as OperationsForLedger
+import Endpoints.OperationsForTransaction.View as OperationsForTransaction
 
 
 view : Model -> Html Msg
@@ -130,25 +137,25 @@ page endpoints route =
             effectsForTransaction endpoints
 
         Routes.Endpoints Endpoints.AllLedgers ->
-            allLedgers endpoints
+            AllLedgers.view endpoints.endpoint endpoints.allLedgers
 
         Routes.Endpoints Endpoints.LedgerDetails ->
-            ledgerDetails endpoints
+            LedgerDetails.view endpoints.endpoint endpoints.ledgerDetails
 
         Routes.Endpoints Endpoints.OffersForAccount ->
-            offersForAccount endpoints
+            OffersForAccount.view endpoints.endpoint endpoints.offersForAccount
 
         Routes.Endpoints Endpoints.AllOperations ->
-            allOperations endpoints
+            AllOperations.view endpoints.endpoint endpoints.allOperations
 
         Routes.Endpoints Endpoints.OperationsForAccount ->
-            operationsForAccount endpoints
+            OperationsForAccount.view endpoints.endpoint endpoints.operationsForAccount
 
         Routes.Endpoints Endpoints.OperationsForLedger ->
-            operationsForLedger endpoints
+            OperationsForLedger.view endpoints.endpoint endpoints.operationsForLedger
 
         Routes.Endpoints Endpoints.OperationsForTransaction ->
-            operationsForTransaction endpoints
+            OperationsForTransaction.view endpoints.endpoint endpoints.operationsForTransaction
 
         Routes.Endpoints Endpoints.OperationDetails ->
             operationDetails endpoints
@@ -193,13 +200,6 @@ page endpoints route =
             transactionDetails endpoints
 
 
-dataForAccount : Endpoints.Model -> Html Msg
-dataForAccount endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
 allEffects : Endpoints.Model -> Html Msg
 allEffects endpoints =
     div
@@ -230,55 +230,6 @@ effectsForOperation endpoints =
 
 effectsForTransaction : Endpoints.Model -> Html Msg
 effectsForTransaction endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-allLedgers : Endpoints.Model -> Html Msg
-allLedgers endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-ledgerDetails : Endpoints.Model -> Html Msg
-ledgerDetails endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-offersForAccount : Endpoints.Model -> Html Msg
-offersForAccount endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-allOperations : Endpoints.Model -> Html Msg
-allOperations endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-operationsForAccount : Endpoints.Model -> Html Msg
-operationsForAccount endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-operationsForLedger : Endpoints.Model -> Html Msg
-operationsForLedger endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-operationsForTransaction : Endpoints.Model -> Html Msg
-operationsForTransaction endpoints =
     div
         []
         [ text "todo" ]
