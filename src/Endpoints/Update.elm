@@ -17,6 +17,8 @@ import Endpoints.AllOperations.Update as AllOperations
 import Endpoints.OperationsForAccount.Update as OperationsForAccount
 import Endpoints.OperationsForLedger.Update as OperationsForLedger
 import Endpoints.OperationsForTransaction.Update as OperationsForTransaction
+import Endpoints.OperationDetails.Update as OperationDetails
+import Endpoints.OrderbookDetails.Update as OrderbookDetails
 
 
 update : Endpoints.Msg -> Endpoints.Model -> (Endpoints.Model, Cmd Msg)
@@ -105,3 +107,19 @@ update msg model =
 
             in
                 { model | operationsForTransaction = operationsForTransactionModel } ! [ cmd ]
+
+        Endpoints.OperationDetailsMsg msg ->
+            let
+                (operationDetailsModel, cmd) =
+                    OperationDetails.update msg model.operationDetails
+
+            in
+                { model | operationDetails = operationDetailsModel } ! [ cmd ]
+
+        Endpoints.OrderbookDetailsMsg msg ->
+            let
+                (orderbookDetailsModel, cmd) =
+                    OrderbookDetails.update msg model.orderbookDetails
+
+            in
+                { model | orderbookDetails = orderbookDetailsModel } ! [ cmd ]

@@ -25,6 +25,8 @@ import Endpoints.AllOperations.View as AllOperations
 import Endpoints.OperationsForAccount.View as OperationsForAccount
 import Endpoints.OperationsForLedger.View as OperationsForLedger
 import Endpoints.OperationsForTransaction.View as OperationsForTransaction
+import Endpoints.OperationDetails.View as OperationDetails
+import Endpoints.OrderbookDetails.View as OrderbookDetails
 
 
 view : Model -> Html Msg
@@ -158,10 +160,10 @@ page endpoints route =
             OperationsForTransaction.view endpoints.endpoint endpoints.operationsForTransaction
 
         Routes.Endpoints Endpoints.OperationDetails ->
-            operationDetails endpoints
+            OperationDetails.view endpoints.endpoint endpoints.operationDetails
 
         Routes.Endpoints Endpoints.OrderbookDetails ->
-            orderbookDetails endpoints
+            OrderbookDetails.view endpoints.endpoint endpoints.orderbookDetails
 
         Routes.Endpoints Endpoints.FindPaymentPaths ->
             findPaymentPaths endpoints

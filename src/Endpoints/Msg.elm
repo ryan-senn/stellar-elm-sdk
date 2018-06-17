@@ -12,6 +12,8 @@ import Endpoints.AllOperations.Msg as AllOperations
 import Endpoints.OperationsForAccount.Msg as OperationsForAccount
 import Endpoints.OperationsForLedger.Msg as OperationsForLedger
 import Endpoints.OperationsForTransaction.Msg as OperationsForTransaction
+import Endpoints.OperationDetails.Msg as OperationDetails
+import Endpoints.OrderbookDetails.Msg as OrderbookDetails
 
 
 type Msg
@@ -26,3 +28,5 @@ type Msg
     | OperationsForAccountMsg OperationsForAccount.Msg
     | OperationsForLedgerMsg OperationsForLedger.Msg
     | OperationsForTransactionMsg OperationsForTransaction.Msg
+    | OperationDetailsMsg OperationDetails.Msg
+    | OrderbookDetailsMsg OrderbookDetails.Msg

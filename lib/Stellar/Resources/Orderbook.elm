@@ -1,4 +1,4 @@
-module Stellar.Resources.Offer exposing (Offer, decoder)
+module Stellar.Resources.Orderbook exposing (Orderbook, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
@@ -7,7 +7,7 @@ import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
 import Stellar.Resources.Asset as Asset exposing (Asset)
 
 
-type alias Offer =
+type alias Orderbook =
     { bids : List Listing
     , asks : List Listing
     , selling : Asset
@@ -15,11 +15,11 @@ type alias Offer =
     }
 
 
-decoder : Decoder Offer
+decoder : Decoder Orderbook
 decoder =
-    Decode.decode Offer
-        |> Decode.required "bids" Decode.string
-        |> Decode.required "asks" Decode.string
+    Decode.decode Orderbook
+        |> Decode.required "bids" (Decode.list listingDecoder)
+        |> Decode.required "asks" (Decode.list listingDecoder)
         |> Decode.required "selling" Asset.decoder
         |> Decode.required "buying" Asset.decoder
 

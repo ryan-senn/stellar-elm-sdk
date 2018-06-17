@@ -11,6 +11,7 @@ import Msg exposing (Msg)
 import Endpoints.AccountDetails.Msg as AccountDetails
 import Endpoints.AccountDetails.MsgFactory as AccountDetails
 import Endpoints.AccountDetails.Model as AccountDetails
+import Endpoints.AccountDetails.RequestBuilder exposing (requestBuilder)
 
 
 update : AccountDetails.Msg -> AccountDetails.Model -> (AccountDetails.Model, Cmd Msg)
@@ -20,16 +21,16 @@ update msg model =
         AccountDetails.SettingsMsg updateSettingsMsg ->
             updateSettings updateSettingsMsg model ! []
 
-        AccountDetails.Request endpoint publicKey ->
+        AccountDetails.Request endpoint settings ->
             let
                 msg =
                     AccountDetails.Response >> AccountDetails.composeMsg
 
-                requestBuilder =
-                    AccountDetails.requestBuilder endpoint publicKey
+                request =
+                    requestBuilder endpoint settings
 
             in
-                { model | isLoading = True } ! [ AccountDetails.send msg requestBuilder ]
+                { model | isLoading = True } ! [ AccountDetails.send msg request ]
 
         AccountDetails.Response (Err error) ->
             { model | isLoading = False, response = Just <| flattenError error AccountDetails.Error } ! []

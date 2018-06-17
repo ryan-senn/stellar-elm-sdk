@@ -12,6 +12,8 @@ import Endpoints.AllOperations.Model as AllOperations
 import Endpoints.OperationsForAccount.Model as OperationsForAccount
 import Endpoints.OperationsForLedger.Model as OperationsForLedger
 import Endpoints.OperationsForTransaction.Model as OperationsForTransaction
+import Endpoints.OperationDetails.Model as OperationDetails
+import Endpoints.OrderbookDetails.Model as OrderbookDetails
 
 
 type alias Model =
@@ -26,6 +28,8 @@ type alias Model =
     , operationsForAccount : OperationsForAccount.Model
     , operationsForLedger : OperationsForLedger.Model
     , operationsForTransaction : OperationsForTransaction.Model
+    , operationDetails : OperationDetails.Model
+    , orderbookDetails : OrderbookDetails.Model
     }
 
 
@@ -42,4 +46,6 @@ initialModel =
     , operationsForAccount = OperationsForAccount.initialModel
     , operationsForLedger = OperationsForLedger.initialModel
     , operationsForTransaction = OperationsForTransaction.initialModel
+    , operationDetails = OperationDetails.initialModel
+    , orderbookDetails = OrderbookDetails.initialModel
     }

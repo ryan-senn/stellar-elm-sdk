@@ -1,11 +1,11 @@
-module Endpoints.DataForAccount.Model exposing (Model, initialModel)
+module Endpoints.DataForAccount.Model exposing (Model, initialModel, Settings)
 
 import Http
 
-import Stellar.Endpoints.DataForAccount as DataForAccount
-
 import Form.Input as Input
 import Form.Select as Select
+
+import Stellar.Endpoints.DataForAccount as DataForAccount
 
 
 type alias Model =

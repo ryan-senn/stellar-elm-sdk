@@ -1,4 +1,4 @@
-module Endpoints.AccountDetails.Model exposing (Model, initialModel)
+module Endpoints.AccountDetails.Model exposing (Model, initialModel, Settings)
 
 import Http
 

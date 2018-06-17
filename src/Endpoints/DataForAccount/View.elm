@@ -24,8 +24,7 @@ import Endpoints.Views.Response as Response
 import Endpoints.DataForAccount.Msg as DataForAccount
 import Endpoints.DataForAccount.MsgFactory as DataForAccount
 import Endpoints.DataForAccount.Model as DataForAccount
-
-import Stellar.Endpoints.DataForAccount exposing (requestBuilder, DataKey (UserId))
+import Endpoints.DataForAccount.RequestBuilder exposing (requestBuilder)
 
 import Endpoints.Helpers exposing (endpointFromInput, publicKeyFromInput)
 
@@ -74,19 +73,8 @@ view endpoint model =
                     |> Html.fromUnstyled
                     |> Html.map (DataForAccount.UpdateDataKey >> DataForAccount.SettingsMsg >> DataForAccount.composeMsg)
                 ]
-            , Request.view (
-                requestBuilder
-                    (endpointFromInput endpoint)
-                    (publicKeyFromInput model.settings.publicKey)
-                    (Select.getSelectedOption model.settings.dataKey |> Maybe.withDefault UserId)
-                )
-            , Button.view
-                model.isLoading (
-                    DataForAccount.Request
-                        (endpointFromInput endpoint)
-                        (publicKeyFromInput model.settings.publicKey)
-                        (Select.getSelectedOption model.settings.dataKey |> Maybe.withDefault UserId)
-                        |> DataForAccount.composeMsg)
+            , Request.view (requestBuilder endpoint model.settings)
+            , Button.view model.isLoading (DataForAccount.Request endpoint model.settings |> DataForAccount.composeMsg)
             , Response.view model.response model.isLoading
             ]
         ]

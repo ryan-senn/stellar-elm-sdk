@@ -2,18 +2,17 @@ module Endpoints.DataForAccount.Msg exposing (Msg (..), SettingsMsg (..))
 
 import Http
 
-import Stellar.Endpoint exposing (Endpoint)
-import Stellar.PublicKey exposing (PublicKey)
+import Form.Input as Input
+import Form.Select as Select
 
 import Stellar.Endpoints.DataForAccount as DataForAccount
 
-import Form.Input as Input
-import Form.Select as Select
+import Endpoints.DataForAccount.Model exposing (Settings)
 
 
 type Msg
     = SettingsMsg SettingsMsg
-    | Request Endpoint PublicKey DataForAccount.DataKey
+    | Request Input.Model Settings
     | Response (Result Http.Error DataForAccount.Response)
 
 

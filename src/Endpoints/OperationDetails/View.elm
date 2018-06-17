@@ -1,10 +1,11 @@
-module Endpoints.AccountDetails.View exposing (view)
+module Endpoints.OperationDetails.View exposing (view)
 
 import Html.Styled as Html exposing (..)
 import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
 
 import Form.Input as Input
+import Form.IntInput as IntInput
 
 import Msg exposing (Msg)
 
@@ -18,18 +19,18 @@ import Endpoints.Views.Request as Request
 import Endpoints.Views.Button as Button
 import Endpoints.Views.Response as Response
 
-import Endpoints.AccountDetails.Msg as AccountDetails
-import Endpoints.AccountDetails.MsgFactory as AccountDetails
-import Endpoints.AccountDetails.Model as AccountDetails
-import Endpoints.AccountDetails.RequestBuilder exposing (requestBuilder)
+import Endpoints.OperationDetails.Msg as OperationDetails
+import Endpoints.OperationDetails.MsgFactory as OperationDetails
+import Endpoints.OperationDetails.Model as OperationDetails
+import Endpoints.OperationDetails.RequestBuilder exposing (requestBuilder)
 
 
-view : Input.Model -> AccountDetails.Model -> Html Msg
+view : Input.Model -> OperationDetails.Model -> Html Msg
 view endpoint model =
 
     div
         []
-        [ Title.view "Account Details" "https://www.stellar.org/developers/horizon/reference/endpoints/accounts-single.html"
+        [ Title.view "Operation Details" "https://www.stellar.org/developers/horizon/reference/endpoints/operations-single.html"
         , div
             [ Css.page ]
             [ h2
@@ -42,19 +43,19 @@ view endpoint model =
                     [ Css.label ]
                     [ span
                         [ Css.labelMandatory ]
-                        [ text "Public Key" ]
+                        [ text "Operation Id" ]
                     , span
                         [ Css.labelExample ]
-                        [ text "(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)" ]
+                        [ text "(eg: 77309415424)" ]
                     ]
-                , model.settings.publicKey
-                    |> Input.view
-                    |> Input.render
+                , model.settings.operationId
+                    |> IntInput.view
+                    |> IntInput.render
                     |> Html.fromUnstyled
-                    |> Html.map (AccountDetails.UpdatePublicKey >> AccountDetails.SettingsMsg >> AccountDetails.composeMsg)
+                    |> Html.map (OperationDetails.UpdatePublicKey >> OperationDetails.SettingsMsg >> OperationDetails.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)
-            , Button.view model.isLoading (AccountDetails.Request endpoint model.settings |> AccountDetails.composeMsg)
+            , Button.view model.isLoading (OperationDetails.Request endpoint model.settings |> OperationDetails.composeMsg)
             , Response.view model.response model.isLoading
             ]
         ]

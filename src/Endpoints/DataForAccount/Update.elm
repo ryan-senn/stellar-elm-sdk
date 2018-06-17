@@ -12,6 +12,7 @@ import Msg exposing (Msg)
 import Endpoints.DataForAccount.Msg as DataForAccount
 import Endpoints.DataForAccount.MsgFactory as DataForAccount
 import Endpoints.DataForAccount.Model as DataForAccount
+import Endpoints.DataForAccount.RequestBuilder exposing (requestBuilder)
 
 
 update : DataForAccount.Msg -> DataForAccount.Model -> (DataForAccount.Model, Cmd Msg)
@@ -21,16 +22,16 @@ update msg model =
         DataForAccount.SettingsMsg updateSettingsMsg ->
             updateSettings updateSettingsMsg model
 
-        DataForAccount.Request endpoint publicKey dataKey ->
+        DataForAccount.Request endpoint settings ->
             let
                 msg =
                     DataForAccount.Response >> DataForAccount.composeMsg
 
-                requestBuilder =
-                    DataForAccount.requestBuilder endpoint publicKey dataKey
+                request =
+                    requestBuilder endpoint settings
 
             in
-                { model | isLoading = True } ! [ DataForAccount.send msg requestBuilder ]
+                { model | isLoading = True } ! [ DataForAccount.send msg request ]
 
         DataForAccount.Response (Err error) ->
             { model | isLoading = False, response = Just <| flattenError error DataForAccount.Error } ! []
