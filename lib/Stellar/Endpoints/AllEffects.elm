@@ -54,7 +54,7 @@ url endpoint =
 
 type Response
     = Error Error
-    | Success (Page Asset)
+    | Success (Page Effect)
 
 
 decoder : Decoder Response
