@@ -362,7 +362,7 @@ home =
                 [ text "official Stellar Laboratory Endpoint Explorer."]
             , span
                 []
-                [ text "Click on any Endoint in the menu on the left to see what it looks like!" ]
+                [ text " Click on any Endoint in the menu on the left to see what it looks like!" ]
             ]
         , p
             []

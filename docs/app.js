@@ -37394,7 +37394,7 @@ var _user$project$View$home = A2(
 									{ctor: '[]'},
 									{
 										ctor: '::',
-										_0: _rtfeldman$elm_css$Html_Styled$text('Click on any Endoint in the menu on the left to see what it looks like!'),
+										_0: _rtfeldman$elm_css$Html_Styled$text(' Click on any Endoint in the menu on the left to see what it looks like!'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
