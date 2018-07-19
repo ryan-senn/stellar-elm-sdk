@@ -3,7 +3,7 @@ module View exposing (view)
 import Html.Styled exposing (..)
 import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
-import Styles as S
+import Styles as Css
 
 import String.Extra as String
 
@@ -32,7 +32,7 @@ import Endpoints.OrderbookDetails.View as OrderbookDetails
 view : Model -> Html Msg
 view model =
     div
-        [ S.layout ]
+        [ Css.layout ]
         [ header
         , body model
         ]
@@ -41,15 +41,15 @@ view model =
 header : Html Msg
 header =
     div
-        [ S.header ]
+        [ Css.header ]
         [ h1
-            [ S.title
+            [ Css.title
             ]
             [ span
-                [ S.stellarTitle ]
+                [ Css.stellarTitle ]
                 [ text "stellar" ]
             , span
-                [ S.elmTitle ]
+                [ Css.elmTitle ]
                 [ text "elm api" ]
             ]
         ]
@@ -58,7 +58,7 @@ header =
 body : Model -> Html Msg
 body model =
     div
-        [ S.body ]
+        [ Css.body ]
         [ sidebar model.route
         , content model
         ]
@@ -67,12 +67,12 @@ body model =
 sidebar : Maybe Route -> Html Msg
 sidebar mRoute =
     div
-        [ S.sidebar ]
+        [ Css.sidebar ]
         [ h4
-            [ S.sidebarTitle ]
+            [ Css.sidebarTitle ]
             [ text "Endpoints" ]
         , ul
-            [ S.sidebarList
+            [ Css.sidebarList
             ]
             ( List.map (menuItem mRoute) Endpoints.asList )
         ]
@@ -81,9 +81,9 @@ sidebar mRoute =
 menuItem : Maybe Route -> Endpoint -> Html Msg
 menuItem mRoute endpoint =
     li
-        [ S.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints endpoint) ]
+        [ Css.sidebarItem <| Routes.isActiveRoute mRoute (Routes.Endpoints endpoint) ]
         [ a
-            [ S.sidebarItemLink, Routes.href <| Routes.Endpoints endpoint ]
+            [ Css.sidebarItemLink, Routes.href <| Routes.Endpoints endpoint ]
             [ toString endpoint |> String.humanize |> String.toTitleCase |> text  ]
         ]
 
@@ -95,12 +95,12 @@ content model =
 
         Nothing ->
             div
-                [ S.content ]
+                [ Css.content ]
                 [ text "Page not found D:" ]
 
         Just route ->
             div
-                [ S.content ]
+                [ Css.content ]
                 [ page model.endpoints route ]
 
 
@@ -110,9 +110,7 @@ page endpoints route =
     case route of
 
         Routes.Home ->
-            div
-                []
-                [ text "Home" ]
+            home
 
         Routes.Endpoints Endpoints.AccountDetails ->
             AccountDetails.view endpoints.endpoint endpoints.accountDetails
@@ -333,3 +331,43 @@ transactionDetails endpoints =
     div
         []
         [ text "todo" ]
+
+
+home : Html Msg
+home =
+    div
+        [ Css.home ]
+        [ h1
+            []
+            [ text "Stellar Elm Api Examples" ]
+        , p
+            []
+            [ span
+                []
+                [ text "This Website is meant to complement the " ]
+            , a
+                [ href "", target "blank_" ]
+                [ text "elm-package documentation"]
+            , span
+                []
+                [ text " for using the Sellar Elm Api by providing concrete examples." ]
+            ]
+        , p
+            []
+            [ span
+                []
+                [ text "It is written in Elm, hosted on Github Pages. It aimes to replicate the " ]
+            , a
+                [ href "https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=single", target "blank_" ]
+                [ text "official Stellar Laboratory Endpoint Explorer."]
+            , span
+                []
+                [ text "Click on any Endoint in the menu on the left to see what it looks like!" ]
+            ]
+        , p
+            []
+            [ a
+                [ href "", target "blank_" ]
+                [ text "The source code is visible on Github."]
+            ]
+        ]

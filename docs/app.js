@@ -31247,6 +31247,13 @@ var _user$project$Endpoints_AccountDetails_Update$update = F2(
 		}
 	});
 
+var _user$project$Styles$home = _rtfeldman$elm_css$Html_Styled_Attributes$css(
+	{
+		ctor: '::',
+		_0: _rtfeldman$elm_css$Css$padding(
+			_rtfeldman$elm_css$Css$px(25)),
+		_1: {ctor: '[]'}
+	});
 var _user$project$Styles$content = _rtfeldman$elm_css$Html_Styled_Attributes$css(
 	{
 		ctor: '::',
@@ -37283,6 +37290,147 @@ var _user$project$Update$update = F2(
 		}
 	});
 
+var _user$project$View$home = A2(
+	_rtfeldman$elm_css$Html_Styled$div,
+	{
+		ctor: '::',
+		_0: _user$project$Styles$home,
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_rtfeldman$elm_css$Html_Styled$h1,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _rtfeldman$elm_css$Html_Styled$text('Stellar Elm Api Examples'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_rtfeldman$elm_css$Html_Styled$p,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$span,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _rtfeldman$elm_css$Html_Styled$text('This Website is meant to complement the '),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_rtfeldman$elm_css$Html_Styled$a,
+							{
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Html_Styled_Attributes$href(''),
+								_1: {
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Html_Styled$text('elm-package documentation'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$span,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text(' for using the Sellar Elm Api by providing concrete examples.'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_rtfeldman$elm_css$Html_Styled$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_rtfeldman$elm_css$Html_Styled$span,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Html_Styled$text('It is written in Elm, hosted on Github Pages. It aimes to replicate the '),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$a,
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=single'),
+									_1: {
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
+										_1: {ctor: '[]'}
+									}
+								},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('official Stellar Laboratory Endpoint Explorer.'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_rtfeldman$elm_css$Html_Styled$span,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Html_Styled$text('Click on any Endoint in the menu on the left to see what it looks like!'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$p,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$a,
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled_Attributes$href(''),
+									_1: {
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
+										_1: {ctor: '[]'}
+									}
+								},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('The source code is visible on Github.'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
 var _user$project$View$transactionDetails = function (endpoints) {
 	return A2(
 		_rtfeldman$elm_css$Html_Styled$div,
@@ -37477,14 +37625,7 @@ var _user$project$View$page = F2(
 	function (endpoints, route) {
 		var _p0 = route;
 		if (_p0.ctor === 'Home') {
-			return A2(
-				_rtfeldman$elm_css$Html_Styled$div,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _rtfeldman$elm_css$Html_Styled$text('Home'),
-					_1: {ctor: '[]'}
-				});
+			return _user$project$View$home;
 		} else {
 			switch (_p0._0.ctor) {
 				case 'AccountDetails':

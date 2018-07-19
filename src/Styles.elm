@@ -121,3 +121,10 @@ content =
     css
         [ flexGrow <| int 1
         ]
+
+
+home : Attribute Msg
+home =
+    css
+        [ padding <| px 25
+        ]
