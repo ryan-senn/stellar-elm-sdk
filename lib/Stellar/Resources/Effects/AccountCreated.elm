@@ -1,7 +1,10 @@
 module Stellar.Resources.Effects.AccountCreated exposing (AccountCreated, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
+
+import Date exposing (Date)
 
 import Stellar.Link as Link exposing (Link)
 
@@ -13,6 +16,7 @@ type alias AccountCreated =
     , typeI : Int
     , account : String
     , startingBalance : String
+    , createdAt : Date
     , links : Links
     }
 
@@ -26,6 +30,7 @@ decoder =
         |> Decode.required "type_i" Decode.int
         |> Decode.required "account" Decode.string
         |> Decode.required "starting_balance" Decode.string
+        |> Decode.required "created_at" Decode.date
         |> Decode.required "_links" linksDecoder
 
 

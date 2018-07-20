@@ -1,7 +1,10 @@
 module Stellar.Resources.Effects.SignerCreated exposing (SignerCreated, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
+
+import Date exposing (Date)
 
 import Stellar.Link as Link exposing (Link)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
@@ -16,6 +19,7 @@ type alias SignerCreated =
     , weight : Int
     , publicKey : PublicKey
     , key : String
+    , createdAt : Date
     , links : Links
     }
 
@@ -31,6 +35,7 @@ decoder =
         |> Decode.required "weight" Decode.int
         |> Decode.required "public_key" PublicKey.decoder
         |> Decode.required "key" Decode.string
+        |> Decode.required "created_at" Decode.date
         |> Decode.required "_links" linksDecoder
 
 

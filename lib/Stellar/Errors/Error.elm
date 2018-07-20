@@ -33,8 +33,7 @@ type StandardError
 
 standardErrorDecoder : Decoder StandardError
 standardErrorDecoder =
-    decoder
-        |> Decode.andThen standardErrorFromStatus
+    Decode.andThen standardErrorFromStatus decoder
 
 
 standardErrorFromStatus : Error -> Decoder StandardError

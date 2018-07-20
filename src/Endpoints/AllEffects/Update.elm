@@ -51,12 +51,6 @@ updateSettings updateSettingsMsg model =
 
         newSettingsModel =
             case updateSettingsMsg of
-                AllEffects.UpdateAssetCode inputMsg ->
-                    { settingsModel | assetCode = Input.update inputMsg settingsModel.assetCode }
-
-                AllEffects.UpdateAssetIssuer inputMsg ->
-                    { settingsModel | assetIssuer = Input.update inputMsg settingsModel.assetIssuer }
-
                 AllEffects.UpdateCursor inputMsg ->
                     { settingsModel | cursor = Input.update inputMsg settingsModel.cursor }
 

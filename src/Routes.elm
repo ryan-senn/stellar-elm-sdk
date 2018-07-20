@@ -54,7 +54,7 @@ fromLocation location =
 
 routeParser : Parser (Route -> a) a
 routeParser =
-    Url.oneOf ([ Url.s "" |> Url.map Home ] ++ List.map endpointParser Endpoints.asList)
+    Url.oneOf ([ Url.s "" |> Url.map Home, Url.s "#/" |> Url.map Home ] ++ List.map endpointParser Endpoints.asList)
 
 
 isActiveRoute : Maybe Route -> Route -> Bool

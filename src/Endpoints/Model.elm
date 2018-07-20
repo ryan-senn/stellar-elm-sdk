@@ -5,6 +5,7 @@ import Form.Input as Input
 import Endpoints.AccountDetails.Model as AccountDetails
 import Endpoints.AllAssets.Model as AllAssets
 import Endpoints.DataForAccount.Model as DataForAccount
+import Endpoints.AllEffects.Model as AllEffects
 import Endpoints.AllLedgers.Model as AllLedgers
 import Endpoints.LedgerDetails.Model as LedgerDetails
 import Endpoints.OffersForAccount.Model as OffersForAccount
@@ -20,6 +21,7 @@ type alias Model =
     { endpoint : Input.Model
     , accountDetails : AccountDetails.Model
     , allAssets : AllAssets.Model
+    , allEffects : AllEffects.Model
     , dataForAccount : DataForAccount.Model
     , allLedgers : AllLedgers.Model
     , ledgerDetails : LedgerDetails.Model
@@ -38,6 +40,7 @@ initialModel =
     { endpoint = Input.init |> Input.setInitialValue "https://horizon-testnet.stellar.org"
     , accountDetails = AccountDetails.initialModel
     , allAssets = AllAssets.initialModel
+    , allEffects = AllEffects.initialModel
     , dataForAccount = DataForAccount.initialModel
     , allLedgers = AllLedgers.initialModel
     , ledgerDetails = LedgerDetails.initialModel

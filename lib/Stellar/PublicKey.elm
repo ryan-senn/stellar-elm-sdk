@@ -1,4 +1,4 @@
-module Stellar.PublicKey exposing (PublicKey, toString, fromString, decoder)
+module Stellar.PublicKey exposing (PublicKey (PublicKey), toString, fromString, decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 

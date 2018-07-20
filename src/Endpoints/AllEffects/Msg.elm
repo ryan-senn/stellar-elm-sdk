@@ -3,7 +3,6 @@ module Endpoints.AllEffects.Msg exposing (Msg (..), SettingsMsg (..))
 import Http
 
 import Stellar.Endpoint exposing (Endpoint)
-import Stellar.PublicKey exposing (PublicKey)
 import Stellar.Sorting exposing (Sorting)
 
 import Stellar.Endpoints.AllEffects as AllEffects
@@ -21,8 +20,6 @@ type Msg
 
 
 type SettingsMsg
-    = UpdateAssetCode Input.Msg
-    | UpdateAssetIssuer Input.Msg
-    | UpdateCursor Input.Msg
+    = UpdateCursor Input.Msg
     | UpdateLimit IntInput.Msg
     | UpdateSorting Sorting

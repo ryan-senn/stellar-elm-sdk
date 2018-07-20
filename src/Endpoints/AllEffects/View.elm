@@ -35,47 +35,13 @@ view endpoint model =
 
     div
         []
-        [ Title.view "All Assets" "https://www.stellar.org/developers/horizon/reference/endpoints/assets-all.html"
+        [ Title.view "All Effects" "https://www.stellar.org/developers/horizon/reference/endpoints/effects-all.html"
         , div
             [ Css.page ]
             [ h2
                 []
                 [ text "Request" ]
             , Endpoint.view endpoint
-            , div
-                [ class "form-group" ]
-                [ label
-                    [ Css.label ]
-                    [ span
-                        []
-                        [ text "Asset Code" ]
-                    , span
-                        [ Css.labelExample ]
-                        [ text "(eg: USD)" ]
-                    ]
-                , model.settings.assetCode
-                    |> Input.view
-                    |> Input.render
-                    |> Html.fromUnstyled
-                    |> Html.map (AllEffects.UpdateAssetCode >> AllEffects.SettingsMsg >> AllEffects.composeMsg)
-                ]
-            , div
-                [ class "form-group" ]
-                [ label
-                    [ Css.label ]
-                    [ span
-                        []
-                        [ text "Asset Issuer" ]
-                    , span
-                        [ Css.labelExample ]
-                        [ text "(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)" ]
-                    ]
-                , model.settings.assetIssuer
-                    |> Input.view
-                    |> Input.render
-                    |> Html.fromUnstyled
-                    |> Html.map (AllEffects.UpdateAssetIssuer >> AllEffects.SettingsMsg >> AllEffects.composeMsg)
-                ]
             , div
                 [ class "form-group" ]
                 [ label

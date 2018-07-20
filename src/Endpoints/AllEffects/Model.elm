@@ -26,9 +26,7 @@ initialModel =
 
 
 type alias Settings =
-    { assetCode : Input.Model
-    , assetIssuer : Input.Model
-    , cursor : Input.Model
+    { cursor : Input.Model
     , limit : IntInput.Model
     , sorting : Maybe Sorting
     }
@@ -36,9 +34,7 @@ type alias Settings =
 
 initialSettings : Settings
 initialSettings =
-    { assetCode = Input.init
-    , assetIssuer = Input.init
-    , cursor = Input.init
+    { cursor = Input.init
     , limit = IntInput.init
     , sorting = Nothing
     }

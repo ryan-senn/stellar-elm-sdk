@@ -18,6 +18,7 @@ import Endpoints.Model as Endpoints
 import Endpoints.AccountDetails.View as AccountDetails
 import Endpoints.AllAssets.View as AllAssets
 import Endpoints.DataForAccount.View as DataForAccount
+import Endpoints.AllEffects.View as AllEffects
 import Endpoints.AllLedgers.View as AllLedgers
 import Endpoints.LedgerDetails.View as LedgerDetails
 import Endpoints.OffersForAccount.View as OffersForAccount
@@ -43,13 +44,16 @@ header =
     div
         [ Css.header ]
         [ h1
-            [ Css.title
-            ]
-            [ span
-                [ Css.stellarTitle ]
+            [ Css.title ]
+            [ a
+                [ Css.stellarTitle
+                , Routes.href Routes.Home
+                ]
                 [ text "stellar" ]
-            , span
-                [ Css.elmTitle ]
+            , a
+                [ Css.elmTitle
+                , Routes.href Routes.Home
+                ]
                 [ text "elm api" ]
             ]
         ]
@@ -122,7 +126,7 @@ page endpoints route =
             DataForAccount.view endpoints.endpoint endpoints.dataForAccount
 
         Routes.Endpoints Endpoints.AllEffects ->
-            allEffects endpoints
+            AllEffects.view endpoints.endpoint endpoints.allEffects
 
         Routes.Endpoints Endpoints.EffectsForAccount ->
             effectsForAccount endpoints

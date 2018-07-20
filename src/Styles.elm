@@ -48,6 +48,8 @@ stellarTitle =
         [ color <| hex "08b5e5"
         , fontWeight <| int 700
         , fontSize <| Css.em 1.2
+        , cursor pointer
+        , textDecoration none
         ]
 
 
@@ -58,6 +60,8 @@ elmTitle =
         , fontSize <| Css.em 0.8
         , fontWeight <| int 500
         , marginLeft <| px 10
+        , cursor pointer
+        , textDecoration none
         ]
 
 

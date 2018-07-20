@@ -13,7 +13,6 @@ type alias Trade =
     , type_ : String
     , typeI : Int
     , account : String
-    , links : Links
     , seller : String
     , offerId : Int
     , soldAmount : String
@@ -24,6 +23,7 @@ type alias Trade =
     , boughtAssetType : AssetType
     , boughtAssetCode : Maybe String
     , boughtAssetIssuer : Maybe String
+    , links : Links
     }
 
 
@@ -38,13 +38,13 @@ decoder =
         |> Decode.required "seller" Decode.string
         |> Decode.required "offer_id" Decode.int
         |> Decode.required "sold_amount" Decode.string
-        |> Decode.required "sold_asset_type" Decode.string
-        |> Decode.optional "sold_asset_code" Decode.string Nothing
-        |> Decode.optional "sold_asset_issuer" Decode.string Nothing
+        |> Decode.required "sold_asset_type" AssetType.decoder
+        |> Decode.optional "sold_asset_code" (Decode.maybe Decode.string) Nothing
+        |> Decode.optional "sold_asset_issuer" (Decode.maybe Decode.string) Nothing
         |> Decode.required "bought_amount" Decode.string
-        |> Decode.required "bought_asset_type" Decode.string
-        |> Decode.optional "bought_asset_code" Decode.string Nothing
-        |> Decode.optional "bought_asset_issuer" Decode.string Nothing
+        |> Decode.required "bought_asset_type" AssetType.decoder
+        |> Decode.optional "bought_asset_code" (Decode.maybe Decode.string) Nothing
+        |> Decode.optional "bought_asset_issuer" (Decode.maybe Decode.string) Nothing
         |> Decode.required "_links" linksDecoder
 
 

@@ -54,7 +54,7 @@ type Effect
 
 decoder : Decoder Effect
 decoder =
-    Decode.andThen effectFromType
+    Decode.andThen effectFromType Decode.string
 
 
 effectFromType : String -> Decoder Effect

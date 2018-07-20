@@ -10,6 +10,7 @@ import Endpoints.Model as Endpoints
 import Endpoints.AccountDetails.Update as AccountDetails
 import Endpoints.AllAssets.Update as AllAssets
 import Endpoints.DataForAccount.Update as DataForAccount
+import Endpoints.AllEffects.Update as AllEffects
 import Endpoints.AllLedgers.Update as AllLedgers
 import Endpoints.LedgerDetails.Update as LedgerDetails
 import Endpoints.OffersForAccount.Update as OffersForAccount
@@ -43,6 +44,14 @@ update msg model =
 
             in
                 { model | allAssets = allAssetsModel } ! [ cmd ]
+
+        Endpoints.AllEffectsMsg msg ->
+            let
+                (allEffectsModel, cmd) =
+                    AllEffects.update msg model.allEffects
+
+            in
+                { model | allEffects = allEffectsModel } ! [ cmd ]
 
         Endpoints.DataForAccountMsg msg ->
             let

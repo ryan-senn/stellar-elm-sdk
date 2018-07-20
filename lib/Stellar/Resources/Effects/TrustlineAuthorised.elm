@@ -30,7 +30,7 @@ decoder =
         |> Decode.required "account" Decode.string
         |> Decode.required "trustor" Decode.string
         |> Decode.required "asset_type" AssetType.decoder
-        |> Decode.optional "asset_code" Decode.string Nothing
+        |> Decode.optional "asset_code" (Decode.maybe Decode.string) Nothing
         |> Decode.required "_links" linksDecoder
 
 

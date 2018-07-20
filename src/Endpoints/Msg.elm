@@ -5,6 +5,7 @@ import Form.Input as Input
 import Endpoints.AccountDetails.Msg as AccountDetails
 import Endpoints.AllAssets.Msg as AllAssets
 import Endpoints.DataForAccount.Msg as DataForAccount
+import Endpoints.AllEffects.Msg as AllEffects
 import Endpoints.AllLedgers.Msg as AllLedgers
 import Endpoints.LedgerDetails.Msg as LedgerDetails
 import Endpoints.OffersForAccount.Msg as OffersForAccount
@@ -21,6 +22,7 @@ type Msg
     | AccountDetailsMsg AccountDetails.Msg
     | AllAssetsMsg AllAssets.Msg
     | DataForAccountMsg DataForAccount.Msg
+    | AllEffectsMsg AllEffects.Msg
     | AllLedgersMsg AllLedgers.Msg
     | LedgerDetailsMsg LedgerDetails.Msg
     | OffersForAccountMsg OffersForAccount.Msg
