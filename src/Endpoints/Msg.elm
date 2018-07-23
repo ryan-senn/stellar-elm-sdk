@@ -6,6 +6,10 @@ import Endpoints.AccountDetails.Msg as AccountDetails
 import Endpoints.AllAssets.Msg as AllAssets
 import Endpoints.DataForAccount.Msg as DataForAccount
 import Endpoints.AllEffects.Msg as AllEffects
+import Endpoints.EffectsForAccount.Msg as EffectsForAccount
+import Endpoints.EffectsForLedger.Msg as EffectsForLedger
+import Endpoints.EffectsForOperation.Msg as EffectsForOperation
+import Endpoints.EffectsForTransaction.Msg as EffectsForTransaction
 import Endpoints.AllLedgers.Msg as AllLedgers
 import Endpoints.LedgerDetails.Msg as LedgerDetails
 import Endpoints.OffersForAccount.Msg as OffersForAccount
@@ -15,6 +19,10 @@ import Endpoints.OperationsForLedger.Msg as OperationsForLedger
 import Endpoints.OperationsForTransaction.Msg as OperationsForTransaction
 import Endpoints.OperationDetails.Msg as OperationDetails
 import Endpoints.OrderbookDetails.Msg as OrderbookDetails
+import Endpoints.AllPayments.Msg as AllPayments
+import Endpoints.PaymentsForAccount.Msg as PaymentsForAccount
+import Endpoints.PaymentsForLedger.Msg as PaymentsForLedger
+import Endpoints.PaymentsForTransaction.Msg as PaymentsForTransaction
 
 
 type Msg
@@ -23,6 +31,10 @@ type Msg
     | AllAssetsMsg AllAssets.Msg
     | DataForAccountMsg DataForAccount.Msg
     | AllEffectsMsg AllEffects.Msg
+    | EffectsForAccountMsg EffectsForAccount.Msg
+    | EffectsForLedgerMsg EffectsForLedger.Msg
+    | EffectsForOperationMsg EffectsForOperation.Msg
+    | EffectsForTransactionMsg EffectsForTransaction.Msg
     | AllLedgersMsg AllLedgers.Msg
     | LedgerDetailsMsg LedgerDetails.Msg
     | OffersForAccountMsg OffersForAccount.Msg
@@ -32,3 +44,7 @@ type Msg
     | OperationsForTransactionMsg OperationsForTransaction.Msg
     | OperationDetailsMsg OperationDetails.Msg
     | OrderbookDetailsMsg OrderbookDetails.Msg
+    | AllPaymentsMsg AllPayments.Msg
+    | PaymentsForAccountMsg PaymentsForAccount.Msg
+    | PaymentsForLedgerMsg PaymentsForLedger.Msg
+    | PaymentsForTransactionMsg PaymentsForTransaction.Msg

@@ -11,6 +11,10 @@ import Endpoints.AccountDetails.Update as AccountDetails
 import Endpoints.AllAssets.Update as AllAssets
 import Endpoints.DataForAccount.Update as DataForAccount
 import Endpoints.AllEffects.Update as AllEffects
+import Endpoints.EffectsForAccount.Update as EffectsForAccount
+import Endpoints.EffectsForLedger.Update as EffectsForLedger
+import Endpoints.EffectsForOperation.Update as EffectsForOperation
+import Endpoints.EffectsForTransaction.Update as EffectsForTransaction
 import Endpoints.AllLedgers.Update as AllLedgers
 import Endpoints.LedgerDetails.Update as LedgerDetails
 import Endpoints.OffersForAccount.Update as OffersForAccount
@@ -20,6 +24,10 @@ import Endpoints.OperationsForLedger.Update as OperationsForLedger
 import Endpoints.OperationsForTransaction.Update as OperationsForTransaction
 import Endpoints.OperationDetails.Update as OperationDetails
 import Endpoints.OrderbookDetails.Update as OrderbookDetails
+import Endpoints.AllPayments.Update as AllPayments
+import Endpoints.PaymentsForAccount.Update as PaymentsForAccount
+import Endpoints.PaymentsForLedger.Update as PaymentsForLedger
+import Endpoints.PaymentsForTransaction.Update as PaymentsForTransaction
 
 
 update : Endpoints.Msg -> Endpoints.Model -> (Endpoints.Model, Cmd Msg)
@@ -45,6 +53,14 @@ update msg model =
             in
                 { model | allAssets = allAssetsModel } ! [ cmd ]
 
+        Endpoints.DataForAccountMsg msg ->
+            let
+                (dataForAccountModel, cmd) =
+                    DataForAccount.update msg model.dataForAccount
+
+            in
+                { model | dataForAccount = dataForAccountModel } ! [ cmd ]
+
         Endpoints.AllEffectsMsg msg ->
             let
                 (allEffectsModel, cmd) =
@@ -53,13 +69,37 @@ update msg model =
             in
                 { model | allEffects = allEffectsModel } ! [ cmd ]
 
-        Endpoints.DataForAccountMsg msg ->
+        Endpoints.EffectsForAccountMsg msg ->
             let
-                (dataForAccountModel, cmd) =
-                    DataForAccount.update msg model.dataForAccount
+                (effectsForAccountModel, cmd) =
+                    EffectsForAccount.update msg model.effectsForAccount
 
             in
-                { model | dataForAccount = dataForAccountModel } ! [ cmd ]
+                { model | effectsForAccount = effectsForAccountModel } ! [ cmd ]
+
+        Endpoints.EffectsForLedgerMsg msg ->
+            let
+                (effectsForLedgerModel, cmd) =
+                    EffectsForLedger.update msg model.effectsForLedger
+
+            in
+                { model | effectsForLedger = effectsForLedgerModel } ! [ cmd ]
+
+        Endpoints.EffectsForOperationMsg msg ->
+            let
+                (effectsForOperationModel, cmd) =
+                    EffectsForOperation.update msg model.effectsForOperation
+
+            in
+                { model | effectsForOperation = effectsForOperationModel } ! [ cmd ]
+
+        Endpoints.EffectsForTransactionMsg msg ->
+            let
+                (effectsForTransactionModel, cmd) =
+                    EffectsForTransaction.update msg model.effectsForTransaction
+
+            in
+                { model | effectsForTransaction = effectsForTransactionModel } ! [ cmd ]
 
         Endpoints.AllLedgersMsg msg ->
             let
@@ -132,3 +172,35 @@ update msg model =
 
             in
                 { model | orderbookDetails = orderbookDetailsModel } ! [ cmd ]
+
+        Endpoints.AllPaymentsMsg msg ->
+            let
+                (allPaymentsModel, cmd) =
+                    AllPayments.update msg model.allPayments
+
+            in
+                { model | allPayments = allPaymentsModel } ! [ cmd ]
+
+        Endpoints.PaymentsForAccountMsg msg ->
+            let
+                (paymentsForAccountModel, cmd) =
+                    PaymentsForAccount.update msg model.paymentsForAccount
+
+            in
+                { model | paymentsForAccount = paymentsForAccountModel } ! [ cmd ]
+
+        Endpoints.PaymentsForLedgerMsg msg ->
+            let
+                (paymentsForLedgerModel, cmd) =
+                    PaymentsForLedger.update msg model.paymentsForLedger
+
+            in
+                { model | paymentsForLedger = paymentsForLedgerModel } ! [ cmd ]
+
+        Endpoints.PaymentsForTransactionMsg msg ->
+            let
+                (paymentsForTransactionModel, cmd) =
+                    PaymentsForTransaction.update msg model.paymentsForTransaction
+
+            in
+                { model | paymentsForTransaction = paymentsForTransactionModel } ! [ cmd ]

@@ -19,6 +19,10 @@ import Endpoints.AccountDetails.View as AccountDetails
 import Endpoints.AllAssets.View as AllAssets
 import Endpoints.DataForAccount.View as DataForAccount
 import Endpoints.AllEffects.View as AllEffects
+import Endpoints.EffectsForAccount.View as EffectsForAccount
+import Endpoints.EffectsForLedger.View as EffectsForLedger
+import Endpoints.EffectsForOperation.View as EffectsForOperation
+import Endpoints.EffectsForTransaction.View as EffectsForTransaction
 import Endpoints.AllLedgers.View as AllLedgers
 import Endpoints.LedgerDetails.View as LedgerDetails
 import Endpoints.OffersForAccount.View as OffersForAccount
@@ -28,6 +32,10 @@ import Endpoints.OperationsForLedger.View as OperationsForLedger
 import Endpoints.OperationsForTransaction.View as OperationsForTransaction
 import Endpoints.OperationDetails.View as OperationDetails
 import Endpoints.OrderbookDetails.View as OrderbookDetails
+import Endpoints.AllPayments.View as AllPayments
+import Endpoints.PaymentsForAccount.View as PaymentsForAccount
+import Endpoints.PaymentsForLedger.View as PaymentsForLedger
+import Endpoints.PaymentsForTransaction.View as PaymentsForTransaction
 
 
 view : Model -> Html Msg
@@ -129,16 +137,16 @@ page endpoints route =
             AllEffects.view endpoints.endpoint endpoints.allEffects
 
         Routes.Endpoints Endpoints.EffectsForAccount ->
-            effectsForAccount endpoints
+            EffectsForAccount.view endpoints.endpoint endpoints.effectsForAccount
 
         Routes.Endpoints Endpoints.EffectsForLedger ->
-            effectsForLedger endpoints
+            EffectsForLedger.view endpoints.endpoint endpoints.effectsForLedger
 
         Routes.Endpoints Endpoints.EffectsForOperation ->
-            effectsForOperation endpoints
+            EffectsForOperation.view endpoints.endpoint endpoints.effectsForOperation
 
         Routes.Endpoints Endpoints.EffectsForTransaction ->
-            effectsForTransaction endpoints
+            EffectsForTransaction.view endpoints.endpoint endpoints.effectsForTransaction
 
         Routes.Endpoints Endpoints.AllLedgers ->
             AllLedgers.view endpoints.endpoint endpoints.allLedgers
@@ -171,16 +179,16 @@ page endpoints route =
             findPaymentPaths endpoints
 
         Routes.Endpoints Endpoints.AllPayments ->
-            allPayments endpoints
+            AllPayments.view endpoints.endpoint endpoints.allPayments
 
         Routes.Endpoints Endpoints.PaymentsForAccount ->
-            paymentsForAccount endpoints
+            PaymentsForAccount.view endpoints.endpoint endpoints.paymentsForAccount
 
         Routes.Endpoints Endpoints.PaymentsForLedger ->
-            paymentsForLedger endpoints
+            PaymentsForLedger.view endpoints.endpoint endpoints.paymentsForLedger
 
         Routes.Endpoints Endpoints.PaymentsForTransaction ->
-            paymentsForTransaction endpoints
+            PaymentsForTransaction.view endpoints.endpoint endpoints.paymentsForTransaction
 
         Routes.Endpoints Endpoints.TradeAggregations ->
             tradeAggregations endpoints

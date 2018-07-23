@@ -1,4 +1,4 @@
-module Stellar.Resources.Effect exposing (Effect, decoder)
+module Stellar.Resources.Effect exposing (Effect (..), decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
@@ -54,7 +54,8 @@ type Effect
 
 decoder : Decoder Effect
 decoder =
-    Decode.andThen effectFromType Decode.string
+    Decode.field "type" Decode.string
+        |> Decode.andThen effectFromType
 
 
 effectFromType : String -> Decoder Effect
