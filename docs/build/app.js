@@ -30571,7 +30571,7 @@ var _user$project$Stellar_Endpoints_EffectsForAccount$url = F2(
 			_user$project$Stellar_Endpoint$toString(endpoint),
 			A2(
 				_elm_lang$core$Basics_ops['++'],
-				'/accounts',
+				'/accounts/',
 				A2(
 					_elm_lang$core$Basics_ops['++'],
 					_user$project$Stellar_PublicKey$toString(publicKey),
@@ -31369,7 +31369,7 @@ var _user$project$Stellar_Endpoints_OffersForAccount$url = F2(
 			_user$project$Stellar_Endpoint$toString(endpoint),
 			A2(
 				_elm_lang$core$Basics_ops['++'],
-				'/accounts',
+				'/accounts/',
 				A2(
 					_elm_lang$core$Basics_ops['++'],
 					_user$project$Stellar_PublicKey$toString(publicKey),
@@ -33298,10 +33298,29 @@ var _user$project$Endpoints_OrderbookDetails_Msg$UpdateSellingAssetType = functi
 	return {ctor: 'UpdateSellingAssetType', _0: a};
 };
 
-var _user$project$Stellar_Resources_Payment$Payment = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, funder: f, startingBalance: g, links: h};
-	});
+var _user$project$Stellar_Resources_Payment$Payment = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return {id: a, pagingToken: b, type_: c, typeI: d, account: e, funder: f, startingBalance: g, sourceAccount: h, transactionHash: i, createdAt: j, links: k};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
 var _user$project$Stellar_Resources_Payment$Links = F5(
 	function (a, b, c, d, e) {
 		return {self: a, succeeds: b, precedes: c, effects: d, transaction: e};
@@ -33333,33 +33352,45 @@ var _user$project$Stellar_Resources_Payment$decoder = A3(
 	_user$project$Stellar_Resources_Payment$linksDecoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'starting_balance',
-		_elm_lang$core$Json_Decode$string,
+		'created_at',
+		_elm_community$json_extra$Json_Decode_Extra$date,
 		A3(
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'funder',
+			'transaction_hash',
 			_elm_lang$core$Json_Decode$string,
 			A3(
 				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-				'account',
+				'source_account',
 				_elm_lang$core$Json_Decode$string,
 				A3(
 					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-					'type_i',
-					_elm_lang$core$Json_Decode$int,
+					'starting_balance',
+					_elm_lang$core$Json_Decode$string,
 					A3(
 						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-						'type',
+						'funder',
 						_elm_lang$core$Json_Decode$string,
 						A3(
 							_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-							'paging_token',
+							'account',
 							_elm_lang$core$Json_Decode$string,
 							A3(
 								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-								'id',
-								_elm_lang$core$Json_Decode$string,
-								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Payment$Payment)))))))));
+								'type_i',
+								_elm_lang$core$Json_Decode$int,
+								A3(
+									_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+									'type',
+									_elm_lang$core$Json_Decode$string,
+									A3(
+										_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+										'paging_token',
+										_elm_lang$core$Json_Decode$string,
+										A3(
+											_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+											'id',
+											_elm_lang$core$Json_Decode$string,
+											_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Payment$Payment))))))))))));
 
 var _user$project$Stellar_Endpoints_AllPayments$url = function (endpoint) {
 	return A2(
@@ -33474,7 +33505,7 @@ var _user$project$Stellar_Endpoints_PaymentsForAccount$url = F2(
 			_user$project$Stellar_Endpoint$toString(endpoint),
 			A2(
 				_elm_lang$core$Basics_ops['++'],
-				'/accounts',
+				'/accounts/',
 				A2(
 					_elm_lang$core$Basics_ops['++'],
 					_user$project$Stellar_PublicKey$toString(publicKey),

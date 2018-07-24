@@ -52,7 +52,7 @@ url : Endpoint -> PublicKey -> String
 url endpoint publicKey =
 
     Endpoint.toString endpoint
-    ++ "/accounts"
+    ++ "/accounts/"
     ++ PublicKey.toString publicKey
     ++ "/payments"
 
