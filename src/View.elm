@@ -36,6 +36,9 @@ import Endpoints.AllPayments.View as AllPayments
 import Endpoints.PaymentsForAccount.View as PaymentsForAccount
 import Endpoints.PaymentsForLedger.View as PaymentsForLedger
 import Endpoints.PaymentsForTransaction.View as PaymentsForTransaction
+import Endpoints.AllTransactions.View as AllTransactions
+import Endpoints.TransactionsForAccount.View as TransactionsForAccount
+import Endpoints.TransactionsForLedger.View as TransactionsForLedger
 
 
 view : Model -> Html Msg
@@ -197,19 +200,19 @@ page endpoints route =
             trades endpoints
 
         Routes.Endpoints Endpoints.AllTransactions ->
-            allTransactions endpoints
+            AllTransactions.view endpoints.endpoint endpoints.allTransactions
+
+        Routes.Endpoints Endpoints.TransactionDetails ->
+            transactionDetails endpoints
 
         Routes.Endpoints Endpoints.PostTransaction ->
             postTransaction endpoints
 
         Routes.Endpoints Endpoints.TransactionsForAccount ->
-            transactionsForAccount endpoints
+            TransactionsForAccount.view endpoints.endpoint endpoints.transactionsForAccount
 
         Routes.Endpoints Endpoints.TransactionsForLedger ->
-            transactionsForLedger endpoints
-
-        Routes.Endpoints Endpoints.TransactionDetails ->
-            transactionDetails endpoints
+            TransactionsForLedger.view endpoints.endpoint endpoints.transactionsForLedger
 
 
 allEffects : Endpoints.Model -> Html Msg

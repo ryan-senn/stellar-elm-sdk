@@ -23,6 +23,9 @@ import Endpoints.AllPayments.Msg as AllPayments
 import Endpoints.PaymentsForAccount.Msg as PaymentsForAccount
 import Endpoints.PaymentsForLedger.Msg as PaymentsForLedger
 import Endpoints.PaymentsForTransaction.Msg as PaymentsForTransaction
+import Endpoints.AllTransactions.Msg as AllTransactions
+import Endpoints.TransactionsForAccount.Msg as TransactionsForAccount
+import Endpoints.TransactionsForLedger.Msg as TransactionsForLedger
 
 
 type Msg
@@ -48,3 +51,6 @@ type Msg
     | PaymentsForAccountMsg PaymentsForAccount.Msg
     | PaymentsForLedgerMsg PaymentsForLedger.Msg
     | PaymentsForTransactionMsg PaymentsForTransaction.Msg
+    | AllTransactionsMsg AllTransactions.Msg
+    | TransactionsForAccountMsg TransactionsForAccount.Msg
+    | TransactionsForLedgerMsg TransactionsForLedger.Msg

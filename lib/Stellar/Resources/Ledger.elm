@@ -1,6 +1,9 @@
 module Stellar.Resources.Ledger exposing (Ledger, decoder)
 
+import Date exposing (Date)
+
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
 
 import Stellar.Link as Link exposing (Link)
@@ -14,8 +17,7 @@ type alias Ledger =
     , sequence : Int
     , transactionCount : Int
     , operationCount : Int
-    -- @todo: make date
-    , closedAt : String
+    , closedAt : Date
     , totalCoins : String
     , feePool : String
     , baseFee : Maybe Int
@@ -39,7 +41,7 @@ decoder =
         |> Decode.required "sequence" Decode.int
         |> Decode.required "transaction_count" Decode.int
         |> Decode.required "operation_count" Decode.int
-        |> Decode.required "closed_at" Decode.string
+        |> Decode.required "closed_at" Decode.date
         |> Decode.required "total_coins" Decode.string
         |> Decode.required "fee_pool" Decode.string
         |> Decode.optional "base_fee" (Decode.maybe Decode.int) Nothing

@@ -1,6 +1,9 @@
 module Stellar.Resources.Transaction exposing (Transaction, decoder)
 
+import Date exposing (Date)
+
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
 
 import Stellar.Link as Link exposing (Link)
@@ -11,16 +14,17 @@ type alias Transaction =
     , pagingToken : String
     , hash : String
     , ledger : Int
-    , account : String
-    , accountSequence : Int
+    , createdAt : Date
+    , sourceAccount : String
+    , sourceAccountSequence : String
     , feePaid : Int
     , operationCount : Int
-    , resultCode : Int
-    , resultCodeS : String
     , envelopeXdr : String
     , resultXdr : String
     , resultMetaXdr : String
     , feeMetaXdr : String
+    , memoType : String
+    , signatures : List String
     , links : Links
     }
 
@@ -32,16 +36,17 @@ decoder =
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "hash" Decode.string
         |> Decode.required "ledger" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "account_sequence" Decode.int
+        |> Decode.required "created_at" Decode.date
+        |> Decode.required "source_account" Decode.string
+        |> Decode.required "source_account_sequence" Decode.string
         |> Decode.required "fee_paid" Decode.int
         |> Decode.required "operation_count" Decode.int
-        |> Decode.required "result_code" Decode.int
-        |> Decode.required "result_code_s" Decode.string
         |> Decode.required "envelope_xdr" Decode.string
         |> Decode.required "result_xdr" Decode.string
         |> Decode.required "result_meta_xdr" Decode.string
         |> Decode.required "fee_meta_xdr" Decode.string
+        |> Decode.required "memo_type" Decode.string
+        |> Decode.required "signatures" (Decode.list Decode.string)
         |> Decode.required "_links" linksDecoder
 
 

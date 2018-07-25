@@ -30780,7 +30780,7 @@ var _user$project$Stellar_Resources_Ledger$decoder = A3(
 										A3(
 											_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 											'closed_at',
-											_elm_lang$core$Json_Decode$string,
+											_elm_community$json_extra$Json_Decode_Extra$date,
 											A3(
 												_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 												'operation_count',
@@ -33385,6 +33385,487 @@ var _user$project$Endpoints_PaymentsForTransaction_Msg$UpdateTransaction = funct
 	return {ctor: 'UpdateTransaction', _0: a};
 };
 
+var _user$project$Stellar_Resources_Transaction$Transaction = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return function (o) {
+															return function (p) {
+																return {id: a, pagingToken: b, hash: c, ledger: d, createdAt: e, sourceAccount: f, sourceAccountSequence: g, feePaid: h, operationCount: i, envelopeXdr: j, resultXdr: k, resultMetaXdr: l, feeMetaXdr: m, memoType: n, signatures: o, links: p};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Stellar_Resources_Transaction$Links = F7(
+	function (a, b, c, d, e, f, g) {
+		return {self: a, account: b, ledger: c, operations: d, effects: e, precedes: f, succeeds: g};
+	});
+var _user$project$Stellar_Resources_Transaction$linksDecoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'succeeds',
+	_user$project$Stellar_Link$decoder,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'precedes',
+		_user$project$Stellar_Link$decoder,
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'effects',
+			_user$project$Stellar_Link$decoder,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'operations',
+				_user$project$Stellar_Link$decoder,
+				A3(
+					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+					'ledger',
+					_user$project$Stellar_Link$decoder,
+					A3(
+						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+						'account',
+						_user$project$Stellar_Link$decoder,
+						A3(
+							_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+							'self',
+							_user$project$Stellar_Link$decoder,
+							_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Transaction$Links))))))));
+var _user$project$Stellar_Resources_Transaction$decoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'_links',
+	_user$project$Stellar_Resources_Transaction$linksDecoder,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'signatures',
+		_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string),
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'memo_type',
+			_elm_lang$core$Json_Decode$string,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'fee_meta_xdr',
+				_elm_lang$core$Json_Decode$string,
+				A3(
+					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+					'result_meta_xdr',
+					_elm_lang$core$Json_Decode$string,
+					A3(
+						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+						'result_xdr',
+						_elm_lang$core$Json_Decode$string,
+						A3(
+							_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+							'envelope_xdr',
+							_elm_lang$core$Json_Decode$string,
+							A3(
+								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+								'operation_count',
+								_elm_lang$core$Json_Decode$int,
+								A3(
+									_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+									'fee_paid',
+									_elm_lang$core$Json_Decode$int,
+									A3(
+										_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+										'source_account_sequence',
+										_elm_lang$core$Json_Decode$string,
+										A3(
+											_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+											'source_account',
+											_elm_lang$core$Json_Decode$string,
+											A3(
+												_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+												'created_at',
+												_elm_community$json_extra$Json_Decode_Extra$date,
+												A3(
+													_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+													'ledger',
+													_elm_lang$core$Json_Decode$int,
+													A3(
+														_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+														'hash',
+														_elm_lang$core$Json_Decode$string,
+														A3(
+															_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+															'paging_token',
+															_elm_lang$core$Json_Decode$string,
+															A3(
+																_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+																'id',
+																_elm_lang$core$Json_Decode$string,
+																_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Transaction$Transaction)))))))))))))))));
+
+var _user$project$Stellar_Endpoints_AllTransactions$url = function (endpoint) {
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_user$project$Stellar_Endpoint$toString(endpoint),
+		'/transactions');
+};
+var _user$project$Stellar_Endpoints_AllTransactions$setSorting = F2(
+	function (sorting, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'order',
+					_1: _user$project$Stellar_Sorting$toString(sorting)
+				},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_AllTransactions$setLimit = F2(
+	function (limit, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'limit',
+					_1: _elm_lang$core$Basics$toString(limit)
+				},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_AllTransactions$setCursor = F2(
+	function (cursor, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'cursor', _1: cursor},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_AllTransactions$send = _lukewestby$elm_http_builder$HttpBuilder$send;
+var _user$project$Stellar_Endpoints_AllTransactions$Success = function (a) {
+	return {ctor: 'Success', _0: a};
+};
+var _user$project$Stellar_Endpoints_AllTransactions$Error = function (a) {
+	return {ctor: 'Error', _0: a};
+};
+var _user$project$Stellar_Endpoints_AllTransactions$decoder = _elm_lang$core$Json_Decode$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllTransactions$Error, _user$project$Stellar_Errors_Error$decoder),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$core$Json_Decode$map,
+				_user$project$Stellar_Endpoints_AllTransactions$Success,
+				_user$project$Stellar_Resources_Page$decoder(_user$project$Stellar_Resources_Transaction$decoder)),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Stellar_Endpoints_AllTransactions$requestBuilder = function (endpoint) {
+	return A2(
+		_lukewestby$elm_http_builder$HttpBuilder$withExpect,
+		_elm_lang$http$Http$expectJson(_user$project$Stellar_Endpoints_AllTransactions$decoder),
+		_lukewestby$elm_http_builder$HttpBuilder$get(
+			_user$project$Stellar_Endpoints_AllTransactions$url(endpoint)));
+};
+
+var _user$project$Endpoints_AllTransactions_Model$initialSettings = {cursor: _bluedogtraining$bdt_elm$Form_Input$init, limit: _bluedogtraining$bdt_elm$Form_IntInput$init, sorting: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_AllTransactions_Model$initialModel = {settings: _user$project$Endpoints_AllTransactions_Model$initialSettings, isLoading: false, response: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_AllTransactions_Model$Model = F3(
+	function (a, b, c) {
+		return {settings: a, isLoading: b, response: c};
+	});
+var _user$project$Endpoints_AllTransactions_Model$Settings = F3(
+	function (a, b, c) {
+		return {cursor: a, limit: b, sorting: c};
+	});
+
+var _user$project$Endpoints_AllTransactions_Msg$Response = function (a) {
+	return {ctor: 'Response', _0: a};
+};
+var _user$project$Endpoints_AllTransactions_Msg$Request = F2(
+	function (a, b) {
+		return {ctor: 'Request', _0: a, _1: b};
+	});
+var _user$project$Endpoints_AllTransactions_Msg$SettingsMsg = function (a) {
+	return {ctor: 'SettingsMsg', _0: a};
+};
+var _user$project$Endpoints_AllTransactions_Msg$UpdateSorting = function (a) {
+	return {ctor: 'UpdateSorting', _0: a};
+};
+var _user$project$Endpoints_AllTransactions_Msg$UpdateLimit = function (a) {
+	return {ctor: 'UpdateLimit', _0: a};
+};
+var _user$project$Endpoints_AllTransactions_Msg$UpdateCursor = function (a) {
+	return {ctor: 'UpdateCursor', _0: a};
+};
+
+var _user$project$Stellar_Endpoints_TransactionsForAccount$url = F2(
+	function (endpoint, publicKey) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			_user$project$Stellar_Endpoint$toString(endpoint),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'/accounts/',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_user$project$Stellar_PublicKey$toString(publicKey),
+					'/transactions')));
+	});
+var _user$project$Stellar_Endpoints_TransactionsForAccount$setSorting = F2(
+	function (sorting, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'order',
+					_1: _user$project$Stellar_Sorting$toString(sorting)
+				},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_TransactionsForAccount$setLimit = F2(
+	function (limit, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'limit',
+					_1: _elm_lang$core$Basics$toString(limit)
+				},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_TransactionsForAccount$setCursor = F2(
+	function (cursor, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'cursor', _1: cursor},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_TransactionsForAccount$send = _lukewestby$elm_http_builder$HttpBuilder$send;
+var _user$project$Stellar_Endpoints_TransactionsForAccount$Success = function (a) {
+	return {ctor: 'Success', _0: a};
+};
+var _user$project$Stellar_Endpoints_TransactionsForAccount$Error = function (a) {
+	return {ctor: 'Error', _0: a};
+};
+var _user$project$Stellar_Endpoints_TransactionsForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionsForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$core$Json_Decode$map,
+				_user$project$Stellar_Endpoints_TransactionsForAccount$Success,
+				_user$project$Stellar_Resources_Page$decoder(_user$project$Stellar_Resources_Transaction$decoder)),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Stellar_Endpoints_TransactionsForAccount$requestBuilder = F2(
+	function (endpoint, publicKey) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withExpect,
+			_elm_lang$http$Http$expectJson(_user$project$Stellar_Endpoints_TransactionsForAccount$decoder),
+			_lukewestby$elm_http_builder$HttpBuilder$get(
+				A2(_user$project$Stellar_Endpoints_TransactionsForAccount$url, endpoint, publicKey)));
+	});
+
+var _user$project$Endpoints_TransactionsForAccount_Model$initialSettings = {account: _bluedogtraining$bdt_elm$Form_Input$init, cursor: _bluedogtraining$bdt_elm$Form_Input$init, limit: _bluedogtraining$bdt_elm$Form_IntInput$init, sorting: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_TransactionsForAccount_Model$initialModel = {settings: _user$project$Endpoints_TransactionsForAccount_Model$initialSettings, isLoading: false, response: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_TransactionsForAccount_Model$Model = F3(
+	function (a, b, c) {
+		return {settings: a, isLoading: b, response: c};
+	});
+var _user$project$Endpoints_TransactionsForAccount_Model$Settings = F4(
+	function (a, b, c, d) {
+		return {account: a, cursor: b, limit: c, sorting: d};
+	});
+
+var _user$project$Endpoints_TransactionsForAccount_Msg$Response = function (a) {
+	return {ctor: 'Response', _0: a};
+};
+var _user$project$Endpoints_TransactionsForAccount_Msg$Request = F2(
+	function (a, b) {
+		return {ctor: 'Request', _0: a, _1: b};
+	});
+var _user$project$Endpoints_TransactionsForAccount_Msg$SettingsMsg = function (a) {
+	return {ctor: 'SettingsMsg', _0: a};
+};
+var _user$project$Endpoints_TransactionsForAccount_Msg$UpdateSorting = function (a) {
+	return {ctor: 'UpdateSorting', _0: a};
+};
+var _user$project$Endpoints_TransactionsForAccount_Msg$UpdateLimit = function (a) {
+	return {ctor: 'UpdateLimit', _0: a};
+};
+var _user$project$Endpoints_TransactionsForAccount_Msg$UpdateCursor = function (a) {
+	return {ctor: 'UpdateCursor', _0: a};
+};
+var _user$project$Endpoints_TransactionsForAccount_Msg$UpdateAccount = function (a) {
+	return {ctor: 'UpdateAccount', _0: a};
+};
+
+var _user$project$Stellar_Endpoints_TransactionsForLedger$url = F2(
+	function (endpoint, ledgerId) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			_user$project$Stellar_Endpoint$toString(endpoint),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'/ledgers/',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(ledgerId),
+					'/transactions')));
+	});
+var _user$project$Stellar_Endpoints_TransactionsForLedger$setSorting = F2(
+	function (sorting, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'order',
+					_1: _user$project$Stellar_Sorting$toString(sorting)
+				},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_TransactionsForLedger$setLimit = F2(
+	function (limit, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'limit',
+					_1: _elm_lang$core$Basics$toString(limit)
+				},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_TransactionsForLedger$setCursor = F2(
+	function (cursor, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'cursor', _1: cursor},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_TransactionsForLedger$send = _lukewestby$elm_http_builder$HttpBuilder$send;
+var _user$project$Stellar_Endpoints_TransactionsForLedger$Success = function (a) {
+	return {ctor: 'Success', _0: a};
+};
+var _user$project$Stellar_Endpoints_TransactionsForLedger$Error = function (a) {
+	return {ctor: 'Error', _0: a};
+};
+var _user$project$Stellar_Endpoints_TransactionsForLedger$decoder = _elm_lang$core$Json_Decode$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionsForLedger$Error, _user$project$Stellar_Errors_Error$decoder),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$core$Json_Decode$map,
+				_user$project$Stellar_Endpoints_TransactionsForLedger$Success,
+				_user$project$Stellar_Resources_Page$decoder(_user$project$Stellar_Resources_Transaction$decoder)),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Stellar_Endpoints_TransactionsForLedger$requestBuilder = F2(
+	function (endpoint, ledgerId) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withExpect,
+			_elm_lang$http$Http$expectJson(_user$project$Stellar_Endpoints_TransactionsForLedger$decoder),
+			_lukewestby$elm_http_builder$HttpBuilder$get(
+				A2(_user$project$Stellar_Endpoints_TransactionsForLedger$url, endpoint, ledgerId)));
+	});
+
+var _user$project$Endpoints_TransactionsForLedger_Model$initialSettings = {ledgerId: _bluedogtraining$bdt_elm$Form_IntInput$init, cursor: _bluedogtraining$bdt_elm$Form_Input$init, limit: _bluedogtraining$bdt_elm$Form_IntInput$init, sorting: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_TransactionsForLedger_Model$initialModel = {settings: _user$project$Endpoints_TransactionsForLedger_Model$initialSettings, isLoading: false, response: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_TransactionsForLedger_Model$Model = F3(
+	function (a, b, c) {
+		return {settings: a, isLoading: b, response: c};
+	});
+var _user$project$Endpoints_TransactionsForLedger_Model$Settings = F4(
+	function (a, b, c, d) {
+		return {ledgerId: a, cursor: b, limit: c, sorting: d};
+	});
+
+var _user$project$Endpoints_TransactionsForLedger_Msg$Response = function (a) {
+	return {ctor: 'Response', _0: a};
+};
+var _user$project$Endpoints_TransactionsForLedger_Msg$Request = F2(
+	function (a, b) {
+		return {ctor: 'Request', _0: a, _1: b};
+	});
+var _user$project$Endpoints_TransactionsForLedger_Msg$SettingsMsg = function (a) {
+	return {ctor: 'SettingsMsg', _0: a};
+};
+var _user$project$Endpoints_TransactionsForLedger_Msg$UpdateSorting = function (a) {
+	return {ctor: 'UpdateSorting', _0: a};
+};
+var _user$project$Endpoints_TransactionsForLedger_Msg$UpdateLimit = function (a) {
+	return {ctor: 'UpdateLimit', _0: a};
+};
+var _user$project$Endpoints_TransactionsForLedger_Msg$UpdateCursor = function (a) {
+	return {ctor: 'UpdateCursor', _0: a};
+};
+var _user$project$Endpoints_TransactionsForLedger_Msg$UpdateLedgerId = function (a) {
+	return {ctor: 'UpdateLedgerId', _0: a};
+};
+
+var _user$project$Endpoints_Msg$TransactionsForLedgerMsg = function (a) {
+	return {ctor: 'TransactionsForLedgerMsg', _0: a};
+};
+var _user$project$Endpoints_Msg$TransactionsForAccountMsg = function (a) {
+	return {ctor: 'TransactionsForAccountMsg', _0: a};
+};
+var _user$project$Endpoints_Msg$AllTransactionsMsg = function (a) {
+	return {ctor: 'AllTransactionsMsg', _0: a};
+};
 var _user$project$Endpoints_Msg$PaymentsForTransactionMsg = function (a) {
 	return {ctor: 'PaymentsForTransactionMsg', _0: a};
 };
@@ -36877,6 +37358,405 @@ var _user$project$Endpoints_AllPayments_View$view = F2(
 			});
 	});
 
+var _user$project$Endpoints_AllTransactions_MsgFactory$composeMsg = function (_p0) {
+	return _user$project$Endpoints_MsgFactory$composeMsg(
+		_user$project$Endpoints_Msg$AllTransactionsMsg(_p0));
+};
+
+var _user$project$Endpoints_AllTransactions_RequestBuilder$requestBuilder = F2(
+	function (endpoint, settings) {
+		return A3(
+			_user$project$Endpoints_Helpers$setIfJust,
+			_user$project$Stellar_Endpoints_AllTransactions$setSorting,
+			settings.sorting,
+			A5(
+				_user$project$Endpoints_Helpers$setIfChangedMaybe,
+				_user$project$Stellar_Endpoints_AllTransactions$setLimit,
+				_bluedogtraining$bdt_elm$Form_IntInput$getIsChanged,
+				_bluedogtraining$bdt_elm$Form_IntInput$getValue,
+				settings.limit,
+				A5(
+					_user$project$Endpoints_Helpers$setIfChanged,
+					_user$project$Stellar_Endpoints_AllTransactions$setCursor,
+					_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
+					_bluedogtraining$bdt_elm$Form_Input$getValue,
+					settings.cursor,
+					_user$project$Stellar_Endpoints_AllTransactions$requestBuilder(endpoint))));
+	});
+
+var _user$project$Endpoints_AllTransactions_Update$updateSettings = F2(
+	function (updateSettingsMsg, model) {
+		var settingsModel = model.settings;
+		var newSettingsModel = function () {
+			var _p0 = updateSettingsMsg;
+			switch (_p0.ctor) {
+				case 'UpdateCursor':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							cursor: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p0._0, settingsModel.cursor)
+						});
+				case 'UpdateLimit':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							limit: A2(_bluedogtraining$bdt_elm$Form_IntInput$update, _p0._0, settingsModel.limit)
+						});
+				default:
+					var _p1 = _p0._0;
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							sorting: _elm_lang$core$Native_Utils.eq(
+								settingsModel.sorting,
+								_elm_lang$core$Maybe$Just(_p1)) ? _elm_lang$core$Maybe$Nothing : _elm_lang$core$Maybe$Just(_p1)
+						});
+			}
+		}();
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{settings: newSettingsModel});
+	});
+var _user$project$Endpoints_AllTransactions_Update$update = F2(
+	function (msg, model) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
+			case 'SettingsMsg':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					A2(_user$project$Endpoints_AllTransactions_Update$updateSettings, _p2._0, model),
+					{ctor: '[]'});
+			case 'Request':
+				var request = A2(_user$project$Endpoints_AllTransactions_RequestBuilder$requestBuilder, _p2._0, _p2._1);
+				var msg = function (_p3) {
+					return _user$project$Endpoints_AllTransactions_MsgFactory$composeMsg(
+						_user$project$Endpoints_AllTransactions_Msg$Response(_p3));
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isLoading: true}),
+					{
+						ctor: '::',
+						_0: A2(_user$project$Stellar_Endpoints_AllTransactions$send, msg, request),
+						_1: {ctor: '[]'}
+					});
+			default:
+				if (_p2._0.ctor === 'Err') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllTransactions$Error))
+							}),
+						{ctor: '[]'});
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									_elm_lang$core$Result$Ok(_p2._0._0))
+							}),
+						{ctor: '[]'});
+				}
+		}
+	});
+
+var _user$project$Endpoints_AllTransactions_View$view = F2(
+	function (endpoint, model) {
+		return A2(
+			_rtfeldman$elm_css$Html_Styled$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(_user$project$Endpoints_Views_Title$view, 'All Transactions', 'https://www.stellar.org/developers/horizon/reference/endpoints/transactions-all.html'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$div,
+						{
+							ctor: '::',
+							_0: _user$project$Endpoints_Styles$page,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$h2,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('Request'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Endpoints_Views_Endpoint$view(endpoint),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$div,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$label,
+												{
+													ctor: '::',
+													_0: _user$project$Endpoints_Styles$label,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$span,
+														{ctor: '[]'},
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled$text('Cursor'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$labelExample,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 1)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$map,
+													function (_p0) {
+														return _user$project$Endpoints_AllTransactions_MsgFactory$composeMsg(
+															_user$project$Endpoints_AllTransactions_Msg$SettingsMsg(
+																_user$project$Endpoints_AllTransactions_Msg$UpdateCursor(_p0)));
+													},
+													_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+														_bluedogtraining$bdt_elm$Form_Input$render(
+															_bluedogtraining$bdt_elm$Form_Input$view(model.settings.cursor)))),
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_rtfeldman$elm_css$Html_Styled$div,
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$label,
+													{
+														ctor: '::',
+														_0: _user$project$Endpoints_Styles$label,
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('Limit'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{
+																	ctor: '::',
+																	_0: _user$project$Endpoints_Styles$labelExample,
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 200, default: 10)'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$map,
+														function (_p1) {
+															return _user$project$Endpoints_AllTransactions_MsgFactory$composeMsg(
+																_user$project$Endpoints_AllTransactions_Msg$SettingsMsg(
+																	_user$project$Endpoints_AllTransactions_Msg$UpdateLimit(_p1)));
+														},
+														_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+															_bluedogtraining$bdt_elm$Form_IntInput$render(
+																_bluedogtraining$bdt_elm$Form_IntInput$view(model.settings.limit)))),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$div,
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$label,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$label,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('Sorting'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{
+																		ctor: '::',
+																		_0: _user$project$Endpoints_Styles$labelExample,
+																		_1: {ctor: '[]'}
+																	},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('(default: asc)'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$div,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{
+																		ctor: '::',
+																		_0: _user$project$Endpoints_Styles$radioButton(
+																			_elm_lang$core$Native_Utils.eq(
+																				model.settings.sorting,
+																				_elm_lang$core$Maybe$Just(_user$project$Stellar_Sorting$Asc))),
+																		_1: {
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
+																				_user$project$Endpoints_AllTransactions_MsgFactory$composeMsg(
+																					_user$project$Endpoints_AllTransactions_Msg$SettingsMsg(
+																						_user$project$Endpoints_AllTransactions_Msg$UpdateSorting(_user$project$Stellar_Sorting$Asc)))),
+																			_1: {ctor: '[]'}
+																		}
+																	},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('Asc'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{
+																			ctor: '::',
+																			_0: _user$project$Endpoints_Styles$radioButton(
+																				_elm_lang$core$Native_Utils.eq(
+																					model.settings.sorting,
+																					_elm_lang$core$Maybe$Just(_user$project$Stellar_Sorting$Desc))),
+																			_1: {
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
+																					_user$project$Endpoints_AllTransactions_MsgFactory$composeMsg(
+																						_user$project$Endpoints_AllTransactions_Msg$SettingsMsg(
+																							_user$project$Endpoints_AllTransactions_Msg$UpdateSorting(_user$project$Stellar_Sorting$Desc)))),
+																				_1: {ctor: '[]'}
+																			}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('Desc'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: _user$project$Endpoints_Views_Request$view(
+													A2(
+														_user$project$Endpoints_AllTransactions_RequestBuilder$requestBuilder,
+														_user$project$Endpoints_Helpers$endpointFromInput(endpoint),
+														model.settings)),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_user$project$Endpoints_Views_Button$view,
+														model.isLoading,
+														_user$project$Endpoints_AllTransactions_MsgFactory$composeMsg(
+															A2(
+																_user$project$Endpoints_AllTransactions_Msg$Request,
+																_user$project$Endpoints_Helpers$endpointFromInput(endpoint),
+																model.settings))),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Endpoints_Views_Response$view, model.response, model.isLoading),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+
 var _user$project$Endpoints_DataForAccount_MsgFactory$composeMsg = function (_p0) {
 	return _user$project$Endpoints_MsgFactory$composeMsg(
 		_user$project$Endpoints_Msg$DataForAccountMsg(_p0));
@@ -39280,7 +40160,10 @@ var _user$project$Endpoints_Model$initialModel = {
 	allPayments: _user$project$Endpoints_AllPayments_Model$initialModel,
 	paymentsForAccount: _user$project$Endpoints_PaymentsForAccount_Model$initialModel,
 	paymentsForLedger: _user$project$Endpoints_PaymentsForLedger_Model$initialModel,
-	paymentsForTransaction: _user$project$Endpoints_PaymentsForTransaction_Model$initialModel
+	paymentsForTransaction: _user$project$Endpoints_PaymentsForTransaction_Model$initialModel,
+	allTransactions: _user$project$Endpoints_AllTransactions_Model$initialModel,
+	transactionsForAccount: _user$project$Endpoints_TransactionsForAccount_Model$initialModel,
+	transactionsForLedger: _user$project$Endpoints_TransactionsForLedger_Model$initialModel
 };
 var _user$project$Endpoints_Model$Model = function (a) {
 	return function (b) {
@@ -39304,7 +40187,13 @@ var _user$project$Endpoints_Model$Model = function (a) {
 																			return function (t) {
 																				return function (u) {
 																					return function (v) {
-																						return {endpoint: a, accountDetails: b, allAssets: c, allEffects: d, effectsForAccount: e, effectsForLedger: f, effectsForOperation: g, effectsForTransaction: h, dataForAccount: i, allLedgers: j, ledgerDetails: k, offersForAccount: l, allOperations: m, operationsForAccount: n, operationsForLedger: o, operationsForTransaction: p, operationDetails: q, orderbookDetails: r, allPayments: s, paymentsForAccount: t, paymentsForLedger: u, paymentsForTransaction: v};
+																						return function (w) {
+																							return function (x) {
+																								return function (y) {
+																									return {endpoint: a, accountDetails: b, allAssets: c, allEffects: d, effectsForAccount: e, effectsForLedger: f, effectsForOperation: g, effectsForTransaction: h, dataForAccount: i, allLedgers: j, ledgerDetails: k, offersForAccount: l, allOperations: m, operationsForAccount: n, operationsForLedger: o, operationsForTransaction: p, operationDetails: q, orderbookDetails: r, allPayments: s, paymentsForAccount: t, paymentsForLedger: u, paymentsForTransaction: v, allTransactions: w, transactionsForAccount: x, transactionsForLedger: y};
+																								};
+																							};
+																						};
 																					};
 																				};
 																			};
@@ -43493,6 +44382,943 @@ var _user$project$Endpoints_PaymentsForTransaction_View$view = F2(
 			});
 	});
 
+var _user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg = function (_p0) {
+	return _user$project$Endpoints_MsgFactory$composeMsg(
+		_user$project$Endpoints_Msg$TransactionsForAccountMsg(_p0));
+};
+
+var _user$project$Endpoints_TransactionsForAccount_RequestBuilder$requestBuilder = F2(
+	function (endpoint, settings) {
+		return A3(
+			_user$project$Endpoints_Helpers$setIfJust,
+			_user$project$Stellar_Endpoints_TransactionsForAccount$setSorting,
+			settings.sorting,
+			A5(
+				_user$project$Endpoints_Helpers$setIfChangedMaybe,
+				_user$project$Stellar_Endpoints_TransactionsForAccount$setLimit,
+				_bluedogtraining$bdt_elm$Form_IntInput$getIsChanged,
+				_bluedogtraining$bdt_elm$Form_IntInput$getValue,
+				settings.limit,
+				A5(
+					_user$project$Endpoints_Helpers$setIfChanged,
+					_user$project$Stellar_Endpoints_TransactionsForAccount$setCursor,
+					_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
+					_bluedogtraining$bdt_elm$Form_Input$getValue,
+					settings.cursor,
+					A2(
+						_user$project$Stellar_Endpoints_TransactionsForAccount$requestBuilder,
+						_user$project$Endpoints_Helpers$endpointFromInput(endpoint),
+						_user$project$Endpoints_Helpers$publicKeyFromInput(settings.account)))));
+	});
+
+var _user$project$Endpoints_TransactionsForAccount_Update$updateSettings = F2(
+	function (updateSettingsMsg, model) {
+		var settingsModel = model.settings;
+		var newSettingsModel = function () {
+			var _p0 = updateSettingsMsg;
+			switch (_p0.ctor) {
+				case 'UpdateAccount':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							account: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p0._0, settingsModel.account)
+						});
+				case 'UpdateCursor':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							cursor: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p0._0, settingsModel.cursor)
+						});
+				case 'UpdateLimit':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							limit: A2(_bluedogtraining$bdt_elm$Form_IntInput$update, _p0._0, settingsModel.limit)
+						});
+				default:
+					var _p1 = _p0._0;
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							sorting: _elm_lang$core$Native_Utils.eq(
+								settingsModel.sorting,
+								_elm_lang$core$Maybe$Just(_p1)) ? _elm_lang$core$Maybe$Nothing : _elm_lang$core$Maybe$Just(_p1)
+						});
+			}
+		}();
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{settings: newSettingsModel});
+	});
+var _user$project$Endpoints_TransactionsForAccount_Update$update = F2(
+	function (msg, model) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
+			case 'SettingsMsg':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					A2(_user$project$Endpoints_TransactionsForAccount_Update$updateSettings, _p2._0, model),
+					{ctor: '[]'});
+			case 'Request':
+				var request = A2(_user$project$Endpoints_TransactionsForAccount_RequestBuilder$requestBuilder, _p2._0, _p2._1);
+				var msg = function (_p3) {
+					return _user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+						_user$project$Endpoints_TransactionsForAccount_Msg$Response(_p3));
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isLoading: true}),
+					{
+						ctor: '::',
+						_0: A2(_user$project$Stellar_Endpoints_TransactionsForAccount$send, msg, request),
+						_1: {ctor: '[]'}
+					});
+			default:
+				if (_p2._0.ctor === 'Err') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_TransactionsForAccount$Error))
+							}),
+						{ctor: '[]'});
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									_elm_lang$core$Result$Ok(_p2._0._0))
+							}),
+						{ctor: '[]'});
+				}
+		}
+	});
+
+var _user$project$Endpoints_TransactionsForAccount_View$view = F2(
+	function (endpoint, model) {
+		return A2(
+			_rtfeldman$elm_css$Html_Styled$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(_user$project$Endpoints_Views_Title$view, 'Transactions for Account', 'https://www.stellar.org/developers/horizon/reference/endpoints/transactions-for-account.html'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$div,
+						{
+							ctor: '::',
+							_0: _user$project$Endpoints_Styles$page,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$h2,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('Request'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Endpoints_Views_Endpoint$view(endpoint),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$div,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$label,
+												{
+													ctor: '::',
+													_0: _user$project$Endpoints_Styles$label,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$span,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$labelMandatory,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled$text('Account'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$labelExample,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$map,
+													function (_p0) {
+														return _user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+															_user$project$Endpoints_TransactionsForAccount_Msg$SettingsMsg(
+																_user$project$Endpoints_TransactionsForAccount_Msg$UpdateAccount(_p0)));
+													},
+													_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+														_bluedogtraining$bdt_elm$Form_Input$render(
+															_bluedogtraining$bdt_elm$Form_Input$view(model.settings.account)))),
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_rtfeldman$elm_css$Html_Styled$div,
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$label,
+													{
+														ctor: '::',
+														_0: _user$project$Endpoints_Styles$label,
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('Cursor'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{
+																	ctor: '::',
+																	_0: _user$project$Endpoints_Styles$labelExample,
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 1)'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$map,
+														function (_p1) {
+															return _user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+																_user$project$Endpoints_TransactionsForAccount_Msg$SettingsMsg(
+																	_user$project$Endpoints_TransactionsForAccount_Msg$UpdateCursor(_p1)));
+														},
+														_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+															_bluedogtraining$bdt_elm$Form_Input$render(
+																_bluedogtraining$bdt_elm$Form_Input$view(model.settings.cursor)))),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$div,
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$label,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$label,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('Limit'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{
+																		ctor: '::',
+																		_0: _user$project$Endpoints_Styles$labelExample,
+																		_1: {ctor: '[]'}
+																	},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 200, default: 10)'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$map,
+															function (_p2) {
+																return _user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+																	_user$project$Endpoints_TransactionsForAccount_Msg$SettingsMsg(
+																		_user$project$Endpoints_TransactionsForAccount_Msg$UpdateLimit(_p2)));
+															},
+															_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+																_bluedogtraining$bdt_elm$Form_IntInput$render(
+																	_bluedogtraining$bdt_elm$Form_IntInput$view(model.settings.limit)))),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$div,
+													{
+														ctor: '::',
+														_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$label,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$label,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('Sorting'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{
+																			ctor: '::',
+																			_0: _user$project$Endpoints_Styles$labelExample,
+																			_1: {ctor: '[]'}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('(default: asc)'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$div,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{
+																			ctor: '::',
+																			_0: _user$project$Endpoints_Styles$radioButton(
+																				_elm_lang$core$Native_Utils.eq(
+																					model.settings.sorting,
+																					_elm_lang$core$Maybe$Just(_user$project$Stellar_Sorting$Asc))),
+																			_1: {
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
+																					_user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+																						_user$project$Endpoints_TransactionsForAccount_Msg$SettingsMsg(
+																							_user$project$Endpoints_TransactionsForAccount_Msg$UpdateSorting(_user$project$Stellar_Sorting$Asc)))),
+																				_1: {ctor: '[]'}
+																			}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('Asc'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(
+																			_rtfeldman$elm_css$Html_Styled$span,
+																			{
+																				ctor: '::',
+																				_0: _user$project$Endpoints_Styles$radioButton(
+																					_elm_lang$core$Native_Utils.eq(
+																						model.settings.sorting,
+																						_elm_lang$core$Maybe$Just(_user$project$Stellar_Sorting$Desc))),
+																				_1: {
+																					ctor: '::',
+																					_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
+																						_user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+																							_user$project$Endpoints_TransactionsForAccount_Msg$SettingsMsg(
+																								_user$project$Endpoints_TransactionsForAccount_Msg$UpdateSorting(_user$project$Stellar_Sorting$Desc)))),
+																					_1: {ctor: '[]'}
+																				}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled$text('Desc'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: _user$project$Endpoints_Views_Request$view(
+														A2(_user$project$Endpoints_TransactionsForAccount_RequestBuilder$requestBuilder, endpoint, model.settings)),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_user$project$Endpoints_Views_Button$view,
+															model.isLoading,
+															_user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg(
+																A2(_user$project$Endpoints_TransactionsForAccount_Msg$Request, endpoint, model.settings))),
+														_1: {
+															ctor: '::',
+															_0: A2(_user$project$Endpoints_Views_Response$view, model.response, model.isLoading),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+
+var _user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg = function (_p0) {
+	return _user$project$Endpoints_MsgFactory$composeMsg(
+		_user$project$Endpoints_Msg$TransactionsForLedgerMsg(_p0));
+};
+
+var _user$project$Endpoints_TransactionsForLedger_RequestBuilder$requestBuilder = F2(
+	function (endpoint, settings) {
+		return A3(
+			_user$project$Endpoints_Helpers$setIfJust,
+			_user$project$Stellar_Endpoints_TransactionsForLedger$setSorting,
+			settings.sorting,
+			A5(
+				_user$project$Endpoints_Helpers$setIfChangedMaybe,
+				_user$project$Stellar_Endpoints_TransactionsForLedger$setLimit,
+				_bluedogtraining$bdt_elm$Form_IntInput$getIsChanged,
+				_bluedogtraining$bdt_elm$Form_IntInput$getValue,
+				settings.limit,
+				A5(
+					_user$project$Endpoints_Helpers$setIfChanged,
+					_user$project$Stellar_Endpoints_TransactionsForLedger$setCursor,
+					_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
+					_bluedogtraining$bdt_elm$Form_Input$getValue,
+					settings.cursor,
+					A2(
+						_user$project$Stellar_Endpoints_TransactionsForLedger$requestBuilder,
+						_user$project$Endpoints_Helpers$endpointFromInput(endpoint),
+						A2(
+							_elm_lang$core$Maybe$withDefault,
+							0,
+							_bluedogtraining$bdt_elm$Form_IntInput$getValue(settings.ledgerId))))));
+	});
+
+var _user$project$Endpoints_TransactionsForLedger_Update$updateSettings = F2(
+	function (updateSettingsMsg, model) {
+		var settingsModel = model.settings;
+		var newSettingsModel = function () {
+			var _p0 = updateSettingsMsg;
+			switch (_p0.ctor) {
+				case 'UpdateLedgerId':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							ledgerId: A2(_bluedogtraining$bdt_elm$Form_IntInput$update, _p0._0, settingsModel.ledgerId)
+						});
+				case 'UpdateCursor':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							cursor: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p0._0, settingsModel.cursor)
+						});
+				case 'UpdateLimit':
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							limit: A2(_bluedogtraining$bdt_elm$Form_IntInput$update, _p0._0, settingsModel.limit)
+						});
+				default:
+					var _p1 = _p0._0;
+					return _elm_lang$core$Native_Utils.update(
+						settingsModel,
+						{
+							sorting: _elm_lang$core$Native_Utils.eq(
+								settingsModel.sorting,
+								_elm_lang$core$Maybe$Just(_p1)) ? _elm_lang$core$Maybe$Nothing : _elm_lang$core$Maybe$Just(_p1)
+						});
+			}
+		}();
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{settings: newSettingsModel});
+	});
+var _user$project$Endpoints_TransactionsForLedger_Update$update = F2(
+	function (msg, model) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
+			case 'SettingsMsg':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					A2(_user$project$Endpoints_TransactionsForLedger_Update$updateSettings, _p2._0, model),
+					{ctor: '[]'});
+			case 'Request':
+				var request = A2(_user$project$Endpoints_TransactionsForLedger_RequestBuilder$requestBuilder, _p2._0, _p2._1);
+				var msg = function (_p3) {
+					return _user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+						_user$project$Endpoints_TransactionsForLedger_Msg$Response(_p3));
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isLoading: true}),
+					{
+						ctor: '::',
+						_0: A2(_user$project$Stellar_Endpoints_TransactionsForLedger$send, msg, request),
+						_1: {ctor: '[]'}
+					});
+			default:
+				if (_p2._0.ctor === 'Err') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_TransactionsForLedger$Error))
+							}),
+						{ctor: '[]'});
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									_elm_lang$core$Result$Ok(_p2._0._0))
+							}),
+						{ctor: '[]'});
+				}
+		}
+	});
+
+var _user$project$Endpoints_TransactionsForLedger_View$view = F2(
+	function (endpoint, model) {
+		return A2(
+			_rtfeldman$elm_css$Html_Styled$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(_user$project$Endpoints_Views_Title$view, 'Transactions for Ledger', 'https://www.stellar.org/developers/horizon/reference/endpoints/offers-for-ledgerId.html'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$div,
+						{
+							ctor: '::',
+							_0: _user$project$Endpoints_Styles$page,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$h2,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('Request'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Endpoints_Views_Endpoint$view(endpoint),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$div,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$label,
+												{
+													ctor: '::',
+													_0: _user$project$Endpoints_Styles$label,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$span,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$labelMandatory,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled$text('Ledger'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$labelExample,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 69859)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$map,
+													function (_p0) {
+														return _user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+															_user$project$Endpoints_TransactionsForLedger_Msg$SettingsMsg(
+																_user$project$Endpoints_TransactionsForLedger_Msg$UpdateLedgerId(_p0)));
+													},
+													_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+														_bluedogtraining$bdt_elm$Form_IntInput$render(
+															_bluedogtraining$bdt_elm$Form_IntInput$view(model.settings.ledgerId)))),
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_rtfeldman$elm_css$Html_Styled$div,
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$label,
+													{
+														ctor: '::',
+														_0: _user$project$Endpoints_Styles$label,
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('Cursor'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{
+																	ctor: '::',
+																	_0: _user$project$Endpoints_Styles$labelExample,
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 1)'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$map,
+														function (_p1) {
+															return _user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+																_user$project$Endpoints_TransactionsForLedger_Msg$SettingsMsg(
+																	_user$project$Endpoints_TransactionsForLedger_Msg$UpdateCursor(_p1)));
+														},
+														_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+															_bluedogtraining$bdt_elm$Form_Input$render(
+																_bluedogtraining$bdt_elm$Form_Input$view(model.settings.cursor)))),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$div,
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$label,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$label,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('Limit'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{
+																		ctor: '::',
+																		_0: _user$project$Endpoints_Styles$labelExample,
+																		_1: {ctor: '[]'}
+																	},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('(eg: 200, default: 10)'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$map,
+															function (_p2) {
+																return _user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+																	_user$project$Endpoints_TransactionsForLedger_Msg$SettingsMsg(
+																		_user$project$Endpoints_TransactionsForLedger_Msg$UpdateLimit(_p2)));
+															},
+															_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+																_bluedogtraining$bdt_elm$Form_IntInput$render(
+																	_bluedogtraining$bdt_elm$Form_IntInput$view(model.settings.limit)))),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$div,
+													{
+														ctor: '::',
+														_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$label,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$label,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('Sorting'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{
+																			ctor: '::',
+																			_0: _user$project$Endpoints_Styles$labelExample,
+																			_1: {ctor: '[]'}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('(default: asc)'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$div,
+																{ctor: '[]'},
+																{
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{
+																			ctor: '::',
+																			_0: _user$project$Endpoints_Styles$radioButton(
+																				_elm_lang$core$Native_Utils.eq(
+																					model.settings.sorting,
+																					_elm_lang$core$Maybe$Just(_user$project$Stellar_Sorting$Asc))),
+																			_1: {
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
+																					_user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+																						_user$project$Endpoints_TransactionsForLedger_Msg$SettingsMsg(
+																							_user$project$Endpoints_TransactionsForLedger_Msg$UpdateSorting(_user$project$Stellar_Sorting$Asc)))),
+																				_1: {ctor: '[]'}
+																			}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('Asc'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(
+																			_rtfeldman$elm_css$Html_Styled$span,
+																			{
+																				ctor: '::',
+																				_0: _user$project$Endpoints_Styles$radioButton(
+																					_elm_lang$core$Native_Utils.eq(
+																						model.settings.sorting,
+																						_elm_lang$core$Maybe$Just(_user$project$Stellar_Sorting$Desc))),
+																				_1: {
+																					ctor: '::',
+																					_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
+																						_user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+																							_user$project$Endpoints_TransactionsForLedger_Msg$SettingsMsg(
+																								_user$project$Endpoints_TransactionsForLedger_Msg$UpdateSorting(_user$project$Stellar_Sorting$Desc)))),
+																					_1: {ctor: '[]'}
+																				}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled$text('Desc'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: _user$project$Endpoints_Views_Request$view(
+														A2(_user$project$Endpoints_TransactionsForLedger_RequestBuilder$requestBuilder, endpoint, model.settings)),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_user$project$Endpoints_Views_Button$view,
+															model.isLoading,
+															_user$project$Endpoints_TransactionsForLedger_MsgFactory$composeMsg(
+																A2(_user$project$Endpoints_TransactionsForLedger_Msg$Request, endpoint, model.settings))),
+														_1: {
+															ctor: '::',
+															_0: A2(_user$project$Endpoints_Views_Response$view, model.response, model.isLoading),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+
 var _user$project$Endpoints_Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
@@ -43786,7 +45612,7 @@ var _user$project$Endpoints_Update$update = F2(
 						_0: cmd,
 						_1: {ctor: '[]'}
 					});
-			default:
+			case 'PaymentsForTransactionMsg':
 				var _p21 = A2(_user$project$Endpoints_PaymentsForTransaction_Update$update, _p0._0, model.paymentsForTransaction);
 				var paymentsForTransactionModel = _p21._0;
 				var cmd = _p21._1;
@@ -43795,6 +45621,48 @@ var _user$project$Endpoints_Update$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{paymentsForTransaction: paymentsForTransactionModel}),
+					{
+						ctor: '::',
+						_0: cmd,
+						_1: {ctor: '[]'}
+					});
+			case 'AllTransactionsMsg':
+				var _p22 = A2(_user$project$Endpoints_AllTransactions_Update$update, _p0._0, model.allTransactions);
+				var allTransactionsModel = _p22._0;
+				var cmd = _p22._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{allTransactions: allTransactionsModel}),
+					{
+						ctor: '::',
+						_0: cmd,
+						_1: {ctor: '[]'}
+					});
+			case 'TransactionsForAccountMsg':
+				var _p23 = A2(_user$project$Endpoints_TransactionsForAccount_Update$update, _p0._0, model.transactionsForAccount);
+				var transactionsForAccountModel = _p23._0;
+				var cmd = _p23._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{transactionsForAccount: transactionsForAccountModel}),
+					{
+						ctor: '::',
+						_0: cmd,
+						_1: {ctor: '[]'}
+					});
+			default:
+				var _p24 = A2(_user$project$Endpoints_TransactionsForLedger_Update$update, _p0._0, model.transactionsForLedger);
+				var transactionsForLedgerModel = _p24._0;
+				var cmd = _p24._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{transactionsForLedger: transactionsForLedgerModel}),
 					{
 						ctor: '::',
 						_0: cmd,
@@ -44256,15 +46124,15 @@ var _user$project$View$page = F2(
 				case 'Trades':
 					return _user$project$View$trades(endpoints);
 				case 'AllTransactions':
-					return _user$project$View$allTransactions(endpoints);
+					return A2(_user$project$Endpoints_AllTransactions_View$view, endpoints.endpoint, endpoints.allTransactions);
+				case 'TransactionDetails':
+					return _user$project$View$transactionDetails(endpoints);
 				case 'PostTransaction':
 					return _user$project$View$postTransaction(endpoints);
 				case 'TransactionsForAccount':
-					return _user$project$View$transactionsForAccount(endpoints);
-				case 'TransactionsForLedger':
-					return _user$project$View$transactionsForLedger(endpoints);
+					return A2(_user$project$Endpoints_TransactionsForAccount_View$view, endpoints.endpoint, endpoints.transactionsForAccount);
 				default:
-					return _user$project$View$transactionDetails(endpoints);
+					return A2(_user$project$Endpoints_TransactionsForLedger_View$view, endpoints.endpoint, endpoints.transactionsForLedger);
 			}
 		}
 	});

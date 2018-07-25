@@ -28,6 +28,9 @@ import Endpoints.AllPayments.Update as AllPayments
 import Endpoints.PaymentsForAccount.Update as PaymentsForAccount
 import Endpoints.PaymentsForLedger.Update as PaymentsForLedger
 import Endpoints.PaymentsForTransaction.Update as PaymentsForTransaction
+import Endpoints.AllTransactions.Update as AllTransactions
+import Endpoints.TransactionsForAccount.Update as TransactionsForAccount
+import Endpoints.TransactionsForLedger.Update as TransactionsForLedger
 
 
 update : Endpoints.Msg -> Endpoints.Model -> (Endpoints.Model, Cmd Msg)
@@ -204,3 +207,27 @@ update msg model =
 
             in
                 { model | paymentsForTransaction = paymentsForTransactionModel } ! [ cmd ]
+
+        Endpoints.AllTransactionsMsg msg ->
+            let
+                (allTransactionsModel, cmd) =
+                    AllTransactions.update msg model.allTransactions
+
+            in
+                { model | allTransactions = allTransactionsModel } ! [ cmd ]
+
+        Endpoints.TransactionsForAccountMsg msg ->
+            let
+                (transactionsForAccountModel, cmd) =
+                    TransactionsForAccount.update msg model.transactionsForAccount
+
+            in
+                { model | transactionsForAccount = transactionsForAccountModel } ! [ cmd ]
+
+        Endpoints.TransactionsForLedgerMsg msg ->
+            let
+                (transactionsForLedgerModel, cmd) =
+                    TransactionsForLedger.update msg model.transactionsForLedger
+
+            in
+                { model | transactionsForLedger = transactionsForLedgerModel } ! [ cmd ]
