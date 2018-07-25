@@ -1,50 +1,41 @@
-module Stellar.Resources.Payment exposing (Payment, decoder)
+module Stellar.Resources.Payment exposing (Payment (..), decoder)
 
 import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
 
-import Stellar.Link as Link exposing (Link)
+import Stellar.Resources.Operations.CreateAccount as CreateAccount exposing (CreateAccount)
+import Stellar.Resources.Operations.Payment as PaymentOperation
+import Stellar.Resources.Operations.PathPayment as PathPayment exposing (PathPayment)
+import Stellar.Resources.Operations.AccountMerge as AccountMerge exposing (AccountMerge)
 
 
-type alias Payment =
-    { id : String
-    , pagingToken : String
-    , type_ : String
-    , typeI : Int
-    , account : String
-    , funder : String
-    , startingBalance : String
-    , links : Links
-    }
+type Payment
+    = CreateAccount CreateAccount
+    | Payment_ PaymentOperation.Payment
+    | PathPayment PathPayment
+    | AccountMerge AccountMerge
 
 
 decoder : Decoder Payment
 decoder =
-    Decode.decode Payment
-        |> Decode.required "id" Decode.string
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "type" Decode.string
-        |> Decode.required "type_i" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "funder" Decode.string
-        |> Decode.required "starting_balance" Decode.string
-        |> Decode.required "_links" linksDecoder
+    Decode.field "type" Decode.string
+        |> Decode.andThen operationFromType
 
 
-type alias Links =
-    { self : Link
-    , succeeds : Link
-    , precedes : Link
-    , effects : Link
-    , transaction : Link
-    }
+operationFromType : String -> Decoder Payment
+operationFromType type_ =
 
+    case type_ of
+        "create_account" ->
+            Decode.map CreateAccount CreateAccount.decoder
 
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "self" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
-        |> Decode.required "effects" Link.decoder
-        |> Decode.required "transaction" Link.decoder
+        "payment" ->
+            Decode.map Payment_ PaymentOperation.decoder
+
+        "path_payment" ->
+            Decode.map PathPayment PathPayment.decoder
+
+        "account_merge" ->
+            Decode.map AccountMerge AccountMerge.decoder
+
+        _ ->
+            Decode.fail "Could not decode Payment"

@@ -1,4 +1,4 @@
-module Stellar.Resources.Operation exposing (Operation, decoder)
+module Stellar.Resources.Operation exposing (Operation (..), decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 
@@ -31,16 +31,46 @@ type Operation
 
 decoder : Decoder Operation
 decoder =
-    Decode.oneOf
-        [ Decode.map CreateAccount CreateAccount.decoder
-        , Decode.map Payment Payment.decoder
-        , Decode.map PathPayment PathPayment.decoder
-        , Decode.map ManageOffer ManageOffer.decoder
-        , Decode.map CreatePassiveOffer CreatePassiveOffer.decoder
-        , Decode.map SetOptions SetOptions.decoder
-        , Decode.map ChangeTrust ChangeTrust.decoder
-        , Decode.map AllowTrust AllowTrust.decoder
-        , Decode.map AccountMerge AccountMerge.decoder
-        , Decode.map Inflation Inflation.decoder
-        , Decode.map ManageData ManageData.decoder
-        ]
+    Decode.field "type" Decode.string
+        |> Decode.andThen operationFromType
+
+
+operationFromType : String -> Decoder Operation
+operationFromType type_ =
+
+    case type_ of
+        "create_account" ->
+            Decode.map CreateAccount CreateAccount.decoder
+
+        "payment" ->
+            Decode.map Payment Payment.decoder
+
+        "path_payment" ->
+            Decode.map PathPayment PathPayment.decoder
+
+        "manage_offer" ->
+            Decode.map ManageOffer ManageOffer.decoder
+
+        "create_passive_offer" ->
+            Decode.map CreatePassiveOffer CreatePassiveOffer.decoder
+
+        "set_options" ->
+            Decode.map SetOptions SetOptions.decoder
+
+        "change_trust" ->
+            Decode.map ChangeTrust ChangeTrust.decoder
+
+        "allow_trust" ->
+            Decode.map AllowTrust AllowTrust.decoder
+
+        "account_merge" ->
+            Decode.map AccountMerge AccountMerge.decoder
+
+        "inflation" ->
+            Decode.map Inflation Inflation.decoder
+
+        "manage_data" ->
+            Decode.map ManageData ManageData.decoder
+
+        _ ->
+            Decode.fail "Could not decode Operation"

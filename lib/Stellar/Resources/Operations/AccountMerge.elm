@@ -1,17 +1,23 @@
 module Stellar.Resources.Operations.AccountMerge exposing (AccountMerge, decoder)
 
+import Date exposing (Date)
+
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Link as Link exposing (Link)
-import Stellar.PublicKey as PublicKey exposing (PublicKey)
+import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
 type alias AccountMerge =
     { id : String
     , pagingToken : String
+    , sourceAccount : String
     , type_ : String
     , typeI : Int
+    , createdAt : Date
+    , transactionHash : String
+    , account : String
     , into : String
     , links : Links
     }
@@ -22,26 +28,11 @@ decoder =
     Decode.decode AccountMerge
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
+        |> Decode.required "source_account" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
+        |> Decode.required "created_at" Decode.date
+        |> Decode.required "transaction_hash" Decode.string
+        |> Decode.required "account" Decode.string
         |> Decode.required "into" Decode.string
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { self : Link
-    , succeeds : Link
-    , precedes : Link
-    , effects : Link
-    , transaction : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "self" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
-        |> Decode.required "effects" Link.decoder
-        |> Decode.required "transaction" Link.decoder
+        |> Decode.required "_links" Links.decoder

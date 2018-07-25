@@ -1,28 +1,36 @@
 module Stellar.Resources.Operations.SetOptions exposing (SetOptions, decoder)
 
+import Date exposing (Date)
+
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Link as Link exposing (Link)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
+
+import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
 type alias SetOptions =
     { id : String
     , pagingToken : String
+    , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , signerKey : PublicKey
-    , signerWeight : Int
-    , masterKeyWeight : Int
-    , lowThreshold : Int
-    , medThreshold : Int
-    , highThreshold : Int
-    , homeDomain : String
+    , createdAt : Date
+    , transactionHash : String
+    , homeDomain : Maybe String
+    , inflationDestination : Maybe String
+    , masterKeyWeight : Maybe Int
+    , signerKey : Maybe PublicKey
+    , signerWeight : Maybe Int
     , setFlags : List Int
     , setFlagsS : List String
     , clearFlags : List Int
     , clearFlagsS : List String
+    , lowThreshold : Maybe Int
+    , medThreshold : Maybe Int
+    , highThreshold : Maybe Int
     , links : Links
     }
 
@@ -32,36 +40,21 @@ decoder =
     Decode.decode SetOptions
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
+        |> Decode.required "source_account" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
-        |> Decode.required "signer_key" PublicKey.decoder
-        |> Decode.required "signer_weight" Decode.int
-        |> Decode.required "master_key_weight" Decode.int
-        |> Decode.required "low_threshold" Decode.int
-        |> Decode.required "med_threshold" Decode.int
-        |> Decode.required "high_threshold" Decode.int
-        |> Decode.required "home_domain" Decode.string
-        |> Decode.required "set_flags" (Decode.list Decode.int)
-        |> Decode.required "set_flags_s" (Decode.list Decode.string)
-        |> Decode.required "clear_flags" (Decode.list Decode.int)
-        |> Decode.required "clear_flags_s" (Decode.list Decode.string)
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { self : Link
-    , succeeds : Link
-    , precedes : Link
-    , effects : Link
-    , transaction : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "self" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
-        |> Decode.required "effects" Link.decoder
-        |> Decode.required "transaction" Link.decoder
+        |> Decode.required "created_at" Decode.date
+        |> Decode.required "transaction_hash" Decode.string
+        |> Decode.optional "home_domain" (Decode.maybe Decode.string) Nothing
+        |> Decode.optional "inflation_dest" (Decode.maybe Decode.string) Nothing
+        |> Decode.optional "master_key_weight" (Decode.maybe Decode.int) Nothing
+        |> Decode.optional "signer_key" (Decode.maybe PublicKey.decoder) Nothing
+        |> Decode.optional "signer_weight" (Decode.maybe Decode.int) Nothing
+        |> Decode.optional "set_flags" (Decode.list Decode.int) []
+        |> Decode.optional "set_flags_s" (Decode.list Decode.string) []
+        |> Decode.optional "clear_flags" (Decode.list Decode.int) []
+        |> Decode.optional "clear_flags_s" (Decode.list Decode.string) []
+        |> Decode.optional "low_threshold" (Decode.maybe Decode.int) Nothing
+        |> Decode.optional "med_threshold" (Decode.maybe Decode.int) Nothing
+        |> Decode.optional "high_threshold" (Decode.maybe Decode.int) Nothing
+        |> Decode.required "_links" Links.decoder

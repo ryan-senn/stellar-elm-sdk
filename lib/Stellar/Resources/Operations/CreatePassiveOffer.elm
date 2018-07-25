@@ -1,27 +1,34 @@
 module Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOffer, decoder)
 
+import Date exposing (Date)
+
 import Json.Decode as Decode exposing (Decoder)
+import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
 
 import Stellar.AssetType as AssetType exposing (AssetType)
-import Stellar.Link as Link exposing (Link)
+
+import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
 type alias CreatePassiveOffer =
     { id : String
     , pagingToken : String
+    , sourceAccount : String
     , type_ : String
     , typeI : Int
+    , createdAt : Date
+    , transactionHash : String
     , offerId : Int
     , amount : String
-    , buyingAssetCode : String
-    , buyingAssetIssuer : String
-    , buyingAssetType : AssetType
     , price : String
     , priceR : String
+    , buyingAssetType : AssetType
+    , buyingAssetCode : String
+    , buyingAssetIssuer : String
+    , sellingAssetType : AssetType
     , sellingAssetCode : String
     , sellingAssetIssuer : String
-    , sellingAssetType : AssetType
     , links : Links
     }
 
@@ -31,35 +38,19 @@ decoder =
     Decode.decode CreatePassiveOffer
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
+        |> Decode.required "source_account" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
+        |> Decode.required "created_at" Decode.date
+        |> Decode.required "transaction_hash" Decode.string
         |> Decode.required "offer_id" Decode.int
         |> Decode.required "amount" Decode.string
-        |> Decode.required "buying_asset_code" Decode.string
-        |> Decode.required "buying_asset_issuer" Decode.string
-        |> Decode.required "buying_asset_type" AssetType.decoder
         |> Decode.required "price" Decode.string
         |> Decode.required "price_r" Decode.string
+        |> Decode.required "buying_asset_type" AssetType.decoder
+        |> Decode.required "buying_asset_code" Decode.string
+        |> Decode.required "buying_asset_issuer" Decode.string
+        |> Decode.required "selling_asset_type" AssetType.decoder
         |> Decode.required "selling_asset_code" Decode.string
         |> Decode.required "selling_asset_issuer" Decode.string
-        |> Decode.required "selling_asset_type" AssetType.decoder
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { self : Link
-    , succeeds : Link
-    , precedes : Link
-    , effects : Link
-    , transaction : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "self" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
-        |> Decode.required "effects" Link.decoder
-        |> Decode.required "transaction" Link.decoder
+        |> Decode.required "_links" Links.decoder
