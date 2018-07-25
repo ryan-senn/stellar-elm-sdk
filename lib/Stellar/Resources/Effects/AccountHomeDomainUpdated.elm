@@ -3,7 +3,7 @@ module Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeD
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Link as Link exposing (Link)
+import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
 type alias AccountHomeDomainUpdated =
@@ -26,19 +26,4 @@ decoder =
         |> Decode.required "type_i" Decode.int
         |> Decode.required "account" Decode.string
         |> Decode.required "home_domain" Decode.string
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { operation : Link
-    , succeeds : Link
-    , precedes : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "operation" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
+        |> Decode.required "_links" Links.decoder

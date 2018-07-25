@@ -29078,15 +29078,11 @@ var _user$project$Endpoints_DataForAccount_Msg$UpdatePublicKey = function (a) {
 	return {ctor: 'UpdatePublicKey', _0: a};
 };
 
-var _user$project$Stellar_Resources_Effects_AccountCreated$AccountCreated = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, startingBalance: f, createdAt: g, links: h};
-	});
-var _user$project$Stellar_Resources_Effects_AccountCreated$Links = F3(
+var _user$project$Stellar_Resources_Effects_Links$Links = F3(
 	function (a, b, c) {
 		return {operation: a, succeeds: b, precedes: c};
 	});
-var _user$project$Stellar_Resources_Effects_AccountCreated$linksDecoder = A3(
+var _user$project$Stellar_Resources_Effects_Links$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'precedes',
 	_user$project$Stellar_Link$decoder,
@@ -29098,11 +29094,16 @@ var _user$project$Stellar_Resources_Effects_AccountCreated$linksDecoder = A3(
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 			'operation',
 			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountCreated$Links))));
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_Links$Links))));
+
+var _user$project$Stellar_Resources_Effects_AccountCreated$AccountCreated = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, startingBalance: f, createdAt: g, links: h};
+	});
 var _user$project$Stellar_Resources_Effects_AccountCreated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountCreated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'created_at',
@@ -29137,27 +29138,10 @@ var _user$project$Stellar_Resources_Effects_AccountCredited$AccountCredited = F9
 	function (a, b, c, d, e, f, g, h, i) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, assetType: f, amount: g, createdAt: h, links: i};
 	});
-var _user$project$Stellar_Resources_Effects_AccountCredited$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountCredited$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountCredited$Links))));
 var _user$project$Stellar_Resources_Effects_AccountCredited$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountCredited$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'created_at',
@@ -29196,27 +29180,10 @@ var _user$project$Stellar_Resources_Effects_AccountDebited$AccountDebited = F9(
 	function (a, b, c, d, e, f, g, h, i) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, assetType: f, amount: g, createdAt: h, links: i};
 	});
-var _user$project$Stellar_Resources_Effects_AccountDebited$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountDebited$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountDebited$Links))));
 var _user$project$Stellar_Resources_Effects_AccountDebited$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountDebited$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'created_at',
@@ -29255,27 +29222,10 @@ var _user$project$Stellar_Resources_Effects_AccountFlagsUpdated$AccountFlagsUpda
 	function (a, b, c, d, e, f, g, h) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, authRequired: f, authRevokable: g, links: h};
 	});
-var _user$project$Stellar_Resources_Effects_AccountFlagsUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountFlagsUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountFlagsUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_AccountFlagsUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountFlagsUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'auth_revokable_flag',
@@ -29310,27 +29260,10 @@ var _user$project$Stellar_Resources_Effects_AccountHomeDomainUpdated$AccountHome
 	function (a, b, c, d, e, f, g) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, homeDomain: f, links: g};
 	});
-var _user$project$Stellar_Resources_Effects_AccountHomeDomainUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountHomeDomainUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountHomeDomainUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_AccountHomeDomainUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountHomeDomainUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'home_domain',
@@ -29361,27 +29294,10 @@ var _user$project$Stellar_Resources_Effects_AccountInflationDestinationUpdated$A
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_AccountInflationDestinationUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountInflationDestinationUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountInflationDestinationUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_AccountInflationDestinationUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountInflationDestinationUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29408,27 +29324,10 @@ var _user$project$Stellar_Resources_Effects_AccountRemoved$AccountRemoved = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_AccountRemoved$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountRemoved$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountRemoved$Links))));
 var _user$project$Stellar_Resources_Effects_AccountRemoved$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountRemoved$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29455,27 +29354,10 @@ var _user$project$Stellar_Resources_Effects_AccountThresholdsUpdated$AccountThre
 	function (a, b, c, d, e, f, g, h, i) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, lowThreshold: f, medThreshold: g, highThreshold: h, links: i};
 	});
-var _user$project$Stellar_Resources_Effects_AccountThresholdsUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_AccountThresholdsUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_AccountThresholdsUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_AccountThresholdsUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_AccountThresholdsUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'high_threshold',
@@ -29514,27 +29396,10 @@ var _user$project$Stellar_Resources_Effects_DataCreated$DataCreated = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_DataCreated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_DataCreated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_DataCreated$Links))));
 var _user$project$Stellar_Resources_Effects_DataCreated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_DataCreated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29561,27 +29426,10 @@ var _user$project$Stellar_Resources_Effects_DataRemoved$DataRemoved = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_DataRemoved$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_DataRemoved$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_DataRemoved$Links))));
 var _user$project$Stellar_Resources_Effects_DataRemoved$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_DataRemoved$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29608,27 +29456,10 @@ var _user$project$Stellar_Resources_Effects_DataUpdated$DataUpdated = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_DataUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_DataUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_DataUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_DataUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_DataUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29655,27 +29486,10 @@ var _user$project$Stellar_Resources_Effects_OfferCreated$OfferCreated = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_OfferCreated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_OfferCreated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_OfferCreated$Links))));
 var _user$project$Stellar_Resources_Effects_OfferCreated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_OfferCreated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29702,27 +29516,10 @@ var _user$project$Stellar_Resources_Effects_OfferRemoved$OfferRemoved = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_OfferRemoved$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_OfferRemoved$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_OfferRemoved$Links))));
 var _user$project$Stellar_Resources_Effects_OfferRemoved$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_OfferRemoved$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29749,27 +29546,10 @@ var _user$project$Stellar_Resources_Effects_OfferUpdated$OfferUpdated = F6(
 	function (a, b, c, d, e, f) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, links: f};
 	});
-var _user$project$Stellar_Resources_Effects_OfferUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_OfferUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_OfferUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_OfferUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_OfferUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'account',
@@ -29813,27 +29593,10 @@ var _user$project$Stellar_Resources_Effects_SignerCreated$SignerCreated = functi
 		};
 	};
 };
-var _user$project$Stellar_Resources_Effects_SignerCreated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_SignerCreated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_SignerCreated$Links))));
 var _user$project$Stellar_Resources_Effects_SignerCreated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_SignerCreated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'created_at',
@@ -29876,27 +29639,10 @@ var _user$project$Stellar_Resources_Effects_SignerRemoved$SignerRemoved = F9(
 	function (a, b, c, d, e, f, g, h, i) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, weight: f, publicKey: g, key: h, links: i};
 	});
-var _user$project$Stellar_Resources_Effects_SignerRemoved$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_SignerRemoved$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_SignerRemoved$Links))));
 var _user$project$Stellar_Resources_Effects_SignerRemoved$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_SignerRemoved$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'key',
@@ -29964,27 +29710,10 @@ var _user$project$Stellar_Resources_Effects_Trade$Trade = function (a) {
 		};
 	};
 };
-var _user$project$Stellar_Resources_Effects_Trade$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_Trade$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_Trade$Links))));
 var _user$project$Stellar_Resources_Effects_Trade$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_Trade$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A4(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optional,
 		'bought_asset_issuer',
@@ -30055,27 +29784,10 @@ var _user$project$Stellar_Resources_Effects_TrustlineAuthorised$TrustlineAuthori
 	function (a, b, c, d, e, f, g, h, i) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, trustor: f, assetType: g, assetCode: h, links: i};
 	});
-var _user$project$Stellar_Resources_Effects_TrustlineAuthorised$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_TrustlineAuthorised$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_TrustlineAuthorised$Links))));
 var _user$project$Stellar_Resources_Effects_TrustlineAuthorised$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_TrustlineAuthorised$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A4(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optional,
 		'asset_code',
@@ -30115,27 +29827,10 @@ var _user$project$Stellar_Resources_Effects_TrustlineCreated$TrustlineCreated = 
 	function (a, b, c, d, e, f, g, h) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, assetType: f, limit: g, links: h};
 	});
-var _user$project$Stellar_Resources_Effects_TrustlineCreated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_TrustlineCreated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_TrustlineCreated$Links))));
 var _user$project$Stellar_Resources_Effects_TrustlineCreated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_TrustlineCreated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'limit',
@@ -30170,27 +29865,10 @@ var _user$project$Stellar_Resources_Effects_TrustlineDeauthorised$TrustlineDeaut
 	function (a, b, c, d, e, f, g, h, i) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, trustor: f, assetType: g, assetCode: h, links: i};
 	});
-var _user$project$Stellar_Resources_Effects_TrustlineDeauthorised$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_TrustlineDeauthorised$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_TrustlineDeauthorised$Links))));
 var _user$project$Stellar_Resources_Effects_TrustlineDeauthorised$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_TrustlineDeauthorised$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A4(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optional,
 		'asset_code',
@@ -30230,27 +29908,10 @@ var _user$project$Stellar_Resources_Effects_TrustlineRemoved$TrustlineRemoved = 
 	function (a, b, c, d, e, f, g, h) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, assetType: f, limit: g, links: h};
 	});
-var _user$project$Stellar_Resources_Effects_TrustlineRemoved$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_TrustlineRemoved$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_TrustlineRemoved$Links))));
 var _user$project$Stellar_Resources_Effects_TrustlineRemoved$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_TrustlineRemoved$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'limit',
@@ -30285,27 +29946,10 @@ var _user$project$Stellar_Resources_Effects_TrustlineUpdated$TrustlineUpdated = 
 	function (a, b, c, d, e, f, g, h) {
 		return {id: a, pagingToken: b, type_: c, typeI: d, account: e, assetType: f, limit: g, links: h};
 	});
-var _user$project$Stellar_Resources_Effects_TrustlineUpdated$Links = F3(
-	function (a, b, c) {
-		return {operation: a, succeeds: b, precedes: c};
-	});
-var _user$project$Stellar_Resources_Effects_TrustlineUpdated$linksDecoder = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'precedes',
-	_user$project$Stellar_Link$decoder,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'succeeds',
-		_user$project$Stellar_Link$decoder,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'operation',
-			_user$project$Stellar_Link$decoder,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Effects_TrustlineUpdated$Links))));
 var _user$project$Stellar_Resources_Effects_TrustlineUpdated$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'_links',
-	_user$project$Stellar_Resources_Effects_TrustlineUpdated$linksDecoder,
+	_user$project$Stellar_Resources_Effects_Links$decoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'limit',

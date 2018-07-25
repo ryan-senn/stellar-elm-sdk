@@ -6,7 +6,7 @@ import Json.Decode.Pipeline as Decode
 
 import Date exposing (Date)
 
-import Stellar.Link as Link exposing (Link)
+import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
 type alias AccountCreated =
@@ -31,19 +31,4 @@ decoder =
         |> Decode.required "account" Decode.string
         |> Decode.required "starting_balance" Decode.string
         |> Decode.required "created_at" Decode.date
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { operation : Link
-    , succeeds : Link
-    , precedes : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "operation" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
+        |> Decode.required "_links" Links.decoder

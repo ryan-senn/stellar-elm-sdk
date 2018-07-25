@@ -3,7 +3,7 @@ module Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved, decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Link as Link exposing (Link)
+import Stellar.Resources.Effects.Links as Links exposing (Links)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 
 
@@ -31,19 +31,4 @@ decoder =
         |> Decode.required "weight" Decode.int
         |> Decode.required "public_key" PublicKey.decoder
         |> Decode.required "key" Decode.string
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { operation : Link
-    , succeeds : Link
-    , precedes : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "operation" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
+        |> Decode.required "_links" Links.decoder

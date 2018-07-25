@@ -3,7 +3,7 @@ module Stellar.Resources.Effects.TrustlineAuthorised exposing (TrustlineAuthoris
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Link as Link exposing (Link)
+import Stellar.Resources.Effects.Links as Links exposing (Links)
 import Stellar.AssetType as AssetType exposing (AssetType)
 
 
@@ -31,19 +31,4 @@ decoder =
         |> Decode.required "trustor" Decode.string
         |> Decode.required "asset_type" AssetType.decoder
         |> Decode.optional "asset_code" (Decode.maybe Decode.string) Nothing
-        |> Decode.required "_links" linksDecoder
-
-
-type alias Links =
-    { operation : Link
-    , succeeds : Link
-    , precedes : Link
-    }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "operation" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
+        |> Decode.required "_links" Links.decoder
