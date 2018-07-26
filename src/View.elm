@@ -37,6 +37,7 @@ import Endpoints.PaymentsForAccount.View as PaymentsForAccount
 import Endpoints.PaymentsForLedger.View as PaymentsForLedger
 import Endpoints.PaymentsForTransaction.View as PaymentsForTransaction
 import Endpoints.AllTransactions.View as AllTransactions
+import Endpoints.PostTransaction.View as PostTransaction
 import Endpoints.TransactionsForAccount.View as TransactionsForAccount
 import Endpoints.TransactionsForLedger.View as TransactionsForLedger
 
@@ -206,7 +207,7 @@ page endpoints route =
             transactionDetails endpoints
 
         Routes.Endpoints Endpoints.PostTransaction ->
-            postTransaction endpoints
+            PostTransaction.view endpoints.endpoint endpoints.postTransaction
 
         Routes.Endpoints Endpoints.TransactionsForAccount ->
             TransactionsForAccount.view endpoints.endpoint endpoints.transactionsForAccount

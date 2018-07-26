@@ -13652,6 +13652,338 @@ var _bluedogtraining$bdt_elm$Form_IntInput$setId = F2(
 			A2(_bluedogtraining$bdt_elm$Form_IntInput_Internal$setId, id, _p31._1));
 	});
 
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$getId = function (_) {
+	return _.id;
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$getValue = function (state) {
+	return _bluedogtraining$bdt_elm$Resettable$getValue(state.value);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$getInitialValue = function (state) {
+	return _bluedogtraining$bdt_elm$Resettable$getInitialValue(state.value);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$getIsChanged = function (state) {
+	return _bluedogtraining$bdt_elm$Resettable$getIsChanged(state.value);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setId = F2(
+	function (id, viewState) {
+		return _elm_lang$core$Native_Utils.update(
+			viewState,
+			{
+				id: _elm_lang$core$Maybe$Just(id)
+			});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setIsError = F2(
+	function (isError, viewState) {
+		return _elm_lang$core$Native_Utils.update(
+			viewState,
+			{isError: isError});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setIsLocked = F2(
+	function (isLocked, viewState) {
+		return _elm_lang$core$Native_Utils.update(
+			viewState,
+			{isLocked: isLocked});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setPlaceholder = F2(
+	function (placeholder, viewState) {
+		return _elm_lang$core$Native_Utils.update(
+			viewState,
+			{placeholder: placeholder});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setMaxLength = F2(
+	function (maxLength, viewState) {
+		return _elm_lang$core$Native_Utils.update(
+			viewState,
+			{
+				maxLength: _elm_lang$core$Maybe$Just(maxLength)
+			});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setReplacements = F2(
+	function (replacements, state) {
+		return _elm_lang$core$Native_Utils.update(
+			state,
+			{replacements: replacements});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setSubstituteTabs = F2(
+	function (substituteTabs, state) {
+		return _elm_lang$core$Native_Utils.update(
+			state,
+			{substituteTabs: substituteTabs});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setValue = F2(
+	function (value, state) {
+		return _elm_lang$core$Native_Utils.update(
+			state,
+			{
+				value: A2(_bluedogtraining$bdt_elm$Resettable$update, value, state.value)
+			});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$setInitialValue = F2(
+	function (value, state) {
+		return _elm_lang$core$Native_Utils.update(
+			state,
+			{
+				value: _bluedogtraining$bdt_elm$Resettable$init(value)
+			});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$reset = function (state) {
+	return _elm_lang$core$Native_Utils.update(
+		state,
+		{
+			value: _bluedogtraining$bdt_elm$Resettable$reset(state.value)
+		});
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$reInitialise = function (state) {
+	return _elm_lang$core$Native_Utils.update(
+		state,
+		{
+			value: _bluedogtraining$bdt_elm$Resettable$init(
+				_bluedogtraining$bdt_elm$Resettable$getValue(state.value))
+		});
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$replace = F2(
+	function (_p0, acc) {
+		var _p1 = _p0;
+		return A3(_elm_community$string_extra$String_Extra$replace, _p1._0, _p1._1, acc);
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$update = F2(
+	function (msg, state) {
+		var _p2 = msg;
+		if (_p2.ctor === 'Input') {
+			return _elm_lang$core$Native_Utils.update(
+				state,
+				{
+					value: A2(
+						_bluedogtraining$bdt_elm$Resettable$update,
+						A3(_elm_lang$core$List$foldl, _bluedogtraining$bdt_elm$Form_TextArea_Internal$replace, _p2._0, state.replacements),
+						state.value)
+				});
+		} else {
+			return _elm_lang$core$Native_Utils.update(
+				state,
+				{
+					value: A2(_bluedogtraining$bdt_elm$Resettable$update, _p2._0, state.value)
+				});
+		}
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$initialViewState = {maxLength: _elm_lang$core$Maybe$Nothing, placeholder: '', isLocked: false, isError: false, id: _elm_lang$core$Maybe$Nothing};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$init = {
+	value: _bluedogtraining$bdt_elm$Resettable$init(''),
+	substituteTabs: false,
+	replacements: {ctor: '[]'}
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$State = F3(
+	function (a, b, c) {
+		return {value: a, substituteTabs: b, replacements: c};
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$ViewState = F5(
+	function (a, b, c, d, e) {
+		return {maxLength: a, placeholder: b, isLocked: c, isError: d, id: e};
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$Tab = function (a) {
+	return {ctor: 'Tab', _0: a};
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$shouldUpdateTab = function (keyCode) {
+	var _p3 = keyCode;
+	if (_p3 === 9) {
+		return A2(
+			_elm_lang$core$Json_Decode$andThen,
+			function (_p4) {
+				return _elm_lang$core$Json_Decode$succeed(
+					_bluedogtraining$bdt_elm$Form_TextArea_Internal$Tab(_p4));
+			},
+			_elm_lang$html$Html_Events$targetValue);
+	} else {
+		return _elm_lang$core$Json_Decode$fail('Not Tab');
+	}
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$Input = function (a) {
+	return {ctor: 'Input', _0: a};
+};
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$inputField = F2(
+	function (state, viewState) {
+		return A2(
+			_elm_lang$html$Html$textarea,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('bdt-elm input'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$classList(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'locked', _1: viewState.isLocked},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'error', _1: viewState.isError},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$disabled(viewState.isLocked),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$value(
+								_bluedogtraining$bdt_elm$Resettable$getValue(state.value)),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_bluedogtraining$bdt_elm$Form_TextArea_Internal$Input),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder(viewState.placeholder),
+									_1: {
+										ctor: '::',
+										_0: A2(_bluedogtraining$bdt_elm$Html_Bdt$maybeAttribute, _elm_lang$html$Html_Attributes$maxlength, viewState.maxLength),
+										_1: {
+											ctor: '::',
+											_0: A2(_bluedogtraining$bdt_elm$Html_Bdt$maybeAttribute, _elm_lang$html$Html_Attributes$id, viewState.id),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_bluedogtraining$bdt_elm$Html_Bdt_ops['?'],
+													A2(_elm_lang$html$Html_Attributes$attribute, 'onkeydown', 'if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+\'\t\'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}'),
+													state.substituteTabs),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_bluedogtraining$bdt_elm$Html_Bdt_ops['?'],
+														A2(
+															_elm_lang$html$Html_Events$on,
+															'keyup',
+															A2(_elm_lang$core$Json_Decode$andThen, _bluedogtraining$bdt_elm$Form_TextArea_Internal$shouldUpdateTab, _elm_lang$html$Html_Events$keyCode)),
+														state.substituteTabs),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			{ctor: '[]'});
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea_Internal$render = F2(
+	function (state, viewState) {
+		return A3(_elm_lang$html$Html_Lazy$lazy2, _bluedogtraining$bdt_elm$Form_TextArea_Internal$inputField, state, viewState);
+	});
+
+var _bluedogtraining$bdt_elm$Form_TextArea$getId = function (_p0) {
+	var _p1 = _p0;
+	return _bluedogtraining$bdt_elm$Form_TextArea_Internal$getId(_p1._1);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$getValue = function (_p2) {
+	var _p3 = _p2;
+	return _bluedogtraining$bdt_elm$Form_TextArea_Internal$getValue(_p3._0);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$getInitialValue = function (_p4) {
+	var _p5 = _p4;
+	return _bluedogtraining$bdt_elm$Form_TextArea_Internal$getInitialValue(_p5._0);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$getIsChanged = function (_p6) {
+	var _p7 = _p6;
+	return _bluedogtraining$bdt_elm$Form_TextArea_Internal$getIsChanged(_p7._0);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$render = function (_p8) {
+	var _p9 = _p8;
+	return A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$render, _p9._0, _p9._1);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$Model = function (a) {
+	return {ctor: 'Model', _0: a};
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$init = _bluedogtraining$bdt_elm$Form_TextArea$Model(_bluedogtraining$bdt_elm$Form_TextArea_Internal$init);
+var _bluedogtraining$bdt_elm$Form_TextArea$update = F2(
+	function (msg, _p10) {
+		var _p11 = _p10;
+		return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$update, msg, _p11._0));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$reInitialise = function (_p12) {
+	var _p13 = _p12;
+	return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+		_bluedogtraining$bdt_elm$Form_TextArea_Internal$reInitialise(_p13._0));
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$reset = function (_p14) {
+	var _p15 = _p14;
+	return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+		_bluedogtraining$bdt_elm$Form_TextArea_Internal$reset(_p15._0));
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$setInitialValue = F2(
+	function (value, _p16) {
+		var _p17 = _p16;
+		return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setInitialValue, value, _p17._0));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setValue = F2(
+	function (value, _p18) {
+		var _p19 = _p18;
+		return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setValue, value, _p19._0));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setSubstituteTabs = F2(
+	function (bool, _p20) {
+		var _p21 = _p20;
+		return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setSubstituteTabs, bool, _p21._0));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setReplacements = F2(
+	function (replacements, _p22) {
+		var _p23 = _p22;
+		return _bluedogtraining$bdt_elm$Form_TextArea$Model(
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setReplacements, replacements, _p23._0));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$View = F2(
+	function (a, b) {
+		return {ctor: 'View', _0: a, _1: b};
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$view = function (_p24) {
+	var _p25 = _p24;
+	return A2(_bluedogtraining$bdt_elm$Form_TextArea$View, _p25._0, _bluedogtraining$bdt_elm$Form_TextArea_Internal$initialViewState);
+};
+var _bluedogtraining$bdt_elm$Form_TextArea$setMaxLength = F2(
+	function (maxLength, _p26) {
+		var _p27 = _p26;
+		return A2(
+			_bluedogtraining$bdt_elm$Form_TextArea$View,
+			_p27._0,
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setMaxLength, maxLength, _p27._1));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setPlaceholder = F2(
+	function (placeholder, _p28) {
+		var _p29 = _p28;
+		return A2(
+			_bluedogtraining$bdt_elm$Form_TextArea$View,
+			_p29._0,
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setPlaceholder, placeholder, _p29._1));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setIsLocked = F2(
+	function (isLocked, _p30) {
+		var _p31 = _p30;
+		return A2(
+			_bluedogtraining$bdt_elm$Form_TextArea$View,
+			_p31._0,
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setIsLocked, isLocked, _p31._1));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setIsError = F2(
+	function (isError, _p32) {
+		var _p33 = _p32;
+		return A2(
+			_bluedogtraining$bdt_elm$Form_TextArea$View,
+			_p33._0,
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setIsError, isError, _p33._1));
+	});
+var _bluedogtraining$bdt_elm$Form_TextArea$setId = F2(
+	function (id, _p34) {
+		var _p35 = _p34;
+		return A2(
+			_bluedogtraining$bdt_elm$Form_TextArea$View,
+			_p35._0,
+			A2(_bluedogtraining$bdt_elm$Form_TextArea_Internal$setId, id, _p35._1));
+	});
+
 var _elm_community$json_extra$Json_Decode_Extra$when = F3(
 	function (checkDecoder, check, passDecoder) {
 		return A2(
@@ -33623,6 +33955,78 @@ var _user$project$Endpoints_AllTransactions_Msg$UpdateCursor = function (a) {
 	return {ctor: 'UpdateCursor', _0: a};
 };
 
+var _user$project$Stellar_Endpoints_PostTransaction$url = function (endpoint) {
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_user$project$Stellar_Endpoint$toString(endpoint),
+		'/transactions');
+};
+var _user$project$Stellar_Endpoints_PostTransaction$send = _lukewestby$elm_http_builder$HttpBuilder$send;
+var _user$project$Stellar_Endpoints_PostTransaction$Success = function (a) {
+	return {ctor: 'Success', _0: a};
+};
+var _user$project$Stellar_Endpoints_PostTransaction$Error = function (a) {
+	return {ctor: 'Error', _0: a};
+};
+var _user$project$Stellar_Endpoints_PostTransaction$decoder = _elm_lang$core$Json_Decode$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PostTransaction$Error, _user$project$Stellar_Errors_Error$decoder),
+		_1: {
+			ctor: '::',
+			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PostTransaction$Success, _user$project$Stellar_Resources_Transaction$decoder),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Stellar_Endpoints_PostTransaction$requestBuilder = F2(
+	function (endpoint, transactionEnvelopeXdr) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withExpect,
+			_elm_lang$http$Http$expectJson(_user$project$Stellar_Endpoints_PostTransaction$decoder),
+			A3(
+				_lukewestby$elm_http_builder$HttpBuilder$withHeader,
+				'Content-Type',
+				'application/x-www-form-urlencoded',
+				A2(
+					_lukewestby$elm_http_builder$HttpBuilder$withJsonBody,
+					_elm_lang$core$Json_Encode$object(
+						{
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'tx',
+								_1: _elm_lang$core$Json_Encode$string(transactionEnvelopeXdr)
+							},
+							_1: {ctor: '[]'}
+						}),
+					_lukewestby$elm_http_builder$HttpBuilder$post(
+						_user$project$Stellar_Endpoints_PostTransaction$url(endpoint)))));
+	});
+
+var _user$project$Endpoints_PostTransaction_Model$initialSettings = {transactionEnvelopeXdr: _bluedogtraining$bdt_elm$Form_TextArea$init};
+var _user$project$Endpoints_PostTransaction_Model$initialModel = {settings: _user$project$Endpoints_PostTransaction_Model$initialSettings, isLoading: false, response: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_PostTransaction_Model$Model = F3(
+	function (a, b, c) {
+		return {settings: a, isLoading: b, response: c};
+	});
+var _user$project$Endpoints_PostTransaction_Model$Settings = function (a) {
+	return {transactionEnvelopeXdr: a};
+};
+
+var _user$project$Endpoints_PostTransaction_Msg$Response = function (a) {
+	return {ctor: 'Response', _0: a};
+};
+var _user$project$Endpoints_PostTransaction_Msg$Request = F2(
+	function (a, b) {
+		return {ctor: 'Request', _0: a, _1: b};
+	});
+var _user$project$Endpoints_PostTransaction_Msg$SettingsMsg = function (a) {
+	return {ctor: 'SettingsMsg', _0: a};
+};
+var _user$project$Endpoints_PostTransaction_Msg$UpdateTransactionEnvelopeXdr = function (a) {
+	return {ctor: 'UpdateTransactionEnvelopeXdr', _0: a};
+};
+
 var _user$project$Stellar_Endpoints_TransactionsForAccount$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
@@ -33862,6 +34266,9 @@ var _user$project$Endpoints_Msg$TransactionsForLedgerMsg = function (a) {
 };
 var _user$project$Endpoints_Msg$TransactionsForAccountMsg = function (a) {
 	return {ctor: 'TransactionsForAccountMsg', _0: a};
+};
+var _user$project$Endpoints_Msg$PostTransactionMsg = function (a) {
+	return {ctor: 'PostTransactionMsg', _0: a};
 };
 var _user$project$Endpoints_Msg$AllTransactionsMsg = function (a) {
 	return {ctor: 'AllTransactionsMsg', _0: a};
@@ -40162,6 +40569,7 @@ var _user$project$Endpoints_Model$initialModel = {
 	paymentsForLedger: _user$project$Endpoints_PaymentsForLedger_Model$initialModel,
 	paymentsForTransaction: _user$project$Endpoints_PaymentsForTransaction_Model$initialModel,
 	allTransactions: _user$project$Endpoints_AllTransactions_Model$initialModel,
+	postTransaction: _user$project$Endpoints_PostTransaction_Model$initialModel,
 	transactionsForAccount: _user$project$Endpoints_TransactionsForAccount_Model$initialModel,
 	transactionsForLedger: _user$project$Endpoints_TransactionsForLedger_Model$initialModel
 };
@@ -40190,7 +40598,9 @@ var _user$project$Endpoints_Model$Model = function (a) {
 																						return function (w) {
 																							return function (x) {
 																								return function (y) {
-																									return {endpoint: a, accountDetails: b, allAssets: c, allEffects: d, effectsForAccount: e, effectsForLedger: f, effectsForOperation: g, effectsForTransaction: h, dataForAccount: i, allLedgers: j, ledgerDetails: k, offersForAccount: l, allOperations: m, operationsForAccount: n, operationsForLedger: o, operationsForTransaction: p, operationDetails: q, orderbookDetails: r, allPayments: s, paymentsForAccount: t, paymentsForLedger: u, paymentsForTransaction: v, allTransactions: w, transactionsForAccount: x, transactionsForLedger: y};
+																									return function (z) {
+																										return {endpoint: a, accountDetails: b, allAssets: c, allEffects: d, effectsForAccount: e, effectsForLedger: f, effectsForOperation: g, effectsForTransaction: h, dataForAccount: i, allLedgers: j, ledgerDetails: k, offersForAccount: l, allOperations: m, operationsForAccount: n, operationsForLedger: o, operationsForTransaction: p, operationDetails: q, orderbookDetails: r, allPayments: s, paymentsForAccount: t, paymentsForLedger: u, paymentsForTransaction: v, allTransactions: w, postTransaction: x, transactionsForAccount: y, transactionsForLedger: z};
+																									};
 																								};
 																							};
 																						};
@@ -44382,6 +44792,211 @@ var _user$project$Endpoints_PaymentsForTransaction_View$view = F2(
 			});
 	});
 
+var _user$project$Endpoints_PostTransaction_MsgFactory$composeMsg = function (_p0) {
+	return _user$project$Endpoints_MsgFactory$composeMsg(
+		_user$project$Endpoints_Msg$PostTransactionMsg(_p0));
+};
+
+var _user$project$Endpoints_PostTransaction_RequestBuilder$requestBuilder = F2(
+	function (endpoint, settings) {
+		return A2(
+			_user$project$Stellar_Endpoints_PostTransaction$requestBuilder,
+			_user$project$Endpoints_Helpers$endpointFromInput(endpoint),
+			_bluedogtraining$bdt_elm$Form_TextArea$getValue(settings.transactionEnvelopeXdr));
+	});
+
+var _user$project$Endpoints_PostTransaction_Update$updateSettings = F2(
+	function (updateSettingsMsg, model) {
+		var settingsModel = model.settings;
+		var _p0 = function () {
+			var _p1 = updateSettingsMsg;
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				_elm_lang$core$Native_Utils.update(
+					settingsModel,
+					{
+						transactionEnvelopeXdr: A2(_bluedogtraining$bdt_elm$Form_TextArea$update, _p1._0, settingsModel.transactionEnvelopeXdr)
+					}),
+				{ctor: '[]'});
+		}();
+		var newSettingsModel = _p0._0;
+		var cmds = _p0._1;
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			_elm_lang$core$Native_Utils.update(
+				model,
+				{settings: newSettingsModel}),
+			{
+				ctor: '::',
+				_0: cmds,
+				_1: {ctor: '[]'}
+			});
+	});
+var _user$project$Endpoints_PostTransaction_Update$update = F2(
+	function (msg, model) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
+			case 'SettingsMsg':
+				return A2(_user$project$Endpoints_PostTransaction_Update$updateSettings, _p2._0, model);
+			case 'Request':
+				var request = A2(_user$project$Endpoints_PostTransaction_RequestBuilder$requestBuilder, _p2._0, _p2._1);
+				var msg = function (_p3) {
+					return _user$project$Endpoints_PostTransaction_MsgFactory$composeMsg(
+						_user$project$Endpoints_PostTransaction_Msg$Response(_p3));
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isLoading: true}),
+					{
+						ctor: '::',
+						_0: A2(_user$project$Stellar_Endpoints_PostTransaction$send, msg, request),
+						_1: {ctor: '[]'}
+					});
+			default:
+				if (_p2._0.ctor === 'Err') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PostTransaction$Error))
+							}),
+						{ctor: '[]'});
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									_elm_lang$core$Result$Ok(_p2._0._0))
+							}),
+						{ctor: '[]'});
+				}
+		}
+	});
+
+var _user$project$Endpoints_PostTransaction_View$view = F2(
+	function (endpoint, model) {
+		return A2(
+			_rtfeldman$elm_css$Html_Styled$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(_user$project$Endpoints_Views_Title$view, 'Operations for Transaction', 'https://www.stellar.org/developers/horizon/reference/endpoints/offers-for-transaction.html'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$div,
+						{
+							ctor: '::',
+							_0: _user$project$Endpoints_Styles$page,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$h2,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('Request'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Endpoints_Views_Endpoint$view(endpoint),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$div,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$label,
+												{
+													ctor: '::',
+													_0: _user$project$Endpoints_Styles$label,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$span,
+														{ctor: '[]'},
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled$text('Transaction Envelope Xdr'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$labelExample,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('(eg: AAAAABbxCy3mLg3hiTqX4VUEEp60pFOrJNxYM1JtxXTwXhY2AAAAZAAAAAMAAAAGAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAAJAAAAAAAAAAHwXhY2AAAAQCPAo8QwsZe9FA0sz/deMdhlu6/zrk7SgkBG22ApvtpETBhnGkX4trSFDz8sVlKqvweqGUVgvjUyM0AcHxyXZQw=)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$map,
+													function (_p0) {
+														return _user$project$Endpoints_PostTransaction_MsgFactory$composeMsg(
+															_user$project$Endpoints_PostTransaction_Msg$SettingsMsg(
+																_user$project$Endpoints_PostTransaction_Msg$UpdateTransactionEnvelopeXdr(_p0)));
+													},
+													_rtfeldman$elm_css$Html_Styled$fromUnstyled(
+														_bluedogtraining$bdt_elm$Form_TextArea$render(
+															_bluedogtraining$bdt_elm$Form_TextArea$view(model.settings.transactionEnvelopeXdr)))),
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: _user$project$Endpoints_Views_Request$view(
+											A2(_user$project$Endpoints_PostTransaction_RequestBuilder$requestBuilder, endpoint, model.settings)),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_user$project$Endpoints_Views_Button$view,
+												model.isLoading,
+												_user$project$Endpoints_PostTransaction_MsgFactory$composeMsg(
+													A2(_user$project$Endpoints_PostTransaction_Msg$Request, endpoint, model.settings))),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Endpoints_Views_Response$view, model.response, model.isLoading),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+
 var _user$project$Endpoints_TransactionsForAccount_MsgFactory$composeMsg = function (_p0) {
 	return _user$project$Endpoints_MsgFactory$composeMsg(
 		_user$project$Endpoints_Msg$TransactionsForAccountMsg(_p0));
@@ -45640,10 +46255,24 @@ var _user$project$Endpoints_Update$update = F2(
 						_0: cmd,
 						_1: {ctor: '[]'}
 					});
-			case 'TransactionsForAccountMsg':
-				var _p23 = A2(_user$project$Endpoints_TransactionsForAccount_Update$update, _p0._0, model.transactionsForAccount);
-				var transactionsForAccountModel = _p23._0;
+			case 'PostTransactionMsg':
+				var _p23 = A2(_user$project$Endpoints_PostTransaction_Update$update, _p0._0, model.postTransaction);
+				var postTransactionModel = _p23._0;
 				var cmd = _p23._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{postTransaction: postTransactionModel}),
+					{
+						ctor: '::',
+						_0: cmd,
+						_1: {ctor: '[]'}
+					});
+			case 'TransactionsForAccountMsg':
+				var _p24 = A2(_user$project$Endpoints_TransactionsForAccount_Update$update, _p0._0, model.transactionsForAccount);
+				var transactionsForAccountModel = _p24._0;
+				var cmd = _p24._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -45655,9 +46284,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			default:
-				var _p24 = A2(_user$project$Endpoints_TransactionsForLedger_Update$update, _p0._0, model.transactionsForLedger);
-				var transactionsForLedgerModel = _p24._0;
-				var cmd = _p24._1;
+				var _p25 = A2(_user$project$Endpoints_TransactionsForLedger_Update$update, _p0._0, model.transactionsForLedger);
+				var transactionsForLedgerModel = _p25._0;
+				var cmd = _p25._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -46128,7 +46757,7 @@ var _user$project$View$page = F2(
 				case 'TransactionDetails':
 					return _user$project$View$transactionDetails(endpoints);
 				case 'PostTransaction':
-					return _user$project$View$postTransaction(endpoints);
+					return A2(_user$project$Endpoints_PostTransaction_View$view, endpoints.endpoint, endpoints.postTransaction);
 				case 'TransactionsForAccount':
 					return A2(_user$project$Endpoints_TransactionsForAccount_View$view, endpoints.endpoint, endpoints.transactionsForAccount);
 				default:
