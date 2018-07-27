@@ -54,7 +54,6 @@ view endpoint model =
                 , model.settings.sequence
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (LedgerDetails.UpdateSequence >> LedgerDetails.SettingsMsg >> LedgerDetails.composeMsg)
                 ]
             , Request.view (requestBuilder (endpointFromInput endpoint) (IntInput.getValue model.settings.sequence |> Maybe.withDefault 0))

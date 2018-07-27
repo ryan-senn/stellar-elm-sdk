@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.ledgerId
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (TransactionsForLedger.UpdateLedgerId >> TransactionsForLedger.SettingsMsg >> TransactionsForLedger.composeMsg)
                 ]
             , div
@@ -73,7 +72,6 @@ view endpoint model =
                 , model.settings.cursor
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (TransactionsForLedger.UpdateCursor >> TransactionsForLedger.SettingsMsg >> TransactionsForLedger.composeMsg)
                 ]
             , div
@@ -90,7 +88,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (TransactionsForLedger.UpdateLimit >> TransactionsForLedger.SettingsMsg >> TransactionsForLedger.composeMsg)
                 ]
             , div

@@ -55,7 +55,6 @@ view endpoint model =
                 , model.settings.publicKey
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (DataForAccount.UpdatePublicKey >> DataForAccount.SettingsMsg >> DataForAccount.composeMsg)
                 ]
             , div
@@ -70,7 +69,6 @@ view endpoint model =
                     |> Select.view
                     |> Select.setToLabel (toString >> String.decapitalize >> String.dasherize)
                     |> Select.render
-                    |> Html.fromUnstyled
                     |> Html.map (DataForAccount.UpdateDataKey >> DataForAccount.SettingsMsg >> DataForAccount.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)

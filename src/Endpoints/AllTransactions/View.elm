@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.cursor
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (AllTransactions.UpdateCursor >> AllTransactions.SettingsMsg >> AllTransactions.composeMsg)
                 ]
             , div
@@ -73,7 +72,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (AllTransactions.UpdateLimit >> AllTransactions.SettingsMsg >> AllTransactions.composeMsg)
                 ]
             , div

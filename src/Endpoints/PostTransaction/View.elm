@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.transactionEnvelopeXdr
                     |> TextArea.view
                     |> TextArea.render
-                    |> Html.fromUnstyled
                     |> Html.map (PostTransaction.UpdateTransactionEnvelopeXdr >> PostTransaction.SettingsMsg >> PostTransaction.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)

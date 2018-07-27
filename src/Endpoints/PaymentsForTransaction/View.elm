@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.transaction
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (PaymentsForTransaction.UpdateTransaction >> PaymentsForTransaction.SettingsMsg >> PaymentsForTransaction.composeMsg)
                 ]
             , div
@@ -73,7 +72,6 @@ view endpoint model =
                 , model.settings.cursor
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (PaymentsForTransaction.UpdateCursor >> PaymentsForTransaction.SettingsMsg >> PaymentsForTransaction.composeMsg)
                 ]
             , div
@@ -90,7 +88,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (PaymentsForTransaction.UpdateLimit >> PaymentsForTransaction.SettingsMsg >> PaymentsForTransaction.composeMsg)
                 ]
             , div

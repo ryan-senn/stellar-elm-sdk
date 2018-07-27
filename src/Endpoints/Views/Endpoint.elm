@@ -24,6 +24,5 @@ view inputModel =
         , inputModel
             |> Input.view
             |> Input.render
-            |> Html.fromUnstyled
             |> Html.map (Endpoints.UpdateEndpoint >> Endpoints.composeMsg)
         ]

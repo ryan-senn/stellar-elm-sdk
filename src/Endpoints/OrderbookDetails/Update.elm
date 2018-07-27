@@ -6,6 +6,8 @@ import Form.Select as Select
 
 import Stellar.Errors.Error exposing (flattenError)
 
+import Stellar.AssetType as AssetType
+
 import Stellar.Endpoints.OrderbookDetails as OrderbookDetails
 
 import Msg exposing (Msg)

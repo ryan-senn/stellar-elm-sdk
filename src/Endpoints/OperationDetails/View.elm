@@ -51,7 +51,6 @@ view endpoint model =
                 , model.settings.operationId
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (OperationDetails.UpdatePublicKey >> OperationDetails.SettingsMsg >> OperationDetails.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)

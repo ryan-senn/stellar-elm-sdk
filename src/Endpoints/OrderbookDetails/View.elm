@@ -4,6 +4,8 @@ import Html.Styled as Html exposing (..)
 import Html.Styled.Events exposing (..)
 import Html.Styled.Attributes exposing (..)
 
+import Html.Styled.Bdt as Html
+
 import Form.Input as Input
 import Form.IntInput as IntInput
 import Form.Select as Select
@@ -57,7 +59,6 @@ view endpoint model =
                 , model.settings.sellingAssetType
                     |> Select.view
                     |> Select.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateSellingAssetType >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , div
@@ -74,7 +75,6 @@ view endpoint model =
                 , model.settings.sellingAssetCode
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateSellingAssetCode >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , div
@@ -91,7 +91,6 @@ view endpoint model =
                 , model.settings.sellingAssetIssuer
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateSellingAssetIssuer >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , div
@@ -108,7 +107,6 @@ view endpoint model =
                 , model.settings.buyingAssetType
                     |> Select.view
                     |> Select.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateBuyingAssetType >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , div
@@ -125,7 +123,6 @@ view endpoint model =
                 , model.settings.buyingAssetCode
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateBuyingAssetCode >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , div
@@ -142,7 +139,6 @@ view endpoint model =
                 , model.settings.buyingAssetIssuer
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateBuyingAssetIssuer >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , div
@@ -159,7 +155,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (OrderbookDetails.UpdateLimit >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)

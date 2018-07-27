@@ -32,6 +32,7 @@ import Endpoints.AllTransactions.Update as AllTransactions
 import Endpoints.PostTransaction.Update as PostTransaction
 import Endpoints.TransactionsForAccount.Update as TransactionsForAccount
 import Endpoints.TransactionsForLedger.Update as TransactionsForLedger
+import Endpoints.TransactionDetails.Update as TransactionDetails
 
 
 update : Endpoints.Msg -> Endpoints.Model -> (Endpoints.Model, Cmd Msg)
@@ -240,3 +241,11 @@ update msg model =
 
             in
                 { model | transactionsForLedger = transactionsForLedgerModel } ! [ cmd ]
+
+        Endpoints.TransactionDetailsMsg msg ->
+            let
+                (transactionDetailsModel, cmd) =
+                    TransactionDetails.update msg model.transactionDetails
+
+            in
+                { model | transactionDetails = transactionDetailsModel } ! [ cmd ]

@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.assetCode
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (AllAssets.UpdateAssetCode >> AllAssets.SettingsMsg >> AllAssets.composeMsg)
                 ]
             , div
@@ -73,7 +72,6 @@ view endpoint model =
                 , model.settings.assetIssuer
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (AllAssets.UpdateAssetIssuer >> AllAssets.SettingsMsg >> AllAssets.composeMsg)
                 ]
             , div
@@ -90,7 +88,6 @@ view endpoint model =
                 , model.settings.cursor
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (AllAssets.UpdateCursor >> AllAssets.SettingsMsg >> AllAssets.composeMsg)
                 ]
             , div
@@ -107,7 +104,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (AllAssets.UpdateLimit >> AllAssets.SettingsMsg >> AllAssets.composeMsg)
                 ]
             , div

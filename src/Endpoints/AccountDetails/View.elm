@@ -50,7 +50,6 @@ view endpoint model =
                 , model.settings.publicKey
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (AccountDetails.UpdatePublicKey >> AccountDetails.SettingsMsg >> AccountDetails.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)

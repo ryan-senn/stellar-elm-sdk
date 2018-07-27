@@ -27,6 +27,7 @@ import Endpoints.AllTransactions.Model as AllTransactions
 import Endpoints.PostTransaction.Model as PostTransaction
 import Endpoints.TransactionsForAccount.Model as TransactionsForAccount
 import Endpoints.TransactionsForLedger.Model as TransactionsForLedger
+import Endpoints.TransactionDetails.Model as TransactionDetails
 
 
 type alias Model =
@@ -56,6 +57,7 @@ type alias Model =
     , postTransaction : PostTransaction.Model
     , transactionsForAccount : TransactionsForAccount.Model
     , transactionsForLedger : TransactionsForLedger.Model
+    , transactionDetails : TransactionDetails.Model
     }
 
 
@@ -87,4 +89,5 @@ initialModel =
     , postTransaction = PostTransaction.initialModel
     , transactionsForAccount = TransactionsForAccount.initialModel
     , transactionsForLedger = TransactionsForLedger.initialModel
+    , transactionDetails = TransactionDetails.initialModel
     }

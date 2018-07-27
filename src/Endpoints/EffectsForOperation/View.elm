@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.operationId
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (EffectsForOperation.UpdateOperationId >> EffectsForOperation.SettingsMsg >> EffectsForOperation.composeMsg)
                 ]
             , div
@@ -73,7 +72,6 @@ view endpoint model =
                 , model.settings.cursor
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (EffectsForOperation.UpdateCursor >> EffectsForOperation.SettingsMsg >> EffectsForOperation.composeMsg)
                 ]
             , div
@@ -90,7 +88,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (EffectsForOperation.UpdateLimit >> EffectsForOperation.SettingsMsg >> EffectsForOperation.composeMsg)
                 ]
             , div

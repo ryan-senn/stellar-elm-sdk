@@ -56,7 +56,6 @@ view endpoint model =
                 , model.settings.account
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (EffectsForAccount.UpdateAccount >> EffectsForAccount.SettingsMsg >> EffectsForAccount.composeMsg)
                 ]
             , div
@@ -73,7 +72,6 @@ view endpoint model =
                 , model.settings.cursor
                     |> Input.view
                     |> Input.render
-                    |> Html.fromUnstyled
                     |> Html.map (EffectsForAccount.UpdateCursor >> EffectsForAccount.SettingsMsg >> EffectsForAccount.composeMsg)
                 ]
             , div
@@ -90,7 +88,6 @@ view endpoint model =
                 , model.settings.limit
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.fromUnstyled
                     |> Html.map (EffectsForAccount.UpdateLimit >> EffectsForAccount.SettingsMsg >> EffectsForAccount.composeMsg)
                 ]
             , div

@@ -27,6 +27,7 @@ import Endpoints.AllTransactions.Msg as AllTransactions
 import Endpoints.PostTransaction.Msg as PostTransaction
 import Endpoints.TransactionsForAccount.Msg as TransactionsForAccount
 import Endpoints.TransactionsForLedger.Msg as TransactionsForLedger
+import Endpoints.TransactionDetails.Msg as TransactionDetails
 
 
 type Msg
@@ -56,3 +57,4 @@ type Msg
     | PostTransactionMsg PostTransaction.Msg
     | TransactionsForAccountMsg TransactionsForAccount.Msg
     | TransactionsForLedgerMsg TransactionsForLedger.Msg
+    | TransactionDetailsMsg TransactionDetails.Msg
