@@ -2,7 +2,7 @@ module Endpoints.AccountDetails.Update exposing (update)
 
 import Form.Input as Input
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.AccountDetails as AccountDetails
 

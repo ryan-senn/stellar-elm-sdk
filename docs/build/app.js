@@ -31302,27 +31302,9 @@ var _user$project$Endpoints$asList = {
 	}
 };
 
-var _user$project$Stellar_PublicKey$toString = function (_p0) {
-	var _p1 = _p0;
-	return _p1._0;
-};
-var _user$project$Stellar_PublicKey$PublicKey = function (a) {
-	return {ctor: 'PublicKey', _0: a};
-};
-var _user$project$Stellar_PublicKey$fromString = function (_p2) {
-	return _user$project$Stellar_PublicKey$PublicKey(
-		_elm_lang$core$String$toUpper(_p2));
-};
-var _user$project$Stellar_PublicKey$decoder = A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_PublicKey$PublicKey, _elm_lang$core$Json_Decode$string);
+var _user$project$Stellar_PublicKey$decoder = _elm_lang$core$Json_Decode$string;
 
-var _user$project$Stellar_Endpoint$toString = function (_p0) {
-	var _p1 = _p0;
-	return _p1._0;
-};
-var _user$project$Stellar_Endpoint$Endpoint = function (a) {
-	return {ctor: 'Endpoint', _0: a};
-};
-var _user$project$Stellar_Endpoint$fromString = _user$project$Stellar_Endpoint$Endpoint;
+var _user$project$Stellar_Endpoint$decoder = _elm_lang$core$Json_Decode$string;
 
 var _user$project$Stellar_Thresholds$Thresholds = F3(
 	function (a, b, c) {
@@ -31370,19 +31352,6 @@ var _user$project$Stellar_AssetType$toString = function (assetType) {
 var _user$project$Stellar_AssetType$CreditAlphanum12 = {ctor: 'CreditAlphanum12'};
 var _user$project$Stellar_AssetType$CreditAlphanum4 = {ctor: 'CreditAlphanum4'};
 var _user$project$Stellar_AssetType$Native = {ctor: 'Native'};
-var _user$project$Stellar_AssetType$asList = {
-	ctor: '::',
-	_0: _user$project$Stellar_AssetType$Native,
-	_1: {
-		ctor: '::',
-		_0: _user$project$Stellar_AssetType$CreditAlphanum4,
-		_1: {
-			ctor: '::',
-			_0: _user$project$Stellar_AssetType$CreditAlphanum12,
-			_1: {ctor: '[]'}
-		}
-	}
-};
 var _user$project$Stellar_AssetType$stringToAssetType = function (string) {
 	var _p1 = string;
 	switch (_p1) {
@@ -31397,6 +31366,19 @@ var _user$project$Stellar_AssetType$stringToAssetType = function (string) {
 	}
 };
 var _user$project$Stellar_AssetType$decoder = A2(_elm_lang$core$Json_Decode$andThen, _user$project$Stellar_AssetType$stringToAssetType, _elm_lang$core$Json_Decode$string);
+var _user$project$Stellar_AssetType$asList = {
+	ctor: '::',
+	_0: _user$project$Stellar_AssetType$Native,
+	_1: {
+		ctor: '::',
+		_0: _user$project$Stellar_AssetType$CreditAlphanum4,
+		_1: {
+			ctor: '::',
+			_0: _user$project$Stellar_AssetType$CreditAlphanum12,
+			_1: {ctor: '[]'}
+		}
+	}
+};
 
 var _user$project$Stellar_Balance$Balance = F2(
 	function (a, b) {
@@ -31578,11 +31560,11 @@ var _user$project$Stellar_Resources_Account$decoder = A3(
 											_user$project$Stellar_PublicKey$decoder,
 											_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Account$Account))))))))))));
 
-var _user$project$Stellar_Errors_Error$Error = F5(
+var _user$project$Stellar_Error$Error = F5(
 	function (a, b, c, d, e) {
 		return {type_: a, title: b, status: c, detail: d, instance: e};
 	});
-var _user$project$Stellar_Errors_Error$decoder = A4(
+var _user$project$Stellar_Error$decoder = A4(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optional,
 	'instance',
 	_elm_lang$core$Json_Decode$maybe(_elm_lang$core$Json_Decode$string),
@@ -31603,12 +31585,12 @@ var _user$project$Stellar_Errors_Error$decoder = A4(
 					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 					'type',
 					_elm_lang$core$Json_Decode$string,
-					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Errors_Error$Error))))));
-var _user$project$Stellar_Errors_Error$flattenError = F2(
+					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Error$Error))))));
+var _user$project$Stellar_Error$flattenError = F2(
 	function (httpError, ok) {
 		var _p0 = httpError;
 		if (_p0.ctor === 'BadStatus') {
-			var _p1 = A2(_elm_lang$core$Json_Decode$decodeString, _user$project$Stellar_Errors_Error$decoder, _p0._0.body);
+			var _p1 = A2(_elm_lang$core$Json_Decode$decodeString, _user$project$Stellar_Error$decoder, _p0._0.body);
 			if (_p1.ctor === 'Ok') {
 				return _elm_lang$core$Result$Ok(
 					ok(_p1._0));
@@ -31619,42 +31601,39 @@ var _user$project$Stellar_Errors_Error$flattenError = F2(
 			return _elm_lang$core$Result$Err(httpError);
 		}
 	});
-var _user$project$Stellar_Errors_Error$Forbidden = function (a) {
+var _user$project$Stellar_Error$Forbidden = function (a) {
 	return {ctor: 'Forbidden', _0: a};
 };
-var _user$project$Stellar_Errors_Error$RateLimitExceeded = function (a) {
+var _user$project$Stellar_Error$RateLimitExceeded = function (a) {
 	return {ctor: 'RateLimitExceeded', _0: a};
 };
-var _user$project$Stellar_Errors_Error$ServerError = function (a) {
+var _user$project$Stellar_Error$ServerError = function (a) {
 	return {ctor: 'ServerError', _0: a};
 };
-var _user$project$Stellar_Errors_Error$standardErrorFromStatus = function (error) {
+var _user$project$Stellar_Error$standardErrorFromStatus = function (error) {
 	var _p2 = error.status;
 	switch (_p2) {
 		case 403:
 			return _elm_lang$core$Json_Decode$succeed(
-				_user$project$Stellar_Errors_Error$Forbidden(error));
+				_user$project$Stellar_Error$Forbidden(error));
 		case 429:
 			return _elm_lang$core$Json_Decode$succeed(
-				_user$project$Stellar_Errors_Error$RateLimitExceeded(error));
+				_user$project$Stellar_Error$RateLimitExceeded(error));
 		case 500:
 			return _elm_lang$core$Json_Decode$succeed(
-				_user$project$Stellar_Errors_Error$ServerError(error));
+				_user$project$Stellar_Error$ServerError(error));
 		default:
 			return _elm_lang$core$Json_Decode$fail('Could not decode standard error');
 	}
 };
-var _user$project$Stellar_Errors_Error$standardErrorDecoder = A2(_elm_lang$core$Json_Decode$andThen, _user$project$Stellar_Errors_Error$standardErrorFromStatus, _user$project$Stellar_Errors_Error$decoder);
+var _user$project$Stellar_Error$standardErrorDecoder = A2(_elm_lang$core$Json_Decode$andThen, _user$project$Stellar_Error$standardErrorFromStatus, _user$project$Stellar_Error$decoder);
 
 var _user$project$Stellar_Endpoints_AccountDetails$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				'/accounts/',
-				_user$project$Stellar_PublicKey$toString(publicKey)));
+			endpoint,
+			A2(_elm_lang$core$Basics_ops['++'], '/accounts/', publicKey));
 	});
 var _user$project$Stellar_Endpoints_AccountDetails$send = _lukewestby$elm_http_builder$HttpBuilder$send;
 var _user$project$Stellar_Endpoints_AccountDetails$Success = function (a) {
@@ -31666,7 +31645,7 @@ var _user$project$Stellar_Endpoints_AccountDetails$Error = function (a) {
 var _user$project$Stellar_Endpoints_AccountDetails$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AccountDetails$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AccountDetails$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AccountDetails$Success, _user$project$Stellar_Resources_Account$decoder),
@@ -31883,10 +31862,7 @@ var _user$project$Stellar_Resources_Asset$decoder = A3(
 								_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Asset$Asset)))))))));
 
 var _user$project$Stellar_Endpoints_AllAssets$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/assets');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/assets');
 };
 var _user$project$Stellar_Endpoints_AllAssets$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -31935,11 +31911,7 @@ var _user$project$Stellar_Endpoints_AllAssets$setAssetIssuer = F2(
 			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
 			{
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'asset_issuer',
-					_1: _user$project$Stellar_PublicKey$toString(publicKey)
-				},
+				_0: {ctor: '_Tuple2', _0: 'asset_issuer', _1: publicKey},
 				_1: {ctor: '[]'}
 			},
 			requestBuilder);
@@ -31965,7 +31937,7 @@ var _user$project$Stellar_Endpoints_AllAssets$Error = function (a) {
 var _user$project$Stellar_Endpoints_AllAssets$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllAssets$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllAssets$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -32029,13 +32001,13 @@ var _user$project$Stellar_Endpoints_DataForAccount$url = F3(
 	function (endpoint, publicKey, key) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/accounts/',
 				A2(
 					_elm_lang$core$Basics_ops['++'],
-					_user$project$Stellar_PublicKey$toString(publicKey),
+					publicKey,
 					A2(
 						_elm_lang$core$Basics_ops['++'],
 						'/data/',
@@ -32057,7 +32029,7 @@ var _user$project$Stellar_Endpoints_DataForAccount$Error = function (a) {
 var _user$project$Stellar_Endpoints_DataForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_DataForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_DataForAccount$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_DataForAccount$Success, _user$project$Stellar_Resources_Data$decoder),
@@ -33129,10 +33101,7 @@ var _user$project$Stellar_Resources_Effect$decoder = A2(
 	A2(_elm_lang$core$Json_Decode$field, 'type', _elm_lang$core$Json_Decode$string));
 
 var _user$project$Stellar_Endpoints_AllEffects$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/effects');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/effects');
 };
 var _user$project$Stellar_Endpoints_AllEffects$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -33185,7 +33154,7 @@ var _user$project$Stellar_Endpoints_AllEffects$Error = function (a) {
 var _user$project$Stellar_Endpoints_AllEffects$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllEffects$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllEffects$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -33238,14 +33207,11 @@ var _user$project$Stellar_Endpoints_EffectsForAccount$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/accounts/',
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_user$project$Stellar_PublicKey$toString(publicKey),
-					'/effects')));
+				A2(_elm_lang$core$Basics_ops['++'], publicKey, '/effects')));
 	});
 var _user$project$Stellar_Endpoints_EffectsForAccount$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -33298,7 +33264,7 @@ var _user$project$Stellar_Endpoints_EffectsForAccount$Error = function (a) {
 var _user$project$Stellar_Endpoints_EffectsForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForAccount$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -33355,7 +33321,7 @@ var _user$project$Stellar_Endpoints_EffectsForLedger$url = F2(
 	function (endpoint, ledgerId) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/ledgers/',
@@ -33415,7 +33381,7 @@ var _user$project$Stellar_Endpoints_EffectsForLedger$Error = function (a) {
 var _user$project$Stellar_Endpoints_EffectsForLedger$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForLedger$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForLedger$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -33472,7 +33438,7 @@ var _user$project$Stellar_Endpoints_EffectsForOperation$url = F2(
 	function (endpoint, operationId) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/operations/',
@@ -33532,7 +33498,7 @@ var _user$project$Stellar_Endpoints_EffectsForOperation$Error = function (a) {
 var _user$project$Stellar_Endpoints_EffectsForOperation$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForOperation$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForOperation$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -33589,7 +33555,7 @@ var _user$project$Stellar_Endpoints_EffectsForTransaction$url = F2(
 	function (endpoint, hash) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/transactions/',
@@ -33646,7 +33612,7 @@ var _user$project$Stellar_Endpoints_EffectsForTransaction$Error = function (a) {
 var _user$project$Stellar_Endpoints_EffectsForTransaction$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForTransaction$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_EffectsForTransaction$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -33839,10 +33805,7 @@ var _user$project$Stellar_Resources_Ledger$decoder = A3(
 																		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Ledger$Ledger)))))))))))))))))));
 
 var _user$project$Stellar_Endpoints_AllLedgers$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/ledgers');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/ledgers');
 };
 var _user$project$Stellar_Endpoints_AllLedgers$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -33895,7 +33858,7 @@ var _user$project$Stellar_Endpoints_AllLedgers$Error = function (a) {
 var _user$project$Stellar_Endpoints_AllLedgers$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllLedgers$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllLedgers$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -33948,7 +33911,7 @@ var _user$project$Stellar_Endpoints_LedgerDetails$url = F2(
 	function (endpoint, sequence) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/ledgers/',
@@ -33964,7 +33927,7 @@ var _user$project$Stellar_Endpoints_LedgerDetails$Error = function (a) {
 var _user$project$Stellar_Endpoints_LedgerDetails$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_LedgerDetails$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_LedgerDetails$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_LedgerDetails$Success, _user$project$Stellar_Resources_Ledger$decoder),
@@ -34036,14 +33999,11 @@ var _user$project$Stellar_Endpoints_OffersForAccount$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/accounts/',
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_user$project$Stellar_PublicKey$toString(publicKey),
-					'/offers')));
+				A2(_elm_lang$core$Basics_ops['++'], publicKey, '/offers')));
 	});
 var _user$project$Stellar_Endpoints_OffersForAccount$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -34096,7 +34056,7 @@ var _user$project$Stellar_Endpoints_OffersForAccount$Error = function (a) {
 var _user$project$Stellar_Endpoints_OffersForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OffersForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OffersForAccount$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -35187,10 +35147,7 @@ var _user$project$Stellar_Resources_Operation$decoder = A2(
 	A2(_elm_lang$core$Json_Decode$field, 'type', _elm_lang$core$Json_Decode$string));
 
 var _user$project$Stellar_Endpoints_AllOperations$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/operations');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/operations');
 };
 var _user$project$Stellar_Endpoints_AllOperations$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -35243,7 +35200,7 @@ var _user$project$Stellar_Endpoints_AllOperations$Error = function (a) {
 var _user$project$Stellar_Endpoints_AllOperations$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllOperations$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllOperations$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -35296,14 +35253,11 @@ var _user$project$Stellar_Endpoints_OperationsForAccount$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/accounts/',
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_user$project$Stellar_PublicKey$toString(publicKey),
-					'/operations')));
+				A2(_elm_lang$core$Basics_ops['++'], publicKey, '/operations')));
 	});
 var _user$project$Stellar_Endpoints_OperationsForAccount$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -35356,7 +35310,7 @@ var _user$project$Stellar_Endpoints_OperationsForAccount$Error = function (a) {
 var _user$project$Stellar_Endpoints_OperationsForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationsForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationsForAccount$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -35413,7 +35367,7 @@ var _user$project$Stellar_Endpoints_OperationsForLedger$url = F2(
 	function (endpoint, ledgerId) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/ledgers/',
@@ -35473,7 +35427,7 @@ var _user$project$Stellar_Endpoints_OperationsForLedger$Error = function (a) {
 var _user$project$Stellar_Endpoints_OperationsForLedger$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationsForLedger$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationsForLedger$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -35530,7 +35484,7 @@ var _user$project$Stellar_Endpoints_OperationsForTransaction$url = F2(
 	function (endpoint, hash) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/transactions/',
@@ -35587,7 +35541,7 @@ var _user$project$Stellar_Endpoints_OperationsForTransaction$Error = function (a
 var _user$project$Stellar_Endpoints_OperationsForTransaction$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationsForTransaction$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationsForTransaction$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -35644,7 +35598,7 @@ var _user$project$Stellar_Endpoints_OperationDetails$url = F2(
 	function (endpoint, operationId) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/operations/',
@@ -35660,7 +35614,7 @@ var _user$project$Stellar_Endpoints_OperationDetails$Error = function (a) {
 var _user$project$Stellar_Endpoints_OperationDetails$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationDetails$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationDetails$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OperationDetails$Success, _user$project$Stellar_Resources_Operation$decoder),
@@ -35716,7 +35670,7 @@ var _user$project$Stellar_RationalNumber$decoder = A3(
 
 var _user$project$Stellar_Resources_Orderbook$Orderbook = F4(
 	function (a, b, c, d) {
-		return {bids: a, asks: b, selling: c, buying: d};
+		return {bids: a, asks: b, base: c, counter: d};
 	});
 var _user$project$Stellar_Resources_Orderbook$Listing = F3(
 	function (a, b, c) {
@@ -35735,14 +35689,22 @@ var _user$project$Stellar_Resources_Orderbook$listingDecoder = A3(
 			'price',
 			_elm_lang$core$Json_Decode$string,
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Orderbook$Listing))));
+var _user$project$Stellar_Resources_Orderbook$Offer = function (a) {
+	return {assetType: a};
+};
+var _user$project$Stellar_Resources_Orderbook$offerDecoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'asset_type',
+	_user$project$Stellar_AssetType$decoder,
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Orderbook$Offer));
 var _user$project$Stellar_Resources_Orderbook$decoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'buying',
-	_user$project$Stellar_Resources_Asset$decoder,
+	'counter',
+	_user$project$Stellar_Resources_Orderbook$offerDecoder,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'selling',
-		_user$project$Stellar_Resources_Asset$decoder,
+		'base',
+		_user$project$Stellar_Resources_Orderbook$offerDecoder,
 		A3(
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 			'asks',
@@ -35754,10 +35716,7 @@ var _user$project$Stellar_Resources_Orderbook$decoder = A3(
 				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Orderbook$Orderbook)))));
 
 var _user$project$Stellar_Endpoints_OrderbookDetails$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/order_book');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/order_book');
 };
 var _user$project$Stellar_Endpoints_OrderbookDetails$setLimit = F2(
 	function (limit, requestBuilder) {
@@ -35780,11 +35739,7 @@ var _user$project$Stellar_Endpoints_OrderbookDetails$setBuyingAssetIssuer = F2(
 			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
 			{
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'buying_asset_issuer',
-					_1: _user$project$Stellar_PublicKey$toString(buyingAssetIssuer)
-				},
+				_0: {ctor: '_Tuple2', _0: 'buying_asset_issuer', _1: buyingAssetIssuer},
 				_1: {ctor: '[]'}
 			},
 			requestBuilder);
@@ -35806,11 +35761,7 @@ var _user$project$Stellar_Endpoints_OrderbookDetails$setSellingAssetIssuer = F2(
 			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
 			{
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'selling_asset_issuer',
-					_1: _user$project$Stellar_PublicKey$toString(sellingAssetIssuer)
-				},
+				_0: {ctor: '_Tuple2', _0: 'selling_asset_issuer', _1: sellingAssetIssuer},
 				_1: {ctor: '[]'}
 			},
 			requestBuilder);
@@ -35836,7 +35787,7 @@ var _user$project$Stellar_Endpoints_OrderbookDetails$Error = function (a) {
 var _user$project$Stellar_Endpoints_OrderbookDetails$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OrderbookDetails$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OrderbookDetails$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_OrderbookDetails$Success, _user$project$Stellar_Resources_Orderbook$decoder),
@@ -35958,10 +35909,7 @@ var _user$project$Stellar_Resources_Payment$decoder = A2(
 	A2(_elm_lang$core$Json_Decode$field, 'type', _elm_lang$core$Json_Decode$string));
 
 var _user$project$Stellar_Endpoints_AllPayments$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/payments');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/payments');
 };
 var _user$project$Stellar_Endpoints_AllPayments$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -36014,7 +35962,7 @@ var _user$project$Stellar_Endpoints_AllPayments$Error = function (a) {
 var _user$project$Stellar_Endpoints_AllPayments$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllPayments$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllPayments$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36067,14 +36015,11 @@ var _user$project$Stellar_Endpoints_PaymentsForAccount$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/accounts/',
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_user$project$Stellar_PublicKey$toString(publicKey),
-					'/payments')));
+				A2(_elm_lang$core$Basics_ops['++'], publicKey, '/payments')));
 	});
 var _user$project$Stellar_Endpoints_PaymentsForAccount$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -36127,7 +36072,7 @@ var _user$project$Stellar_Endpoints_PaymentsForAccount$Error = function (a) {
 var _user$project$Stellar_Endpoints_PaymentsForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PaymentsForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PaymentsForAccount$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36184,7 +36129,7 @@ var _user$project$Stellar_Endpoints_PaymentsForLedger$url = F2(
 	function (endpoint, ledgerId) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/ledgers/',
@@ -36244,7 +36189,7 @@ var _user$project$Stellar_Endpoints_PaymentsForLedger$Error = function (a) {
 var _user$project$Stellar_Endpoints_PaymentsForLedger$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PaymentsForLedger$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PaymentsForLedger$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36301,7 +36246,7 @@ var _user$project$Stellar_Endpoints_PaymentsForTransaction$url = F2(
 	function (endpoint, hash) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/transactions/',
@@ -36358,7 +36303,7 @@ var _user$project$Stellar_Endpoints_PaymentsForTransaction$Error = function (a) 
 var _user$project$Stellar_Endpoints_PaymentsForTransaction$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PaymentsForTransaction$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PaymentsForTransaction$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36544,10 +36489,7 @@ var _user$project$Stellar_Resources_Transaction$decoder = A3(
 																_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Stellar_Resources_Transaction$Transaction)))))))))))))))));
 
 var _user$project$Stellar_Endpoints_AllTransactions$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/transactions');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/transactions');
 };
 var _user$project$Stellar_Endpoints_AllTransactions$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -36600,7 +36542,7 @@ var _user$project$Stellar_Endpoints_AllTransactions$Error = function (a) {
 var _user$project$Stellar_Endpoints_AllTransactions$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllTransactions$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_AllTransactions$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36650,10 +36592,7 @@ var _user$project$Endpoints_AllTransactions_Msg$UpdateCursor = function (a) {
 };
 
 var _user$project$Stellar_Endpoints_PostTransaction$url = function (endpoint) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		_user$project$Stellar_Endpoint$toString(endpoint),
-		'/transactions');
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/transactions');
 };
 var _user$project$Stellar_Endpoints_PostTransaction$send = _lukewestby$elm_http_builder$HttpBuilder$send;
 var _user$project$Stellar_Endpoints_PostTransaction$Success = function (a) {
@@ -36665,7 +36604,7 @@ var _user$project$Stellar_Endpoints_PostTransaction$Error = function (a) {
 var _user$project$Stellar_Endpoints_PostTransaction$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PostTransaction$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PostTransaction$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_PostTransaction$Success, _user$project$Stellar_Resources_Transaction$decoder),
@@ -36725,14 +36664,11 @@ var _user$project$Stellar_Endpoints_TransactionsForAccount$url = F2(
 	function (endpoint, publicKey) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/accounts/',
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_user$project$Stellar_PublicKey$toString(publicKey),
-					'/transactions')));
+				A2(_elm_lang$core$Basics_ops['++'], publicKey, '/transactions')));
 	});
 var _user$project$Stellar_Endpoints_TransactionsForAccount$setSorting = F2(
 	function (sorting, requestBuilder) {
@@ -36785,7 +36721,7 @@ var _user$project$Stellar_Endpoints_TransactionsForAccount$Error = function (a) 
 var _user$project$Stellar_Endpoints_TransactionsForAccount$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionsForAccount$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionsForAccount$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36842,7 +36778,7 @@ var _user$project$Stellar_Endpoints_TransactionsForLedger$url = F2(
 	function (endpoint, ledgerId) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/ledgers/',
@@ -36902,7 +36838,7 @@ var _user$project$Stellar_Endpoints_TransactionsForLedger$Error = function (a) {
 var _user$project$Stellar_Endpoints_TransactionsForLedger$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionsForLedger$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionsForLedger$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -36959,7 +36895,7 @@ var _user$project$Stellar_Endpoints_TransactionDetails$url = F2(
 	function (endpoint, hash) {
 		return A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Stellar_Endpoint$toString(endpoint),
+			endpoint,
 			A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/transactions/',
@@ -36975,7 +36911,7 @@ var _user$project$Stellar_Endpoints_TransactionDetails$Error = function (a) {
 var _user$project$Stellar_Endpoints_TransactionDetails$decoder = _elm_lang$core$Json_Decode$oneOf(
 	{
 		ctor: '::',
-		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionDetails$Error, _user$project$Stellar_Errors_Error$decoder),
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionDetails$Error, _user$project$Stellar_Error$decoder),
 		_1: {
 			ctor: '::',
 			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_TransactionDetails$Success, _user$project$Stellar_Resources_Transaction$decoder),
@@ -37133,12 +37069,10 @@ var _user$project$Endpoints_Helpers$setIfChanged = F5(
 			requestBuilder) : requestBuilder;
 	});
 var _user$project$Endpoints_Helpers$publicKeyFromInput = function (inputModel) {
-	return _user$project$Stellar_PublicKey$fromString(
-		_bluedogtraining$bdt_elm$Form_Input$getValue(inputModel));
+	return _bluedogtraining$bdt_elm$Form_Input$getValue(inputModel);
 };
 var _user$project$Endpoints_Helpers$endpointFromInput = function (inputModel) {
-	return _user$project$Stellar_Endpoint$fromString(
-		_bluedogtraining$bdt_elm$Form_Input$getValue(inputModel));
+	return _bluedogtraining$bdt_elm$Form_Input$getValue(inputModel);
 };
 
 var _user$project$Endpoints_AccountDetails_RequestBuilder$requestBuilder = F2(
@@ -37198,7 +37132,7 @@ var _user$project$Endpoints_AccountDetails_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_AccountDetails$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_AccountDetails$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -38398,10 +38332,7 @@ var _user$project$Endpoints_AllAssets_RequestBuilder$requestBuilder = F2(
 						_user$project$Endpoints_Helpers$setIfChanged,
 						_user$project$Stellar_Endpoints_AllAssets$setAssetIssuer,
 						_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
-						function (_p0) {
-							return _user$project$Stellar_PublicKey$fromString(
-								_bluedogtraining$bdt_elm$Form_Input$getValue(_p0));
-						},
+						_bluedogtraining$bdt_elm$Form_Input$getValue,
 						settings.assetIssuer,
 						A5(
 							_user$project$Endpoints_Helpers$setIfChanged,
@@ -38491,7 +38422,7 @@ var _user$project$Endpoints_AllAssets_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllAssets$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllAssets$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -39008,7 +38939,7 @@ var _user$project$Endpoints_AllEffects_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllEffects$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllEffects$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -39406,7 +39337,7 @@ var _user$project$Endpoints_AllLedgers_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllLedgers$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllLedgers$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -39797,7 +39728,7 @@ var _user$project$Endpoints_AllOperations_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllOperations$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllOperations$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -40194,7 +40125,7 @@ var _user$project$Endpoints_AllPayments_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllPayments$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllPayments$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -40591,7 +40522,7 @@ var _user$project$Endpoints_AllTransactions_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllTransactions$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_AllTransactions$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -40993,7 +40924,7 @@ var _user$project$Endpoints_DataForAccount_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p4._0._0, _user$project$Stellar_Endpoints_DataForAccount$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p4._0._0, _user$project$Stellar_Endpoints_DataForAccount$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -41288,7 +41219,7 @@ var _user$project$Endpoints_EffectsForAccount_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForAccount$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForAccount$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -41755,7 +41686,7 @@ var _user$project$Endpoints_EffectsForLedger_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForLedger$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForLedger$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -42222,7 +42153,7 @@ var _user$project$Endpoints_EffectsForOperation_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForOperation$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForOperation$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -42686,7 +42617,7 @@ var _user$project$Endpoints_EffectsForTransaction_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForTransaction$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_EffectsForTransaction$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -43112,7 +43043,7 @@ var _user$project$Endpoints_LedgerDetails_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_LedgerDetails$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_LedgerDetails$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -43458,7 +43389,7 @@ var _user$project$Endpoints_OffersForAccount_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OffersForAccount$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OffersForAccount$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -43885,7 +43816,7 @@ var _user$project$Endpoints_OperationDetails_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_OperationDetails$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_OperationDetails$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -44124,7 +44055,7 @@ var _user$project$Endpoints_OperationsForAccount_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OperationsForAccount$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OperationsForAccount$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -44591,7 +44522,7 @@ var _user$project$Endpoints_OperationsForLedger_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OperationsForLedger$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OperationsForLedger$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -45055,7 +44986,7 @@ var _user$project$Endpoints_OperationsForTransaction_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OperationsForTransaction$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_OperationsForTransaction$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -45434,10 +45365,7 @@ var _user$project$Endpoints_OrderbookDetails_RequestBuilder$requestBuilder = F2(
 				_user$project$Endpoints_Helpers$setIfChanged,
 				_user$project$Stellar_Endpoints_OrderbookDetails$setBuyingAssetIssuer,
 				_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
-				function (_p0) {
-					return _user$project$Stellar_PublicKey$fromString(
-						_bluedogtraining$bdt_elm$Form_Input$getValue(_p0));
-				},
+				_bluedogtraining$bdt_elm$Form_Input$getValue,
 				settings.buyingAssetIssuer,
 				A5(
 					_user$project$Endpoints_Helpers$setIfChanged,
@@ -45449,10 +45377,7 @@ var _user$project$Endpoints_OrderbookDetails_RequestBuilder$requestBuilder = F2(
 						_user$project$Endpoints_Helpers$setIfChanged,
 						_user$project$Stellar_Endpoints_OrderbookDetails$setSellingAssetIssuer,
 						_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
-						function (_p1) {
-							return _user$project$Stellar_PublicKey$fromString(
-								_bluedogtraining$bdt_elm$Form_Input$getValue(_p1));
-						},
+						_bluedogtraining$bdt_elm$Form_Input$getValue,
 						settings.sellingAssetIssuer,
 						A5(
 							_user$project$Endpoints_Helpers$setIfChanged,
@@ -45612,7 +45537,7 @@ var _user$project$Endpoints_OrderbookDetails_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p6._0._0, _user$project$Stellar_Endpoints_OrderbookDetails$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p6._0._0, _user$project$Stellar_Endpoints_OrderbookDetails$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -45637,7 +45562,7 @@ var _user$project$Endpoints_OrderbookDetails_View$view = F2(
 			{ctor: '[]'},
 			{
 				ctor: '::',
-				_0: A2(_user$project$Endpoints_Views_Title$view, 'Operations for Transaction', 'https://www.stellar.org/developers/horizon/reference/endpoints/offers-for-transaction.html'),
+				_0: A2(_user$project$Endpoints_Views_Title$view, 'Orderbook Details', 'https://www.stellar.org/developers/horizon/reference/endpoints/offers-for-transaction.html'),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -45717,8 +45642,13 @@ var _user$project$Endpoints_OrderbookDetails_View$view = F2(
 										}),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_rtfeldman$elm_css$Html_Styled$div,
+										_0: A3(
+											_bluedogtraining$bdt_elm$Html_Styled_Bdt$divIf,
+											(!_elm_lang$core$Native_Utils.eq(
+												_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.sellingAssetType),
+												_elm_lang$core$Maybe$Nothing)) && (!_elm_lang$core$Native_Utils.eq(
+												_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.sellingAssetType),
+												_elm_lang$core$Maybe$Just(_user$project$Stellar_AssetType$Native))),
 											{
 												ctor: '::',
 												_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
@@ -45776,8 +45706,13 @@ var _user$project$Endpoints_OrderbookDetails_View$view = F2(
 											}),
 										_1: {
 											ctor: '::',
-											_0: A2(
-												_rtfeldman$elm_css$Html_Styled$div,
+											_0: A3(
+												_bluedogtraining$bdt_elm$Html_Styled_Bdt$divIf,
+												(!_elm_lang$core$Native_Utils.eq(
+													_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.sellingAssetType),
+													_elm_lang$core$Maybe$Nothing)) && (!_elm_lang$core$Native_Utils.eq(
+													_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.sellingAssetType),
+													_elm_lang$core$Maybe$Just(_user$project$Stellar_AssetType$Native))),
 												{
 													ctor: '::',
 													_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
@@ -45890,8 +45825,13 @@ var _user$project$Endpoints_OrderbookDetails_View$view = F2(
 													}),
 												_1: {
 													ctor: '::',
-													_0: A2(
-														_rtfeldman$elm_css$Html_Styled$div,
+													_0: A3(
+														_bluedogtraining$bdt_elm$Html_Styled_Bdt$divIf,
+														(!_elm_lang$core$Native_Utils.eq(
+															_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.buyingAssetType),
+															_elm_lang$core$Maybe$Nothing)) && (!_elm_lang$core$Native_Utils.eq(
+															_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.buyingAssetType),
+															_elm_lang$core$Maybe$Just(_user$project$Stellar_AssetType$Native))),
 														{
 															ctor: '::',
 															_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
@@ -45949,8 +45889,13 @@ var _user$project$Endpoints_OrderbookDetails_View$view = F2(
 														}),
 													_1: {
 														ctor: '::',
-														_0: A2(
-															_rtfeldman$elm_css$Html_Styled$div,
+														_0: A3(
+															_bluedogtraining$bdt_elm$Html_Styled_Bdt$divIf,
+															(!_elm_lang$core$Native_Utils.eq(
+																_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.buyingAssetType),
+																_elm_lang$core$Maybe$Nothing)) && (!_elm_lang$core$Native_Utils.eq(
+																_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.buyingAssetType),
+																_elm_lang$core$Maybe$Just(_user$project$Stellar_AssetType$Native))),
 															{
 																ctor: '::',
 																_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
@@ -46199,7 +46144,7 @@ var _user$project$Endpoints_PaymentsForAccount_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PaymentsForAccount$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PaymentsForAccount$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -46666,7 +46611,7 @@ var _user$project$Endpoints_PaymentsForLedger_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PaymentsForLedger$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PaymentsForLedger$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -47130,7 +47075,7 @@ var _user$project$Endpoints_PaymentsForTransaction_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PaymentsForTransaction$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PaymentsForTransaction$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -47563,7 +47508,7 @@ var _user$project$Endpoints_PostTransaction_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PostTransaction$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_PostTransaction$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -47750,7 +47695,7 @@ var _user$project$Endpoints_TransactionDetails_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_TransactionDetails$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p1._0._0, _user$project$Stellar_Endpoints_TransactionDetails$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -47995,7 +47940,7 @@ var _user$project$Endpoints_TransactionsForAccount_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_TransactionsForAccount$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_TransactionsForAccount$Error))
 							}),
 						{ctor: '[]'});
 				} else {
@@ -48462,7 +48407,7 @@ var _user$project$Endpoints_TransactionsForLedger_Update$update = F2(
 							{
 								isLoading: false,
 								response: _elm_lang$core$Maybe$Just(
-									A2(_user$project$Stellar_Errors_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_TransactionsForLedger$Error))
+									A2(_user$project$Stellar_Error$flattenError, _p2._0._0, _user$project$Stellar_Endpoints_TransactionsForLedger$Error))
 							}),
 						{ctor: '[]'});
 				} else {

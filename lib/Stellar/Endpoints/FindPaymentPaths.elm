@@ -1,4 +1,4 @@
-module Stellar.Endpoints.OperationDetails exposing (requestBuilder, send, Response (..))
+module Stellar.Endpoints.FindPaymentPaths exposing (requestBuilder, send, Response (..))
 
 import Http
 import HttpBuilder exposing (..)

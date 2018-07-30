@@ -9,7 +9,7 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
 import Stellar.Resources.Transaction as Transaction exposing (Transaction)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> String -> RequestBuilder Response
@@ -27,7 +27,7 @@ send =
 url : Endpoint -> String -> String
 url endpoint hash =
 
-    Endpoint.toString endpoint ++ "/transactions/" ++ toString hash
+    endpoint ++ "/transactions/" ++ toString hash
 
 
 type Response

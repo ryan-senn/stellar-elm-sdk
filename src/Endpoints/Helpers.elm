@@ -11,17 +11,13 @@ import Stellar.PublicKey as PublicKey exposing (PublicKey)
 endpointFromInput : Input.Model -> Endpoint
 endpointFromInput inputModel =
 
-    inputModel
-        |> Input.getValue
-        |> Endpoint.fromString
+    Input.getValue inputModel
 
 
 publicKeyFromInput : Input.Model -> PublicKey
 publicKeyFromInput inputModel =
 
-    inputModel
-        |> Input.getValue
-        |> PublicKey.fromString
+    Input.getValue inputModel
 
 
 setIfChanged

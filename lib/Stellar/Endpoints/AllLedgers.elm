@@ -14,7 +14,7 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 import Stellar.Resources.Page as Page exposing (Page)
 import Stellar.Resources.Ledger as Ledger exposing (Ledger)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> RequestBuilder Response
@@ -49,7 +49,7 @@ setSorting sorting requestBuilder =
 
 url : Endpoint -> String
 url endpoint =
-    Endpoint.toString endpoint ++ "/ledgers"
+    endpoint ++ "/ledgers"
 
 
 type Response

@@ -25,6 +25,7 @@ import Endpoints.OperationsForLedger.View as OperationsForLedger
 import Endpoints.OperationsForTransaction.View as OperationsForTransaction
 import Endpoints.OperationDetails.View as OperationDetails
 import Endpoints.OrderbookDetails.View as OrderbookDetails
+import Endpoints.FindPaymentPaths.View as FindPaymentPaths
 import Endpoints.AllPayments.View as AllPayments
 import Endpoints.PaymentsForAccount.View as PaymentsForAccount
 import Endpoints.PaymentsForLedger.View as PaymentsForLedger
@@ -93,7 +94,7 @@ view endpoints endpoint =
             OrderbookDetails.view endpoints.endpoint endpoints.orderbookDetails
 
         Endpoints.FindPaymentPaths ->
-            findPaymentPaths endpoints
+            FindPaymentPaths.view endpoints.endpoint endpoints.findPaymentPaths
 
         Endpoints.AllPayments ->
             AllPayments.view endpoints.endpoint endpoints.allPayments

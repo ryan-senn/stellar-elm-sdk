@@ -1,23 +1,29 @@
-module Stellar.AssetType exposing (AssetType (..), asList, decoder, toString)
+module Stellar.AssetType exposing (AssetType (..), decoder, asList, toString)
+
+{-| Union Type of Asset Types
+
+# Union Type and Decoder
+@docs AssetType, decoder, toString
+
+# Helpers
+@docs asList, toString
+
+-}
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
 
+{-| Possible Asset Types
+-}
 type AssetType
     = Native
     | CreditAlphanum4
     | CreditAlphanum12
 
 
-asList : List AssetType
-asList =
-    [ Native
-    , CreditAlphanum4
-    , CreditAlphanum12
-    ]
-
-
+{-| Decoder
+-}
 decoder : Decoder AssetType
 decoder =
     Decode.string
@@ -42,6 +48,19 @@ stringToAssetType string =
             Decode.fail "Could not decode AssetType"
 
 
+{-| List representation of the Union Type
+-}
+asList : List AssetType
+asList =
+    [ Native
+    , CreditAlphanum4
+    , CreditAlphanum12
+    ]
+
+
+
+{-| String representation of the Union Type
+-}
 toString : AssetType -> String
 toString assetType =
 

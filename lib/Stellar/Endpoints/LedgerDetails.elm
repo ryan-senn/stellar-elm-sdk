@@ -9,7 +9,7 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
 import Stellar.Resources.Ledger as Ledger exposing (Ledger)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> Int -> RequestBuilder Response
@@ -27,7 +27,7 @@ send =
 url : Endpoint -> Int -> String
 url endpoint sequence =
 
-    Endpoint.toString endpoint ++ "/ledgers/" ++ toString sequence
+    endpoint ++ "/ledgers/" ++ toString sequence
 
 
 type Response

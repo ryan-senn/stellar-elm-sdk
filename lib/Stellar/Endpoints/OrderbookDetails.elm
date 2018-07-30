@@ -17,7 +17,7 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 
 import Stellar.Resources.Orderbook as Orderbook exposing (Orderbook)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> AssetType -> AssetType -> RequestBuilder Response
@@ -43,7 +43,7 @@ setSellingAssetCode sellingAssetCode requestBuilder =
 setSellingAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
 setSellingAssetIssuer sellingAssetIssuer requestBuilder =
     requestBuilder
-        |> withQueryParams [("selling_asset_issuer", PublicKey.toString sellingAssetIssuer)]
+        |> withQueryParams [("selling_asset_issuer", sellingAssetIssuer)]
 
 
 setBuyingAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
@@ -55,7 +55,7 @@ setBuyingAssetCode buyingAssetCode requestBuilder =
 setBuyingAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
 setBuyingAssetIssuer buyingAssetIssuer requestBuilder =
     requestBuilder
-        |> withQueryParams [("buying_asset_issuer", PublicKey.toString buyingAssetIssuer)]
+        |> withQueryParams [("buying_asset_issuer", buyingAssetIssuer)]
 
 
 setLimit : Int -> RequestBuilder Response -> RequestBuilder Response
@@ -67,7 +67,7 @@ setLimit limit requestBuilder =
 url : Endpoint -> String
 url endpoint =
 
-    Endpoint.toString endpoint ++ "/order_book"
+    endpoint ++ "/order_book"
 
 
 type Response

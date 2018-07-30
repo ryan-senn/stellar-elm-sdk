@@ -21,7 +21,7 @@ requestBuilder endpoint settings =
 
     OrderbookDetails.requestBuilder (Helpers.endpointFromInput endpoint) (Select.getSelectedOption settings.sellingAssetType |> Maybe.withDefault AssetType.Native) (Select.getSelectedOption settings.buyingAssetType |> Maybe.withDefault AssetType.Native)
         |> Helpers.setIfChanged OrderbookDetails.setSellingAssetCode Input.getIsChanged Input.getValue settings.sellingAssetCode
-        |> Helpers.setIfChanged OrderbookDetails.setSellingAssetIssuer Input.getIsChanged (Input.getValue >> PublicKey.fromString) settings.sellingAssetIssuer
+        |> Helpers.setIfChanged OrderbookDetails.setSellingAssetIssuer Input.getIsChanged Input.getValue settings.sellingAssetIssuer
         |> Helpers.setIfChanged OrderbookDetails.setBuyingAssetCode Input.getIsChanged Input.getValue settings.buyingAssetCode
-        |> Helpers.setIfChanged OrderbookDetails.setBuyingAssetIssuer Input.getIsChanged (Input.getValue >> PublicKey.fromString) settings.buyingAssetIssuer
+        |> Helpers.setIfChanged OrderbookDetails.setBuyingAssetIssuer Input.getIsChanged Input.getValue settings.buyingAssetIssuer
         |> Helpers.setIfChangedMaybe OrderbookDetails.setLimit IntInput.getIsChanged IntInput.getValue settings.limit

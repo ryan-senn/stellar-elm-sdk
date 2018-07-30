@@ -3,7 +3,7 @@ module Endpoints.PaymentsForLedger.Update exposing (update)
 import Form.Input as Input
 import Form.IntInput as IntInput
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.PaymentsForLedger as PaymentsForLedger
 

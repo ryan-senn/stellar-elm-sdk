@@ -15,7 +15,7 @@ import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Page as Page exposing (Page)
 import Stellar.Resources.Asset as Asset exposing (Asset)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> RequestBuilder Response
@@ -39,7 +39,7 @@ setAssetCode assetCode requestBuilder =
 setAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
 setAssetIssuer publicKey requestBuilder =
     requestBuilder
-        |> withQueryParams [("asset_issuer", PublicKey.toString publicKey)]
+        |> withQueryParams [("asset_issuer", publicKey)]
 
 
 setCursor : String -> RequestBuilder Response -> RequestBuilder Response
@@ -62,7 +62,7 @@ setSorting sorting requestBuilder =
 
 url : Endpoint -> String
 url endpoint =
-    Endpoint.toString endpoint ++ "/assets"
+    endpoint ++ "/assets"
 
 
 type Response

@@ -3,7 +3,7 @@ module Endpoints.PostTransaction.Update exposing (update)
 import Form.Input as Input
 import Form.TextArea as TextArea
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.PostTransaction as PostTransaction
 

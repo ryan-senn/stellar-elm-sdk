@@ -3,7 +3,7 @@ module Endpoints.OperationsForTransaction.Update exposing (update)
 import Form.Input as Input
 import Form.IntInput as IntInput
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.OperationsForTransaction as OperationsForTransaction
 

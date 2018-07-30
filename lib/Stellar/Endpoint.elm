@@ -1,15 +1,23 @@
-module Stellar.Endpoint exposing (Endpoint, toString, fromString)
+module Stellar.Endpoint exposing (Endpoint, decoder)
+
+{-| String type alias for Endpoint, helping with the readability of type signatures
+
+# String Formatting Helpers
+@docs Endpoint, decoder
+
+-}
+
+import Json.Decode as Decode exposing (Decoder)
 
 
-type Endpoint
-    = Endpoint String
+{-| Type alias
+-}
+type alias Endpoint =
+    String
 
 
-toString : Endpoint -> String
-toString (Endpoint string) =
-    string
-
-
-fromString : String -> Endpoint
-fromString =
-    Endpoint
+{-| Decoder
+-}
+decoder : Decoder Endpoint
+decoder =
+    Decode.string

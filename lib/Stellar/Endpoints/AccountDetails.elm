@@ -10,7 +10,7 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
 import Stellar.Resources.Account as Account exposing (Account)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> PublicKey -> RequestBuilder Response
@@ -28,7 +28,7 @@ send =
 url : Endpoint -> PublicKey -> String
 url endpoint publicKey =
 
-    Endpoint.toString endpoint ++ "/accounts/" ++ PublicKey.toString publicKey
+    endpoint ++ "/accounts/" ++ publicKey
 
 
 type Response

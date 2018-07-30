@@ -20,7 +20,7 @@ requestBuilder endpoint settings =
 
     AllAssets.requestBuilder endpoint
         |> Helpers.setIfChanged AllAssets.setAssetCode Input.getIsChanged Input.getValue settings.assetCode
-        |> Helpers.setIfChanged AllAssets.setAssetIssuer Input.getIsChanged (Input.getValue >> PublicKey.fromString) settings.assetIssuer
+        |> Helpers.setIfChanged AllAssets.setAssetIssuer Input.getIsChanged Input.getValue settings.assetIssuer
         |> Helpers.setIfChanged AllAssets.setCursor Input.getIsChanged Input.getValue settings.cursor
         |> Helpers.setIfChangedMaybe AllAssets.setLimit IntInput.getIsChanged IntInput.getValue settings.limit
         |> Helpers.setIfJust AllAssets.setSorting settings.sorting

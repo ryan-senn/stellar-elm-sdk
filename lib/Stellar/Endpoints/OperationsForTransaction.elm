@@ -15,7 +15,7 @@ import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Page as Page exposing (Page)
 import Stellar.Resources.Operation as Operation exposing (Operation)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> String -> RequestBuilder Response
@@ -51,7 +51,7 @@ setSorting sorting requestBuilder =
 url : Endpoint -> String -> String
 url endpoint hash =
 
-    Endpoint.toString endpoint
+    endpoint
     ++ "/transactions/"
     ++ hash
     ++ "/operations"

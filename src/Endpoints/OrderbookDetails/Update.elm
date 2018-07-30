@@ -4,7 +4,7 @@ import Form.Input as Input
 import Form.IntInput as IntInput
 import Form.Select as Select
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.AssetType as AssetType
 

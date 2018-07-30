@@ -10,6 +10,7 @@ import Form.Input as Input
 import Form.IntInput as IntInput
 import Form.Select as Select
 
+import Stellar.AssetType as AssetType
 import Stellar.Sorting as Sorting
 
 import Msg exposing (Msg)
@@ -38,7 +39,7 @@ view endpoint model =
 
     div
         []
-        [ Title.view "Operations for Transaction" "https://www.stellar.org/developers/horizon/reference/endpoints/offers-for-transaction.html"
+        [ Title.view "Orderbook Details" "https://www.stellar.org/developers/horizon/reference/endpoints/offers-for-transaction.html"
         , div
             [ Css.page ]
             [ h2
@@ -61,7 +62,7 @@ view endpoint model =
                     |> Select.render
                     |> Html.map (OrderbookDetails.UpdateSellingAssetType >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
-            , div
+            , Html.divIf (Select.getSelectedOption model.settings.sellingAssetType /= Nothing && Select.getSelectedOption model.settings.sellingAssetType /= Just AssetType.Native)
                 [ class "form-group" ]
                 [ label
                     [ Css.label ]
@@ -77,7 +78,7 @@ view endpoint model =
                     |> Input.render
                     |> Html.map (OrderbookDetails.UpdateSellingAssetCode >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
-            , div
+            , Html.divIf (Select.getSelectedOption model.settings.sellingAssetType /= Nothing && Select.getSelectedOption model.settings.sellingAssetType /= Just AssetType.Native)
                 [ class "form-group" ]
                 [ label
                     [ Css.label ]
@@ -109,7 +110,7 @@ view endpoint model =
                     |> Select.render
                     |> Html.map (OrderbookDetails.UpdateBuyingAssetType >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
-            , div
+            , Html.divIf (Select.getSelectedOption model.settings.buyingAssetType /= Nothing && Select.getSelectedOption model.settings.buyingAssetType /= Just AssetType.Native)
                 [ class "form-group" ]
                 [ label
                     [ Css.label ]
@@ -125,7 +126,7 @@ view endpoint model =
                     |> Input.render
                     |> Html.map (OrderbookDetails.UpdateBuyingAssetCode >> OrderbookDetails.SettingsMsg >> OrderbookDetails.composeMsg)
                 ]
-            , div
+            , Html.divIf (Select.getSelectedOption model.settings.buyingAssetType /= Nothing && Select.getSelectedOption model.settings.buyingAssetType /= Just AssetType.Native)
                 [ class "form-group" ]
                 [ label
                     [ Css.label ]

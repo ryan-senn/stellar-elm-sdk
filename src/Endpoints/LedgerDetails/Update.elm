@@ -2,7 +2,7 @@ module Endpoints.LedgerDetails.Update exposing (update)
 
 import Form.IntInput as IntInput
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.LedgerDetails as LedgerDetails
 

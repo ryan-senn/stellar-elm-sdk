@@ -19,6 +19,7 @@ import Endpoints.OperationsForLedger.Model as OperationsForLedger
 import Endpoints.OperationsForTransaction.Model as OperationsForTransaction
 import Endpoints.OperationDetails.Model as OperationDetails
 import Endpoints.OrderbookDetails.Model as OrderbookDetails
+import Endpoints.FindPaymentPaths.Model as FindPaymentPaths
 import Endpoints.AllPayments.Model as AllPayments
 import Endpoints.PaymentsForAccount.Model as PaymentsForAccount
 import Endpoints.PaymentsForLedger.Model as PaymentsForLedger
@@ -49,6 +50,7 @@ type alias Model =
     , operationsForTransaction : OperationsForTransaction.Model
     , operationDetails : OperationDetails.Model
     , orderbookDetails : OrderbookDetails.Model
+    , findPaymentPaths : FindPaymentPaths.Model
     , allPayments : AllPayments.Model
     , paymentsForAccount : PaymentsForAccount.Model
     , paymentsForLedger : PaymentsForLedger.Model
@@ -81,6 +83,7 @@ initialModel =
     , operationsForTransaction = OperationsForTransaction.initialModel
     , operationDetails = OperationDetails.initialModel
     , orderbookDetails = OrderbookDetails.initialModel
+    , findPaymentPaths = FindPaymentPaths.initialModel
     , allPayments = AllPayments.initialModel
     , paymentsForAccount = PaymentsForAccount.initialModel
     , paymentsForLedger = PaymentsForLedger.initialModel

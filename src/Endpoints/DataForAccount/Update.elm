@@ -3,7 +3,7 @@ module Endpoints.DataForAccount.Update exposing (update)
 import Form.Input as Input
 import Form.Select as Select
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.DataForAccount as DataForAccount
 

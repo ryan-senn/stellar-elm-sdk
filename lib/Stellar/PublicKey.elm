@@ -1,22 +1,23 @@
-module Stellar.PublicKey exposing (PublicKey (PublicKey), toString, fromString, decoder)
+module Stellar.PublicKey exposing (PublicKey, decoder)
+
+{-| String type alias for PublicKey, helping with the readability of type signatures
+
+# String Formatting Helpers
+@docs PublicKey, decoder
+
+-}
 
 import Json.Decode as Decode exposing (Decoder)
 
 
-type PublicKey
-    = PublicKey String
+{-| Type alias
+-}
+type alias PublicKey =
+    String
 
 
-toString : PublicKey -> String
-toString (PublicKey string) =
-    string
-
-
-fromString : String -> PublicKey
-fromString =
-    String.toUpper >> PublicKey
-
-
+{-| Decoder
+-}
 decoder : Decoder PublicKey
 decoder =
-    Decode.map PublicKey Decode.string
+    Decode.string

@@ -14,7 +14,7 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 import Stellar.Resources.Page as Page exposing (Page)
 import Stellar.Resources.Effect as Effect exposing (Effect)
 
-import Stellar.Errors.Error as Error exposing (Error)
+import Stellar.Error as Error exposing (Error)
 
 
 requestBuilder : Endpoint -> Int -> RequestBuilder Response
@@ -50,7 +50,7 @@ setSorting sorting requestBuilder =
 url : Endpoint -> Int -> String
 url endpoint operationId =
 
-    Endpoint.toString endpoint
+    endpoint
     ++ "/operations/"
     ++ toString operationId
     ++ "/effects"

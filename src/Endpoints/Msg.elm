@@ -19,6 +19,7 @@ import Endpoints.OperationsForLedger.Msg as OperationsForLedger
 import Endpoints.OperationsForTransaction.Msg as OperationsForTransaction
 import Endpoints.OperationDetails.Msg as OperationDetails
 import Endpoints.OrderbookDetails.Msg as OrderbookDetails
+import Endpoints.FindPaymentPaths.Msg as FindPaymentPaths
 import Endpoints.AllPayments.Msg as AllPayments
 import Endpoints.PaymentsForAccount.Msg as PaymentsForAccount
 import Endpoints.PaymentsForLedger.Msg as PaymentsForLedger
@@ -49,6 +50,7 @@ type Msg
     | OperationsForTransactionMsg OperationsForTransaction.Msg
     | OperationDetailsMsg OperationDetails.Msg
     | OrderbookDetailsMsg OrderbookDetails.Msg
+    | FindPaymentPathsMsg FindPaymentPaths.Msg
     | AllPaymentsMsg AllPayments.Msg
     | PaymentsForAccountMsg PaymentsForAccount.Msg
     | PaymentsForLedgerMsg PaymentsForLedger.Msg

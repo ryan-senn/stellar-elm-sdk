@@ -2,7 +2,7 @@ module Endpoints.OperationDetails.Update exposing (update)
 
 import Form.IntInput as IntInput
 
-import Stellar.Errors.Error exposing (flattenError)
+import Stellar.Error exposing (flattenError)
 
 import Stellar.Endpoints.OperationDetails as OperationDetails
 

@@ -24,6 +24,7 @@ import Endpoints.OperationsForLedger.Update as OperationsForLedger
 import Endpoints.OperationsForTransaction.Update as OperationsForTransaction
 import Endpoints.OperationDetails.Update as OperationDetails
 import Endpoints.OrderbookDetails.Update as OrderbookDetails
+import Endpoints.FindPaymentPaths.Update as FindPaymentPaths
 import Endpoints.AllPayments.Update as AllPayments
 import Endpoints.PaymentsForAccount.Update as PaymentsForAccount
 import Endpoints.PaymentsForLedger.Update as PaymentsForLedger
@@ -177,6 +178,14 @@ update msg model =
 
             in
                 { model | orderbookDetails = orderbookDetailsModel } ! [ cmd ]
+
+        Endpoints.FindPaymentPathsMsg msg ->
+            let
+                (findPaymentPathsModel, cmd) =
+                    FindPaymentPaths.update msg model.findPaymentPaths
+
+            in
+                { model | findPaymentPaths = findPaymentPathsModel } ! [ cmd ]
 
         Endpoints.AllPaymentsMsg msg ->
             let
