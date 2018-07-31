@@ -17,7 +17,7 @@ Since Redux is strongly influenced by Elm (or the Elm Architecture rather), I wa
 
 ## Future Plans
 
-Now that the SDK and SPA are somewhat stable, I intend to split the SDK into it's oen repository and make it available on the official Elm Package manager.
+Now that the SDK and SPA are somewhat stable, I intend to split the SDK into it's own repository and make it available on the official Elm Package manager.
 If you are unfamiliar with Elm, documentation and semantic versioning are enforced by the package manager, so I intend to have well documented examples there.
 
 I also intend to beef up the SPA and make it more user friendly (better validation etc).
