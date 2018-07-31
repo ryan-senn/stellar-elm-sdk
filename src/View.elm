@@ -118,19 +118,7 @@ home =
             []
             [ span
                 []
-                [ text "This Website is meant to complement the " ]
-            , a
-                [ href "", target "blank_" ]
-                [ text "elm-package documentation"]
-            , span
-                []
-                [ text " for using the Sellar Elm Api by providing concrete examples." ]
-            ]
-        , p
-            []
-            [ span
-                []
-                [ text "It is written in Elm, hosted on Github Pages. It aimes to replicate the " ]
+                [ text "This SPA is written in Elm, hosted on Github Pages. It aimes to replicate the " ]
             , a
                 [ href "https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=single", target "blank_" ]
                 [ text "official Stellar Laboratory Endpoint Explorer."]
@@ -141,7 +129,10 @@ home =
         , p
             []
             [ a
-                [ href "", target "blank_" ]
+                [ href "https://github.com/ryan-senn/stellar-elm", target "blank_" ]
                 [ text "The source code is visible on Github."]
             ]
+        , p
+            []
+            [ text "The Readme contains a section about the structure, future plans and how to build!" ]
         ]

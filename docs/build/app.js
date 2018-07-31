@@ -50052,7 +50052,7 @@ var _user$project$View$home = A2(
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _rtfeldman$elm_css$Html_Styled$text('This Website is meant to complement the '),
+							_0: _rtfeldman$elm_css$Html_Styled$text('This SPA is written in Elm, hosted on Github Pages. It aimes to replicate the '),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -50061,7 +50061,7 @@ var _user$project$View$home = A2(
 							_rtfeldman$elm_css$Html_Styled$a,
 							{
 								ctor: '::',
-								_0: _rtfeldman$elm_css$Html_Styled_Attributes$href(''),
+								_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=single'),
 								_1: {
 									ctor: '::',
 									_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
@@ -50070,7 +50070,7 @@ var _user$project$View$home = A2(
 							},
 							{
 								ctor: '::',
-								_0: _rtfeldman$elm_css$Html_Styled$text('elm-package documentation'),
+								_0: _rtfeldman$elm_css$Html_Styled$text('official Stellar Laboratory Endpoint Explorer.'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {
@@ -50080,7 +50080,7 @@ var _user$project$View$home = A2(
 								{ctor: '[]'},
 								{
 									ctor: '::',
-									_0: _rtfeldman$elm_css$Html_Styled$text(' for using the Sellar Elm Api by providing concrete examples.'),
+									_0: _rtfeldman$elm_css$Html_Styled$text(' Click on any Endoint in the menu on the left to see what it looks like!'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -50095,44 +50095,22 @@ var _user$project$View$home = A2(
 					{
 						ctor: '::',
 						_0: A2(
-							_rtfeldman$elm_css$Html_Styled$span,
-							{ctor: '[]'},
+							_rtfeldman$elm_css$Html_Styled$a,
 							{
 								ctor: '::',
-								_0: _rtfeldman$elm_css$Html_Styled$text('It is written in Elm, hosted on Github Pages. It aimes to replicate the '),
+								_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/ryan-senn/stellar-elm'),
+								_1: {
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Html_Styled$text('The source code is visible on Github.'),
 								_1: {ctor: '[]'}
 							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_rtfeldman$elm_css$Html_Styled$a,
-								{
-									ctor: '::',
-									_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=single'),
-									_1: {
-										ctor: '::',
-										_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
-										_1: {ctor: '[]'}
-									}
-								},
-								{
-									ctor: '::',
-									_0: _rtfeldman$elm_css$Html_Styled$text('official Stellar Laboratory Endpoint Explorer.'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_rtfeldman$elm_css$Html_Styled$span,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _rtfeldman$elm_css$Html_Styled$text(' Click on any Endoint in the menu on the left to see what it looks like!'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}
+						_1: {ctor: '[]'}
 					}),
 				_1: {
 					ctor: '::',
@@ -50141,22 +50119,7 @@ var _user$project$View$home = A2(
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: A2(
-								_rtfeldman$elm_css$Html_Styled$a,
-								{
-									ctor: '::',
-									_0: _rtfeldman$elm_css$Html_Styled_Attributes$href(''),
-									_1: {
-										ctor: '::',
-										_0: _rtfeldman$elm_css$Html_Styled_Attributes$target('blank_'),
-										_1: {ctor: '[]'}
-									}
-								},
-								{
-									ctor: '::',
-									_0: _rtfeldman$elm_css$Html_Styled$text('The source code is visible on Github.'),
-									_1: {ctor: '[]'}
-								}),
+							_0: _rtfeldman$elm_css$Html_Styled$text('The Readme contains a section about the structure, future plans and how to build!'),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}
