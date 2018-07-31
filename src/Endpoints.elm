@@ -24,8 +24,6 @@ type Endpoint
     | PaymentsForAccount
     | PaymentsForLedger
     | PaymentsForTransaction
-    | TradeAggregations
-    | Trades
     | AllTransactions
     | PostTransaction
     | TransactionsForAccount
@@ -57,8 +55,6 @@ asList =
     , PaymentsForAccount
     , PaymentsForLedger
     , PaymentsForTransaction
-    , TradeAggregations
-    , Trades
     , AllTransactions
     , PostTransaction
     , TransactionsForAccount

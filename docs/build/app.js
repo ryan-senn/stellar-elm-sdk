@@ -31160,8 +31160,6 @@ var _user$project$Endpoints$TransactionsForLedger = {ctor: 'TransactionsForLedge
 var _user$project$Endpoints$TransactionsForAccount = {ctor: 'TransactionsForAccount'};
 var _user$project$Endpoints$PostTransaction = {ctor: 'PostTransaction'};
 var _user$project$Endpoints$AllTransactions = {ctor: 'AllTransactions'};
-var _user$project$Endpoints$Trades = {ctor: 'Trades'};
-var _user$project$Endpoints$TradeAggregations = {ctor: 'TradeAggregations'};
 var _user$project$Endpoints$PaymentsForTransaction = {ctor: 'PaymentsForTransaction'};
 var _user$project$Endpoints$PaymentsForLedger = {ctor: 'PaymentsForLedger'};
 var _user$project$Endpoints$PaymentsForAccount = {ctor: 'PaymentsForAccount'};
@@ -31252,28 +31250,20 @@ var _user$project$Endpoints$asList = {
 																						_0: _user$project$Endpoints$PaymentsForTransaction,
 																						_1: {
 																							ctor: '::',
-																							_0: _user$project$Endpoints$TradeAggregations,
+																							_0: _user$project$Endpoints$AllTransactions,
 																							_1: {
 																								ctor: '::',
-																								_0: _user$project$Endpoints$Trades,
+																								_0: _user$project$Endpoints$PostTransaction,
 																								_1: {
 																									ctor: '::',
-																									_0: _user$project$Endpoints$AllTransactions,
+																									_0: _user$project$Endpoints$TransactionsForAccount,
 																									_1: {
 																										ctor: '::',
-																										_0: _user$project$Endpoints$PostTransaction,
+																										_0: _user$project$Endpoints$TransactionsForLedger,
 																										_1: {
 																											ctor: '::',
-																											_0: _user$project$Endpoints$TransactionsForAccount,
-																											_1: {
-																												ctor: '::',
-																												_0: _user$project$Endpoints$TransactionsForLedger,
-																												_1: {
-																													ctor: '::',
-																													_0: _user$project$Endpoints$TransactionDetails,
-																													_1: {ctor: '[]'}
-																												}
-																											}
+																											_0: _user$project$Endpoints$TransactionDetails,
+																											_1: {ctor: '[]'}
 																										}
 																									}
 																								}
@@ -35876,6 +35866,140 @@ var _user$project$Endpoints_OrderbookDetails_Msg$UpdateSellingAssetType = functi
 	return {ctor: 'UpdateSellingAssetType', _0: a};
 };
 
+var _user$project$Stellar_Endpoints_FindPaymentPaths$url = function (endpoint) {
+	return A2(_elm_lang$core$Basics_ops['++'], endpoint, '/paths');
+};
+var _user$project$Stellar_Endpoints_FindPaymentPaths$setDestinationAssetIssuer = F2(
+	function (destinationAssetIssuer, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'destination_asset_issuer', _1: destinationAssetIssuer},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_FindPaymentPaths$setDestinationAssetCode = F2(
+	function (destinationAssetCode, requestBuilder) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'destination_asset_code', _1: destinationAssetCode},
+				_1: {ctor: '[]'}
+			},
+			requestBuilder);
+	});
+var _user$project$Stellar_Endpoints_FindPaymentPaths$send = _lukewestby$elm_http_builder$HttpBuilder$send;
+var _user$project$Stellar_Endpoints_FindPaymentPaths$Success = function (a) {
+	return {ctor: 'Success', _0: a};
+};
+var _user$project$Stellar_Endpoints_FindPaymentPaths$Error = function (a) {
+	return {ctor: 'Error', _0: a};
+};
+var _user$project$Stellar_Endpoints_FindPaymentPaths$decoder = _elm_lang$core$Json_Decode$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_FindPaymentPaths$Error, _user$project$Stellar_Error$decoder),
+		_1: {
+			ctor: '::',
+			_0: A2(_elm_lang$core$Json_Decode$map, _user$project$Stellar_Endpoints_FindPaymentPaths$Success, _user$project$Stellar_Resources_Operation$decoder),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Stellar_Endpoints_FindPaymentPaths$requestBuilder = F5(
+	function (endpoint, sourceAccount, destinationAccount, assetType, amount) {
+		return A2(
+			_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'destination_amount',
+					_1: _elm_lang$core$Basics$toString(amount)
+				},
+				_1: {ctor: '[]'}
+			},
+			A2(
+				_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+				{
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'destination_asset_type',
+						_1: _user$project$Stellar_AssetType$toString(assetType)
+					},
+					_1: {ctor: '[]'}
+				},
+				A2(
+					_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+					{
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'destination_account', _1: destinationAccount},
+						_1: {ctor: '[]'}
+					},
+					A2(
+						_lukewestby$elm_http_builder$HttpBuilder$withQueryParams,
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'source_account', _1: sourceAccount},
+							_1: {ctor: '[]'}
+						},
+						A2(
+							_lukewestby$elm_http_builder$HttpBuilder$withExpect,
+							_elm_lang$http$Http$expectJson(_user$project$Stellar_Endpoints_FindPaymentPaths$decoder),
+							_lukewestby$elm_http_builder$HttpBuilder$get(
+								_user$project$Stellar_Endpoints_FindPaymentPaths$url(endpoint)))))));
+	});
+
+var _user$project$Endpoints_FindPaymentPaths_Model$initialSettings = {
+	sourceAccount: _bluedogtraining$bdt_elm$Form_Input$init,
+	destinationAccount: _bluedogtraining$bdt_elm$Form_Input$init,
+	destinationAssetType: _bluedogtraining$bdt_elm$Form_Select$init(_user$project$Stellar_AssetType$asList),
+	destinationAssetCode: _bluedogtraining$bdt_elm$Form_Input$init,
+	destinationAssetIssuer: _bluedogtraining$bdt_elm$Form_Input$init,
+	destinationAmount: _bluedogtraining$bdt_elm$Form_IntInput$init
+};
+var _user$project$Endpoints_FindPaymentPaths_Model$initialModel = {settings: _user$project$Endpoints_FindPaymentPaths_Model$initialSettings, isLoading: false, response: _elm_lang$core$Maybe$Nothing};
+var _user$project$Endpoints_FindPaymentPaths_Model$Model = F3(
+	function (a, b, c) {
+		return {settings: a, isLoading: b, response: c};
+	});
+var _user$project$Endpoints_FindPaymentPaths_Model$Settings = F6(
+	function (a, b, c, d, e, f) {
+		return {sourceAccount: a, destinationAccount: b, destinationAssetType: c, destinationAssetCode: d, destinationAssetIssuer: e, destinationAmount: f};
+	});
+
+var _user$project$Endpoints_FindPaymentPaths_Msg$Response = function (a) {
+	return {ctor: 'Response', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$Request = F2(
+	function (a, b) {
+		return {ctor: 'Request', _0: a, _1: b};
+	});
+var _user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg = function (a) {
+	return {ctor: 'SettingsMsg', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAmount = function (a) {
+	return {ctor: 'UpdateDestinationAmount', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetIssuer = function (a) {
+	return {ctor: 'UpdateDestinationAssetIssuer', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetCode = function (a) {
+	return {ctor: 'UpdateDestinationAssetCode', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetType = function (a) {
+	return {ctor: 'UpdateDestinationAssetType', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAccount = function (a) {
+	return {ctor: 'UpdateDestinationAccount', _0: a};
+};
+var _user$project$Endpoints_FindPaymentPaths_Msg$UpdateSourceAccount = function (a) {
+	return {ctor: 'UpdateSourceAccount', _0: a};
+};
+
 var _user$project$Stellar_Resources_Payment$AccountMerge = function (a) {
 	return {ctor: 'AccountMerge', _0: a};
 };
@@ -36967,6 +37091,9 @@ var _user$project$Endpoints_Msg$PaymentsForAccountMsg = function (a) {
 };
 var _user$project$Endpoints_Msg$AllPaymentsMsg = function (a) {
 	return {ctor: 'AllPaymentsMsg', _0: a};
+};
+var _user$project$Endpoints_Msg$FindPaymentPathsMsg = function (a) {
+	return {ctor: 'FindPaymentPathsMsg', _0: a};
 };
 var _user$project$Endpoints_Msg$OrderbookDetailsMsg = function (a) {
 	return {ctor: 'OrderbookDetailsMsg', _0: a};
@@ -42979,6 +43106,609 @@ var _user$project$Endpoints_EffectsForTransaction_View$view = F2(
 			});
 	});
 
+var _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg = function (_p0) {
+	return _user$project$Endpoints_MsgFactory$composeMsg(
+		_user$project$Endpoints_Msg$FindPaymentPathsMsg(_p0));
+};
+
+var _user$project$Endpoints_FindPaymentPaths_RequestBuilder$requestBuilder = F2(
+	function (endpoint, settings) {
+		return A5(
+			_user$project$Endpoints_Helpers$setIfChanged,
+			_user$project$Stellar_Endpoints_FindPaymentPaths$setDestinationAssetIssuer,
+			_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
+			_bluedogtraining$bdt_elm$Form_Input$getValue,
+			settings.destinationAssetIssuer,
+			A5(
+				_user$project$Endpoints_Helpers$setIfChanged,
+				_user$project$Stellar_Endpoints_FindPaymentPaths$setDestinationAssetCode,
+				_bluedogtraining$bdt_elm$Form_Input$getIsChanged,
+				_bluedogtraining$bdt_elm$Form_Input$getValue,
+				settings.destinationAssetCode,
+				A5(
+					_user$project$Stellar_Endpoints_FindPaymentPaths$requestBuilder,
+					_user$project$Endpoints_Helpers$endpointFromInput(endpoint),
+					_user$project$Endpoints_Helpers$publicKeyFromInput(settings.sourceAccount),
+					_user$project$Endpoints_Helpers$publicKeyFromInput(settings.destinationAccount),
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_user$project$Stellar_AssetType$Native,
+						_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(settings.destinationAssetType)),
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						0,
+						_bluedogtraining$bdt_elm$Form_IntInput$getValue(settings.destinationAmount)))));
+	});
+
+var _user$project$Endpoints_FindPaymentPaths_Update$updateSettings = F2(
+	function (updateSettingsMsg, model) {
+		var settingsModel = model.settings;
+		var _p0 = function () {
+			var _p1 = updateSettingsMsg;
+			switch (_p1.ctor) {
+				case 'UpdateSourceAccount':
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							settingsModel,
+							{
+								sourceAccount: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p1._0, settingsModel.sourceAccount)
+							}),
+						{ctor: '[]'});
+				case 'UpdateDestinationAccount':
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							settingsModel,
+							{
+								destinationAccount: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p1._0, settingsModel.destinationAccount)
+							}),
+						{ctor: '[]'});
+				case 'UpdateDestinationAssetType':
+					var _p2 = A2(_bluedogtraining$bdt_elm$Form_Select$update, _p1._0, settingsModel.destinationAssetType);
+					var destinationAssetType = _p2._0;
+					var cmds = _p2._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							settingsModel,
+							{destinationAssetType: destinationAssetType}),
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$core$Platform_Cmd$map,
+								function (_p3) {
+									return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+										_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+											_user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetType(_p3)));
+								},
+								cmds),
+							_1: {ctor: '[]'}
+						});
+				case 'UpdateDestinationAssetCode':
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							settingsModel,
+							{
+								destinationAssetCode: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p1._0, settingsModel.destinationAssetCode)
+							}),
+						{ctor: '[]'});
+				case 'UpdateDestinationAssetIssuer':
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							settingsModel,
+							{
+								destinationAssetIssuer: A2(_bluedogtraining$bdt_elm$Form_Input$update, _p1._0, settingsModel.destinationAssetIssuer)
+							}),
+						{ctor: '[]'});
+				default:
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							settingsModel,
+							{
+								destinationAmount: A2(_bluedogtraining$bdt_elm$Form_IntInput$update, _p1._0, settingsModel.destinationAmount)
+							}),
+						{ctor: '[]'});
+			}
+		}();
+		var newSettingsModel = _p0._0;
+		var cmds = _p0._1;
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			_elm_lang$core$Native_Utils.update(
+				model,
+				{settings: newSettingsModel}),
+			{
+				ctor: '::',
+				_0: cmds,
+				_1: {ctor: '[]'}
+			});
+	});
+var _user$project$Endpoints_FindPaymentPaths_Update$update = F2(
+	function (msg, model) {
+		var _p4 = msg;
+		switch (_p4.ctor) {
+			case 'SettingsMsg':
+				return A2(_user$project$Endpoints_FindPaymentPaths_Update$updateSettings, _p4._0, model);
+			case 'Request':
+				var request = A2(_user$project$Endpoints_FindPaymentPaths_RequestBuilder$requestBuilder, _p4._0, _p4._1);
+				var msg = function (_p5) {
+					return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+						_user$project$Endpoints_FindPaymentPaths_Msg$Response(_p5));
+				};
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isLoading: true}),
+					{
+						ctor: '::',
+						_0: A2(_user$project$Stellar_Endpoints_FindPaymentPaths$send, msg, request),
+						_1: {ctor: '[]'}
+					});
+			default:
+				if (_p4._0.ctor === 'Err') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									A2(_user$project$Stellar_Error$flattenError, _p4._0._0, _user$project$Stellar_Endpoints_FindPaymentPaths$Error))
+							}),
+						{ctor: '[]'});
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								isLoading: false,
+								response: _elm_lang$core$Maybe$Just(
+									_elm_lang$core$Result$Ok(_p4._0._0))
+							}),
+						{ctor: '[]'});
+				}
+		}
+	});
+
+var _user$project$Endpoints_FindPaymentPaths_View$view = F2(
+	function (endpoint, model) {
+		return A2(
+			_rtfeldman$elm_css$Html_Styled$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(_user$project$Endpoints_Views_Title$view, 'Operation Details', 'https://www.stellar.org/developers/horizon/reference/endpoints/operations-single.html'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$div,
+						{
+							ctor: '::',
+							_0: _user$project$Endpoints_Styles$page,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$h2,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Html_Styled$text('Request'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Endpoints_Views_Endpoint$view(endpoint),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$div,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$label,
+												{
+													ctor: '::',
+													_0: _user$project$Endpoints_Styles$label,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$span,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$labelMandatory,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled$text('Source Account'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$labelExample,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$map,
+													function (_p0) {
+														return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+															_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+																_user$project$Endpoints_FindPaymentPaths_Msg$UpdateSourceAccount(_p0)));
+													},
+													_bluedogtraining$bdt_elm$Form_Input$render(
+														_bluedogtraining$bdt_elm$Form_Input$view(model.settings.sourceAccount))),
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_rtfeldman$elm_css$Html_Styled$div,
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_rtfeldman$elm_css$Html_Styled$label,
+													{
+														ctor: '::',
+														_0: _user$project$Endpoints_Styles$label,
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$span,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$labelMandatory,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled$text('Destination Account'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{
+																	ctor: '::',
+																	_0: _user$project$Endpoints_Styles$labelExample,
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$map,
+														function (_p1) {
+															return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+																_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+																	_user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAccount(_p1)));
+														},
+														_bluedogtraining$bdt_elm$Form_Input$render(
+															_bluedogtraining$bdt_elm$Form_Input$view(model.settings.destinationAccount))),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$div,
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$label,
+														{
+															ctor: '::',
+															_0: _user$project$Endpoints_Styles$label,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$span,
+																{
+																	ctor: '::',
+																	_0: _user$project$Endpoints_Styles$labelMandatory,
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Html_Styled$text('Destination Asset Type'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{ctor: '[]'},
+																	{ctor: '[]'}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$map,
+															function (_p2) {
+																return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+																	_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+																		_user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetType(_p2)));
+															},
+															_bluedogtraining$bdt_elm$Form_Select$render(
+																_bluedogtraining$bdt_elm$Form_Select$view(model.settings.destinationAssetType))),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A3(
+													_bluedogtraining$bdt_elm$Html_Styled_Bdt$divIf,
+													(!_elm_lang$core$Native_Utils.eq(
+														_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.destinationAssetType),
+														_elm_lang$core$Maybe$Nothing)) && (!_elm_lang$core$Native_Utils.eq(
+														_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.destinationAssetType),
+														_elm_lang$core$Maybe$Just(_user$project$Stellar_AssetType$Native))),
+													{
+														ctor: '::',
+														_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$label,
+															{
+																ctor: '::',
+																_0: _user$project$Endpoints_Styles$label,
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$span,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Html_Styled$text('Destination Asset Code'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{
+																			ctor: '::',
+																			_0: _user$project$Endpoints_Styles$labelExample,
+																			_1: {ctor: '[]'}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('(eg: USD)'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$map,
+																function (_p3) {
+																	return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+																		_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+																			_user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetCode(_p3)));
+																},
+																_bluedogtraining$bdt_elm$Form_Input$render(
+																	_bluedogtraining$bdt_elm$Form_Input$view(model.settings.destinationAssetCode))),
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A3(
+														_bluedogtraining$bdt_elm$Html_Styled_Bdt$divIf,
+														(!_elm_lang$core$Native_Utils.eq(
+															_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.destinationAssetType),
+															_elm_lang$core$Maybe$Nothing)) && (!_elm_lang$core$Native_Utils.eq(
+															_bluedogtraining$bdt_elm$Form_Select$getSelectedOption(model.settings.destinationAssetType),
+															_elm_lang$core$Maybe$Just(_user$project$Stellar_AssetType$Native))),
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_rtfeldman$elm_css$Html_Styled$label,
+																{
+																	ctor: '::',
+																	_0: _user$project$Endpoints_Styles$label,
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$span,
+																		{ctor: '[]'},
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Html_Styled$text('Destination Asset Issuer'),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(
+																			_rtfeldman$elm_css$Html_Styled$span,
+																			{
+																				ctor: '::',
+																				_0: _user$project$Endpoints_Styles$labelExample,
+																				_1: {ctor: '[]'}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled$text('(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$map,
+																	function (_p4) {
+																		return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+																			_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+																				_user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAssetIssuer(_p4)));
+																	},
+																	_bluedogtraining$bdt_elm$Form_Input$render(
+																		_bluedogtraining$bdt_elm$Form_Input$view(model.settings.destinationAssetIssuer))),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_rtfeldman$elm_css$Html_Styled$div,
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Html_Styled_Attributes$class('form-group'),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_rtfeldman$elm_css$Html_Styled$label,
+																	{
+																		ctor: '::',
+																		_0: _user$project$Endpoints_Styles$label,
+																		_1: {ctor: '[]'}
+																	},
+																	{
+																		ctor: '::',
+																		_0: A2(
+																			_rtfeldman$elm_css$Html_Styled$span,
+																			{
+																				ctor: '::',
+																				_0: _user$project$Endpoints_Styles$labelMandatory,
+																				_1: {ctor: '[]'}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Html_Styled$text('Destination Amount'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {
+																			ctor: '::',
+																			_0: A2(
+																				_rtfeldman$elm_css$Html_Styled$span,
+																				{
+																					ctor: '::',
+																					_0: _user$project$Endpoints_Styles$labelExample,
+																					_1: {ctor: '[]'}
+																				},
+																				{
+																					ctor: '::',
+																					_0: _rtfeldman$elm_css$Html_Styled$text('(eg: GA2HGBJIJKI6O4XEM7CZWY5PS6GKSXL6D34ERAJYQSPYA6X6AI7HYW36)'),
+																					_1: {ctor: '[]'}
+																				}),
+																			_1: {ctor: '[]'}
+																		}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_rtfeldman$elm_css$Html_Styled$map,
+																		function (_p5) {
+																			return _user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+																				_user$project$Endpoints_FindPaymentPaths_Msg$SettingsMsg(
+																					_user$project$Endpoints_FindPaymentPaths_Msg$UpdateDestinationAmount(_p5)));
+																		},
+																		_bluedogtraining$bdt_elm$Form_IntInput$render(
+																			_bluedogtraining$bdt_elm$Form_IntInput$view(model.settings.destinationAmount))),
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {
+															ctor: '::',
+															_0: _user$project$Endpoints_Views_Request$view(
+																A2(_user$project$Endpoints_FindPaymentPaths_RequestBuilder$requestBuilder, endpoint, model.settings)),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_user$project$Endpoints_Views_Button$view,
+																	model.isLoading,
+																	_user$project$Endpoints_FindPaymentPaths_MsgFactory$composeMsg(
+																		A2(_user$project$Endpoints_FindPaymentPaths_Msg$Request, endpoint, model.settings))),
+																_1: {
+																	ctor: '::',
+																	_0: A2(_user$project$Endpoints_Views_Response$view, model.response, model.isLoading),
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+
 var _user$project$Endpoints_LedgerDetails_Model$initialSettings = {sequence: _bluedogtraining$bdt_elm$Form_IntInput$init};
 var _user$project$Endpoints_LedgerDetails_Model$initialModel = {settings: _user$project$Endpoints_LedgerDetails_Model$initialSettings, isLoading: false, response: _elm_lang$core$Maybe$Nothing};
 var _user$project$Endpoints_LedgerDetails_Model$Model = F3(
@@ -43221,6 +43951,7 @@ var _user$project$Endpoints_Model$initialModel = {
 	operationsForTransaction: _user$project$Endpoints_OperationsForTransaction_Model$initialModel,
 	operationDetails: _user$project$Endpoints_OperationDetails_Model$initialModel,
 	orderbookDetails: _user$project$Endpoints_OrderbookDetails_Model$initialModel,
+	findPaymentPaths: _user$project$Endpoints_FindPaymentPaths_Model$initialModel,
 	allPayments: _user$project$Endpoints_AllPayments_Model$initialModel,
 	paymentsForAccount: _user$project$Endpoints_PaymentsForAccount_Model$initialModel,
 	paymentsForLedger: _user$project$Endpoints_PaymentsForLedger_Model$initialModel,
@@ -43258,7 +43989,9 @@ var _user$project$Endpoints_Model$Model = function (a) {
 																								return function (y) {
 																									return function (z) {
 																										return function (_1) {
-																											return {endpoint: a, accountDetails: b, allAssets: c, allEffects: d, effectsForAccount: e, effectsForLedger: f, effectsForOperation: g, effectsForTransaction: h, dataForAccount: i, allLedgers: j, ledgerDetails: k, offersForAccount: l, allOperations: m, operationsForAccount: n, operationsForLedger: o, operationsForTransaction: p, operationDetails: q, orderbookDetails: r, allPayments: s, paymentsForAccount: t, paymentsForLedger: u, paymentsForTransaction: v, allTransactions: w, postTransaction: x, transactionsForAccount: y, transactionsForLedger: z, transactionDetails: _1};
+																											return function (_2) {
+																												return {endpoint: a, accountDetails: b, allAssets: c, allEffects: d, effectsForAccount: e, effectsForLedger: f, effectsForOperation: g, effectsForTransaction: h, dataForAccount: i, allLedgers: j, ledgerDetails: k, offersForAccount: l, allOperations: m, operationsForAccount: n, operationsForLedger: o, operationsForTransaction: p, operationDetails: q, orderbookDetails: r, findPaymentPaths: s, allPayments: t, paymentsForAccount: u, paymentsForLedger: v, paymentsForTransaction: w, allTransactions: x, postTransaction: y, transactionsForAccount: z, transactionsForLedger: _1, transactionDetails: _2};
+																											};
 																										};
 																									};
 																								};
@@ -49020,10 +49753,24 @@ var _user$project$Endpoints_Update$update = F2(
 						_0: cmd,
 						_1: {ctor: '[]'}
 					});
-			case 'AllPaymentsMsg':
-				var _p18 = A2(_user$project$Endpoints_AllPayments_Update$update, _p0._0, model.allPayments);
-				var allPaymentsModel = _p18._0;
+			case 'FindPaymentPathsMsg':
+				var _p18 = A2(_user$project$Endpoints_FindPaymentPaths_Update$update, _p0._0, model.findPaymentPaths);
+				var findPaymentPathsModel = _p18._0;
 				var cmd = _p18._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{findPaymentPaths: findPaymentPathsModel}),
+					{
+						ctor: '::',
+						_0: cmd,
+						_1: {ctor: '[]'}
+					});
+			case 'AllPaymentsMsg':
+				var _p19 = A2(_user$project$Endpoints_AllPayments_Update$update, _p0._0, model.allPayments);
+				var allPaymentsModel = _p19._0;
+				var cmd = _p19._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49035,9 +49782,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'PaymentsForAccountMsg':
-				var _p19 = A2(_user$project$Endpoints_PaymentsForAccount_Update$update, _p0._0, model.paymentsForAccount);
-				var paymentsForAccountModel = _p19._0;
-				var cmd = _p19._1;
+				var _p20 = A2(_user$project$Endpoints_PaymentsForAccount_Update$update, _p0._0, model.paymentsForAccount);
+				var paymentsForAccountModel = _p20._0;
+				var cmd = _p20._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49049,9 +49796,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'PaymentsForLedgerMsg':
-				var _p20 = A2(_user$project$Endpoints_PaymentsForLedger_Update$update, _p0._0, model.paymentsForLedger);
-				var paymentsForLedgerModel = _p20._0;
-				var cmd = _p20._1;
+				var _p21 = A2(_user$project$Endpoints_PaymentsForLedger_Update$update, _p0._0, model.paymentsForLedger);
+				var paymentsForLedgerModel = _p21._0;
+				var cmd = _p21._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49063,9 +49810,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'PaymentsForTransactionMsg':
-				var _p21 = A2(_user$project$Endpoints_PaymentsForTransaction_Update$update, _p0._0, model.paymentsForTransaction);
-				var paymentsForTransactionModel = _p21._0;
-				var cmd = _p21._1;
+				var _p22 = A2(_user$project$Endpoints_PaymentsForTransaction_Update$update, _p0._0, model.paymentsForTransaction);
+				var paymentsForTransactionModel = _p22._0;
+				var cmd = _p22._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49077,9 +49824,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'AllTransactionsMsg':
-				var _p22 = A2(_user$project$Endpoints_AllTransactions_Update$update, _p0._0, model.allTransactions);
-				var allTransactionsModel = _p22._0;
-				var cmd = _p22._1;
+				var _p23 = A2(_user$project$Endpoints_AllTransactions_Update$update, _p0._0, model.allTransactions);
+				var allTransactionsModel = _p23._0;
+				var cmd = _p23._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49091,9 +49838,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'PostTransactionMsg':
-				var _p23 = A2(_user$project$Endpoints_PostTransaction_Update$update, _p0._0, model.postTransaction);
-				var postTransactionModel = _p23._0;
-				var cmd = _p23._1;
+				var _p24 = A2(_user$project$Endpoints_PostTransaction_Update$update, _p0._0, model.postTransaction);
+				var postTransactionModel = _p24._0;
+				var cmd = _p24._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49105,9 +49852,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'TransactionsForAccountMsg':
-				var _p24 = A2(_user$project$Endpoints_TransactionsForAccount_Update$update, _p0._0, model.transactionsForAccount);
-				var transactionsForAccountModel = _p24._0;
-				var cmd = _p24._1;
+				var _p25 = A2(_user$project$Endpoints_TransactionsForAccount_Update$update, _p0._0, model.transactionsForAccount);
+				var transactionsForAccountModel = _p25._0;
+				var cmd = _p25._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49119,9 +49866,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			case 'TransactionsForLedgerMsg':
-				var _p25 = A2(_user$project$Endpoints_TransactionsForLedger_Update$update, _p0._0, model.transactionsForLedger);
-				var transactionsForLedgerModel = _p25._0;
-				var cmd = _p25._1;
+				var _p26 = A2(_user$project$Endpoints_TransactionsForLedger_Update$update, _p0._0, model.transactionsForLedger);
+				var transactionsForLedgerModel = _p26._0;
+				var cmd = _p26._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49133,9 +49880,9 @@ var _user$project$Endpoints_Update$update = F2(
 						_1: {ctor: '[]'}
 					});
 			default:
-				var _p26 = A2(_user$project$Endpoints_TransactionDetails_Update$update, _p0._0, model.transactionDetails);
-				var transactionDetailsModel = _p26._0;
-				var cmd = _p26._1;
+				var _p27 = A2(_user$project$Endpoints_TransactionDetails_Update$update, _p0._0, model.transactionDetails);
+				var transactionDetailsModel = _p27._0;
+				var cmd = _p27._1;
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -49149,36 +49896,6 @@ var _user$project$Endpoints_Update$update = F2(
 		}
 	});
 
-var _user$project$Endpoints_View$trades = function (endpoints) {
-	return A2(
-		_rtfeldman$elm_css$Html_Styled$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: _rtfeldman$elm_css$Html_Styled$text('todo'),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$Endpoints_View$tradeAggregations = function (endpoints) {
-	return A2(
-		_rtfeldman$elm_css$Html_Styled$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: _rtfeldman$elm_css$Html_Styled$text('todo'),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$Endpoints_View$findPaymentPaths = function (endpoints) {
-	return A2(
-		_rtfeldman$elm_css$Html_Styled$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: _rtfeldman$elm_css$Html_Styled$text('todo'),
-			_1: {ctor: '[]'}
-		});
-};
 var _user$project$Endpoints_View$view = F2(
 	function (endpoints, endpoint) {
 		var _p0 = endpoint;
@@ -49218,7 +49935,7 @@ var _user$project$Endpoints_View$view = F2(
 			case 'OrderbookDetails':
 				return A2(_user$project$Endpoints_OrderbookDetails_View$view, endpoints.endpoint, endpoints.orderbookDetails);
 			case 'FindPaymentPaths':
-				return _user$project$Endpoints_View$findPaymentPaths(endpoints);
+				return A2(_user$project$Endpoints_FindPaymentPaths_View$view, endpoints.endpoint, endpoints.findPaymentPaths);
 			case 'AllPayments':
 				return A2(_user$project$Endpoints_AllPayments_View$view, endpoints.endpoint, endpoints.allPayments);
 			case 'PaymentsForAccount':
@@ -49227,10 +49944,6 @@ var _user$project$Endpoints_View$view = F2(
 				return A2(_user$project$Endpoints_PaymentsForLedger_View$view, endpoints.endpoint, endpoints.paymentsForLedger);
 			case 'PaymentsForTransaction':
 				return A2(_user$project$Endpoints_PaymentsForTransaction_View$view, endpoints.endpoint, endpoints.paymentsForTransaction);
-			case 'TradeAggregations':
-				return _user$project$Endpoints_View$tradeAggregations(endpoints);
-			case 'Trades':
-				return _user$project$Endpoints_View$trades(endpoints);
 			case 'AllTransactions':
 				return A2(_user$project$Endpoints_AllTransactions_View$view, endpoints.endpoint, endpoints.allTransactions);
 			case 'PostTransaction':

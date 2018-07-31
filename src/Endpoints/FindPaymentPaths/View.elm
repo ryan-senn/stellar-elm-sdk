@@ -10,6 +10,8 @@ import Form.Input as Input
 import Form.IntInput as IntInput
 import Form.Select as Select
 
+import Stellar.AssetType as AssetType
+
 import Msg exposing (Msg)
 
 import Endpoints.Msg as Endpoints
@@ -134,7 +136,7 @@ view endpoint model =
                 , model.settings.destinationAmount
                     |> IntInput.view
                     |> IntInput.render
-                    |> Html.map (FindPaymentPaths.UpdateDestinationAccount >> FindPaymentPaths.SettingsMsg >> FindPaymentPaths.composeMsg)
+                    |> Html.map (FindPaymentPaths.UpdateDestinationAmount >> FindPaymentPaths.SettingsMsg >> FindPaymentPaths.composeMsg)
                 ]
             , Request.view (requestBuilder endpoint model.settings)
             , Button.view model.isLoading (FindPaymentPaths.Request endpoint model.settings |> FindPaymentPaths.composeMsg)

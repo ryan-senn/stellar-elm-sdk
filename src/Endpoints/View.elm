@@ -108,12 +108,6 @@ view endpoints endpoint =
         Endpoints.PaymentsForTransaction ->
             PaymentsForTransaction.view endpoints.endpoint endpoints.paymentsForTransaction
 
-        Endpoints.TradeAggregations ->
-            tradeAggregations endpoints
-
-        Endpoints.Trades ->
-            trades endpoints
-
         Endpoints.AllTransactions ->
             AllTransactions.view endpoints.endpoint endpoints.allTransactions
 
@@ -128,24 +122,3 @@ view endpoints endpoint =
 
         Endpoints.TransactionDetails ->
             TransactionDetails.view endpoints.endpoint endpoints.transactionDetails
-
-
-findPaymentPaths : Endpoints.Model -> Html Msg
-findPaymentPaths endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-tradeAggregations : Endpoints.Model -> Html Msg
-tradeAggregations endpoints =
-    div
-        []
-        [ text "todo" ]
-
-
-trades : Endpoints.Model -> Html Msg
-trades endpoints =
-    div
-        []
-        [ text "todo" ]

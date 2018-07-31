@@ -1,4 +1,8 @@
-module Stellar.Endpoints.FindPaymentPaths exposing (requestBuilder, send, Response (..))
+module Stellar.Endpoints.FindPaymentPaths exposing
+    ( requestBuilder, send
+    , setDestinationAssetCode, setDestinationAssetIssuer
+    , Response (..)
+    )
 
 import Http
 import HttpBuilder exposing (..)
@@ -7,7 +11,7 @@ import Json.Decode as Decode exposing (Decoder)
 
 import Stellar.Endpoint exposing (Endpoint)
 import Stellar.PublicKey exposing (PublicKey)
-import Stellar.AssetType exposing (AssetType)
+import Stellar.AssetType as AssetType exposing (AssetType)
 
 import Stellar.Resources.Operation as Operation exposing (Operation)
 
@@ -21,8 +25,8 @@ requestBuilder endpoint sourceAccount destinationAccount assetType amount =
         |> withExpect (Http.expectJson decoder)
         |> withQueryParams [("source_account", sourceAccount)]
         |> withQueryParams [("destination_account", destinationAccount)]
-        |> withQueryParams [("destination_asset_type", assetType)]
-        |> withQueryParams [("destination_amount", amount)]
+        |> withQueryParams [("destination_asset_type", AssetType.toString assetType)]
+        |> withQueryParams [("destination_amount", toString amount)]
 
 
 send : (Result Http.Error Response -> msg) -> RequestBuilder Response -> Cmd msg

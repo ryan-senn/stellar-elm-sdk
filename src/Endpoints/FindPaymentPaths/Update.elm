@@ -21,7 +21,7 @@ update msg model =
 
     case msg of
         FindPaymentPaths.SettingsMsg updateSettingsMsg ->
-            updateSettings updateSettingsMsg model ! []
+            updateSettings updateSettingsMsg model
 
         FindPaymentPaths.Request endpoint settings ->
             let
@@ -41,20 +41,20 @@ update msg model =
             { model | isLoading = False, response = Just <| Ok response } ! []
 
 
-updateSettings : FindPaymentPaths.SettingsMsg -> FindPaymentPaths.Model -> FindPaymentPaths.Model
+updateSettings : FindPaymentPaths.SettingsMsg -> FindPaymentPaths.Model -> (FindPaymentPaths.Model, Cmd Msg)
 updateSettings updateSettingsMsg model =
 
     let
         settingsModel =
             model.settings
 
-        newSettingsModel =
+        (newSettingsModel, cmds) =
             case updateSettingsMsg of
                 FindPaymentPaths.UpdateSourceAccount inputMsg ->
-                    { settingsModel | sourceAccount = Input.update inputMsg settingsModel.sourceAccount }
+                    { settingsModel | sourceAccount = Input.update inputMsg settingsModel.sourceAccount } ! []
 
                 FindPaymentPaths.UpdateDestinationAccount inputMsg ->
-                    { settingsModel | destinationAccount = Input.update inputMsg settingsModel.destinationAccount }
+                    { settingsModel | destinationAccount = Input.update inputMsg settingsModel.destinationAccount } ! []
 
                 FindPaymentPaths.UpdateDestinationAssetType selectMsg ->
                     let
@@ -71,7 +71,7 @@ updateSettings updateSettingsMsg model =
                     { settingsModel | destinationAssetIssuer = Input.update inputMsg settingsModel.destinationAssetIssuer } ! []
 
                 FindPaymentPaths.UpdateDestinationAmount intInputMsg ->
-                    { settingsModel | destinationAmount = IntInput.update intInputMsg settingsModel.destinationAmount }
+                    { settingsModel | destinationAmount = IntInput.update intInputMsg settingsModel.destinationAmount } ! []
 
     in
-        { model | settings = newSettingsModel }
+        { model | settings = newSettingsModel } ! [ cmds ]
