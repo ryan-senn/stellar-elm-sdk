@@ -54,7 +54,6 @@ record response isLoading =
                         [ class "elm" ]
                         [ text <| RecordFormatter.toString data ]
                     ]
-                , text <| RecordFormatter.toString data
                 , node "script"
                     []
                     [ text "hljs.initHighlighting.called = false;hljs.initHighlighting();" ]
