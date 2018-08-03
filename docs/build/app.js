@@ -30670,7 +30670,6 @@ var _user$project$Endpoints_Views_Response$record = F2(
 				if (_p0._0 === true) {
 					break _v0_0;
 				} else {
-					var _p1 = _p0._1._0;
 					return _rtfeldman$elm_css$Html_Styled$toUnstyled(
 						A2(
 							_rtfeldman$elm_css$Html_Styled$div,
@@ -30692,28 +30691,23 @@ var _user$project$Endpoints_Views_Response$record = F2(
 											{
 												ctor: '::',
 												_0: _rtfeldman$elm_css$Html_Styled$text(
-													_user$project$Helpers_RecordFormatter$toString(_p1)),
+													_user$project$Helpers_RecordFormatter$toString(_p0._1._0)),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
 									}),
 								_1: {
 									ctor: '::',
-									_0: _rtfeldman$elm_css$Html_Styled$text(
-										_user$project$Helpers_RecordFormatter$toString(_p1)),
-									_1: {
-										ctor: '::',
-										_0: A3(
-											_rtfeldman$elm_css$Html_Styled$node,
-											'script',
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Html_Styled$text('hljs.initHighlighting.called = false;hljs.initHighlighting();'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
+									_0: A3(
+										_rtfeldman$elm_css$Html_Styled$node,
+										'script',
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled$text('hljs.initHighlighting.called = false;hljs.initHighlighting();'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
 								}
 							}));
 				}
