@@ -9,7 +9,7 @@ import VirtualDom
 
 import Http
 
-import Helpers.RecordFormatter as RecordFormatter
+import RecordFormatter
 
 import Msg exposing (Msg)
 

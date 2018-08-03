@@ -3,11 +3,11 @@ module Endpoints.Views.Button exposing (view)
 import Html.Styled exposing (..)
 import Html.Styled.Events exposing (..)
 
+import Html.Styled.Bdt exposing ((?))
+
 import Msg exposing (Msg)
 
 import Endpoints.Styles as Css
-
-import Helpers.Html.Attributes exposing ((?))
 
 
 view : Bool -> Msg -> Html Msg

@@ -23586,6 +23586,165 @@ var _lukewestby$elm_http_builder$HttpBuilder$RequestBuilder = F9(
 		return {method: a, headers: b, url: c, body: d, expect: e, timeout: f, withCredentials: g, queryParams: h, cacheBuster: i};
 	});
 
+var _ryan_senn$elm_record_formatter$RecordFormatter$newLine = F4(
+	function ($char, indentation, nextIndentation, acc) {
+		return _elm_lang$core$Native_Utils.update(
+			acc,
+			{
+				string: A2(
+					_elm_lang$core$Basics_ops['++'],
+					acc.string,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$String$isEmpty(acc.string) ? '' : '\n',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							A2(_elm_lang$core$String$repeat, acc.indentation + indentation, ' '),
+							_elm_lang$core$String$fromChar($char)))),
+				indentation: acc.indentation + nextIndentation
+			});
+	});
+var _ryan_senn$elm_record_formatter$RecordFormatter$format = F2(
+	function ($char, acc) {
+		var _p0 = {ctor: '_Tuple3', _0: $char, _1: acc.isString, _2: acc.isEscaped};
+		_v0_11:
+		do {
+			if (_p0._1 === true) {
+				if (_p0._2 === false) {
+					switch (_p0._0.valueOf()) {
+						case '\"':
+							return _elm_lang$core$Native_Utils.update(
+								acc,
+								{
+									string: A2(
+										_elm_lang$core$Basics_ops['++'],
+										acc.string,
+										_elm_lang$core$String$fromChar($char)),
+									isString: false
+								});
+						case '\\':
+							return _elm_lang$core$Native_Utils.update(
+								acc,
+								{
+									string: A2(
+										_elm_lang$core$Basics_ops['++'],
+										acc.string,
+										_elm_lang$core$String$fromChar($char)),
+									isEscaped: true
+								});
+						default:
+							break _v0_11;
+					}
+				} else {
+					if (_p0._0.valueOf() === '\\') {
+						return _elm_lang$core$Native_Utils.update(
+							acc,
+							{
+								string: A2(
+									_elm_lang$core$Basics_ops['++'],
+									acc.string,
+									_elm_lang$core$String$fromChar($char)),
+								isEscaped: false
+							});
+					} else {
+						break _v0_11;
+					}
+				}
+			} else {
+				switch (_p0._0.valueOf()) {
+					case '\"':
+						if (_p0._2 === false) {
+							return _elm_lang$core$Native_Utils.update(
+								acc,
+								{
+									string: A2(
+										_elm_lang$core$Basics_ops['++'],
+										acc.string,
+										_elm_lang$core$String$fromChar($char)),
+									isString: true
+								});
+						} else {
+							break _v0_11;
+						}
+					case '(':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr('('),
+							4,
+							4,
+							acc);
+					case '[':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr('['),
+							4,
+							4,
+							acc);
+					case '{':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr('{'),
+							4,
+							4,
+							acc);
+					case ')':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr(')'),
+							0,
+							-4,
+							acc);
+					case ']':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr(']'),
+							0,
+							-4,
+							acc);
+					case '}':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr('}'),
+							0,
+							-4,
+							acc);
+					case ',':
+						return A4(
+							_ryan_senn$elm_record_formatter$RecordFormatter$newLine,
+							_elm_lang$core$Native_Utils.chr(','),
+							0,
+							0,
+							acc);
+					default:
+						break _v0_11;
+				}
+			}
+		} while(false);
+		return _elm_lang$core$Native_Utils.update(
+			acc,
+			{
+				string: A2(
+					_elm_lang$core$Basics_ops['++'],
+					acc.string,
+					_elm_lang$core$String$fromChar(_p0._0))
+			});
+	});
+var _ryan_senn$elm_record_formatter$RecordFormatter$Accumulator = F4(
+	function (a, b, c, d) {
+		return {string: a, indentation: b, isString: c, isEscaped: d};
+	});
+var _ryan_senn$elm_record_formatter$RecordFormatter$toString = function (_p1) {
+	return function (_) {
+		return _.string;
+	}(
+		A3(
+			_elm_lang$core$List$foldl,
+			_ryan_senn$elm_record_formatter$RecordFormatter$format,
+			A4(_ryan_senn$elm_record_formatter$RecordFormatter$Accumulator, '', -4, false, false),
+			_elm_lang$core$String$toList(
+				_elm_lang$core$Basics$toString(_p1))));
+};
+
 var _user$project$Endpoints$TransactionDetails = {ctor: 'TransactionDetails'};
 var _user$project$Endpoints$TransactionsForLedger = {ctor: 'TransactionsForLedger'};
 var _user$project$Endpoints$TransactionsForAccount = {ctor: 'TransactionsForAccount'};
@@ -30451,20 +30610,6 @@ var _user$project$Endpoints_Views_Request$view = function (requestBuilder) {
 	}
 };
 
-var _user$project$Helpers_Html_Attributes_ops = _user$project$Helpers_Html_Attributes_ops || {};
-_user$project$Helpers_Html_Attributes_ops['?'] = F2(
-	function (attribute, bool) {
-		var _p0 = bool;
-		if (_p0 === true) {
-			return attribute;
-		} else {
-			return A2(
-				_rtfeldman$elm_css$Html_Styled_Attributes$property,
-				'',
-				_elm_lang$core$Json_Encode$string(''));
-		}
-	});
-
 var _user$project$Endpoints_Views_Button$view = F2(
 	function (isLoading, msg) {
 		return A2(
@@ -30475,7 +30620,7 @@ var _user$project$Endpoints_Views_Button$view = F2(
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_user$project$Helpers_Html_Attributes_ops['?'],
+						_bluedogtraining$bdt_elm$Html_Styled_Bdt_ops['?'],
 						_rtfeldman$elm_css$Html_Styled_Events$onClick(msg),
 						!isLoading),
 					_1: {ctor: '[]'}
@@ -30487,165 +30632,6 @@ var _user$project$Endpoints_Views_Button$view = F2(
 				_1: {ctor: '[]'}
 			});
 	});
-
-var _user$project$Helpers_RecordFormatter$newLine = F4(
-	function ($char, indentation, nextIndentation, acc) {
-		return _elm_lang$core$Native_Utils.update(
-			acc,
-			{
-				string: A2(
-					_elm_lang$core$Basics_ops['++'],
-					acc.string,
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						'\n',
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							A2(_elm_lang$core$String$repeat, acc.indentation + indentation, ' '),
-							_elm_lang$core$String$fromChar($char)))),
-				indentation: acc.indentation + nextIndentation
-			});
-	});
-var _user$project$Helpers_RecordFormatter$format = F2(
-	function ($char, acc) {
-		var _p0 = {ctor: '_Tuple3', _0: $char, _1: acc.isString, _2: acc.isEscaped};
-		_v0_11:
-		do {
-			if (_p0._1 === true) {
-				if (_p0._2 === false) {
-					switch (_p0._0.valueOf()) {
-						case '\"':
-							return _elm_lang$core$Native_Utils.update(
-								acc,
-								{
-									string: A2(
-										_elm_lang$core$Basics_ops['++'],
-										acc.string,
-										_elm_lang$core$String$fromChar($char)),
-									isString: false
-								});
-						case '\\':
-							return _elm_lang$core$Native_Utils.update(
-								acc,
-								{
-									string: A2(
-										_elm_lang$core$Basics_ops['++'],
-										acc.string,
-										_elm_lang$core$String$fromChar($char)),
-									isEscaped: true
-								});
-						default:
-							break _v0_11;
-					}
-				} else {
-					if (_p0._0.valueOf() === '\\') {
-						return _elm_lang$core$Native_Utils.update(
-							acc,
-							{
-								string: A2(
-									_elm_lang$core$Basics_ops['++'],
-									acc.string,
-									_elm_lang$core$String$fromChar($char)),
-								isEscaped: false
-							});
-					} else {
-						break _v0_11;
-					}
-				}
-			} else {
-				switch (_p0._0.valueOf()) {
-					case '\"':
-						if (_p0._2 === false) {
-							return _elm_lang$core$Native_Utils.update(
-								acc,
-								{
-									string: A2(
-										_elm_lang$core$Basics_ops['++'],
-										acc.string,
-										_elm_lang$core$String$fromChar($char)),
-									isString: true
-								});
-						} else {
-							break _v0_11;
-						}
-					case '(':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr('('),
-							4,
-							4,
-							acc);
-					case '[':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr('['),
-							4,
-							4,
-							acc);
-					case '{':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr('{'),
-							4,
-							4,
-							acc);
-					case ')':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr(')'),
-							0,
-							-4,
-							acc);
-					case ']':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr(']'),
-							0,
-							-4,
-							acc);
-					case '}':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr('}'),
-							0,
-							-4,
-							acc);
-					case ',':
-						return A4(
-							_user$project$Helpers_RecordFormatter$newLine,
-							_elm_lang$core$Native_Utils.chr(','),
-							0,
-							0,
-							acc);
-					default:
-						break _v0_11;
-				}
-			}
-		} while(false);
-		return _elm_lang$core$Native_Utils.update(
-			acc,
-			{
-				string: A2(
-					_elm_lang$core$Basics_ops['++'],
-					acc.string,
-					_elm_lang$core$String$fromChar(_p0._0))
-			});
-	});
-var _user$project$Helpers_RecordFormatter$Accumulator = F4(
-	function (a, b, c, d) {
-		return {string: a, indentation: b, isString: c, isEscaped: d};
-	});
-var _user$project$Helpers_RecordFormatter$toString = function (_p1) {
-	return function (_) {
-		return _.string;
-	}(
-		A3(
-			_elm_lang$core$List$foldl,
-			_user$project$Helpers_RecordFormatter$format,
-			A4(_user$project$Helpers_RecordFormatter$Accumulator, '', 0, false, false),
-			_elm_lang$core$String$toList(
-				_elm_lang$core$Basics$toString(_p1))));
-};
 
 var _user$project$Endpoints_Views_Response$record = F2(
 	function (response, isLoading) {
@@ -30691,7 +30677,7 @@ var _user$project$Endpoints_Views_Response$record = F2(
 											{
 												ctor: '::',
 												_0: _rtfeldman$elm_css$Html_Styled$text(
-													_user$project$Helpers_RecordFormatter$toString(_p0._1._0)),
+													_ryan_senn$elm_record_formatter$RecordFormatter$toString(_p0._1._0)),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}

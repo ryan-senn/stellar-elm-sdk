@@ -58,7 +58,6 @@ asList =
     ]
 
 
-
 {-| String representation of the Union Type
 -}
 toString : AssetType -> String
