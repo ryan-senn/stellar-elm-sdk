@@ -7,10 +7,9 @@ import Html.Styled.Lazy exposing (..)
 
 import VirtualDom
 
-import SyntaxHighlight
-import Helpers.RecordFormatter as RecordFormatter
-
 import Http
+
+import Helpers.RecordFormatter as RecordFormatter
 
 import Msg exposing (Msg)
 
@@ -48,11 +47,16 @@ record response isLoading =
 
         (_, Just data) ->
             div
-                [ Css.response ]
-                [ SyntaxHighlight.useTheme SyntaxHighlight.monokai
-                    |> Html.fromUnstyled
-                , SyntaxHighlight.elm (RecordFormatter.toString data)
-                    |> Result.map (SyntaxHighlight.toBlockHtml (Just 1) >> Html.fromUnstyled)
-                    |> Result.withDefault (div [] [ text "Displaying response failed" ])
+                []
+                [ pre
+                    []
+                    [ code
+                        [ class "elm" ]
+                        [ text <| RecordFormatter.toString data ]
+                    ]
+                , text <| RecordFormatter.toString data
+                , node "script"
+                    []
+                    [ text "hljs.initHighlighting.called = false;hljs.initHighlighting();" ]
                 ]
                 |> toUnstyled
