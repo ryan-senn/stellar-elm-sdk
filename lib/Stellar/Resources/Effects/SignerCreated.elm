@@ -11,6 +11,8 @@ import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias SignerCreated =
     { id : String
     , pagingToken : String
@@ -25,6 +27,8 @@ type alias SignerCreated =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder SignerCreated
 decoder =
     Decode.decode SignerCreated

@@ -1,5 +1,12 @@
 module Stellar.Resources.Asset exposing (Asset, decoder)
 
+{-| Record to represent an Asset Resource
+
+# Type alias and Decoder
+@docs Asset, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
@@ -7,6 +14,8 @@ import Stellar.Flags as Flags exposing (Flags)
 import Stellar.Link as Link exposing (Link)
 
 
+{-| Type alias
+-}
 type alias Asset =
     { assetType : AssetType
     , assetCode : String
@@ -19,6 +28,8 @@ type alias Asset =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Asset
 decoder =
     Decode.decode Asset
@@ -58,11 +69,15 @@ stringToAssetType string =
             Decode.fail "Could not decode AssetType"
 
 
+{-| Links
+-}
 type alias Links =
     { toml : Link
     }
 
 
+{-| Links decoder
+-}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

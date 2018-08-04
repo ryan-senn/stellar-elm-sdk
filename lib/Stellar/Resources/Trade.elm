@@ -9,6 +9,8 @@ import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
 import Stellar.Link as Link exposing (Link)
 
 
+{-| Type alias
+-}
 type alias Trade =
     { id : String
     , pagingToken : String
@@ -29,6 +31,8 @@ type alias Trade =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Trade
 decoder =
     Decode.decode Trade
@@ -49,6 +53,8 @@ decoder =
         |> Decode.required "base_is_seller" Decode.bool
 
 
+{-| Links
+-}
 type alias Links =
     { base : Link
     , counter : Link
@@ -56,6 +62,8 @@ type alias Links =
     }
 
 
+{-| Links decoder
+-}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

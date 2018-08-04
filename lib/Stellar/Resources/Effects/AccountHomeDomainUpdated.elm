@@ -6,6 +6,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias AccountHomeDomainUpdated =
     { id : String
     , pagingToken : String
@@ -17,6 +19,8 @@ type alias AccountHomeDomainUpdated =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder AccountHomeDomainUpdated
 decoder =
     Decode.decode AccountHomeDomainUpdated

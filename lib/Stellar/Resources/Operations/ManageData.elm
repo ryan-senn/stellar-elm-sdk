@@ -9,6 +9,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias ManageData =
     { id : String
     , pagingToken : String
@@ -23,6 +25,8 @@ type alias ManageData =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder ManageData
 decoder =
     Decode.decode ManageData

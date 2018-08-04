@@ -1,5 +1,12 @@
 module Stellar.Resources.Account exposing (Account, decoder)
 
+{-| Record to represent a Balance
+
+# Type alias and Decoder
+@docs Account, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
@@ -14,6 +21,8 @@ import Stellar.Link as Link exposing (Link)
 import Stellar.Resources.Data as Data exposing (Data)
 
 
+{-| Type alias
+-}
 type alias Account =
     { id : PublicKey
     , accountId : PublicKey
@@ -29,6 +38,8 @@ type alias Account =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Account
 decoder =
     Decode.decode Account
@@ -45,6 +56,8 @@ decoder =
         |> Decode.required "_links" linksDecoder
 
 
+{-| Links
+-}
 type alias Links =
     { toml : Maybe Link
     , data : Maybe Link
@@ -58,6 +71,8 @@ type alias Links =
     }
 
 
+{-| Links decoder
+-}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

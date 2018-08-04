@@ -6,12 +6,16 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Link as Link exposing (Link)
 
 
+{-| Type alias
+-}
 type alias Page a =
     { embedded_ : { records : List a }
     , links_ : Links
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder record -> Decoder (Page record)
 decoder recordDecoder =
     Decode.decode Page
@@ -19,6 +23,8 @@ decoder recordDecoder =
         |> Decode.required "_links" linksDecoder
 
 
+{-| Type alias
+-}
 type alias Embed a =
     { records : List a
     }
@@ -30,6 +36,8 @@ embeddedDecoder recordDecoder =
         |> Decode.required "records" (Decode.list recordDecoder)
 
 
+{-| Links
+-}
 type alias Links =
     { self : Link
     , prev : Link
@@ -37,6 +45,8 @@ type alias Links =
     }
 
 
+{-| Links decoder
+-}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

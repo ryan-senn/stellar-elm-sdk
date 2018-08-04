@@ -6,6 +6,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Resources.Asset as Asset exposing (Asset)
 
 
+{-| Type alias
+-}
 type alias Offer =
     { id : Int
     , pagingToken : String
@@ -18,6 +20,8 @@ type alias Offer =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Offer
 decoder =
     Decode.decode Offer

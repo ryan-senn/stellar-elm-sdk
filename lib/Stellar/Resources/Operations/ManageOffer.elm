@@ -11,6 +11,8 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias ManageOffer =
     { id : String
     , pagingToken : String
@@ -33,6 +35,8 @@ type alias ManageOffer =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder ManageOffer
 decoder =
     Decode.decode ManageOffer

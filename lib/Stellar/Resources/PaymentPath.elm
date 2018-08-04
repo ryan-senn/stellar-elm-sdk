@@ -6,6 +6,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Resources.Asset as Asset exposing (Asset)
 
 
+{-| Type alias
+-}
 type alias PaymentPath =
     { path : List Asset
     , sourceAmount : String
@@ -19,6 +21,8 @@ type alias PaymentPath =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder PaymentPath
 decoder =
     Decode.decode PaymentPath

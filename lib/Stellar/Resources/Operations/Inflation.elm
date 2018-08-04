@@ -9,6 +9,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias Inflation =
     { id : String
     , pagingToken : String
@@ -21,6 +23,8 @@ type alias Inflation =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Inflation
 decoder =
     Decode.decode Inflation

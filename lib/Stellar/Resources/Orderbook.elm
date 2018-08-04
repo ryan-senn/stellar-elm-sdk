@@ -7,6 +7,8 @@ import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
 import Stellar.AssetType as AssetType exposing (AssetType)
 
 
+{-| Type alias
+-}
 type alias Orderbook =
     { bids : List Listing
     , asks : List Listing
@@ -15,6 +17,8 @@ type alias Orderbook =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Orderbook
 decoder =
     Decode.decode Orderbook
@@ -24,6 +28,8 @@ decoder =
         |> Decode.required "counter" offerDecoder
 
 
+{-| Type alias
+-}
 type alias Listing =
     { price : String
     , priceR : RationalNumber
@@ -39,6 +45,8 @@ listingDecoder =
         |> Decode.required "amount" Decode.string
 
 
+{-| Type alias
+-}
 type alias Offer =
     { assetType : AssetType
     }

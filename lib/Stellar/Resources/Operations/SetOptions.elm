@@ -11,6 +11,8 @@ import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias SetOptions =
     { id : String
     , pagingToken : String
@@ -35,6 +37,8 @@ type alias SetOptions =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder SetOptions
 decoder =
     Decode.decode SetOptions

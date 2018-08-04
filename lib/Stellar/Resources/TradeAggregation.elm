@@ -6,6 +6,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
 
 
+{-| Type alias
+-}
 type alias TradeAggregation =
     { timestamp : String
     , tradeCount : Int
@@ -23,6 +25,8 @@ type alias TradeAggregation =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder TradeAggregation
 decoder =
     Decode.decode TradeAggregation

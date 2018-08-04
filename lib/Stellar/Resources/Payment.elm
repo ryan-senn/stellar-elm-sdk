@@ -15,6 +15,8 @@ type Payment
     | AccountMerge AccountMerge
 
 
+{-| Decoder
+-}
 decoder : Decoder Payment
 decoder =
     Decode.field "type" Decode.string

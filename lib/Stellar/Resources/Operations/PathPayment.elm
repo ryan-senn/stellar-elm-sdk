@@ -11,6 +11,8 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias PathPayment =
     { id : String
     , pagingToken : String
@@ -33,6 +35,8 @@ type alias PathPayment =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder PathPayment
 decoder =
     Decode.decode PathPayment

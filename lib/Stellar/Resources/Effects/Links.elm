@@ -6,6 +6,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Link as Link exposing (Link)
 
 
+{-| Links
+-}
 type alias Links =
     { operation : Link
     , succeeds : Link
@@ -13,6 +15,8 @@ type alias Links =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Links
 decoder =
     Decode.decode Links

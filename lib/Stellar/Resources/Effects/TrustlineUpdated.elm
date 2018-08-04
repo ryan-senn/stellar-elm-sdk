@@ -7,6 +7,8 @@ import Stellar.Resources.Effects.Links as Links exposing (Links)
 import Stellar.AssetType as AssetType exposing (AssetType)
 
 
+{-| Type alias
+-}
 type alias TrustlineUpdated =
     { id : String
     , pagingToken : String
@@ -19,6 +21,8 @@ type alias TrustlineUpdated =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder TrustlineUpdated
 decoder =
     Decode.decode TrustlineUpdated

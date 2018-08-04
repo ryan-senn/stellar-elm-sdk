@@ -9,6 +9,8 @@ import Date exposing (Date)
 import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias AccountCreated =
     { id : String
     , pagingToken : String
@@ -21,6 +23,8 @@ type alias AccountCreated =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder AccountCreated
 decoder =
     Decode.decode AccountCreated

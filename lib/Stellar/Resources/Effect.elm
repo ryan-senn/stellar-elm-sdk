@@ -52,6 +52,8 @@ type Effect
     | TrustlineUpdated TrustlineUpdated
 
 
+{-| Decoder
+-}
 decoder : Decoder Effect
 decoder =
     Decode.field "type" Decode.string

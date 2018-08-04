@@ -11,6 +11,8 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias AllowTrust =
     { id : String
     , pagingToken : String
@@ -29,6 +31,8 @@ type alias AllowTrust =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder AllowTrust
 decoder =
     Decode.decode AllowTrust

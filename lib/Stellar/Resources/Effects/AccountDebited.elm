@@ -10,6 +10,8 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias AccountDebited =
     { id : String
     , pagingToken : String
@@ -23,6 +25,8 @@ type alias AccountDebited =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder AccountDebited
 decoder =
     Decode.decode AccountDebited

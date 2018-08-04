@@ -7,6 +7,8 @@ import Stellar.Resources.Effects.Links as Links exposing (Links)
 import Stellar.AssetType as AssetType exposing (AssetType)
 
 
+{-| Type alias
+-}
 type alias Trade =
     { id : String
     , pagingToken : String
@@ -27,6 +29,8 @@ type alias Trade =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Trade
 decoder =
     Decode.decode Trade

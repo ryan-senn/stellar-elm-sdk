@@ -6,6 +6,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Resources.Effects.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias DataCreated =
     { id : String
     , pagingToken : String
@@ -16,6 +18,8 @@ type alias DataCreated =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder DataCreated
 decoder =
     Decode.decode DataCreated

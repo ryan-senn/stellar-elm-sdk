@@ -29,6 +29,8 @@ type Operation
     | ManageData ManageData
 
 
+{-| Decoder
+-}
 decoder : Decoder Operation
 decoder =
     Decode.field "type" Decode.string

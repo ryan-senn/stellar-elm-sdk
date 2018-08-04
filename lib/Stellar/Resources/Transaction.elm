@@ -9,6 +9,8 @@ import Json.Decode.Pipeline as Decode
 import Stellar.Link as Link exposing (Link)
 
 
+{-| Type alias
+-}
 type alias Transaction =
     { id : String
     , pagingToken : String
@@ -29,6 +31,8 @@ type alias Transaction =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder Transaction
 decoder =
     Decode.decode Transaction
@@ -50,6 +54,8 @@ decoder =
         |> Decode.required "_links" linksDecoder
 
 
+{-| Links
+-}
 type alias Links =
     { self : Link
     , account : Link
@@ -61,6 +67,8 @@ type alias Links =
     }
 
 
+{-| Links decoder
+-}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

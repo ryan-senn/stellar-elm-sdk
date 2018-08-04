@@ -11,6 +11,8 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links as Links exposing (Links)
 
 
+{-| Type alias
+-}
 type alias CreatePassiveOffer =
     { id : String
     , pagingToken : String
@@ -33,6 +35,8 @@ type alias CreatePassiveOffer =
     }
 
 
+{-| Decoder
+-}
 decoder : Decoder CreatePassiveOffer
 decoder =
     Decode.decode CreatePassiveOffer
