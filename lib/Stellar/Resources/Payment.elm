@@ -8,6 +8,8 @@ import Stellar.Resources.Operations.PathPayment as PathPayment exposing (PathPay
 import Stellar.Resources.Operations.AccountMerge as AccountMerge exposing (AccountMerge)
 
 
+{-| Union Type of possible Payments
+-}
 type Payment
     = CreateAccount CreateAccount
     | Payment_ PaymentOperation.Payment

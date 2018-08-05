@@ -1,8 +1,21 @@
 module Stellar.Endpoints.DataForAccount exposing
-    ( requestBuilder, send
-    , Response (..)
+    ( requestBuilder
+    , send, Response (..)
     , DataKey (..), dataKeyList
     )
+
+{-| Data for Account Endpoint
+
+# Build the Request with required fields
+@docs requestBuilder
+
+# Send the Request & catch Response
+@docs send, Response
+
+# Available Data
+@docs DataKey, DataKeyList
+
+-}
 
 import Http
 import HttpBuilder exposing (..)
@@ -19,6 +32,8 @@ import Stellar.Resources.Data as Data exposing (Data)
 import Stellar.Error as Error exposing (Error)
 
 
+{-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.
+-}
 requestBuilder : Endpoint -> PublicKey -> DataKey -> RequestBuilder Response
 requestBuilder endpoint publicKey dataKey =
 
@@ -26,6 +41,8 @@ requestBuilder endpoint publicKey dataKey =
         |> withExpect (Http.expectJson decoder)
 
 
+{-| Send the request once configured.
+-}
 send : (Result Http.Error Response -> msg) -> RequestBuilder Response -> Cmd msg
 send =
     HttpBuilder.send
@@ -40,10 +57,14 @@ url endpoint publicKey key =
     ++ dataKeyToString key
 
 
+{-| Union type of available Data to request
+-}
 type DataKey
     = UserId
 
 
+{-| List of available Data to request
+-}
 dataKeyList : List DataKey
 dataKeyList =
     [ UserId
@@ -55,6 +76,8 @@ dataKeyToString =
     toString >> String.decapitalize >> String.dasherize
 
 
+{-| The Response coming back from the server.
+-}
 type Response
     = Error Error
     | Success Data

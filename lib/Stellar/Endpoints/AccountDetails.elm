@@ -1,5 +1,15 @@
 module Stellar.Endpoints.AccountDetails exposing (requestBuilder, send, Response (..))
 
+{-| Account Details Endpoint
+
+# Build the Request with required fields
+@docs requestBuilder
+
+# Send the Request & catch Response
+@docs send, Response
+
+-}
+
 import Http
 import HttpBuilder exposing (..)
 
@@ -13,6 +23,8 @@ import Stellar.Resources.Account as Account exposing (Account)
 import Stellar.Error as Error exposing (Error)
 
 
+{-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.
+-}
 requestBuilder : Endpoint -> PublicKey -> RequestBuilder Response
 requestBuilder endpoint publicKey =
 
@@ -20,6 +32,8 @@ requestBuilder endpoint publicKey =
         |> withExpect (Http.expectJson decoder)
 
 
+{-| Send the request once configured.
+-}
 send : (Result Http.Error Response -> msg) -> RequestBuilder Response -> Cmd msg
 send =
     HttpBuilder.send
@@ -31,6 +45,8 @@ url endpoint publicKey =
     endpoint ++ "/accounts/" ++ publicKey
 
 
+{-| The Response coming back from the server.
+-}
 type Response
     = Error Error
     | Success Account

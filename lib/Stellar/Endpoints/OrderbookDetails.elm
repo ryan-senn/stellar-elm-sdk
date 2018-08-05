@@ -1,10 +1,26 @@
 module Stellar.Endpoints.OrderbookDetails exposing
-    ( requestBuilder, send
+    ( requestBuilder
     , setSellingAssetCode, setSellingAssetIssuer
     , setBuyingAssetCode, setBuyingAssetIssuer
     , setLimit
-    , Response (..)
+    , send, Response (..)
     )
+
+{-| Orderbook Details Endpoint
+
+# Build the Request with required fields
+@docs requestBuilder
+
+# Configure optional fields
+@docs setSellingAssetCode, setSellingAssetIssuer, setBuyingAssetCode, setBuyingAssetIssuer
+
+# Configure pagination
+@docs setLimit
+
+# Send the Request & catch Response
+@docs send, Response
+
+-}
 
 import Http
 import HttpBuilder exposing (..)
@@ -20,6 +36,8 @@ import Stellar.Resources.Orderbook as Orderbook exposing (Orderbook)
 import Stellar.Error as Error exposing (Error)
 
 
+{-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.
+-}
 requestBuilder : Endpoint -> AssetType -> AssetType -> RequestBuilder Response
 requestBuilder endpoint sellingAssetType buyingAssetType =
 
@@ -29,6 +47,8 @@ requestBuilder endpoint sellingAssetType buyingAssetType =
         |> withQueryParams [("buying_asset_type", AssetType.toString buyingAssetType)]
 
 
+{-| Send the request once configured.
+-}
 send : (Result Http.Error Response -> msg) -> RequestBuilder Response -> Cmd msg
 send =
     HttpBuilder.send
@@ -58,6 +78,8 @@ setBuyingAssetIssuer buyingAssetIssuer requestBuilder =
         |> withQueryParams [("buying_asset_issuer", buyingAssetIssuer)]
 
 
+{-| Set the pagination limit for the Request.
+-}
 setLimit : Int -> RequestBuilder Response -> RequestBuilder Response
 setLimit limit requestBuilder =
     requestBuilder
@@ -70,6 +92,8 @@ url endpoint =
     endpoint ++ "/order_book"
 
 
+{-| The Response coming back from the server.
+-}
 type Response
     = Error Error
     | Success Orderbook

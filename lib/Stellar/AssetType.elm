@@ -3,7 +3,7 @@ module Stellar.AssetType exposing (AssetType (..), decoder, asList, toString)
 {-| Union Type of Asset Types
 
 # Union Type and Decoder
-@docs AssetType, decoder, toString
+@docs AssetType, decoder
 
 # Helpers
 @docs asList, toString
@@ -14,7 +14,7 @@ import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
 
-{-| Possible Asset Types
+{-| Union Type of Asset Types
 -}
 type AssetType
     = Native
