@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountThresholdsUpdated exposing (AccountThresholdsUpdated, decoder)
 
+{-| Account Thresholds updated Effect
+
+# Type alias and decoder
+@docs AccountThresholdsUpdated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

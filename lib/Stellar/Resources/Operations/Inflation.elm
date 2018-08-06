@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.Inflation exposing (Inflation, decoder)
 
+{-| Inflation Operation
+
+# Type alias and decoder
+@docs Inflation, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

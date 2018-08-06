@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountFlagsUpdated exposing (AccountFlagsUpdated, decoder)
 
+{-| Account Flags updated Effect
+
+# Type alias and decoder
+@docs AccountFlagsUpdated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

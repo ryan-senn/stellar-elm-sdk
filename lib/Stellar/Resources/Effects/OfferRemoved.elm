@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved, decoder)
 
+{-| Offer removed Effect
+
+# Type alias and decoder
+@docs OfferRemoved, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

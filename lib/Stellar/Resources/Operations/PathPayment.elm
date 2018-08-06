@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.PathPayment exposing (PathPayment, decoder)
 
+{-| Path Payment Operation
+
+# Type alias and decoder
+@docs PathPayment, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

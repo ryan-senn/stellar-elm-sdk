@@ -1,5 +1,12 @@
 module Stellar.Resources.Operation exposing (Operation (..), decoder)
 
+{-| Operation Resource
+
+# Union Type and decoder
+@docs Operation, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 
 import Stellar.Resources.Operations.CreateAccount as CreateAccount exposing (CreateAccount)
@@ -15,6 +22,8 @@ import Stellar.Resources.Operations.Inflation as Inflation exposing (Inflation)
 import Stellar.Resources.Operations.ManageData as ManageData exposing (ManageData)
 
 
+{-| Union Type of all possible Operations
+-}
 type Operation
     = CreateAccount CreateAccount
     | Payment Payment

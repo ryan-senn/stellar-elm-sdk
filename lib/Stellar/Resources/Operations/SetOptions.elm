@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.SetOptions exposing (SetOptions, decoder)
 
+{-| Set Options Operation
+
+# Type alias and decoder
+@docs SetOptions, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

@@ -1,5 +1,12 @@
 module Stellar.Resources.Payment exposing (Payment (..), decoder)
 
+{-| Payment Resource
+
+# Type alias and decoder
+@docs Payment, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 
 import Stellar.Resources.Operations.CreateAccount as CreateAccount exposing (CreateAccount)

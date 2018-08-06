@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.ManageOffer exposing (ManageOffer, decoder)
 
+{-| Manage Offer Operation
+
+# Type alias and decoder
+@docs ManageOffer, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

@@ -51,12 +51,16 @@ send =
     HttpBuilder.send
 
 
+{-| Set the Destination Asset Code.
+-}
 setDestinationAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
 setDestinationAssetCode destinationAssetCode requestBuilder =
     requestBuilder
         |> withQueryParams [("destination_asset_code", destinationAssetCode)]
 
 
+{-| Set the Destination Asset Issuer.
+-}
 setDestinationAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
 setDestinationAssetIssuer destinationAssetIssuer requestBuilder =
     requestBuilder

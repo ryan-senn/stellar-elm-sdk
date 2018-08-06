@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.DataCreated exposing (DataCreated, decoder)
 
+{-| Data created Effect
+
+# Type alias and decoder
+@docs DataCreated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

@@ -1,4 +1,17 @@
-module Stellar.Resources.Orderbook exposing (Orderbook, decoder)
+module Stellar.Resources.Orderbook exposing
+    ( Orderbook, decoder
+    , Listing, Offer
+    )
+
+{-| Orderbook Resource
+
+# Type alias and decoder
+@docs Orderbook, decoder
+
+# Sub Type aliases
+@docs Listing, Offer
+
+-}
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode

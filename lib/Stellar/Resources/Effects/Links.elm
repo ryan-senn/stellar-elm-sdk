@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.Links exposing (Links, decoder)
 
+{-| Links common to all Effects
+
+# Type alias and decoder
+@docs Links, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

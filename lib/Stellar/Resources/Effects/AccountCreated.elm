@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountCreated exposing (AccountCreated, decoder)
 
+{-| Account Created Effect
+
+# Type alias and decoder
+@docs AccountCreated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode

@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountInflationDestinationUpdated exposing (AccountInflationDestinationUpdated, decoder)
 
+{-| Account Inflation Destination updated Effect
+
+# Type alias and decoder
+@docs AccountInflationDestinationUpdated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

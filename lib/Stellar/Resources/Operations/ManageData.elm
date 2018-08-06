@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.ManageData exposing (ManageData, decoder)
 
+{-| Manage Data Operation
+
+# Type alias and decoder
+@docs ManageData, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

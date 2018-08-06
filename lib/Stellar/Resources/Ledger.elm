@@ -1,5 +1,12 @@
 module Stellar.Resources.Ledger exposing (Ledger, decoder)
 
+{-| Ledger Resource
+
+# Type alias and decoder
+@docs Ledger, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

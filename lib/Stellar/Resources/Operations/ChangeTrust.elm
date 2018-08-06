@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.ChangeTrust exposing (ChangeTrust, decoder)
 
+{-| Change Trust Operation
+
+# Type alias and decoder
+@docs ChangeTrust, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

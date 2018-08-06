@@ -1,5 +1,12 @@
 module Stellar.Resources.TradeAggregation exposing (TradeAggregation, decoder)
 
+{-| Trade Aggregation Resource
+
+# Type alias and decoder
+@docs TradeAggregation, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

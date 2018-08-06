@@ -1,5 +1,12 @@
 module Stellar.Resources.Effect exposing (Effect (..), decoder)
 
+{-| Effect Resource
+
+# Union Type and decoder
+@docs Effect, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
@@ -27,6 +34,8 @@ import Stellar.Resources.Effects.TrustlineRemoved as TrustlineRemoved exposing (
 import Stellar.Resources.Effects.TrustlineUpdated as TrustlineUpdated exposing (TrustlineUpdated)
 
 
+{-| Union Type of all possible Effects
+-}
 type Effect
     = AccountCreated AccountCreated
     | AccountCredited AccountCredited

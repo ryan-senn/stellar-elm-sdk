@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved, decoder)
 
+{-| Signer removed Effect
+
+# Type alias and decoder
+@docs SignerRemoved, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

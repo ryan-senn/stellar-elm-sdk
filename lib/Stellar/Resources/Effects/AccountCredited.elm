@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountCredited exposing (AccountCredited, decoder)
 
+{-| Account Credited Effect
+
+# Type alias and decoder
+@docs AccountCredited, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode

@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.TrustlineCreated exposing (TrustlineCreated, decoder)
 
+{-| Trustline created Effect
+
+# Type alias and decoder
+@docs TrustlineCreated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

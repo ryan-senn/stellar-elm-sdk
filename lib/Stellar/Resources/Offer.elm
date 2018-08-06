@@ -1,5 +1,12 @@
 module Stellar.Resources.Offer exposing (Offer, decoder)
 
+{-| Offer Resource
+
+# Type alias and decoder
+@docs Offer, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

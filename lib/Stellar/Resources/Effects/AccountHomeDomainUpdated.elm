@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeDomainUpdated, decoder)
 
+{-| Account Home Domain updated Effect
+
+# Type alias and decoder
+@docs AccountHomeDomainUpdated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

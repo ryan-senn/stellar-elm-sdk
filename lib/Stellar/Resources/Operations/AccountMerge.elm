@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.AccountMerge exposing (AccountMerge, decoder)
 
+{-| Account merge Operation
+
+# Type alias and decoder
+@docs AccountMerge, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

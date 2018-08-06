@@ -1,4 +1,14 @@
-module Stellar.Resources.Transaction exposing (Transaction, decoder)
+module Stellar.Resources.Transaction exposing
+    ( Transaction, decoder
+    , Links
+    )
+
+{-| Transaction Resource
+
+# Type alias and decoder
+@docs Transaction, decoder
+
+-}
 
 import Date exposing (Date)
 
@@ -67,8 +77,6 @@ type alias Links =
     }
 
 
-{-| Links decoder
--}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.OfferCreated exposing (OfferCreated, decoder)
 
+{-| Offer created Effect
+
+# Type alias and decoder
+@docs OfferCreated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

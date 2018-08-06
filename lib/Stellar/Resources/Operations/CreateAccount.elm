@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.CreateAccount exposing (CreateAccount, decoder)
 
+{-| Create Account Operation
+
+# Type alias and decoder
+@docs CreateAccount, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

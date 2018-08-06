@@ -54,24 +54,32 @@ send =
     HttpBuilder.send
 
 
+{-| Set the selling Asset Code.
+-}
 setSellingAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
 setSellingAssetCode sellingAssetCode requestBuilder =
     requestBuilder
         |> withQueryParams [("selling_asset_code", sellingAssetCode)]
 
 
+{-| Set the selling Asset Issuer.
+-}
 setSellingAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
 setSellingAssetIssuer sellingAssetIssuer requestBuilder =
     requestBuilder
         |> withQueryParams [("selling_asset_issuer", sellingAssetIssuer)]
 
 
+{-| Set the buying Asset Code.
+-}
 setBuyingAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
 setBuyingAssetCode buyingAssetCode requestBuilder =
     requestBuilder
         |> withQueryParams [("buying_asset_code", buyingAssetCode)]
 
 
+{-| Set the buying Asset Issuer.
+-}
 setBuyingAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
 setBuyingAssetIssuer buyingAssetIssuer requestBuilder =
     requestBuilder

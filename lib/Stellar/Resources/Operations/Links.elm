@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.Links exposing (Links, decoder)
 
+{-| Links common to all Operations
+
+# Type alias and decoder
+@docs Links, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

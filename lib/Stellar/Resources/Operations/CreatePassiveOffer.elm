@@ -1,5 +1,12 @@
 module Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOffer, decoder)
 
+{-| Create Passive Offer Operation
+
+# Type alias and decoder
+@docs CreatePassiveOffer, decoder
+
+-}
+
 import Date exposing (Date)
 
 import Json.Decode as Decode exposing (Decoder)

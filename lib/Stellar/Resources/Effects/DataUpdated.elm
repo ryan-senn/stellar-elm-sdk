@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.DataUpdated exposing (DataUpdated, decoder)
 
+{-| Data updates Effect
+
+# Type alias and decoder
+@docs DataUpdated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

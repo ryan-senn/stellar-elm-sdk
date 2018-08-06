@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.AccountRemoved exposing (AccountRemoved, decoder)
 
+{-| Account removed Effect
+
+# Type alias and decoder
+@docs AccountRemoved, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.SignerCreated exposing (SignerCreated, decoder)
 
+{-| Signer created Effect
+
+# Type alias and decoder
+@docs SignerCreated, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode

@@ -1,4 +1,14 @@
-module Stellar.Resources.Page exposing (Page, decoder)
+module Stellar.Resources.Page exposing
+    ( Page, decoder
+    , Embed, Links
+    )
+
+{-| Page Resource
+
+# Type alias and decoder
+@docs Page, decoder
+
+-}
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
@@ -7,6 +17,9 @@ import Stellar.Link as Link exposing (Link)
 
 
 {-| Type alias
+
+A Page can contain any embedded Resources and links for navigation.
+
 -}
 type alias Page a =
     { embedded_ : { records : List a }
@@ -45,8 +58,6 @@ type alias Links =
     }
 
 
-{-| Links decoder
--}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

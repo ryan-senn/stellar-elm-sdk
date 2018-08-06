@@ -1,5 +1,12 @@
 module Stellar.Resources.Data exposing (Data, decoder)
 
+{-| Data Resource
+
+# Type alias and decoder
+@docs Data, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 

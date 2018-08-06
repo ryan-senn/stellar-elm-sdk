@@ -1,5 +1,12 @@
 module Stellar.Resources.Effects.DataRemoved exposing (DataRemoved, decoder)
 
+{-| Data removed Effect
+
+# Type alias and decoder
+@docs DataRemoved, decoder
+
+-}
+
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
