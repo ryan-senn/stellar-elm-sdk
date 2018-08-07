@@ -6,7 +6,7 @@ module Stellar.Resources.Transaction exposing
 {-| Transaction Resource
 
 # Type alias and decoder
-@docs Transaction, decoder
+@docs Transaction, decoder, Links
 
 -}
 

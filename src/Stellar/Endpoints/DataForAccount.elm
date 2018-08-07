@@ -13,7 +13,7 @@ module Stellar.Endpoints.DataForAccount exposing
 @docs send, Response
 
 # Available Data
-@docs DataKey, DataKeyList
+@docs DataKey, dataKeyList
 
 -}
 
@@ -61,7 +61,6 @@ url endpoint publicKey key =
 -}
 type DataKey
     = UserId
-
 
 {-| List of available Data to request
 -}

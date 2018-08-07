@@ -3,7 +3,7 @@ module Stellar.Resources.PaymentPath exposing (PaymentPath, decoder)
 {-| Payment Resource
 
 # Type alias and decoder
-@docs Payment, decoder
+@docs PaymentPath, decoder
 
 -}
 
@@ -33,7 +33,7 @@ type alias PaymentPath =
 decoder : Decoder PaymentPath
 decoder =
     Decode.decode PaymentPath
-        |> Decode.required "id" Decode.string
+        |> Decode.required "path" (Decode.list Asset.decoder)
         |> Decode.required "source_amount" Decode.string
         |> Decode.required "destination_amount" Decode.string
         |> Decode.required "destination_asset_type" Decode.string

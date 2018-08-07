@@ -1,46 +1,17 @@
 # Stellar Elm SDK / API Examples
 
-This repository started as a proof of concept that the [Elm Language](http://elm-lang.org) could be an excellent candidate as a Stellar SDK with it's strong static types.
+This repository started as a proof of concept that the [Elm Language](http://elm-lang.org) could be an excellent candidate as a Stellar SDK with its strong static types and excellent support for Http and Websockets.
 
-This Repository currently hosts 2 things:
+This Repository used to host 2 things:
 - A Stellar SDK written in Elm
 - An Example SPA (single page application) written in Elm, that uses the SDK to interact with the Stellar Network.
 
-The SDK code lives in `/lib/Stellar`, while the SPA lives in `/src`.
+The Demo SPA has now been extracted to it's own package, leaving only the SDK in this repository.
 
-I've also set up Github Pages in `/docs`, which can be seen here: https://ryan-senn.github.io/stellar-elm
-
-## Initial Goals
-
-The initial goal is to provide a solid SDK and implement a [Stellar laboratory clone](https://www.stellar.org/laboratory/#explorer?resource=accounts&endpoint=single&network=test) in Elm (the official one is written is React/Redux).
-Since Redux is strongly influenced by Elm (or the Elm Architecture rather), I wanted to see how things would go.
+The live Demo can be found here. Here is the link to the Demo SPA source code.
 
 ## Future Plans
 
-Now that the SDK and SPA are somewhat stable, I intend to split the SDK into it's own repository and make it available on the official Elm Package manager.
-If you are unfamiliar with Elm, documentation and semantic versioning are enforced by the package manager, so I intend to have well documented examples there.
+Now that the SDK is its own stand alone package hosted on the official elm (http://package.elm-lang.org), I want to focus on stellar (!) documentation.
 
-I also intend to beef up the SPA and make it more user friendly (better validation etc).
-
-Eventually, I would like to also add the API Reference like here: https://www.stellar.org/developers/horizon/reference/endpoints/accounts-single.html
-
-## Build
-
-If you want to run the code locally, you'll need to run the following (skip steps if you already have for example Elm)
-
-- If you don't have Elm tooling, install it:
-    - `npm i -g elm elm-live`
-
-- Clone the Repo
-    - `git clone git@github.com:ryan-senn/stellar-elm.git`
-    - `cd stellar/elm`
-
-- Compile the Elm code: (it will prompt to install the dependencies, just hit enter)
-    - On Osx: `./elm-live-osx.sh`
-    - On Linux: `./elm-live-linux.sh`
-
-If you want to add the Time Traveller, open the shell script and add `--debug` at the end.
-
-## Examples / Live Demo
-
-In case you missed the link further up, the live example runs on Github Pages (set up in `/docs`): https://ryan-senn.github.io/stellar-elm
+The Demo Spa future plans can be found here.

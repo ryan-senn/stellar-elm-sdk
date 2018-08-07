@@ -8,7 +8,6 @@ import Json.Decode as Decode
 import Date
 import Time
 
-import Stellar.PublicKey exposing (PublicKey (PublicKey))
 import Stellar.Resources.Effect as Effect exposing (Effect)
 import Stellar.Resources.Effects.SignerCreated as SignerCreated exposing (SignerCreated)
 
@@ -57,7 +56,7 @@ record =
     , typeI = 10
     , account = "GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K"
     , weight = 1
-    , publicKey = PublicKey "GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K"
+    , publicKey = "GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K"
     , key = ""
     , createdAt = Date.fromTime <| Time.second * 1490039452
     , links =

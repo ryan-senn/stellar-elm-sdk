@@ -1,9 +1,9 @@
-module Stellar.Resources.Trade exposing (Trade, decoder)
+module Stellar.Resources.Trade exposing (Trade, decoder, Links)
 
 {-| Trade Resource
 
 # Type alias and decoder
-@docs Trade, decoder
+@docs Trade, decoder, Links
 
 -}
 
@@ -48,16 +48,17 @@ decoder =
         |> Decode.required "ledger_close_time" Decode.string
         |> Decode.required "base_account" Decode.string
         |> Decode.required "base_amount" Decode.string
-        |> Decode.required "base_asset_type" String
-        |> Decode.required "base_asset_code" String
+        |> Decode.required "base_asset_type" Decode.string
+        |> Decode.required "base_asset_code" Decode.string
         |> Decode.required "base_asset_issuer" Decode.string
         |> Decode.required "counter_account" Decode.string
         |> Decode.required "counter_amount" Decode.string
-        |> Decode.required "counter_asset_type" String
-        |> Decode.required "counter_asset_code" String
+        |> Decode.required "counter_asset_type" Decode.string
+        |> Decode.required "counter_asset_code" Decode.string
         |> Decode.required "counter_asset_issuer" Decode.string
         |> Decode.required "price" RationalNumber.decoder
         |> Decode.required "base_is_seller" Decode.bool
+        |> Decode.required "links" linksDecoder
 
 
 {-| Links
@@ -69,8 +70,6 @@ type alias Links =
     }
 
 
-{-| Links decoder
--}
 linksDecoder : Decoder Links
 linksDecoder =
     Decode.decode Links

@@ -6,7 +6,7 @@ module Stellar.Resources.Page exposing
 {-| Page Resource
 
 # Type alias and decoder
-@docs Page, decoder
+@docs Page, decoder, Embed, Links
 
 -}
 

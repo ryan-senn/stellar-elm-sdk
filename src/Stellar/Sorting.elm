@@ -3,7 +3,7 @@ module Stellar.Sorting exposing (Sorting (..), toString)
 {-| Union Type that represents the available sorting methods in Stellar
 
 # Union Type and Decoder
-@docs Sorting, decoder
+@docs Sorting, toString
 
 -}
 
