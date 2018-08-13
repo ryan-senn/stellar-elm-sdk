@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "summary": "Elm SDK for the Stellar Cryptocurrency",
     "repository": "https://github.com/ryan-senn/stellar-elm-sdk.git",
     "license": "BSD3",
