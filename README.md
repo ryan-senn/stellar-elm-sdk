@@ -51,4 +51,4 @@ Now that the SDK is its own stand alone package hosted on the official elm (http
 
 I also want to split Resource Modules in Public (exposed) and Private (internal), as there is very little reason to expose decoders, the Type Alias is enough (the Endpoint Modules use the decoders internally).
 
-[The future plans for the Demo SPA can be foud here](https://github.com/ryan-senn/stellar-elm-demo).
+[The future plans for the Demo SPA can be foud here](https://github.com/ryan-senn/stellar-elm-demo#future-plans).
