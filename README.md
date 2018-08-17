@@ -14,9 +14,9 @@ The Demo SPA has now been extracted to it's [own package](https://github.com/rya
 
 To add the SDK to your existing Elm project, run `elm package install ryan-senn/stellar-elm-sdk`.
 
-The Package follows Stellar's philophy as close as possible. The Package is split in Endpoints (to build and send requests) and Resources (responses from the Server).
+The Package follows Stellar's philosophy as close as possible. The Package is split in Endpoints (to build and send requests) and Resources (responses from the Server).
 
-The Endpoints have mandatory fields and optional fields. The mandatory fields have to be supplied to build a RequestBuilder instace. The optional fields can then be piped into the RequestBuilder, following a similar approach to [Luke's excellent http-builder package](https://github.com/lukewestby/elm-http-builder) or the highly successfull [elm-decode-pipeline package by the folks at NoRedInk](https://github.com/NoRedInk/elm-decode-pipeline).
+The Endpoints have mandatory fields and optional fields. The mandatory fields have to be supplied to build a RequestBuilder instance. The optional fields can then be piped into the RequestBuilder, following a similar approach to [Luke's excellent http-builder package](https://github.com/lukewestby/elm-http-builder) or the highly successful [elm-decode-pipeline package by the folks at NoRedInk](https://github.com/NoRedInk/elm-decode-pipeline).
 
 If you wanted to query offers for an account for example, you would start by providing the mandatory fields to the requestBuilder function:
 
