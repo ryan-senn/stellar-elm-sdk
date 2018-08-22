@@ -22,7 +22,8 @@ import Json.Encode as Encode
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
 import Stellar.Resources.Transaction as Transaction exposing (Transaction)
 
-import Stellar.Error as Error exposing (Error)
+import Stellar.Error exposing (Error)
+import Stellar.Internal.Error as Error
 
 
 {-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.

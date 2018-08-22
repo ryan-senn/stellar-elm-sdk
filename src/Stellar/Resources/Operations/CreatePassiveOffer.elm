@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOffer, decoder)
+module Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOffer)
 
 {-| Create Passive Offer Operation
 
-# Type alias and decoder
-@docs CreatePassiveOffer, decoder
+# Type alias
+@docs CreatePassiveOffer
 
 -}
 

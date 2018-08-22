@@ -1,24 +1,18 @@
-module Stellar.Resources.Page exposing
-    ( Page, decoder
-    , Embed, Links
-    )
+module Stellar.Resources.Page exposing (Page, Embed, Links)
 
 {-| Page Resource
 
-# Type alias and decoder
-@docs Page, decoder, Embed, Links
+# Type alias
+@docs Page, Embed, Links
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.Link as Link exposing (Link)
+import Stellar.Link exposing (Link)
 
 
-{-| Type alias
+{-| Page
 
-A Page can contain any embedded Resources and links for navigation.
+A Page can contain any embedded Resources and Links for navigation.
 
 -}
 type alias Page a =
@@ -27,26 +21,11 @@ type alias Page a =
     }
 
 
-{-| Decoder
--}
-decoder : Decoder record -> Decoder (Page record)
-decoder recordDecoder =
-    Decode.decode Page
-        |> Decode.required "_embedded" (embeddedDecoder recordDecoder)
-        |> Decode.required "_links" linksDecoder
-
-
-{-| Type alias
+{-| Embed
 -}
 type alias Embed a =
     { records : List a
     }
-
-
-embeddedDecoder : Decoder record -> Decoder (Embed record)
-embeddedDecoder recordDecoder =
-    Decode.decode Embed
-        |> Decode.required "records" (Decode.list recordDecoder)
 
 
 {-| Links
@@ -56,11 +35,3 @@ type alias Links =
     , prev : Link
     , next : Link
     }
-
-
-linksDecoder : Decoder Links
-linksDecoder =
-    Decode.decode Links
-        |> Decode.required "self" Link.decoder
-        |> Decode.required "prev" Link.decoder
-        |> Decode.required "next" Link.decoder

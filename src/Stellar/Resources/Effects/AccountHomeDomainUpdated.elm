@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeDomainUpdated, decoder)
+module Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeDomainUpdated)
 
 {-| Account Home Domain updated Effect
 
-# Type alias and decoder
-@docs AccountHomeDomainUpdated, decoder
+# Type alias
+@docs AccountHomeDomainUpdated
 
 -}
 

@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountFlagsUpdated exposing (AccountFlagsUpdated, decoder)
+module Stellar.Resources.Effects.AccountFlagsUpdated exposing (AccountFlagsUpdated)
 
 {-| Account Flags updated Effect
 
-# Type alias and decoder
-@docs AccountFlagsUpdated, decoder
+# Type alias
+@docs AccountFlagsUpdated
 
 -}
 

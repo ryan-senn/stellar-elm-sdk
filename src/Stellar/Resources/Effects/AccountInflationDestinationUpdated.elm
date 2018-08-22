@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountInflationDestinationUpdated exposing (AccountInflationDestinationUpdated, decoder)
+module Stellar.Resources.Effects.AccountInflationDestinationUpdated exposing (AccountInflationDestinationUpdated)
 
 {-| Account Inflation Destination updated Effect
 
-# Type alias and decoder
-@docs AccountInflationDestinationUpdated, decoder
+# Type alias
+@docs AccountInflationDestinationUpdated
 
 -}
 

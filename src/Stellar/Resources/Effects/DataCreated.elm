@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.DataCreated exposing (DataCreated, decoder)
+module Stellar.Resources.Effects.DataCreated exposing (DataCreated)
 
 {-| Data created Effect
 
-# Type alias and decoder
-@docs DataCreated, decoder
+# Type alias
+@docs DataCreated
 
 -}
 

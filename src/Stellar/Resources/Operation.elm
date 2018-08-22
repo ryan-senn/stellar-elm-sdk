@@ -1,9 +1,9 @@
-module Stellar.Resources.Operation exposing (Operation (..), decoder)
+module Stellar.Resources.Operation exposing (Operation (..))
 
 {-| Operation Resource
 
 # Union Type and decoder
-@docs Operation, decoder
+@docs Operation
 
 -}
 

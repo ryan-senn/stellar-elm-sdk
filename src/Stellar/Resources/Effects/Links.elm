@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.Links exposing (Links, decoder)
+module Stellar.Resources.Effects.Links exposing (Links)
 
 {-| Links common to all Effects
 
-# Type alias and decoder
-@docs Links, decoder
+# Type alias
+@docs Links
 
 -}
 

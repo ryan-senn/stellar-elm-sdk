@@ -28,7 +28,8 @@ import Stellar.AssetType as AssetType exposing (AssetType)
 
 import Stellar.Resources.Operation as Operation exposing (Operation)
 
-import Stellar.Error as Error exposing (Error)
+import Stellar.Error exposing (Error)
+import Stellar.Internal.Error as Error
 
 
 {-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.

@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.SetOptions exposing (SetOptions, decoder)
+module Stellar.Resources.Operations.SetOptions exposing (SetOptions)
 
 {-| Set Options Operation
 
-# Type alias and decoder
-@docs SetOptions, decoder
+# Type alias
+@docs SetOptions
 
 -}
 

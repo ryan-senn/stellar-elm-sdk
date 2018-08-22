@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.AllowTrust exposing (AllowTrust, decoder)
+module Stellar.Resources.Operations.AllowTrust exposing (AllowTrust)
 
 {-| Allow Trust Operation
 
-# Type alias and decoder
-@docs AllowTrust, decoder
+# Type alias
+@docs AllowTrust
 
 -}
 

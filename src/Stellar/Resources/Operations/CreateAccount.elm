@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.CreateAccount exposing (CreateAccount, decoder)
+module Stellar.Resources.Operations.CreateAccount exposing (CreateAccount)
 
 {-| Create Account Operation
 
-# Type alias and decoder
-@docs CreateAccount, decoder
+# Type alias
+@docs CreateAccount
 
 -}
 

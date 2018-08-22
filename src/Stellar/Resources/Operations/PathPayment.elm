@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.PathPayment exposing (PathPayment, decoder)
+module Stellar.Resources.Operations.PathPayment exposing (PathPayment)
 
 {-| Path Payment Operation
 
-# Type alias and decoder
-@docs PathPayment, decoder
+# Type alias
+@docs PathPayment
 
 -}
 

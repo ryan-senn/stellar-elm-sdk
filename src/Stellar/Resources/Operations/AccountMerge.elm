@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.AccountMerge exposing (AccountMerge, decoder)
+module Stellar.Resources.Operations.AccountMerge exposing (AccountMerge)
 
 {-| Account merge Operation
 
-# Type alias and decoder
-@docs AccountMerge, decoder
+# Type alias
+@docs AccountMerge
 
 -}
 

@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.Payment exposing (Payment, decoder)
+module Stellar.Resources.Operations.Payment exposing (Payment)
 
 {-| Payment Operation
 
-# Type alias and decoder
-@docs Payment, decoder
+# Type alias
+@docs Payment
 
 -}
 

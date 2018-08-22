@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountThresholdsUpdated exposing (AccountThresholdsUpdated, decoder)
+module Stellar.Resources.Effects.AccountThresholdsUpdated exposing (AccountThresholdsUpdated)
 
 {-| Account Thresholds updated Effect
 
-# Type alias and decoder
-@docs AccountThresholdsUpdated, decoder
+# Type alias
+@docs AccountThresholdsUpdated
 
 -}
 

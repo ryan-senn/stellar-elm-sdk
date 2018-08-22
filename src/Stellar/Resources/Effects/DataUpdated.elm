@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.DataUpdated exposing (DataUpdated, decoder)
+module Stellar.Resources.Effects.DataUpdated exposing (DataUpdated)
 
 {-| Data updates Effect
 
-# Type alias and decoder
-@docs DataUpdated, decoder
+# Type alias
+@docs DataUpdated
 
 -}
 

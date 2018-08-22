@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountCredited exposing (AccountCredited, decoder)
+module Stellar.Resources.Effects.AccountCredited exposing (AccountCredited)
 
 {-| Account Credited Effect
 
-# Type alias and decoder
-@docs AccountCredited, decoder
+# Type alias
+@docs AccountCredited
 
 -}
 

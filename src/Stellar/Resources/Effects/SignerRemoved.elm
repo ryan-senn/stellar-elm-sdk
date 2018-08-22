@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved, decoder)
+module Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved)
 
 {-| Signer removed Effect
 
-# Type alias and decoder
-@docs SignerRemoved, decoder
+# Type alias
+@docs SignerRemoved
 
 -}
 

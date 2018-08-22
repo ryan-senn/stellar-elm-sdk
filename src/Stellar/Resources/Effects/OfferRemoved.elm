@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved, decoder)
+module Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved)
 
 {-| Offer removed Effect
 
-# Type alias and decoder
-@docs OfferRemoved, decoder
+# Type alias
+@docs OfferRemoved
 
 -}
 

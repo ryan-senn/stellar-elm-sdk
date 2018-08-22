@@ -1,14 +1,11 @@
-module Stellar.Signer exposing (Signer, decoder)
+module Stellar.Signer exposing (Signer)
 
 {-| Record to represent a Signer
 
-# Type alias and Decoder
-@docs Signer, decoder
+# Type alias
+@docs Signer
 
 -}
-
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
 
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 
@@ -21,14 +18,3 @@ type alias Signer =
     , key : PublicKey
     , type_ : String
     }
-
-
-{-| Decoder
--}
-decoder : Decoder Signer
-decoder =
-    Decode.decode Signer
-        |> Decode.required "public_key" PublicKey.decoder
-        |> Decode.required "weight" Decode.int
-        |> Decode.required "key" PublicKey.decoder
-        |> Decode.required "type" Decode.string

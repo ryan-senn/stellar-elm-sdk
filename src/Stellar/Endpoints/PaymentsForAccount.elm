@@ -28,7 +28,8 @@ import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Page as Page exposing (Page)
 import Stellar.Resources.Payment as Payment exposing (Payment)
 
-import Stellar.Error as Error exposing (Error)
+import Stellar.Error exposing (Error)
+import Stellar.Internal.Error as Error
 
 
 {-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.

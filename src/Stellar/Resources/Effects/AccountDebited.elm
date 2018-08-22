@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountDebited exposing (AccountDebited, decoder)
+module Stellar.Resources.Effects.AccountDebited exposing (AccountDebited)
 
 {-| Account Debited Effect
 
-# Type alias and decoder
-@docs AccountDebited, decoder
+# Type alias
+@docs AccountDebited
 
 -}
 

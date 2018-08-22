@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.ManageData exposing (ManageData, decoder)
+module Stellar.Resources.Operations.ManageData exposing (ManageData)
 
 {-| Manage Data Operation
 
-# Type alias and decoder
-@docs ManageData, decoder
+# Type alias
+@docs ManageData
 
 -}
 

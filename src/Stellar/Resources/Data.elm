@@ -1,26 +1,15 @@
-module Stellar.Resources.Data exposing (Data, decoder)
+module Stellar.Resources.Data exposing (Data)
 
 {-| Data Resource
 
-# Type alias and decoder
-@docs Data, decoder
+# Type alias
+@docs Data
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
 
-
-{-| Type alias
+{-| Data
 -}
 type alias Data =
     { value : Maybe String
     }
-
-
-{-| Decoder
--}
-decoder : Decoder Data
-decoder =
-    Decode.decode Data
-        |> Decode.optional "value" (Decode.maybe Decode.string) Nothing

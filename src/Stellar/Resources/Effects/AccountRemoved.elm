@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountRemoved exposing (AccountRemoved, decoder)
+module Stellar.Resources.Effects.AccountRemoved exposing (AccountRemoved)
 
 {-| Account removed Effect
 
-# Type alias and decoder
-@docs AccountRemoved, decoder
+# Type alias
+@docs AccountRemoved
 
 -}
 

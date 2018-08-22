@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.SignerUpdated exposing (SignerUpdated, decoder)
+module Stellar.Resources.Effects.SignerUpdated exposing (SignerUpdated)
 
 {-| Signer updated Effect
 
-# Type alias and decoder
-@docs SignerUpdated, decoder
+# Type alias
+@docs SignerUpdated
 
 -}
 

@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.Links exposing (Links, decoder)
+module Stellar.Resources.Operations.Links exposing (Links)
 
 {-| Links common to all Operations
 
-# Type alias and decoder
-@docs Links, decoder
+# Type alias
+@docs Links
 
 -}
 

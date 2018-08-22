@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.AccountCreated exposing (AccountCreated, decoder)
+module Stellar.Resources.Effects.AccountCreated exposing (AccountCreated)
 
 {-| Account Created Effect
 
-# Type alias and decoder
-@docs AccountCreated, decoder
+# Type alias
+@docs AccountCreated
 
 -}
 

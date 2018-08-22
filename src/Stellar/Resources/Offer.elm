@@ -1,19 +1,16 @@
-module Stellar.Resources.Offer exposing (Offer, decoder)
+module Stellar.Resources.Offer exposing (Offer)
 
 {-| Offer Resource
 
-# Type alias and decoder
-@docs Offer, decoder
+# Type alias
+@docs Offer
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Asset as Asset exposing (Asset)
+import Stellar.Resources.Asset exposing (Asset)
 
 
-{-| Type alias
+{-| Offer
 -}
 type alias Offer =
     { id : Int
@@ -25,18 +22,3 @@ type alias Offer =
     , priceR : String
     , price : String
     }
-
-
-{-| Decoder
--}
-decoder : Decoder Offer
-decoder =
-    Decode.decode Offer
-        |> Decode.required "id" Decode.int
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "seller" Decode.string
-        |> Decode.required "selling" Asset.decoder
-        |> Decode.required "buying" Asset.decoder
-        |> Decode.required "amount" Decode.string
-        |> Decode.required "price_r" Decode.string
-        |> Decode.required "price" Decode.string

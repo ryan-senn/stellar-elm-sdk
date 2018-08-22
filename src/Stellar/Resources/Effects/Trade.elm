@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.Trade exposing (Trade, decoder)
+module Stellar.Resources.Effects.Trade exposing (Trade)
 
 {-| Trade Effect
 
-# Type alias and decoder
-@docs Trade, decoder
+# Type alias
+@docs Trade
 
 -}
 

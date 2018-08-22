@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.ManageOffer exposing (ManageOffer, decoder)
+module Stellar.Resources.Operations.ManageOffer exposing (ManageOffer)
 
 {-| Manage Offer Operation
 
-# Type alias and decoder
-@docs ManageOffer, decoder
+# Type alias
+@docs ManageOffer
 
 -}
 

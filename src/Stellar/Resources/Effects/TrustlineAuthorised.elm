@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.TrustlineAuthorised exposing (TrustlineAuthorised, decoder)
+module Stellar.Resources.Effects.TrustlineAuthorised exposing (TrustlineAuthorised)
 
 {-| Trustline authorised Effect
 
-# Type alias and decoder
-@docs TrustlineAuthorised, decoder
+# Type alias
+@docs TrustlineAuthorised
 
 -}
 

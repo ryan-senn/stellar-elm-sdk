@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.DataRemoved exposing (DataRemoved, decoder)
+module Stellar.Resources.Effects.DataRemoved exposing (DataRemoved)
 
 {-| Data removed Effect
 
-# Type alias and decoder
-@docs DataRemoved, decoder
+# Type alias
+@docs DataRemoved
 
 -}
 

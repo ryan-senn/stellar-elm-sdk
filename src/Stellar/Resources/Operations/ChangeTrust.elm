@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.ChangeTrust exposing (ChangeTrust, decoder)
+module Stellar.Resources.Operations.ChangeTrust exposing (ChangeTrust)
 
 {-| Change Trust Operation
 
-# Type alias and decoder
-@docs ChangeTrust, decoder
+# Type alias
+@docs ChangeTrust
 
 -}
 

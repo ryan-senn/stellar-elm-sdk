@@ -1,19 +1,16 @@
-module Stellar.Resources.PaymentPath exposing (PaymentPath, decoder)
+module Stellar.Resources.PaymentPath exposing (PaymentPath)
 
-{-| Payment Resource
+{-| Payment Path Resource
 
-# Type alias and decoder
-@docs PaymentPath, decoder
+# Type alias
+@docs PaymentPath
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Asset as Asset exposing (Asset)
+import Stellar.Resources.Asset exposing (Asset)
 
 
-{-| Type alias
+{-| Payment Path
 -}
 type alias PaymentPath =
     { path : List Asset
@@ -26,19 +23,3 @@ type alias PaymentPath =
     , sourceAssetCode : Maybe String
     , sourceAssetIssuer : Maybe String
     }
-
-
-{-| Decoder
--}
-decoder : Decoder PaymentPath
-decoder =
-    Decode.decode PaymentPath
-        |> Decode.required "path" (Decode.list Asset.decoder)
-        |> Decode.required "source_amount" Decode.string
-        |> Decode.required "destination_amount" Decode.string
-        |> Decode.required "destination_asset_type" Decode.string
-        |> Decode.optional "destination_asset_code" (Decode.maybe Decode.string) Nothing
-        |> Decode.optional "destination_asset_issuer" (Decode.maybe Decode.string) Nothing
-        |> Decode.required "source_asset_type" Decode.string
-        |> Decode.optional "source_asset_code" (Decode.maybe Decode.string) Nothing
-        |> Decode.optional "source_asset_issuer" (Decode.maybe Decode.string) Nothing

@@ -1,9 +1,9 @@
-module Stellar.Resources.Effect exposing (Effect (..), decoder)
+module Stellar.Resources.Effect exposing (Effect (..))
 
 {-| Effect Resource
 
 # Union Type and decoder
-@docs Effect, decoder
+@docs Effect
 
 -}
 

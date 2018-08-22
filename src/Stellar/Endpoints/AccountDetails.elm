@@ -20,7 +20,8 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
 import Stellar.Resources.Account as Account exposing (Account)
 
-import Stellar.Error as Error exposing (Error)
+import Stellar.Error exposing (Error)
+import Stellar.Internal.Error as Error
 
 
 {-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.

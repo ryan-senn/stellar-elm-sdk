@@ -1,19 +1,16 @@
-module Stellar.Resources.TradeAggregation exposing (TradeAggregation, decoder)
+module Stellar.Resources.TradeAggregation exposing (TradeAggregation)
 
 {-| Trade Aggregation Resource
 
-# Type alias and decoder
-@docs TradeAggregation, decoder
+# Type alias
+@docs TradeAggregation
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
+import Stellar.RationalNumber exposing (RationalNumber)
 
 
-{-| Type alias
+{-| Trade Aggregation
 -}
 type alias TradeAggregation =
     { timestamp : String
@@ -30,23 +27,3 @@ type alias TradeAggregation =
     , close : String
     , closeR : RationalNumber
     }
-
-
-{-| Decoder
--}
-decoder : Decoder TradeAggregation
-decoder =
-    Decode.decode TradeAggregation
-        |> Decode.required "timestamp" Decode.string
-        |> Decode.required "trade_count" Decode.int
-        |> Decode.required "base_volume" Decode.string
-        |> Decode.required "counter_volume" Decode.string
-        |> Decode.required "avg" Decode.string
-        |> Decode.required "high" Decode.string
-        |> Decode.required "high_r" RationalNumber.decoder
-        |> Decode.required "low" Decode.string
-        |> Decode.required "low_r" RationalNumber.decoder
-        |> Decode.required "open" Decode.string
-        |> Decode.required "open_r" RationalNumber.decoder
-        |> Decode.required "close" Decode.string
-        |> Decode.required "close_r" RationalNumber.decoder

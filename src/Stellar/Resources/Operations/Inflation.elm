@@ -1,9 +1,9 @@
-module Stellar.Resources.Operations.Inflation exposing (Inflation, decoder)
+module Stellar.Resources.Operations.Inflation exposing (Inflation)
 
 {-| Inflation Operation
 
-# Type alias and decoder
-@docs Inflation, decoder
+# Type alias
+@docs Inflation
 
 -}
 

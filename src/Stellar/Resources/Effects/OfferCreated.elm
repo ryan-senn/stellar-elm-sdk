@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.OfferCreated exposing (OfferCreated, decoder)
+module Stellar.Resources.Effects.OfferCreated exposing (OfferCreated)
 
 {-| Offer created Effect
 
-# Type alias and decoder
-@docs OfferCreated, decoder
+# Type alias
+@docs OfferCreated
 
 -}
 

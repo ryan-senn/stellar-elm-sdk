@@ -1,9 +1,9 @@
-module Stellar.Resources.Effects.TrustlineRemoved exposing (TrustlineRemoved, decoder)
+module Stellar.Resources.Effects.TrustlineRemoved exposing (TrustlineRemoved)
 
 {-| Trustline removed Effect
 
-# Type alias and decoder
-@docs TrustlineRemoved, decoder
+# Type alias
+@docs TrustlineRemoved
 
 -}
 
