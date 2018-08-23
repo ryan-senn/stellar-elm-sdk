@@ -5,7 +5,8 @@ import Expect exposing (Expectation)
 
 import Json.Decode as Decode exposing (Decoder)
 
-import Stellar.Resources.Page as Page exposing (Page)
+import Stellar.Resources.Page exposing (Page)
+import Stellar.Resources.Internal.Page as Page
 
 
 suite : Test

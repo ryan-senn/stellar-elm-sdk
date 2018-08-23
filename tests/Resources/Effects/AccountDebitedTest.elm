@@ -9,8 +9,12 @@ import Date
 import Time
 
 import Stellar.AssetType as AssetType
+
 import Stellar.Resources.Effect as Effect exposing (Effect)
-import Stellar.Resources.Effects.AccountDebited as AccountDebited exposing (AccountDebited)
+import Stellar.Resources.Internal.Effect as Effect
+
+import Stellar.Resources.Effects.AccountDebited exposing (AccountDebited)
+import Stellar.Resources.Effects.Internal.AccountDebited as AccountDebited
 
 
 suite : Test

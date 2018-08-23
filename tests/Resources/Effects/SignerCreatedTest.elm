@@ -9,7 +9,10 @@ import Date
 import Time
 
 import Stellar.Resources.Effect as Effect exposing (Effect)
-import Stellar.Resources.Effects.SignerCreated as SignerCreated exposing (SignerCreated)
+import Stellar.Resources.Internal.Effect as Effect
+
+import Stellar.Resources.Effects.SignerCreated exposing (SignerCreated)
+import Stellar.Resources.Effects.Internal.SignerCreated as SignerCreated
 
 
 suite : Test

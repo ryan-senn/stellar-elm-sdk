@@ -5,7 +5,7 @@ import Expect exposing (Expectation)
 
 import Json.Decode as Decode
 
-import Stellar.Resources.Effect as Effect
+import Stellar.Resources.Internal.Effect as Effect
 
 
 suite : Test

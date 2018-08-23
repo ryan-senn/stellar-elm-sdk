@@ -9,7 +9,10 @@ import Date
 import Time
 
 import Stellar.Resources.Effect as Effect exposing (Effect)
-import Stellar.Resources.Effects.AccountCreated as AccountCreated exposing (AccountCreated)
+import Stellar.Resources.Internal.Effect as Effect
+
+import Stellar.Resources.Effects.AccountCreated exposing (AccountCreated)
+import Stellar.Resources.Effects.Internal.AccountCreated as AccountCreated
 
 
 suite : Test
