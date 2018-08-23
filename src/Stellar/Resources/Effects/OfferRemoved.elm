@@ -7,13 +7,10 @@ module Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved)
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.Links as Links exposing (Links)
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
-{-| Type alias
+{-| Offer Removed
 -}
 type alias OfferRemoved =
     { id : String
@@ -23,16 +20,3 @@ type alias OfferRemoved =
     , account : String
     , links : Links
     }
-
-
-{-| Decoder
--}
-decoder : Decoder OfferRemoved
-decoder =
-    Decode.decode OfferRemoved
-        |> Decode.required "id" Decode.string
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "type" Decode.string
-        |> Decode.required "type_i" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "_links" Links.decoder

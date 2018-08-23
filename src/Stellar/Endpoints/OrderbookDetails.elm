@@ -31,7 +31,8 @@ import Stellar.Endpoint as Endpoint exposing (Endpoint)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.AssetType as AssetType exposing (AssetType)
 
-import Stellar.Resources.Orderbook as Orderbook exposing (Orderbook)
+import Stellar.Resources.Orderbook exposing (Orderbook)
+import Stellar.Resources.Internal.Orderbook as Orderbook
 
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error

@@ -7,14 +7,12 @@ module Stellar.Resources.Effects.TrustlineRemoved exposing (TrustlineRemoved)
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
+import Stellar.AssetType exposing (AssetType)
 
-import Stellar.Resources.Effects.Links as Links exposing (Links)
-import Stellar.AssetType as AssetType exposing (AssetType)
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
-{-| Type alias
+{-| Trustline Removed
 -}
 type alias TrustlineRemoved =
     { id : String
@@ -26,18 +24,3 @@ type alias TrustlineRemoved =
     , limit : String
     , links : Links
     }
-
-
-{-| Decoder
--}
-decoder : Decoder TrustlineRemoved
-decoder =
-    Decode.decode TrustlineRemoved
-        |> Decode.required "id" Decode.string
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "type" Decode.string
-        |> Decode.required "type_i" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "asset" AssetType.decoder
-        |> Decode.required "limit" Decode.string
-        |> Decode.required "_links" Links.decoder

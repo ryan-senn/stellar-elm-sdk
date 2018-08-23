@@ -25,8 +25,12 @@ import Json.Decode as Decode exposing (Decoder)
 import Stellar.Sorting as Sorting exposing (Sorting)
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
-import Stellar.Resources.Page as Page exposing (Page)
-import Stellar.Resources.Payment as Payment exposing (Payment)
+
+import Stellar.Resources.Page exposing (Page)
+import Stellar.Resources.Internal.Page as Page
+
+import Stellar.Resources.Payment exposing (Payment)
+import Stellar.Resources.Internal.Payment as Payment
 
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error

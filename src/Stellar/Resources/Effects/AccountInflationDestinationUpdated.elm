@@ -7,13 +7,10 @@ module Stellar.Resources.Effects.AccountInflationDestinationUpdated exposing (Ac
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.Links as Links exposing (Links)
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
-{-| Type alias
+{-| Account Inflation Destination Updated
 -}
 type alias AccountInflationDestinationUpdated =
     { id : String
@@ -23,16 +20,3 @@ type alias AccountInflationDestinationUpdated =
     , account : String
     , links : Links
     }
-
-
-{-| Decoder
--}
-decoder : Decoder AccountInflationDestinationUpdated
-decoder =
-    Decode.decode AccountInflationDestinationUpdated
-        |> Decode.required "id" Decode.string
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "type" Decode.string
-        |> Decode.required "type_i" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "_links" Links.decoder

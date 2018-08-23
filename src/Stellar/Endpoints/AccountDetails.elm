@@ -18,7 +18,8 @@ import Json.Decode as Decode exposing (Decoder)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
-import Stellar.Resources.Account as Account exposing (Account)
+import Stellar.Resources.Account exposing (Account)
+import Stellar.Resources.Internal.Account as Account
 
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error

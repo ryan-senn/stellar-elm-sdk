@@ -7,13 +7,10 @@ module Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeD
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.Links as Links exposing (Links)
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
-{-| Type alias
+{-| Account Home Domain Updated
 -}
 type alias AccountHomeDomainUpdated =
     { id : String
@@ -24,17 +21,3 @@ type alias AccountHomeDomainUpdated =
     , homeDomain : String
     , links : Links
     }
-
-
-{-| Decoder
--}
-decoder : Decoder AccountHomeDomainUpdated
-decoder =
-    Decode.decode AccountHomeDomainUpdated
-        |> Decode.required "id" Decode.string
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "type" Decode.string
-        |> Decode.required "type_i" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "home_domain" Decode.string
-        |> Decode.required "_links" Links.decoder

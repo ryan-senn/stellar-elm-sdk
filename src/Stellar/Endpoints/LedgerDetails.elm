@@ -17,7 +17,8 @@ import Json.Decode as Decode exposing (Decoder)
 
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
-import Stellar.Resources.Ledger as Ledger exposing (Ledger)
+import Stellar.Resources.Ledger exposing (Ledger)
+import Stellar.Resources.Internal.Ledger as Ledger
 
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error

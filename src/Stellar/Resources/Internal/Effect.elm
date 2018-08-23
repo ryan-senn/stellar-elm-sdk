@@ -1,68 +1,34 @@
-module Stellar.Resources.Internal.Effect exposing (Effect (..))
-
-{-| Effect Resource
-
-# Union Type and decoder
-@docs Effect
-
--}
+module Stellar.Resources.Internal.Effect exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
 
-import Stellar.Resources.Effects.AccountCreated as AccountCreated exposing (AccountCreated)
-import Stellar.Resources.Effects.AccountCredited as AccountCredited exposing (AccountCredited)
-import Stellar.Resources.Effects.AccountDebited as AccountDebited exposing (AccountDebited)
-import Stellar.Resources.Effects.AccountFlagsUpdated as AccountFlagsUpdated exposing (AccountFlagsUpdated)
-import Stellar.Resources.Effects.AccountHomeDomainUpdated as AccountHomeDomainUpdated exposing (AccountHomeDomainUpdated)
-import Stellar.Resources.Effects.AccountInflationDestinationUpdated as AccountInflationDestinationUpdated exposing (AccountInflationDestinationUpdated)
-import Stellar.Resources.Effects.AccountRemoved as AccountRemoved exposing (AccountRemoved)
-import Stellar.Resources.Effects.AccountThresholdsUpdated as AccountThresholdsUpdated exposing (AccountThresholdsUpdated)
-import Stellar.Resources.Effects.DataCreated as DataCreated exposing (DataCreated)
-import Stellar.Resources.Effects.DataRemoved as DataRemoved exposing (DataRemoved)
-import Stellar.Resources.Effects.DataUpdated as DataUpdated exposing (DataUpdated)
-import Stellar.Resources.Effects.OfferCreated as OfferCreated exposing (OfferCreated)
-import Stellar.Resources.Effects.OfferRemoved as OfferRemoved exposing (OfferRemoved)
-import Stellar.Resources.Effects.OfferUpdated as OfferUpdated exposing (OfferUpdated)
-import Stellar.Resources.Effects.SignerCreated as SignerCreated exposing (SignerCreated)
-import Stellar.Resources.Effects.SignerRemoved as SignerRemoved exposing (SignerRemoved)
-import Stellar.Resources.Effects.Trade as Trade exposing (Trade)
-import Stellar.Resources.Effects.TrustlineAuthorised as TrustlineAuthorised exposing (TrustlineAuthorised)
-import Stellar.Resources.Effects.TrustlineCreated as TrustlineCreated exposing (TrustlineCreated)
-import Stellar.Resources.Effects.TrustlineDeauthorised as TrustlineDeauthorised exposing (TrustlineDeauthorised)
-import Stellar.Resources.Effects.TrustlineRemoved as TrustlineRemoved exposing (TrustlineRemoved)
-import Stellar.Resources.Effects.TrustlineUpdated as TrustlineUpdated exposing (TrustlineUpdated)
+import Stellar.Resources.Effect exposing (Effect (..))
+
+import Stellar.Resources.Effects.Internal.AccountCreated as AccountCreated
+import Stellar.Resources.Effects.Internal.AccountCredited as AccountCredited
+import Stellar.Resources.Effects.Internal.AccountDebited as AccountDebited
+import Stellar.Resources.Effects.Internal.AccountFlagsUpdated as AccountFlagsUpdated
+import Stellar.Resources.Effects.Internal.AccountHomeDomainUpdated as AccountHomeDomainUpdated
+import Stellar.Resources.Effects.Internal.AccountInflationDestinationUpdated as AccountInflationDestinationUpdated
+import Stellar.Resources.Effects.Internal.AccountRemoved as AccountRemoved
+import Stellar.Resources.Effects.Internal.AccountThresholdsUpdated as AccountThresholdsUpdated
+import Stellar.Resources.Effects.Internal.DataCreated as DataCreated
+import Stellar.Resources.Effects.Internal.DataRemoved as DataRemoved
+import Stellar.Resources.Effects.Internal.DataUpdated as DataUpdated
+import Stellar.Resources.Effects.Internal.OfferCreated as OfferCreated
+import Stellar.Resources.Effects.Internal.OfferRemoved as OfferRemoved
+import Stellar.Resources.Effects.Internal.OfferUpdated as OfferUpdated
+import Stellar.Resources.Effects.Internal.SignerCreated as SignerCreated
+import Stellar.Resources.Effects.Internal.SignerRemoved as SignerRemoved
+import Stellar.Resources.Effects.Internal.Trade as Trade
+import Stellar.Resources.Effects.Internal.TrustlineAuthorised as TrustlineAuthorised
+import Stellar.Resources.Effects.Internal.TrustlineCreated as TrustlineCreated
+import Stellar.Resources.Effects.Internal.TrustlineDeauthorised as TrustlineDeauthorised
+import Stellar.Resources.Effects.Internal.TrustlineRemoved as TrustlineRemoved
+import Stellar.Resources.Effects.Internal.TrustlineUpdated as TrustlineUpdated
 
 
-{-| Union Type of all possible Effects
--}
-type Effect
-    = AccountCreated AccountCreated
-    | AccountCredited AccountCredited
-    | AccountDebited AccountDebited
-    | AccountFlagsUpdated AccountFlagsUpdated
-    | AccountHomeDomainUpdated AccountHomeDomainUpdated
-    | AccountInflationDestinationUpdated AccountInflationDestinationUpdated
-    | AccountRemoved AccountRemoved
-    | AccountThresholdsUpdated AccountThresholdsUpdated
-    | DataCreated DataCreated
-    | DataRemoved DataRemoved
-    | DataUpdated DataUpdated
-    | OfferCreated OfferCreated
-    | OfferRemoved OfferRemoved
-    | OfferUpdated OfferUpdated
-    | SignerCreated SignerCreated
-    | SignerRemoved SignerRemoved
-    | Trade Trade
-    | TrustlineAuthorised TrustlineAuthorised
-    | TrustlineCreated TrustlineCreated
-    | TrustlineDeauthorised TrustlineDeauthorised
-    | TrustlineRemoved TrustlineRemoved
-    | TrustlineUpdated TrustlineUpdated
-
-
-{-| Decoder
--}
 decoder : Decoder Effect
 decoder =
     Decode.field "type" Decode.string

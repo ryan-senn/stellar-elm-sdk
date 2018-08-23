@@ -2,15 +2,10 @@ module Stellar.Resources.Internal.Payment exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 
-import Stellar.Resources.Payment exposing (Payment)
-
-import Stellar.Resources.Operations.CreateAccount exposing (CreateAccount)
-import Stellar.Resources.Operations.Payment exposing (Payment)
-import Stellar.Resources.Operations.PathPayment exposing (PathPayment)
-import Stellar.Resources.Operations.AccountMerge exposing (AccountMerge)
+import Stellar.Resources.Payment exposing (Payment (..))
 
 import Stellar.Resources.Operations.Internal.CreateAccount as CreateAccount
-import Stellar.Resources.Operations.Internal.Payment as Payment
+import Stellar.Resources.Operations.Internal.Payment as PaymentOperation
 import Stellar.Resources.Operations.Internal.PathPayment as PathPayment
 import Stellar.Resources.Operations.Internal.AccountMerge as AccountMerge
 
@@ -29,7 +24,7 @@ operationFromType type_ =
             Decode.map CreateAccount CreateAccount.decoder
 
         "payment" ->
-            Decode.map Payment Payment.decoder
+            Decode.map Payment_ PaymentOperation.decoder
 
         "path_payment" ->
             Decode.map PathPayment PathPayment.decoder

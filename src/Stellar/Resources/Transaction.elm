@@ -1,4 +1,4 @@
-module Stellar.Resources.Transaction exposing (Transaction , Links)
+module Stellar.Resources.Transaction exposing (Transaction, Links)
 
 {-| Transaction Resource
 

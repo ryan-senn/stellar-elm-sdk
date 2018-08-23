@@ -27,7 +27,8 @@ import String.Extra as String
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
 
-import Stellar.Resources.Data as Data exposing (Data)
+import Stellar.Resources.Data exposing (Data)
+import Stellar.Resources.Internal.Data as Data
 
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error

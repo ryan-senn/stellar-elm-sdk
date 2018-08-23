@@ -26,7 +26,8 @@ import Stellar.Endpoint exposing (Endpoint)
 import Stellar.PublicKey exposing (PublicKey)
 import Stellar.AssetType as AssetType exposing (AssetType)
 
-import Stellar.Resources.Operation as Operation exposing (Operation)
+import Stellar.Resources.Operation exposing (Operation)
+import Stellar.Resources.Internal.Operation as Operation
 
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error

@@ -7,17 +7,14 @@ module Stellar.Resources.Effects.AccountCredited exposing (AccountCredited)
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Extra as Decode
-import Json.Decode.Pipeline as Decode
-
 import Date exposing (Date)
 
-import Stellar.AssetType as AssetType exposing (AssetType)
-import Stellar.Resources.Effects.Links as Links exposing (Links)
+import Stellar.AssetType exposing (AssetType)
+
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
-{-| Type alias
+{-| Account Credited
 -}
 type alias AccountCredited =
     { id : String
@@ -30,19 +27,3 @@ type alias AccountCredited =
     , createdAt : Date
     , links : Links
     }
-
-
-{-| Decoder
--}
-decoder : Decoder AccountCredited
-decoder =
-    Decode.decode AccountCredited
-        |> Decode.required "id" Decode.string
-        |> Decode.required "paging_token" Decode.string
-        |> Decode.required "type" Decode.string
-        |> Decode.required "type_i" Decode.int
-        |> Decode.required "account" Decode.string
-        |> Decode.required "asset_type" AssetType.decoder
-        |> Decode.required "amount" Decode.string
-        |> Decode.required "created_at" Decode.date
-        |> Decode.required "_links" Links.decoder

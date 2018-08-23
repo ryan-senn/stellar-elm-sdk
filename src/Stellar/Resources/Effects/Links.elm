@@ -7,9 +7,6 @@ module Stellar.Resources.Effects.Links exposing (Links)
 
 -}
 
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline as Decode
-
 import Stellar.Link as Link exposing (Link)
 
 
@@ -20,13 +17,3 @@ type alias Links =
     , succeeds : Link
     , precedes : Link
     }
-
-
-{-| Decoder
--}
-decoder : Decoder Links
-decoder =
-    Decode.decode Links
-        |> Decode.required "operation" Link.decoder
-        |> Decode.required "succeeds" Link.decoder
-        |> Decode.required "precedes" Link.decoder
