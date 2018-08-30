@@ -44,7 +44,7 @@ send =
 
 url : Endpoint -> Int -> String
 url endpoint operationId =
-    endpoint ++ "/operations/" ++ toString operationId
+    endpoint ++ "/operations/" ++ String.fromInt operationId
 
 
 {-| The Response coming back from the server.

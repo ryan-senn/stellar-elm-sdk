@@ -5,7 +5,6 @@ import Expect exposing (Expectation)
 
 import Json.Decode as Decode
 
-import Date
 import Time
 
 import Stellar.Resources.Effect as Effect exposing (Effect)
@@ -57,7 +56,7 @@ record =
     , typeI = 0
     , account = "GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K"
     , startingBalance = "50000000.0000000"
-    , createdAt = Date.fromTime <| Time.second * 1490039452
+    , createdAt = Time.millisToPosix <| 1490039452 * 1000
     , links =
         { operation = { href = "https://horizon-testnet.stellar.org/operations/10157597659137", templated = False }
         , succeeds = { href = "https://horizon-testnet.stellar.org/effects?order=desc&cursor=10157597659137-1", templated = False }

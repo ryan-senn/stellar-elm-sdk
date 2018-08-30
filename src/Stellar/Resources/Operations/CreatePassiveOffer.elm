@@ -9,7 +9,7 @@ module Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOf
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links exposing (Links)
 
@@ -22,7 +22,7 @@ type alias CreatePassiveOffer =
     , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , createdAt : Date
+    , createdAt : Posix
     , transactionHash : String
     , offerId : Int
     , amount : String

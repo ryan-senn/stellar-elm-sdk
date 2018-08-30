@@ -54,24 +54,24 @@ send =
 {-| Set the pagination cursor for the Request.
 -}
 setCursor : String -> RequestBuilder Response -> RequestBuilder Response
-setCursor cursor requestBuilder =
-    requestBuilder
+setCursor cursor requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "cursor", cursor ) ]
 
 
 {-| Set the pagination limit for the Request.
 -}
 setLimit : Int -> RequestBuilder Response -> RequestBuilder Response
-setLimit limit requestBuilder =
-    requestBuilder
-        |> withQueryParams [ ( "limit", toString limit ) ]
+setLimit limit requestBuilder_ =
+    requestBuilder_
+        |> withQueryParams [ ( "limit", String.fromInt limit ) ]
 
 
 {-| Set the pagination sorting for the Request.
 -}
 setSorting : Sorting -> RequestBuilder Response -> RequestBuilder Response
-setSorting sorting requestBuilder =
-    requestBuilder
+setSorting sorting requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "order", Sorting.toString sorting ) ]
 
 
@@ -79,7 +79,7 @@ url : Endpoint -> Int -> String
 url endpoint ledgerId =
     endpoint
         ++ "/ledgers/"
-        ++ toString ledgerId
+        ++ String.fromInt ledgerId
         ++ "/effects"
 
 

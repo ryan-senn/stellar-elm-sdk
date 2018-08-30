@@ -9,7 +9,7 @@ module Stellar.Resources.Operations.AccountMerge exposing (AccountMerge)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.Resources.Operations.Links exposing (Links)
 
 
@@ -21,7 +21,7 @@ type alias AccountMerge =
     , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , createdAt : Date
+    , createdAt : Posix
     , transactionHash : String
     , account : String
     , into : String

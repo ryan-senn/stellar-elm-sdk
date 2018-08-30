@@ -9,7 +9,7 @@ module Stellar.Resources.Effects.SignerCreated exposing (SignerCreated)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Effects.Links exposing (Links)
 
@@ -25,6 +25,6 @@ type alias SignerCreated =
     , weight : Int
     , publicKey : PublicKey
     , key : String
-    , createdAt : Date
+    , createdAt : Posix
     , links : Links
     }

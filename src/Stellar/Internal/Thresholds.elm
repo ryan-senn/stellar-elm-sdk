@@ -7,7 +7,7 @@ import Stellar.Thresholds exposing (Thresholds)
 
 decoder : Decoder Thresholds
 decoder =
-    Decode.decode Thresholds
+    Decode.succeed Thresholds
         |> Decode.required "low_threshold" Decode.int
         |> Decode.required "med_threshold" Decode.int
         |> Decode.required "high_threshold" Decode.int

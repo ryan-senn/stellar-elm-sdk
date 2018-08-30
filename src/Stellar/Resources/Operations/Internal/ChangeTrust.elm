@@ -10,13 +10,13 @@ import Stellar.Resources.Operations.Internal.Links as Links
 
 decoder : Decoder ChangeTrust
 decoder =
-    Decode.decode ChangeTrust
+    Decode.succeed ChangeTrust
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "source_account" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
-        |> Decode.required "created_at" Decode.date
+        |> Decode.required "created_at" Decode.datetime
         |> Decode.required "transaction_hash" Decode.string
         |> Decode.required "asset_type" AssetType.decoder
         |> Decode.required "asset_code" Decode.string

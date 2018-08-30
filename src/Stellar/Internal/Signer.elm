@@ -8,7 +8,7 @@ import Stellar.Signer exposing (Signer)
 
 decoder : Decoder Signer
 decoder =
-    Decode.decode Signer
+    Decode.succeed Signer
         |> Decode.required "public_key" PublicKey.decoder
         |> Decode.required "weight" Decode.int
         |> Decode.required "key" PublicKey.decoder

@@ -8,7 +8,7 @@ import Stellar.Resources.Effects.OfferCreated exposing (OfferCreated)
 
 decoder : Decoder OfferCreated
 decoder =
-    Decode.decode OfferCreated
+    Decode.succeed OfferCreated
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

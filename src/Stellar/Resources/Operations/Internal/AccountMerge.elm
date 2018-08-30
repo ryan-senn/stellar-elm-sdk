@@ -9,13 +9,13 @@ import Stellar.Resources.Operations.Internal.Links as Links
 
 decoder : Decoder AccountMerge
 decoder =
-    Decode.decode AccountMerge
+    Decode.succeed AccountMerge
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "source_account" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
-        |> Decode.required "created_at" Decode.date
+        |> Decode.required "created_at" Decode.datetime
         |> Decode.required "transaction_hash" Decode.string
         |> Decode.required "account" Decode.string
         |> Decode.required "into" Decode.string

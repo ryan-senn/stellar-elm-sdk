@@ -9,7 +9,7 @@ module Stellar.Resources.Operations.AllowTrust exposing (AllowTrust)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links exposing (Links)
 
@@ -22,7 +22,7 @@ type alias AllowTrust =
     , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , createdAt : Date
+    , createdAt : Posix
     , transactionHash : String
     , assetType : AssetType
     , assetCode : String

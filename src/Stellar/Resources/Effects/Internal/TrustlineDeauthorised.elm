@@ -9,7 +9,7 @@ import Stellar.Resources.Effects.TrustlineDeauthorised exposing (TrustlineDeauth
 
 decoder : Decoder TrustlineDeauthorised
 decoder =
-    Decode.decode TrustlineDeauthorised
+    Decode.succeed TrustlineDeauthorised
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

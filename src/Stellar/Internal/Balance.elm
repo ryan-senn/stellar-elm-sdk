@@ -8,6 +8,6 @@ import Stellar.Internal.AssetType as AssetType
 
 decoder : Decoder Balance
 decoder =
-    Decode.decode Balance
+    Decode.succeed Balance
         |> Decode.required "balance" Decode.string
         |> Decode.required "asset_type" AssetType.decoder

@@ -9,7 +9,7 @@ module Stellar.Resources.Effects.AccountCreated exposing (AccountCreated)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.Resources.Effects.Links exposing (Links)
 
 
@@ -22,6 +22,6 @@ type alias AccountCreated =
     , typeI : Int
     , account : String
     , startingBalance : String
-    , createdAt : Date
+    , createdAt : Posix
     , links : Links
     }

@@ -9,7 +9,7 @@ module Stellar.Resources.Effects.AccountCredited exposing (AccountCredited)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.AssetType exposing (AssetType)
 import Stellar.Resources.Effects.Links exposing (Links)
 
@@ -24,6 +24,6 @@ type alias AccountCredited =
     , account : String
     , assetType : AssetType
     , amount : String
-    , createdAt : Date
+    , createdAt : Posix
     , links : Links
     }

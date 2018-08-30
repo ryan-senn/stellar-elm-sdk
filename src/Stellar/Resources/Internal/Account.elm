@@ -15,7 +15,7 @@ import Stellar.Resources.Internal.Data as Data
 
 decoder : Decoder Account
 decoder =
-    Decode.decode Account
+    Decode.succeed Account
         |> Decode.required "id" PublicKey.decoder
         |> Decode.required "account_id" PublicKey.decoder
         |> Decode.required "sequence" Decode.string
@@ -31,7 +31,7 @@ decoder =
 
 linksDecoder : Decoder Links
 linksDecoder =
-    Decode.decode Links
+    Decode.succeed Links
         |> Decode.optional "toml" (Decode.maybe Link.decoder) Nothing
         |> Decode.optional "data" (Decode.maybe Link.decoder) Nothing
         |> Decode.optional "effects" (Decode.maybe Link.decoder) Nothing

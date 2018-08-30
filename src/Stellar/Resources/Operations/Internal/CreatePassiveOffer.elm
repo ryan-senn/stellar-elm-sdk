@@ -10,13 +10,13 @@ import Stellar.Resources.Operations.Internal.Links as Links
 
 decoder : Decoder CreatePassiveOffer
 decoder =
-    Decode.decode CreatePassiveOffer
+    Decode.succeed CreatePassiveOffer
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "source_account" Decode.string
         |> Decode.required "type" Decode.string
         |> Decode.required "type_i" Decode.int
-        |> Decode.required "created_at" Decode.date
+        |> Decode.required "created_at" Decode.datetime
         |> Decode.required "transaction_hash" Decode.string
         |> Decode.required "offer_id" Decode.int
         |> Decode.required "amount" Decode.string

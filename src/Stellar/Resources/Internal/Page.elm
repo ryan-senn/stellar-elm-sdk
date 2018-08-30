@@ -8,20 +8,20 @@ import Stellar.Resources.Page exposing (Embed, Links, Page)
 
 decoder : Decoder record -> Decoder (Page record)
 decoder recordDecoder =
-    Decode.decode Page
+    Decode.succeed Page
         |> Decode.required "_embedded" (embeddedDecoder recordDecoder)
         |> Decode.required "_links" linksDecoder
 
 
 embeddedDecoder : Decoder record -> Decoder (Embed record)
 embeddedDecoder recordDecoder =
-    Decode.decode Embed
+    Decode.succeed Embed
         |> Decode.required "records" (Decode.list recordDecoder)
 
 
 linksDecoder : Decoder Links
 linksDecoder =
-    Decode.decode Links
+    Decode.succeed Links
         |> Decode.required "self" Link.decoder
         |> Decode.required "prev" Link.decoder
         |> Decode.required "next" Link.decoder

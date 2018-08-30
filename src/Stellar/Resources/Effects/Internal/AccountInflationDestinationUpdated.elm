@@ -8,7 +8,7 @@ import Stellar.Resources.Effects.Internal.Links as Links
 
 decoder : Decoder AccountInflationDestinationUpdated
 decoder =
-    Decode.decode AccountInflationDestinationUpdated
+    Decode.succeed AccountInflationDestinationUpdated
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

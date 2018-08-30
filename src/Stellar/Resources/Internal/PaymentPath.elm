@@ -8,7 +8,7 @@ import Stellar.Resources.PaymentPath exposing (PaymentPath)
 
 decoder : Decoder PaymentPath
 decoder =
-    Decode.decode PaymentPath
+    Decode.succeed PaymentPath
         |> Decode.required "path" (Decode.list Asset.decoder)
         |> Decode.required "source_amount" Decode.string
         |> Decode.required "destination_amount" Decode.string

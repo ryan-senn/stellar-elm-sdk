@@ -7,7 +7,7 @@ import Stellar.Error exposing (Error, StandardError(..))
 
 decoder : Decoder Error
 decoder =
-    Decode.decode Error
+    Decode.succeed Error
         |> Decode.required "type" Decode.string
         |> Decode.required "title" Decode.string
         |> Decode.required "status" Decode.int

@@ -9,7 +9,7 @@ import Stellar.Resources.Orderbook exposing (Listing, Offer, Orderbook)
 
 decoder : Decoder Orderbook
 decoder =
-    Decode.decode Orderbook
+    Decode.succeed Orderbook
         |> Decode.required "bids" (Decode.list listingDecoder)
         |> Decode.required "asks" (Decode.list listingDecoder)
         |> Decode.required "base" offerDecoder
@@ -18,7 +18,7 @@ decoder =
 
 listingDecoder : Decoder Listing
 listingDecoder =
-    Decode.decode Listing
+    Decode.succeed Listing
         |> Decode.required "price" Decode.string
         |> Decode.required "priceR" RationalNumber.decoder
         |> Decode.required "amount" Decode.string
@@ -26,5 +26,5 @@ listingDecoder =
 
 offerDecoder : Decoder Offer
 offerDecoder =
-    Decode.decode Offer
+    Decode.succeed Offer
         |> Decode.required "asset_type" AssetType.decoder

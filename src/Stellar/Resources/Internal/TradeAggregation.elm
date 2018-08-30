@@ -8,7 +8,7 @@ import Stellar.Resources.TradeAggregation exposing (TradeAggregation)
 
 decoder : Decoder TradeAggregation
 decoder =
-    Decode.decode TradeAggregation
+    Decode.succeed TradeAggregation
         |> Decode.required "timestamp" Decode.string
         |> Decode.required "trade_count" Decode.int
         |> Decode.required "base_volume" Decode.string

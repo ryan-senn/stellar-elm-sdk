@@ -44,7 +44,7 @@ send =
 
 url : Endpoint -> String -> String
 url endpoint hash =
-    endpoint ++ "/transactions/" ++ toString hash
+    endpoint ++ "/transactions/" ++ hash
 
 
 {-| The Response coming back from the server.

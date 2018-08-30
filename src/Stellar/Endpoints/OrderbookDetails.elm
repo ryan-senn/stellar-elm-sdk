@@ -61,41 +61,41 @@ send =
 {-| Set the selling Asset Code.
 -}
 setSellingAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
-setSellingAssetCode sellingAssetCode requestBuilder =
-    requestBuilder
+setSellingAssetCode sellingAssetCode requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "selling_asset_code", sellingAssetCode ) ]
 
 
 {-| Set the selling Asset Issuer.
 -}
 setSellingAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
-setSellingAssetIssuer sellingAssetIssuer requestBuilder =
-    requestBuilder
+setSellingAssetIssuer sellingAssetIssuer requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "selling_asset_issuer", sellingAssetIssuer ) ]
 
 
 {-| Set the buying Asset Code.
 -}
 setBuyingAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
-setBuyingAssetCode buyingAssetCode requestBuilder =
-    requestBuilder
+setBuyingAssetCode buyingAssetCode requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "buying_asset_code", buyingAssetCode ) ]
 
 
 {-| Set the buying Asset Issuer.
 -}
 setBuyingAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
-setBuyingAssetIssuer buyingAssetIssuer requestBuilder =
-    requestBuilder
+setBuyingAssetIssuer buyingAssetIssuer requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "buying_asset_issuer", buyingAssetIssuer ) ]
 
 
 {-| Set the pagination limit for the Request.
 -}
 setLimit : Int -> RequestBuilder Response -> RequestBuilder Response
-setLimit limit requestBuilder =
-    requestBuilder
-        |> withQueryParams [ ( "limit", toString limit ) ]
+setLimit limit requestBuilder_ =
+    requestBuilder_
+        |> withQueryParams [ ( "limit", String.fromInt limit ) ]
 
 
 url : Endpoint -> String

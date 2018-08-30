@@ -21,4 +21,4 @@ type Sorting
 -}
 toString : Sorting -> String
 toString =
-    Basics.toString >> String.toLower
+    Debug.toString >> String.toLower

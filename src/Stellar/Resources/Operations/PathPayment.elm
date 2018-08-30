@@ -9,7 +9,7 @@ module Stellar.Resources.Operations.PathPayment exposing (PathPayment)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.AssetType as AssetType exposing (AssetType)
 import Stellar.Resources.Operations.Links exposing (Links)
 
@@ -22,7 +22,7 @@ type alias PathPayment =
     , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , createdAt : Date
+    , createdAt : Posix
     , transactionHash : String
     , from : String
     , to : String

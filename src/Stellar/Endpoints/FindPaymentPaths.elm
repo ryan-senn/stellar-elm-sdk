@@ -44,7 +44,7 @@ requestBuilder endpoint sourceAccount destinationAccount assetType amount =
         |> withQueryParams [ ( "source_account", sourceAccount ) ]
         |> withQueryParams [ ( "destination_account", destinationAccount ) ]
         |> withQueryParams [ ( "destination_asset_type", AssetType.toString assetType ) ]
-        |> withQueryParams [ ( "destination_amount", toString amount ) ]
+        |> withQueryParams [ ( "destination_amount", String.fromInt amount ) ]
 
 
 {-| Send the request once configured.
@@ -57,16 +57,16 @@ send =
 {-| Set the Destination Asset Code.
 -}
 setDestinationAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
-setDestinationAssetCode destinationAssetCode requestBuilder =
-    requestBuilder
+setDestinationAssetCode destinationAssetCode requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "destination_asset_code", destinationAssetCode ) ]
 
 
 {-| Set the Destination Asset Issuer.
 -}
 setDestinationAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
-setDestinationAssetIssuer destinationAssetIssuer requestBuilder =
-    requestBuilder
+setDestinationAssetIssuer destinationAssetIssuer requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "destination_asset_issuer", destinationAssetIssuer ) ]
 
 

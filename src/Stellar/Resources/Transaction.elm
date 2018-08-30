@@ -9,7 +9,7 @@ module Stellar.Resources.Transaction exposing (Transaction, Links)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.Link as Link exposing (Link)
 
 
@@ -20,7 +20,7 @@ type alias Transaction =
     , pagingToken : String
     , hash : String
     , ledger : Int
-    , createdAt : Date
+    , createdAt : Posix
     , sourceAccount : String
     , sourceAccountSequence : String
     , feePaid : Int

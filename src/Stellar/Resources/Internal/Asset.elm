@@ -9,7 +9,7 @@ import Stellar.Resources.Asset exposing (Asset, AssetType(..), Links)
 
 decoder : Decoder Asset
 decoder =
-    Decode.decode Asset
+    Decode.succeed Asset
         |> Decode.required "asset_type" assetTypeDecoder
         |> Decode.required "asset_code" Decode.string
         |> Decode.required "asset_issuer" Decode.string
@@ -41,5 +41,5 @@ stringToAssetType string =
 
 linksDecoder : Decoder Links
 linksDecoder =
-    Decode.decode Links
+    Decode.succeed Links
         |> Decode.required "toml" Link.decoder

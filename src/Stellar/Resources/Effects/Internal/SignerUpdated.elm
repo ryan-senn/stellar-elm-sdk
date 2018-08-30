@@ -9,7 +9,7 @@ import Stellar.Resources.Effects.SignerUpdated exposing (SignerUpdated)
 
 decoder : Decoder SignerUpdated
 decoder =
-    Decode.decode SignerUpdated
+    Decode.succeed SignerUpdated
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

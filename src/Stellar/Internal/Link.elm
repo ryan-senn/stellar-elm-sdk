@@ -7,6 +7,6 @@ import Stellar.Link exposing (Link)
 
 decoder : Decoder Link
 decoder =
-    Decode.decode Link
+    Decode.succeed Link
         |> Decode.required "href" Decode.string
         |> Decode.optional "templated" Decode.bool False

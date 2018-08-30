@@ -8,7 +8,7 @@ import Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved)
 
 decoder : Decoder OfferRemoved
 decoder =
-    Decode.decode OfferRemoved
+    Decode.succeed OfferRemoved
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

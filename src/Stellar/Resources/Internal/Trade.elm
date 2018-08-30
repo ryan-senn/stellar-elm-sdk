@@ -42,7 +42,7 @@ type alias Trade =
 -}
 decoder : Decoder Trade
 decoder =
-    Decode.decode Trade
+    Decode.succeed Trade
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "ledger_close_time" Decode.string
@@ -72,7 +72,7 @@ type alias Links =
 
 linksDecoder : Decoder Links
 linksDecoder =
-    Decode.decode Links
+    Decode.succeed Links
         |> Decode.required "base" Link.decoder
         |> Decode.required "counter" Link.decoder
         |> Decode.required "operation" Link.decoder

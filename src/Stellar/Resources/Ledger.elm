@@ -9,7 +9,7 @@ module Stellar.Resources.Ledger exposing (Ledger, Links)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.Link exposing (Link)
 
 
@@ -23,7 +23,7 @@ type alias Ledger =
     , sequence : Int
     , transactionCount : Int
     , operationCount : Int
-    , closedAt : Date
+    , closedAt : Posix
     , totalCoins : String
     , feePool : String
     , baseFee : Maybe Int

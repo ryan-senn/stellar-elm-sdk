@@ -44,7 +44,7 @@ send =
 
 url : Endpoint -> Int -> String
 url endpoint sequence =
-    endpoint ++ "/ledgers/" ++ toString sequence
+    endpoint ++ "/ledgers/" ++ String.fromInt sequence
 
 
 {-| The Response coming back from the server.

@@ -8,7 +8,7 @@ import Stellar.Resources.Effects.Links exposing (Links)
 
 decoder : Decoder Links
 decoder =
-    Decode.decode Links
+    Decode.succeed Links
         |> Decode.required "operation" Link.decoder
         |> Decode.required "succeeds" Link.decoder
         |> Decode.required "precedes" Link.decoder

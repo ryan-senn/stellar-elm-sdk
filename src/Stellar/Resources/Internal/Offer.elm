@@ -8,7 +8,7 @@ import Stellar.Resources.Offer exposing (Offer)
 
 decoder : Decoder Offer
 decoder =
-    Decode.decode Offer
+    Decode.succeed Offer
         |> Decode.required "id" Decode.int
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "seller" Decode.string

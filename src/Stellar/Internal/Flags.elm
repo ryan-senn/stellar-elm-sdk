@@ -9,6 +9,6 @@ import Stellar.Flags exposing (Flags)
 -}
 decoder : Decoder Flags
 decoder =
-    Decode.decode Flags
+    Decode.succeed Flags
         |> Decode.required "auth_required" Decode.bool
         |> Decode.required "auth_revocable" Decode.bool

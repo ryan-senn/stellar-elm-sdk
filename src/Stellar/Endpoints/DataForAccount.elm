@@ -75,7 +75,7 @@ dataKeyList =
 
 dataKeyToString : DataKey -> String
 dataKeyToString =
-    toString >> String.decapitalize >> String.dasherize
+    Debug.toString >> String.decapitalize >> String.dasherize
 
 
 {-| The Response coming back from the server.

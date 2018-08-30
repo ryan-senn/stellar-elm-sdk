@@ -8,7 +8,7 @@ import Stellar.Resources.Effects.Internal.Links as Links
 
 decoder : Decoder DataUpdated
 decoder =
-    Decode.decode DataUpdated
+    Decode.succeed DataUpdated
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

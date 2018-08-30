@@ -9,7 +9,7 @@ import Stellar.Resources.Effects.TrustlineCreated exposing (TrustlineCreated)
 
 decoder : Decoder TrustlineCreated
 decoder =
-    Decode.decode TrustlineCreated
+    Decode.succeed TrustlineCreated
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

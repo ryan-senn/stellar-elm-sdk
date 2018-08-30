@@ -10,7 +10,7 @@ import Stellar.Resources.Effects.SignerCreated exposing (SignerCreated)
 
 decoder : Decoder SignerCreated
 decoder =
-    Decode.decode SignerCreated
+    Decode.succeed SignerCreated
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string
@@ -19,5 +19,5 @@ decoder =
         |> Decode.required "weight" Decode.int
         |> Decode.required "public_key" PublicKey.decoder
         |> Decode.required "key" Decode.string
-        |> Decode.required "created_at" Decode.date
+        |> Decode.required "created_at" Decode.datetime
         |> Decode.required "_links" Links.decoder

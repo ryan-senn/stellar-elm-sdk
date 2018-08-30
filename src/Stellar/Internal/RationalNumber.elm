@@ -7,6 +7,6 @@ import Stellar.RationalNumber exposing (RationalNumber)
 
 decoder : Decoder RationalNumber
 decoder =
-    Decode.decode RationalNumber
+    Decode.succeed RationalNumber
         |> Decode.required "n" Decode.int
         |> Decode.required "d" Decode.int

@@ -9,7 +9,7 @@ module Stellar.Resources.Operations.SetOptions exposing (SetOptions)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Operations.Links exposing (Links)
 
@@ -22,7 +22,7 @@ type alias SetOptions =
     , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , createdAt : Date
+    , createdAt : Posix
     , transactionHash : String
     , homeDomain : Maybe String
     , inflationDestination : Maybe String

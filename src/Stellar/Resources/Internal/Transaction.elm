@@ -9,12 +9,12 @@ import Stellar.Resources.Transaction exposing (Links, Transaction)
 
 decoder : Decoder Transaction
 decoder =
-    Decode.decode Transaction
+    Decode.succeed Transaction
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "hash" Decode.string
         |> Decode.required "ledger" Decode.int
-        |> Decode.required "created_at" Decode.date
+        |> Decode.required "created_at" Decode.datetime
         |> Decode.required "source_account" Decode.string
         |> Decode.required "source_account_sequence" Decode.string
         |> Decode.required "fee_paid" Decode.int
@@ -30,7 +30,7 @@ decoder =
 
 linksDecoder : Decoder Links
 linksDecoder =
-    Decode.decode Links
+    Decode.succeed Links
         |> Decode.required "self" Link.decoder
         |> Decode.required "account" Link.decoder
         |> Decode.required "ledger" Link.decoder

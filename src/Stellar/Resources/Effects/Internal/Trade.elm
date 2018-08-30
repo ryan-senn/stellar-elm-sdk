@@ -9,7 +9,7 @@ import Stellar.Resources.Effects.Trade exposing (Trade)
 
 decoder : Decoder Trade
 decoder =
-    Decode.decode Trade
+    Decode.succeed Trade
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

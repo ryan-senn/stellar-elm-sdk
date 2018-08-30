@@ -9,7 +9,7 @@ module Stellar.Resources.Operations.CreateAccount exposing (CreateAccount)
 
 -}
 
-import Date exposing (Date)
+import Time exposing (Posix)
 import Stellar.Resources.Operations.Links exposing (Links)
 
 
@@ -21,7 +21,7 @@ type alias CreateAccount =
     , sourceAccount : String
     , type_ : String
     , typeI : Int
-    , createdAt : Date
+    , createdAt : Posix
     , transactionHash : String
     , startingBalance : String
     , funder : String

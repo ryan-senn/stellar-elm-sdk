@@ -9,7 +9,7 @@ import Stellar.Resources.Effects.TrustlineRemoved exposing (TrustlineRemoved)
 
 decoder : Decoder TrustlineRemoved
 decoder =
-    Decode.decode TrustlineRemoved
+    Decode.succeed TrustlineRemoved
         |> Decode.required "id" Decode.string
         |> Decode.required "paging_token" Decode.string
         |> Decode.required "type" Decode.string

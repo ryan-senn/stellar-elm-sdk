@@ -7,5 +7,5 @@ import Stellar.Resources.Data exposing (Data)
 
 decoder : Decoder Data
 decoder =
-    Decode.decode Data
+    Decode.succeed Data
         |> Decode.optional "value" (Decode.maybe Decode.string) Nothing

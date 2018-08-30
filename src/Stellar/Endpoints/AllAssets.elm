@@ -61,40 +61,40 @@ send =
 {-| Set the Asset Code.
 -}
 setAssetCode : String -> RequestBuilder Response -> RequestBuilder Response
-setAssetCode assetCode requestBuilder =
-    requestBuilder
+setAssetCode assetCode requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "asset_code", assetCode ) ]
 
 
 {-| Set the Asset Issuer.
 -}
 setAssetIssuer : PublicKey -> RequestBuilder Response -> RequestBuilder Response
-setAssetIssuer publicKey requestBuilder =
-    requestBuilder
+setAssetIssuer publicKey requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "asset_issuer", publicKey ) ]
 
 
 {-| Set the pagination cursor for the Request.
 -}
 setCursor : String -> RequestBuilder Response -> RequestBuilder Response
-setCursor cursor requestBuilder =
-    requestBuilder
+setCursor cursor requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "cursor", cursor ) ]
 
 
 {-| Set the pagination limit for the Request.
 -}
 setLimit : Int -> RequestBuilder Response -> RequestBuilder Response
-setLimit limit requestBuilder =
-    requestBuilder
-        |> withQueryParams [ ( "limit", toString limit ) ]
+setLimit limit requestBuilder_ =
+    requestBuilder_
+        |> withQueryParams [ ( "limit", String.fromInt limit ) ]
 
 
 {-| Set the pagination sorting for the Request.
 -}
 setSorting : Sorting -> RequestBuilder Response -> RequestBuilder Response
-setSorting sorting requestBuilder =
-    requestBuilder
+setSorting sorting requestBuilder_ =
+    requestBuilder_
         |> withQueryParams [ ( "order", Sorting.toString sorting ) ]
 
 
