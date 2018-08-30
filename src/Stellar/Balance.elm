@@ -2,7 +2,9 @@ module Stellar.Balance exposing (Balance)
 
 {-| Record to represent a Balance
 
+
 # Type alias
+
 @docs Balance
 
 -}

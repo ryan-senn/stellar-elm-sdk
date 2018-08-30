@@ -1,11 +1,18 @@
-module Stellar.AssetType exposing (AssetType (..), asList, toString)
+module Stellar.AssetType exposing
+    ( AssetType(..)
+    , asList, toString
+    )
 
 {-| Union Type of Asset Types
 
+
 # Union Type
+
 @docs AssetType
 
+
 # Helpers
+
 @docs asList, toString
 
 -}
@@ -33,7 +40,6 @@ asList =
 -}
 toString : AssetType -> String
 toString assetType =
-
     case assetType of
         Native ->
             "native"

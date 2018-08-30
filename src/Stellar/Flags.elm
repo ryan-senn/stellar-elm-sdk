@@ -2,7 +2,9 @@ module Stellar.Flags exposing (Flags)
 
 {-| Record to represent Flags
 
+
 # Type alias
+
 @docs Flags
 
 -}

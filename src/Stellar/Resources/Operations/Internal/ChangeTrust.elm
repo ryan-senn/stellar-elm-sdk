@@ -3,11 +3,8 @@ module Stellar.Resources.Operations.Internal.ChangeTrust exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.ChangeTrust exposing (ChangeTrust)
-
 import Stellar.Internal.AssetType as AssetType
-
+import Stellar.Resources.Operations.ChangeTrust exposing (ChangeTrust)
 import Stellar.Resources.Operations.Internal.Links as Links
 
 

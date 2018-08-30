@@ -3,11 +3,8 @@ module Stellar.Resources.Effects.Internal.AccountDebited exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.AccountDebited exposing (AccountDebited)
-
 import Stellar.Internal.AssetType as AssetType
-
+import Stellar.Resources.Effects.AccountDebited exposing (AccountDebited)
 import Stellar.Resources.Effects.Internal.Links as Links
 
 

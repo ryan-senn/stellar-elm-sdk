@@ -2,7 +2,6 @@ module Stellar.Internal.Thresholds exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
 import Stellar.Thresholds exposing (Thresholds)
 
 

@@ -2,9 +2,7 @@ module Stellar.Resources.Effects.Internal.AccountFlagsUpdated exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
 import Stellar.Resources.Effects.AccountFlagsUpdated exposing (AccountFlagsUpdated)
-
 import Stellar.Resources.Effects.Internal.Links as Links
 
 

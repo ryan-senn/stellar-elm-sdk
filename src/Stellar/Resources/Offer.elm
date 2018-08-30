@@ -2,7 +2,9 @@ module Stellar.Resources.Offer exposing (Offer)
 
 {-| Offer Resource
 
+
 # Type alias
+
 @docs Offer
 
 -}

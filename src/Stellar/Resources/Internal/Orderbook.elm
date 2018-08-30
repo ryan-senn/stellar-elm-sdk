@@ -2,11 +2,9 @@ module Stellar.Resources.Internal.Orderbook exposing (decoder, listingDecoder, o
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Orderbook exposing (Orderbook, Listing, Offer)
-
-import Stellar.Internal.RationalNumber as RationalNumber
 import Stellar.Internal.AssetType as AssetType
+import Stellar.Internal.RationalNumber as RationalNumber
+import Stellar.Resources.Orderbook exposing (Listing, Offer, Orderbook)
 
 
 decoder : Decoder Orderbook

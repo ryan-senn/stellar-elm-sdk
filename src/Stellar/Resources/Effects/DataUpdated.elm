@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.DataUpdated exposing (DataUpdated)
 
 {-| Data updated Effect
 
+
 # Type alias
+
 @docs DataUpdated
 
 -}

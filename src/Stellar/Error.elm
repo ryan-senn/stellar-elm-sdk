@@ -1,11 +1,18 @@
-module Stellar.Error exposing (Error, StandardError (..))
+module Stellar.Error exposing
+    ( Error
+    , StandardError(..)
+    )
 
 {-| Record representing possible Errors in Stellar
 
+
 # Type alias
+
 @docs Error
 
+
 # Standard Errors
+
 @docs StandardError
 
 -}

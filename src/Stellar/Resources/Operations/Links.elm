@@ -2,7 +2,9 @@ module Stellar.Resources.Operations.Links exposing (Links)
 
 {-| Links common to all Operations
 
+
 # Type alias
+
 @docs Links
 
 -}

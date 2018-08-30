@@ -2,13 +2,14 @@ module Stellar.Resources.Effects.TrustlineUpdated exposing (TrustlineUpdated)
 
 {-| Trustline updated Effect
 
+
 # Type alias
+
 @docs TrustlineUpdated
 
 -}
 
 import Stellar.AssetType exposing (AssetType)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

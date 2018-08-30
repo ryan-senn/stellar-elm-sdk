@@ -2,9 +2,7 @@ module Stellar.Resources.Effects.Internal.AccountHomeDomainUpdated exposing (dec
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
 import Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeDomainUpdated)
-
 import Stellar.Resources.Effects.Internal.Links as Links
 
 

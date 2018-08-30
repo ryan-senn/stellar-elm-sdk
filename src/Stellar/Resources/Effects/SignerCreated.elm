@@ -2,15 +2,15 @@ module Stellar.Resources.Effects.SignerCreated exposing (SignerCreated)
 
 {-| Signer created Effect
 
+
 # Type alias
+
 @docs SignerCreated
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

@@ -2,18 +2,18 @@ module Stellar.Resources.Internal.Trade exposing (Trade, Links)
 
 {-| Trade Resource
 
+
 # Type alias
+
 @docs Trade, Links
 
 -}
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Asset as Asset exposing (Asset)
-
-import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
 import Stellar.Link as Link exposing (Link)
+import Stellar.RationalNumber as RationalNumber exposing (RationalNumber)
+import Stellar.Resources.Asset as Asset exposing (Asset)
 
 
 {-| Type alias

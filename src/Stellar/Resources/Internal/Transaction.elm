@@ -3,10 +3,8 @@ module Stellar.Resources.Internal.Transaction exposing (decoder, linksDecoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Transaction exposing (Transaction, Links)
-
 import Stellar.Internal.Link as Link
+import Stellar.Resources.Transaction exposing (Links, Transaction)
 
 
 decoder : Decoder Transaction

@@ -2,12 +2,9 @@ module Stellar.Resources.Effects.Internal.Trade exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.Trade exposing (Trade)
-
 import Stellar.Internal.AssetType as AssetType
-
 import Stellar.Resources.Effects.Internal.Links as Links
+import Stellar.Resources.Effects.Trade exposing (Trade)
 
 
 decoder : Decoder Trade

@@ -3,11 +3,8 @@ module Stellar.Resources.Operations.Internal.AllowTrust exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.AllowTrust exposing (AllowTrust)
-
 import Stellar.Internal.AssetType as AssetType
-
+import Stellar.Resources.Operations.AllowTrust exposing (AllowTrust)
 import Stellar.Resources.Operations.Internal.Links as Links
 
 

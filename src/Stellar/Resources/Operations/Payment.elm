@@ -2,13 +2,14 @@ module Stellar.Resources.Operations.Payment exposing (Payment)
 
 {-| Payment Operation
 
+
 # Type alias
+
 @docs Payment
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.AccountHomeDomainUpdated exposing (AccountHomeD
 
 {-| Account Home Domain updated Effect
 
+
 # Type alias
+
 @docs AccountHomeDomainUpdated
 
 -}

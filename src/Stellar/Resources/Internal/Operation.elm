@@ -1,20 +1,18 @@
 module Stellar.Resources.Internal.Operation exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
-
-import Stellar.Resources.Operation exposing (Operation (..))
-
-import Stellar.Resources.Operations.Internal.CreateAccount as CreateAccount
-import Stellar.Resources.Operations.Internal.Payment as Payment
-import Stellar.Resources.Operations.Internal.PathPayment as PathPayment
-import Stellar.Resources.Operations.Internal.ManageOffer as ManageOffer
-import Stellar.Resources.Operations.Internal.CreatePassiveOffer as CreatePassiveOffer
-import Stellar.Resources.Operations.Internal.SetOptions as SetOptions
-import Stellar.Resources.Operations.Internal.ChangeTrust as ChangeTrust
-import Stellar.Resources.Operations.Internal.AllowTrust as AllowTrust
+import Stellar.Resources.Operation exposing (Operation(..))
 import Stellar.Resources.Operations.Internal.AccountMerge as AccountMerge
+import Stellar.Resources.Operations.Internal.AllowTrust as AllowTrust
+import Stellar.Resources.Operations.Internal.ChangeTrust as ChangeTrust
+import Stellar.Resources.Operations.Internal.CreateAccount as CreateAccount
+import Stellar.Resources.Operations.Internal.CreatePassiveOffer as CreatePassiveOffer
 import Stellar.Resources.Operations.Internal.Inflation as Inflation
 import Stellar.Resources.Operations.Internal.ManageData as ManageData
+import Stellar.Resources.Operations.Internal.ManageOffer as ManageOffer
+import Stellar.Resources.Operations.Internal.PathPayment as PathPayment
+import Stellar.Resources.Operations.Internal.Payment as Payment
+import Stellar.Resources.Operations.Internal.SetOptions as SetOptions
 
 
 decoder : Decoder Operation
@@ -25,7 +23,6 @@ decoder =
 
 operationFromType : String -> Decoder Operation
 operationFromType type_ =
-
     case type_ of
         "create_account" ->
             Decode.map CreateAccount CreateAccount.decoder

@@ -2,15 +2,15 @@ module Stellar.Resources.Operations.ChangeTrust exposing (ChangeTrust)
 
 {-| Change Trust Operation
 
+
 # Type alias
+
 @docs ChangeTrust
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.AssetType as AssetType exposing (AssetType)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

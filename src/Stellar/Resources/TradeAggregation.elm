@@ -2,7 +2,9 @@ module Stellar.Resources.TradeAggregation exposing (TradeAggregation)
 
 {-| Trade Aggregation Resource
 
+
 # Type alias
+
 @docs TradeAggregation
 
 -}

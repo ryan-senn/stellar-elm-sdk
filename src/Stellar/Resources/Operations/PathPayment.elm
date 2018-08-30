@@ -2,15 +2,15 @@ module Stellar.Resources.Operations.PathPayment exposing (PathPayment)
 
 {-| Path Payment Operation
 
+
 # Type alias
+
 @docs PathPayment
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.AssetType as AssetType exposing (AssetType)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

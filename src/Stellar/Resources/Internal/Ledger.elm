@@ -3,10 +3,8 @@ module Stellar.Resources.Internal.Ledger exposing (decoder, linksDecoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Ledger exposing (Ledger, Links)
-
 import Stellar.Internal.Link as Link
+import Stellar.Resources.Ledger exposing (Ledger, Links)
 
 
 decoder : Decoder Ledger

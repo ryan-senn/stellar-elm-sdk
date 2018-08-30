@@ -2,9 +2,7 @@ module Stellar.Resources.Effects.Internal.AccountInflationDestinationUpdated exp
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
 import Stellar.Resources.Effects.AccountInflationDestinationUpdated exposing (AccountInflationDestinationUpdated)
-
 import Stellar.Resources.Effects.Internal.Links as Links
 
 

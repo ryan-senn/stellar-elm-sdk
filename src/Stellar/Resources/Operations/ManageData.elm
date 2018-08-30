@@ -2,13 +2,14 @@ module Stellar.Resources.Operations.ManageData exposing (ManageData)
 
 {-| Manage Data Operation
 
+
 # Type alias
+
 @docs ManageData
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

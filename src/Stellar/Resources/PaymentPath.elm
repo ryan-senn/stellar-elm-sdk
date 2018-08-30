@@ -2,7 +2,9 @@ module Stellar.Resources.PaymentPath exposing (PaymentPath)
 
 {-| Payment Path Resource
 
+
 # Type alias
+
 @docs PaymentPath
 
 -}

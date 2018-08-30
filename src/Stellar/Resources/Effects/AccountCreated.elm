@@ -2,13 +2,14 @@ module Stellar.Resources.Effects.AccountCreated exposing (AccountCreated)
 
 {-| Account Created Effect
 
+
 # Type alias
+
 @docs AccountCreated
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

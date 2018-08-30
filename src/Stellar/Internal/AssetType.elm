@@ -2,8 +2,7 @@ module Stellar.Internal.AssetType exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.AssetType exposing (AssetType (..))
+import Stellar.AssetType exposing (AssetType(..))
 
 
 decoder : Decoder AssetType
@@ -14,9 +13,7 @@ decoder =
 
 stringToAssetType : String -> Decoder AssetType
 stringToAssetType string =
-
     case string of
-
         "native" ->
             Decode.succeed Native
 

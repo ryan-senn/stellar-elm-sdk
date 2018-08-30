@@ -3,12 +3,9 @@ module Stellar.Resources.Operations.Internal.SetOptions exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.SetOptions exposing (SetOptions)
-
 import Stellar.Internal.PublicKey as PublicKey
-
 import Stellar.Resources.Operations.Internal.Links as Links
+import Stellar.Resources.Operations.SetOptions exposing (SetOptions)
 
 
 decoder : Decoder SetOptions

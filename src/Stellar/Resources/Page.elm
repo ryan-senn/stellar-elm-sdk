@@ -2,7 +2,9 @@ module Stellar.Resources.Page exposing (Page, Embed, Links)
 
 {-| Page Resource
 
+
 # Type alias
+
 @docs Page, Embed, Links
 
 -}

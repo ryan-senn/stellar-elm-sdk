@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.AccountInflationDestinationUpdated exposing (Ac
 
 {-| Account Inflation Destination updated Effect
 
+
 # Type alias
+
 @docs AccountInflationDestinationUpdated
 
 -}

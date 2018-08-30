@@ -2,15 +2,16 @@ module Stellar.Resources.Trade exposing (Trade, Links)
 
 {-| Trade Resource
 
+
 # Type alias
+
 @docs Trade, Links
 
 -}
 
-import Stellar.Resources.Asset exposing (Asset)
-
-import Stellar.RationalNumber exposing (RationalNumber)
 import Stellar.Link exposing (Link)
+import Stellar.RationalNumber exposing (RationalNumber)
+import Stellar.Resources.Asset exposing (Asset)
 
 
 {-| Trade

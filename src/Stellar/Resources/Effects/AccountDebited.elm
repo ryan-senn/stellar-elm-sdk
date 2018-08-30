@@ -2,15 +2,15 @@ module Stellar.Resources.Effects.AccountDebited exposing (AccountDebited)
 
 {-| Account Debited Effect
 
+
 # Type alias
+
 @docs AccountDebited
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.AssetType exposing (AssetType)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

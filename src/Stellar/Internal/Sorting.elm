@@ -1,11 +1,14 @@
-module Stellar.Internal.Sorting exposing (Sorting (..), toString)
+module Stellar.Internal.Sorting exposing (Sorting(..), toString)
 
 {-| Union Type that represents the available sorting methods in Stellar
 
+
 # Union Type and Decoder
+
 @docs Sorting, toString
 
 -}
+
 
 {-| Union Type
 -}

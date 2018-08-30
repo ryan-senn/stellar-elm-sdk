@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.AccountThresholdsUpdated exposing (AccountThres
 
 {-| Account Thresholds updated Effect
 
+
 # Type alias
+
 @docs AccountThresholdsUpdated
 
 -}

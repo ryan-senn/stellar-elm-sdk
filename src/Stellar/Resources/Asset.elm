@@ -1,8 +1,10 @@
-module Stellar.Resources.Asset exposing (Asset, AssetType (..), Links)
+module Stellar.Resources.Asset exposing (Asset, AssetType(..), Links)
 
 {-| Asset Resource
 
+
 # Type alias & Asset Types
+
 @docs Asset, AssetType, Links
 
 -}

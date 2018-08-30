@@ -2,7 +2,9 @@ module Stellar.Signer exposing (Signer)
 
 {-| Record to represent a Signer
 
+
 # Type alias
+
 @docs Signer
 
 -}

@@ -3,10 +3,8 @@ module Stellar.Resources.Operations.Internal.Payment exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.Payment exposing (Payment)
-
 import Stellar.Resources.Operations.Internal.Links as Links
+import Stellar.Resources.Operations.Payment exposing (Payment)
 
 
 decoder : Decoder Payment

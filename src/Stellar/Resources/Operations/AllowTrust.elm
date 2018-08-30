@@ -2,15 +2,15 @@ module Stellar.Resources.Operations.AllowTrust exposing (AllowTrust)
 
 {-| Allow Trust Operation
 
+
 # Type alias
+
 @docs AllowTrust
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.AssetType as AssetType exposing (AssetType)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

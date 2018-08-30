@@ -2,12 +2,9 @@ module Stellar.Resources.Effects.Internal.SignerUpdated exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.SignerUpdated exposing (SignerUpdated)
-
 import Stellar.Internal.PublicKey as PublicKey
-
 import Stellar.Resources.Effects.Internal.Links as Links
+import Stellar.Resources.Effects.SignerUpdated exposing (SignerUpdated)
 
 
 decoder : Decoder SignerUpdated

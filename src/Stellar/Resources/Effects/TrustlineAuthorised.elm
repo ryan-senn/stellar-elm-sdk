@@ -2,13 +2,15 @@ module Stellar.Resources.Effects.TrustlineAuthorised exposing (TrustlineAuthoris
 
 {-| Trustline authorised Effect
 
+
 # Type alias
+
 @docs TrustlineAuthorised
 
 -}
 
-import Stellar.Resources.Effects.Links exposing (Links)
 import Stellar.AssetType exposing (AssetType)
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
 {-| Trustline Authorised

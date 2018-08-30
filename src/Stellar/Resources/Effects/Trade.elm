@@ -2,13 +2,14 @@ module Stellar.Resources.Effects.Trade exposing (Trade)
 
 {-| Trade Effect
 
+
 # Type alias
+
 @docs Trade
 
 -}
 
 import Stellar.AssetType exposing (AssetType)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

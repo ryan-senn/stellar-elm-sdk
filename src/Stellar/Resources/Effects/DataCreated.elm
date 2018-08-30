@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.DataCreated exposing (DataCreated)
 
 {-| Data created Effect
 
+
 # Type alias
+
 @docs DataCreated
 
 -}

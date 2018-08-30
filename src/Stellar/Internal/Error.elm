@@ -2,8 +2,7 @@ module Stellar.Internal.Error exposing (decoder, standardErrorDecoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Error exposing (Error, StandardError (..))
+import Stellar.Error exposing (Error, StandardError(..))
 
 
 decoder : Decoder Error
@@ -25,9 +24,15 @@ standardErrorDecoder =
 
 standardErrorFromStatus : Error -> Decoder StandardError
 standardErrorFromStatus error =
-
     case error.status of
-        403 -> Decode.succeed <| Forbidden error
-        429 -> Decode.succeed <| RateLimitExceeded error
-        500 -> Decode.succeed <| ServerError error
-        _ -> Decode.fail "Could not decode standard error"
+        403 ->
+            Decode.succeed <| Forbidden error
+
+        429 ->
+            Decode.succeed <| RateLimitExceeded error
+
+        500 ->
+            Decode.succeed <| ServerError error
+
+        _ ->
+            Decode.fail "Could not decode standard error"

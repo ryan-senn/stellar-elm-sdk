@@ -2,13 +2,14 @@ module Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved)
 
 {-| Signer removed Effect
 
+
 # Type alias
+
 @docs SignerRemoved
 
 -}
 
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

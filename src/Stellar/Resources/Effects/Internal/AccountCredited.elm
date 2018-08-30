@@ -3,11 +3,8 @@ module Stellar.Resources.Effects.Internal.AccountCredited exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.AccountCredited exposing (AccountCredited)
-
 import Stellar.Internal.AssetType as AssetType
-
+import Stellar.Resources.Effects.AccountCredited exposing (AccountCredited)
 import Stellar.Resources.Effects.Internal.Links as Links
 
 

@@ -2,17 +2,14 @@ module Stellar.Resources.Internal.Account exposing (decoder, linksDecoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Account exposing (Account, Links)
-
-import Stellar.Internal.PublicKey as PublicKey
-import Stellar.Internal.Endpoint as Endpoint
-import Stellar.Internal.Thresholds as Thresholds
-import Stellar.Internal.Flags as Flags
 import Stellar.Internal.Balance as Balance
-import Stellar.Internal.Signer as Signer
+import Stellar.Internal.Endpoint as Endpoint
+import Stellar.Internal.Flags as Flags
 import Stellar.Internal.Link as Link
-
+import Stellar.Internal.PublicKey as PublicKey
+import Stellar.Internal.Signer as Signer
+import Stellar.Internal.Thresholds as Thresholds
+import Stellar.Resources.Account exposing (Account, Links)
 import Stellar.Resources.Internal.Data as Data
 
 

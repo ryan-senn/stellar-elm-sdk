@@ -1,8 +1,10 @@
-module Stellar.Resources.Effect exposing (Effect (..))
+module Stellar.Resources.Effect exposing (Effect(..))
 
 {-| Effect Resource
 
+
 # Union Type
+
 @docs Effect
 
 -}

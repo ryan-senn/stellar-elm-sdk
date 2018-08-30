@@ -2,10 +2,8 @@ module Stellar.Resources.Effects.Internal.Links exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.Links exposing (Links)
-
 import Stellar.Internal.Link as Link
+import Stellar.Resources.Effects.Links exposing (Links)
 
 
 decoder : Decoder Links

@@ -2,12 +2,9 @@ module Stellar.Resources.Effects.Internal.SignerRemoved exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved)
-
 import Stellar.Internal.PublicKey as PublicKey
-
 import Stellar.Resources.Effects.Internal.Links as Links
+import Stellar.Resources.Effects.SignerRemoved exposing (SignerRemoved)
 
 
 decoder : Decoder SignerRemoved

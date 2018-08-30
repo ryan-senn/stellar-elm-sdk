@@ -3,12 +3,9 @@ module Stellar.Resources.Operations.Internal.PathPayment exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.PathPayment exposing (PathPayment)
-
 import Stellar.Internal.AssetType as AssetType
-
 import Stellar.Resources.Operations.Internal.Links as Links
+import Stellar.Resources.Operations.PathPayment exposing (PathPayment)
 
 
 decoder : Decoder PathPayment

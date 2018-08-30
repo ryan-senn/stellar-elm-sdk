@@ -2,13 +2,14 @@ module Stellar.Resources.Operations.AccountMerge exposing (AccountMerge)
 
 {-| Account merge Operation
 
+
 # Type alias
+
 @docs AccountMerge
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

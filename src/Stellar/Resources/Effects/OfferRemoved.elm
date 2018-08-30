@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved)
 
 {-| Offer removed Effect
 
+
 # Type alias
+
 @docs OfferRemoved
 
 -}

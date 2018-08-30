@@ -2,15 +2,15 @@ module Stellar.Resources.Operations.SetOptions exposing (SetOptions)
 
 {-| Set Options Operation
 
+
 # Type alias
+
 @docs SetOptions
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

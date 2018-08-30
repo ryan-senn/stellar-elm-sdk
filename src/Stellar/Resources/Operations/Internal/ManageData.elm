@@ -3,10 +3,8 @@ module Stellar.Resources.Operations.Internal.ManageData exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.ManageData exposing (ManageData)
-
 import Stellar.Resources.Operations.Internal.Links as Links
+import Stellar.Resources.Operations.ManageData exposing (ManageData)
 
 
 decoder : Decoder ManageData

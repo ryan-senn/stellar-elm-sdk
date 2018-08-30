@@ -2,10 +2,8 @@ module Stellar.Resources.Effects.Internal.OfferUpdated exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.OfferUpdated exposing (OfferUpdated)
-
 import Stellar.Resources.Effects.Internal.Links as Links
+import Stellar.Resources.Effects.OfferUpdated exposing (OfferUpdated)
 
 
 decoder : Decoder OfferUpdated

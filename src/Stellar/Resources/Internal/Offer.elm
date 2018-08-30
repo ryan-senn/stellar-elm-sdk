@@ -2,10 +2,8 @@ module Stellar.Resources.Internal.Offer exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Offer exposing (Offer)
-
 import Stellar.Resources.Internal.Asset as Asset
+import Stellar.Resources.Offer exposing (Offer)
 
 
 decoder : Decoder Offer

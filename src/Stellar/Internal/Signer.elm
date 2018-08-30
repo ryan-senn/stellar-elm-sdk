@@ -2,9 +2,8 @@ module Stellar.Internal.Signer exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Signer exposing (Signer)
 import Stellar.Internal.PublicKey as PublicKey
+import Stellar.Signer exposing (Signer)
 
 
 decoder : Decoder Signer

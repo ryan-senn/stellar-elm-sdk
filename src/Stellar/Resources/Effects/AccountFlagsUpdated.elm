@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.AccountFlagsUpdated exposing (AccountFlagsUpdat
 
 {-| Account Flags updated Effect
 
+
 # Type alias
+
 @docs AccountFlagsUpdated
 
 -}

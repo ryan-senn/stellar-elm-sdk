@@ -2,13 +2,14 @@ module Stellar.Resources.Transaction exposing (Transaction, Links)
 
 {-| Transaction Resource
 
+
 # Type alias
+
 @docs Transaction, Links
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Link as Link exposing (Link)
 
 

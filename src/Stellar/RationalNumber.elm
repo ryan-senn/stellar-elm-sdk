@@ -2,7 +2,9 @@ module Stellar.RationalNumber exposing (RationalNumber)
 
 {-| Record to represent Rational Numbers
 
+
 # Type alias
+
 @docs RationalNumber
 
 -}

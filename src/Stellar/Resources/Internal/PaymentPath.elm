@@ -2,10 +2,8 @@ module Stellar.Resources.Internal.PaymentPath exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.PaymentPath exposing (PaymentPath)
-
 import Stellar.Resources.Internal.Asset as Asset
+import Stellar.Resources.PaymentPath exposing (PaymentPath)
 
 
 decoder : Decoder PaymentPath

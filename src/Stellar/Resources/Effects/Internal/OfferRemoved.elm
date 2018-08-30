@@ -2,10 +2,8 @@ module Stellar.Resources.Effects.Internal.OfferRemoved exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved)
-
 import Stellar.Resources.Effects.Internal.Links as Links
+import Stellar.Resources.Effects.OfferRemoved exposing (OfferRemoved)
 
 
 decoder : Decoder OfferRemoved

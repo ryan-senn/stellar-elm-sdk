@@ -2,13 +2,14 @@ module Stellar.Resources.Operations.CreateAccount exposing (CreateAccount)
 
 {-| Create Account Operation
 
+
 # Type alias
+
 @docs CreateAccount
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

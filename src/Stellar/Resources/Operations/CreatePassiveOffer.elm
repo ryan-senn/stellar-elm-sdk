@@ -2,15 +2,15 @@ module Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOf
 
 {-| Create Passive Offer Operation
 
+
 # Type alias
+
 @docs CreatePassiveOffer
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.AssetType as AssetType exposing (AssetType)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

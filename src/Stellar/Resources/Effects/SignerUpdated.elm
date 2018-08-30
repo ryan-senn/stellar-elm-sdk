@@ -2,13 +2,14 @@ module Stellar.Resources.Effects.SignerUpdated exposing (SignerUpdated)
 
 {-| Signer updated Effect
 
+
 # Type alias
+
 @docs SignerUpdated
 
 -}
 
 import Stellar.PublicKey as PublicKey exposing (PublicKey)
-
 import Stellar.Resources.Effects.Links exposing (Links)
 
 

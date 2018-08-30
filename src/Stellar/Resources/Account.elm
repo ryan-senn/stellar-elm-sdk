@@ -2,19 +2,20 @@ module Stellar.Resources.Account exposing (Account, Links)
 
 {-| Account Resource
 
+
 # Type alias
+
 @docs Account, Links
 
 -}
 
-import Stellar.PublicKey as PublicKey exposing (PublicKey)
-import Stellar.Thresholds as Thresholds exposing (Thresholds)
-import Stellar.Flags as Flags exposing (Flags)
 import Stellar.Balance as Balance exposing (Balance)
-import Stellar.Signer as Signer exposing (Signer)
+import Stellar.Flags as Flags exposing (Flags)
 import Stellar.Link as Link exposing (Link)
-
+import Stellar.PublicKey as PublicKey exposing (PublicKey)
 import Stellar.Resources.Data exposing (Data)
+import Stellar.Signer as Signer exposing (Signer)
+import Stellar.Thresholds as Thresholds exposing (Thresholds)
 
 
 {-| Account

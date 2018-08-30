@@ -3,11 +3,8 @@ module Stellar.Resources.Operations.Internal.CreatePassiveOffer exposing (decode
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOffer)
-
 import Stellar.Internal.AssetType as AssetType
-
+import Stellar.Resources.Operations.CreatePassiveOffer exposing (CreatePassiveOffer)
 import Stellar.Resources.Operations.Internal.Links as Links
 
 

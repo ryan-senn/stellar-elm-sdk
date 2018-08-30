@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.Links exposing (Links)
 
 {-| Links common to all Effects
 
+
 # Type alias
+
 @docs Links
 
 -}

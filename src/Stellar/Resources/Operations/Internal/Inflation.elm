@@ -3,9 +3,7 @@ module Stellar.Resources.Operations.Internal.Inflation exposing (decoder)
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Extra as Decode
 import Json.Decode.Pipeline as Decode
-
 import Stellar.Resources.Operations.Inflation exposing (Inflation)
-
 import Stellar.Resources.Operations.Internal.Links as Links
 
 

@@ -2,11 +2,9 @@ module Stellar.Resources.Effects.Internal.TrustlineRemoved exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effects.TrustlineRemoved exposing (TrustlineRemoved)
-
-import Stellar.Resources.Effects.Internal.Links as Links
 import Stellar.Internal.AssetType as AssetType
+import Stellar.Resources.Effects.Internal.Links as Links
+import Stellar.Resources.Effects.TrustlineRemoved exposing (TrustlineRemoved)
 
 
 decoder : Decoder TrustlineRemoved

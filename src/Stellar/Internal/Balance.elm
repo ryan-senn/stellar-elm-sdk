@@ -2,7 +2,6 @@ module Stellar.Internal.Balance exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
 import Stellar.Balance exposing (Balance)
 import Stellar.Internal.AssetType as AssetType
 

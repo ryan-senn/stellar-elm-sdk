@@ -2,7 +2,9 @@ module Stellar.Thresholds exposing (Thresholds)
 
 {-| Record to represent Thresholds
 
+
 # Type alias
+
 @docs Thresholds
 
 -}

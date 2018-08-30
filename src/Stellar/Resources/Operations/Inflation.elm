@@ -2,13 +2,14 @@ module Stellar.Resources.Operations.Inflation exposing (Inflation)
 
 {-| Inflation Operation
 
+
 # Type alias
+
 @docs Inflation
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Resources.Operations.Links exposing (Links)
 
 

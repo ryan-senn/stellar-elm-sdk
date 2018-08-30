@@ -2,7 +2,9 @@ module Stellar.Resources.Data exposing (Data)
 
 {-| Data Resource
 
+
 # Type alias
+
 @docs Data
 
 -}

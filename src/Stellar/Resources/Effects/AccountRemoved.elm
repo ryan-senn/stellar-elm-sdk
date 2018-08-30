@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.AccountRemoved exposing (AccountRemoved)
 
 {-| Account removed Effect
 
+
 # Type alias
+
 @docs AccountRemoved
 
 -}

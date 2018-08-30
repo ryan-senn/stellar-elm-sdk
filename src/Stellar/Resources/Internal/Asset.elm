@@ -1,12 +1,10 @@
-module Stellar.Resources.Internal.Asset exposing (decoder, assetTypeDecoder, linksDecoder)
+module Stellar.Resources.Internal.Asset exposing (assetTypeDecoder, decoder, linksDecoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Asset exposing (Asset, AssetType (..), Links)
-
 import Stellar.Internal.Flags as Flags
 import Stellar.Internal.Link as Link
+import Stellar.Resources.Asset exposing (Asset, AssetType(..), Links)
 
 
 decoder : Decoder Asset
@@ -30,9 +28,7 @@ assetTypeDecoder =
 
 stringToAssetType : String -> Decoder AssetType
 stringToAssetType string =
-
     case string of
-
         "credit_alphanum4" ->
             Decode.succeed CreditAlphanum4
 

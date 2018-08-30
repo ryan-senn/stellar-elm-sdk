@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.DataRemoved exposing (DataRemoved)
 
 {-| Data removed Effect
 
+
 # Type alias
+
 @docs DataRemoved
 
 -}

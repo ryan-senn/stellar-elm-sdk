@@ -2,13 +2,14 @@ module Stellar.Resources.Ledger exposing (Ledger, Links)
 
 {-| Ledger Resource
 
+
 # Type alias
+
 @docs Ledger, Links
 
 -}
 
 import Date exposing (Date)
-
 import Stellar.Link exposing (Link)
 
 

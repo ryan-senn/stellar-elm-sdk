@@ -2,10 +2,8 @@ module Stellar.Resources.Internal.Page exposing (decoder, embeddedDecoder, links
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Page exposing (Page, Embed, Links)
-
 import Stellar.Internal.Link as Link
+import Stellar.Resources.Page exposing (Embed, Links, Page)
 
 
 decoder : Decoder record -> Decoder (Page record)

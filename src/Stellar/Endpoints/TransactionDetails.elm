@@ -1,34 +1,36 @@
-module Stellar.Endpoints.TransactionDetails exposing (requestBuilder, send, Response (..))
+module Stellar.Endpoints.TransactionDetails exposing
+    ( requestBuilder
+    , send, Response(..)
+    )
 
 {-| Transaction Details Endpoint
 
+
 # Build the Request with required fields
+
 @docs requestBuilder
 
+
 # Send the Request & catch Response
+
 @docs send, Response
 
 -}
 
 import Http
 import HttpBuilder exposing (..)
-
 import Json.Decode as Decode exposing (Decoder)
-
 import Stellar.Endpoint as Endpoint exposing (Endpoint)
-
-import Stellar.Resources.Transaction exposing (Transaction)
-import Stellar.Resources.Internal.Transaction as Transaction
-
 import Stellar.Error exposing (Error)
 import Stellar.Internal.Error as Error
+import Stellar.Resources.Internal.Transaction as Transaction
+import Stellar.Resources.Transaction exposing (Transaction)
 
 
 {-| Request Builder. Takes the mandatory fields as arguments, the optional fields can be piped using setters.
 -}
 requestBuilder : Endpoint -> String -> RequestBuilder Response
 requestBuilder endpoint hash =
-
     HttpBuilder.get (url endpoint hash)
         |> withExpect (Http.expectJson decoder)
 
@@ -42,7 +44,6 @@ send =
 
 url : Endpoint -> String -> String
 url endpoint hash =
-
     endpoint ++ "/transactions/" ++ toString hash
 
 

@@ -2,7 +2,9 @@ module Stellar.Resources.Effects.OfferUpdated exposing (OfferUpdated)
 
 {-| Offer updated Effect
 
+
 # Type alias
+
 @docs OfferUpdated
 
 -}

@@ -2,9 +2,7 @@ module Stellar.Resources.Internal.Effect exposing (decoder)
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Decode.Pipeline as Decode
-
-import Stellar.Resources.Effect exposing (Effect (..))
-
+import Stellar.Resources.Effect exposing (Effect(..))
 import Stellar.Resources.Effects.Internal.AccountCreated as AccountCreated
 import Stellar.Resources.Effects.Internal.AccountCredited as AccountCredited
 import Stellar.Resources.Effects.Internal.AccountDebited as AccountDebited
@@ -37,7 +35,6 @@ decoder =
 
 effectFromType : String -> Decoder Effect
 effectFromType type_ =
-
     case type_ of
         "account_created" ->
             Decode.map AccountCreated AccountCreated.decoder
