@@ -20,5 +20,10 @@ type Sorting
 {-| Helper function to print the sorting
 -}
 toString : Sorting -> String
-toString =
-    Debug.toString >> String.toLower
+toString sorting =
+    case sorting of
+        Asc ->
+            "asc"
+
+        Desc ->
+            "desc"

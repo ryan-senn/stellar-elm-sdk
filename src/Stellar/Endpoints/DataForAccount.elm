@@ -74,8 +74,10 @@ dataKeyList =
 
 
 dataKeyToString : DataKey -> String
-dataKeyToString =
-    Debug.toString >> String.decapitalize >> String.dasherize
+dataKeyToString dataKey =
+    case dataKey of
+        UserId ->
+            "user-id"
 
 
 {-| The Response coming back from the server.

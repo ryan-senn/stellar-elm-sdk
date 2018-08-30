@@ -3,7 +3,7 @@
     "name": "ryan-senn/stellar-elm-sdk",
     "summary": "Elm SDK for the Stellar Cryptocurrency",
     "license": "BSD-3-Clause",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "exposed-modules": [
         "Stellar.AssetType",
         "Stellar.Balance",
